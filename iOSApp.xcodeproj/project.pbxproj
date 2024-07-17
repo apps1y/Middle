@@ -44,6 +44,22 @@
 		529BF9A52C479725009954D5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9A42C479725009954D5 /* MainTabBarController.swift */; };
 		529BF9A72C4797FA009954D5 /* NetworkAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9A62C4797FA009954D5 /* NetworkAuthService.swift */; };
 		529BF9A92C479803009954D5 /* NetworkMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9A82C479803009954D5 /* NetworkMainService.swift */; };
+		529BF9B62C47BAD7009954D5 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9B22C47BAD7009954D5 /* HomePresenter.swift */; };
+		529BF9B72C47BAD7009954D5 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9B32C47BAD7009954D5 /* HomeRouter.swift */; };
+		529BF9B82C47BAD7009954D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9B42C47BAD7009954D5 /* HomeViewController.swift */; };
+		529BF9B92C47BAD7009954D5 /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9B52C47BAD7009954D5 /* HomeAssembly.swift */; };
+		529BF9C02C47BB07009954D5 /* NewMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9BC2C47BB07009954D5 /* NewMessagePresenter.swift */; };
+		529BF9C12C47BB07009954D5 /* NewMessageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9BD2C47BB07009954D5 /* NewMessageRouter.swift */; };
+		529BF9C22C47BB07009954D5 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9BE2C47BB07009954D5 /* NewMessageViewController.swift */; };
+		529BF9C32C47BB07009954D5 /* NewMessageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9BF2C47BB07009954D5 /* NewMessageAssembly.swift */; };
+		529BF9C92C47BB30009954D5 /* MessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9C52C47BB30009954D5 /* MessagePresenter.swift */; };
+		529BF9CA2C47BB30009954D5 /* MessageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9C62C47BB30009954D5 /* MessageRouter.swift */; };
+		529BF9CB2C47BB30009954D5 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9C72C47BB30009954D5 /* MessageViewController.swift */; };
+		529BF9CC2C47BB30009954D5 /* MessageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9C82C47BB30009954D5 /* MessageAssembly.swift */; };
+		529BF9D22C47BB5F009954D5 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9CE2C47BB5F009954D5 /* SettingsPresenter.swift */; };
+		529BF9D32C47BB5F009954D5 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */; };
+		529BF9D42C47BB5F009954D5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */; };
+		529BF9D52C47BB5F009954D5 /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */; };
 		C70B37831DC02C8053658339 /* Pods_iOSApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C0DE74DB99FD4CE6CC47FE /* Pods_iOSApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +103,22 @@
 		529BF9A42C479725009954D5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		529BF9A62C4797FA009954D5 /* NetworkAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthService.swift; sourceTree = "<group>"; };
 		529BF9A82C479803009954D5 /* NetworkMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMainService.swift; sourceTree = "<group>"; };
+		529BF9B22C47BAD7009954D5 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		529BF9B32C47BAD7009954D5 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		529BF9B42C47BAD7009954D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		529BF9B52C47BAD7009954D5 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
+		529BF9BC2C47BB07009954D5 /* NewMessagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessagePresenter.swift; sourceTree = "<group>"; };
+		529BF9BD2C47BB07009954D5 /* NewMessageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageRouter.swift; sourceTree = "<group>"; };
+		529BF9BE2C47BB07009954D5 /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
+		529BF9BF2C47BB07009954D5 /* NewMessageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageAssembly.swift; sourceTree = "<group>"; };
+		529BF9C52C47BB30009954D5 /* MessagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenter.swift; sourceTree = "<group>"; };
+		529BF9C62C47BB30009954D5 /* MessageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRouter.swift; sourceTree = "<group>"; };
+		529BF9C72C47BB30009954D5 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		529BF9C82C47BB30009954D5 /* MessageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAssembly.swift; sourceTree = "<group>"; };
+		529BF9CE2C47BB5F009954D5 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
 		762DFFC918ED99E25DA5C76B /* Pods-iOSApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSApp.debug.xcconfig"; path = "Target Support Files/Pods-iOSApp/Pods-iOSApp.debug.xcconfig"; sourceTree = "<group>"; };
 		81E5498B69CD23AFA4A64A16 /* Pods-iOSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSApp.release.xcconfig"; path = "Target Support Files/Pods-iOSApp/Pods-iOSApp.release.xcconfig"; sourceTree = "<group>"; };
 		F1C0DE74DB99FD4CE6CC47FE /* Pods_iOSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,7 +211,6 @@
 			children = (
 				529BF96E2C46B832009954D5 /* DecodableModels */,
 				529BF9692C468B05009954D5 /* NetworkUtils */,
-				529BF96A2C468B14009954D5 /* NetworkService.swift */,
 				529BF9A62C4797FA009954D5 /* NetworkAuthService.swift */,
 				529BF9A82C479803009954D5 /* NetworkMainService.swift */,
 			);
@@ -190,6 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				529BF9A42C479725009954D5 /* MainTabBarController.swift */,
+				529BF9B02C47BA68009954D5 /* Home */,
+				529BF9B12C47BA75009954D5 /* Settings */,
 			);
 			path = MainFlow;
 			sourceTree = "<group>";
@@ -228,6 +261,7 @@
 			children = (
 				529BF9672C468361009954D5 /* NetworkRequest.swift */,
 				529BF96C2C468B1E009954D5 /* NetworkServiceError.swift */,
+				529BF96A2C468B14009954D5 /* NetworkService.swift */,
 			);
 			path = NetworkUtils;
 			sourceTree = "<group>";
@@ -310,6 +344,68 @@
 				529BF99F2C47869F009954D5 /* PasswordRecAssembly.swift */,
 			);
 			path = PasswordRecModule;
+			sourceTree = "<group>";
+		};
+		529BF9B02C47BA68009954D5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				529BF9BA2C47BAE0009954D5 /* HomeModule */,
+				529BF9C42C47BB0B009954D5 /* MessageModule */,
+				529BF9BB2C47BAE9009954D5 /* NewMessageModule */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		529BF9B12C47BA75009954D5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				529BF9CD2C47BB4F009954D5 /* SettingsModule */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		529BF9BA2C47BAE0009954D5 /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+				529BF9B42C47BAD7009954D5 /* HomeViewController.swift */,
+				529BF9B22C47BAD7009954D5 /* HomePresenter.swift */,
+				529BF9B32C47BAD7009954D5 /* HomeRouter.swift */,
+				529BF9B52C47BAD7009954D5 /* HomeAssembly.swift */,
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		529BF9BB2C47BAE9009954D5 /* NewMessageModule */ = {
+			isa = PBXGroup;
+			children = (
+				529BF9BE2C47BB07009954D5 /* NewMessageViewController.swift */,
+				529BF9BC2C47BB07009954D5 /* NewMessagePresenter.swift */,
+				529BF9BD2C47BB07009954D5 /* NewMessageRouter.swift */,
+				529BF9BF2C47BB07009954D5 /* NewMessageAssembly.swift */,
+			);
+			path = NewMessageModule;
+			sourceTree = "<group>";
+		};
+		529BF9C42C47BB0B009954D5 /* MessageModule */ = {
+			isa = PBXGroup;
+			children = (
+				529BF9C72C47BB30009954D5 /* MessageViewController.swift */,
+				529BF9C52C47BB30009954D5 /* MessagePresenter.swift */,
+				529BF9C62C47BB30009954D5 /* MessageRouter.swift */,
+				529BF9C82C47BB30009954D5 /* MessageAssembly.swift */,
+			);
+			path = MessageModule;
+			sourceTree = "<group>";
+		};
+		529BF9CD2C47BB4F009954D5 /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */,
+				529BF9CE2C47BB5F009954D5 /* SettingsPresenter.swift */,
+				529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */,
+				529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */,
+			);
+			path = SettingsModule;
 			sourceTree = "<group>";
 		};
 		B0B60004AE358ED6972D701A /* Frameworks */ = {
@@ -443,10 +539,22 @@
 				529BF98C2C46FA0B009954D5 /* PasswordRouter.swift in Sources */,
 				529BF9A72C4797FA009954D5 /* NetworkAuthService.swift in Sources */,
 				529BF98D2C46FA0B009954D5 /* PasswordViewController.swift in Sources */,
+				529BF9C92C47BB30009954D5 /* MessagePresenter.swift in Sources */,
+				529BF9CA2C47BB30009954D5 /* MessageRouter.swift in Sources */,
+				529BF9CB2C47BB30009954D5 /* MessageViewController.swift in Sources */,
+				529BF9CC2C47BB30009954D5 /* MessageAssembly.swift in Sources */,
+				529BF9B62C47BAD7009954D5 /* HomePresenter.swift in Sources */,
+				529BF9B72C47BAD7009954D5 /* HomeRouter.swift in Sources */,
+				529BF9B82C47BAD7009954D5 /* HomeViewController.swift in Sources */,
+				529BF9B92C47BAD7009954D5 /* HomeAssembly.swift in Sources */,
 				529BF98E2C46FA0B009954D5 /* PasswordAssembly.swift in Sources */,
 				529BF9682C468361009954D5 /* NetworkRequest.swift in Sources */,
 				529BF9A92C479803009954D5 /* NetworkMainService.swift in Sources */,
 				529BF9752C46DBE2009954D5 /* KeychainManager.swift in Sources */,
+				529BF9D22C47BB5F009954D5 /* SettingsPresenter.swift in Sources */,
+				529BF9D32C47BB5F009954D5 /* SettingsRouter.swift in Sources */,
+				529BF9D42C47BB5F009954D5 /* SettingsViewController.swift in Sources */,
+				529BF9D52C47BB5F009954D5 /* SettingsAssembly.swift in Sources */,
 				529BF9982C478677009954D5 /* EmailRecPresenter.swift in Sources */,
 				529BF9992C478677009954D5 /* EmailRecRouter.swift in Sources */,
 				529BF99A2C478677009954D5 /* EmailRecViewController.swift in Sources */,
@@ -467,6 +575,10 @@
 				529BF9A22C47869F009954D5 /* PasswordRecViewController.swift in Sources */,
 				529BF9A32C47869F009954D5 /* PasswordRecAssembly.swift in Sources */,
 				529BF96B2C468B14009954D5 /* NetworkService.swift in Sources */,
+				529BF9C02C47BB07009954D5 /* NewMessagePresenter.swift in Sources */,
+				529BF9C12C47BB07009954D5 /* NewMessageRouter.swift in Sources */,
+				529BF9C22C47BB07009954D5 /* NewMessageViewController.swift in Sources */,
+				529BF9C32C47BB07009954D5 /* NewMessageAssembly.swift in Sources */,
 				529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */,
 				529BF96D2C468B1E009954D5 /* NetworkServiceError.swift in Sources */,
 			);

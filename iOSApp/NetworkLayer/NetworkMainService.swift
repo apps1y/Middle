@@ -12,10 +12,6 @@ protocol NetworkMainServiceProtocol: AnyObject {
     
 }
 
-final class NetworkMainService: NetworkService, NetworkMainServiceProtocol {
-    private let BearerToken: String
+extension NetworkService: NetworkMainServiceProtocol {
     
-    init(BearerToken: String) {
-        self.BearerToken = BearerToken
-    }
 }

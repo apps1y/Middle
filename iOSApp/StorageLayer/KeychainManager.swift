@@ -38,7 +38,7 @@ extension KeychainManager: KeychainBearerProtocol {
     }
     
     func getKey() -> String? {
-        ""
+        nil
     }
     
     func clearKey() {

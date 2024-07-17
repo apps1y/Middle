@@ -7,8 +7,7 @@
 
 import UIKit
 
-/// от него наследуются все другие networkManager's
-public class NetworkService {
+final class NetworkService {
     
     let session = URLSession.shared
     

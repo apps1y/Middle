@@ -16,7 +16,7 @@ protocol NetworkAuthServiceProtocol: AnyObject {
     func login(with mail: String, password: String, completion: @escaping (NetworkResult<AuthModel>) -> ())
 }
 
-final class NetworkAuthService: NetworkService, NetworkAuthServiceProtocol {
+extension NetworkService: NetworkAuthServiceProtocol {
     func login(with mail: String, password: String, completion: @escaping (NetworkResult<AuthModel>) -> ()) {
         
     }

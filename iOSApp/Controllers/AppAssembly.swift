@@ -13,7 +13,7 @@ final class AppAssembly {
         
         // MARK: - DI
         /// NetworkLayer
-        let networkAuthService = NetworkAuthService()
+        let networkService = NetworkService()
         
         /// StorageLayer
         let databaseManager = DatabaseManager()
@@ -24,20 +24,24 @@ final class AppAssembly {
         
         
         // MARK: - Assembly сборки Auth Flow
-        let passwordAssembly = PasswordAssembly(networkService: networkAuthService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)
+        let passwordAssembly = PasswordAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)
         
-        let passwordRecAssembly = PasswordRecAssembly(networkService: networkAuthService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)
+        let passwordRecAssembly = PasswordRecAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)
         
-        let emailRecAssembly = EmailRecAssembly(networkService: networkAuthService, stringsValidation: stringsValidationManager, passwordRecAssembly: passwordRecAssembly)
+        let emailRecAssembly = EmailRecAssembly(networkService: networkService, stringsValidation: stringsValidationManager, passwordRecAssembly: passwordRecAssembly)
         
-        let emailAssembly = EmailAssembly(networkService: networkAuthService,
+        let emailAssembly = EmailAssembly(networkService: networkService,
                                           stringsValidation: stringsValidationManager, passwordAssembly: passwordAssembly)
         
-        let loginAssembly = LoginAssembly(networkService: networkAuthService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager, emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly)
+        let loginAssembly = LoginAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager, emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly)
         
         
         // MARK: - Assembly сборки Main Flow
-        let tabBarController = MainTabBarController()
+        let homeAssembly = HomeAssembly(networkService: networkService, databasePreviewsManager: databaseManager)
+        
+        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager)
+        
+        let tabBarController = MainTabBarController(homeAssembly: homeAssembly, settingsAssembly: settingsAssembly)
         
         
         // MARK: - App Coordinator

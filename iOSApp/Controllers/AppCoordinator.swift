@@ -29,14 +29,20 @@ final class AppCoordinator: FlowCoordinator {
         self.keychainBearerManager = keychainBearerManager
         self.loginAssembly = loginAssembly
         self.tabBarController = tabBarController
+        
+        UIView.transition(with: window ?? UIView(), duration: 0.2, options: .transitionCrossDissolve, animations: nil, completion: nil)
     }
     
     func start() {
-        if let key = keychainBearerManager.getKey() {
+        if let bearer = keychainBearerManager.getKey() {
             // прокинуть этот ключ в MainFlow
             window?.rootViewController = tabBarController
-        } else {
+            tabBarController.setup { [weak self] in
+                self?.start()
+            }
             
+        } else {
+            window?.rootViewController = loginAssembly.assemble()
         }
     }
 }
