@@ -9,20 +9,23 @@ import UIKit
 
 final class EmailAssembly {
     
+    /// DI
     private let networkService: NetworkAuthServiceProtocol
-    private let authManager: AuthManager
     private let stringsValidation: StringsValidationProtocol
     
-    init(networkService: NetworkAuthServiceProtocol, authManager: AuthManager, stringsValidation: StringsValidationProtocol) {
+    /// Assembly's
+    private let passwordAssembly: PasswordAssembly
+    
+    init(networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol, passwordAssembly: PasswordAssembly) {
         self.networkService = networkService
-        self.authManager = authManager
         self.stringsValidation = stringsValidation
+        self.passwordAssembly = passwordAssembly
     }
     
     func assemble() -> EmailViewController {
-        let router = EmailRouter()
+        let router = EmailRouter(passwordRouter: passwordAssembly)
         let viewController = EmailViewController()
-        let presenter = EmailPresenter(view: viewController, router: router, networkService: networkService, authManager: authManager, stringsValidation: stringsValidation)
+        let presenter = EmailPresenter(view: viewController, router: router, networkService: networkService, stringsValidation: stringsValidation)
         
         viewController.presenter = presenter
         router.viewController = viewController

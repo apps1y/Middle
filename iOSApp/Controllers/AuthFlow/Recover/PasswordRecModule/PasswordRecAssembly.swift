@@ -1,13 +1,13 @@
 //
-//  PasswordAssembly.swift
+//  PasswordRecAssembly.swift
 //  Super easy dev
 //
-//  Created by vanyaluk on 16.07.2024
+//  Created by vanyaluk on 17.07.2024
 //
 
 import UIKit
 
-final class PasswordAssembly {
+final class PasswordRecAssembly {
     
     /// DI
     private let networkService: NetworkAuthServiceProtocol
@@ -20,10 +20,10 @@ final class PasswordAssembly {
         self.stringsValidation = stringsValidation
     }
     
-    func assemble() -> PasswordViewController {
-        let router = PasswordRouter()
-        let viewController = PasswordViewController()
-        let presenter = PasswordPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, stringsValidation: stringsValidation)
+    func assemble() -> PasswordRecViewController {
+        let router = PasswordRecRouter()
+        let viewController = PasswordRecViewController()
+        let presenter = PasswordRecPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, stringsValidation: stringsValidation)
         
         viewController.presenter = presenter
         router.viewController = viewController

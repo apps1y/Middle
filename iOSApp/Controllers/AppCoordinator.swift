@@ -17,14 +17,26 @@ final class AppCoordinator: FlowCoordinator {
     
     private weak var window: UIWindow?
     
-    private let loginAssembly: LoginAssembly
+    /// DI
+    private let keychainBearerManager: KeychainBearerProtocol
     
-    init(window: UIWindow?, loginAssembly: LoginAssembly) {
-        self.loginAssembly = loginAssembly
+    /// Сборки Assembly's
+    private let loginAssembly: LoginAssembly
+    private let tabBarController: MainTabBarController
+    
+    init(window: UIWindow?, keychainBearerManager: KeychainManager, loginAssembly: LoginAssembly, tabBarController: MainTabBarController) {
         self.window = window
+        self.keychainBearerManager = keychainBearerManager
+        self.loginAssembly = loginAssembly
+        self.tabBarController = tabBarController
     }
     
     func start() {
-        window?.rootViewController = loginAssembly.assemble()
+        if let key = keychainBearerManager.getKey() {
+            // прокинуть этот ключ в MainFlow
+            window?.rootViewController = tabBarController
+        } else {
+            
+        }
     }
 }

@@ -24,7 +24,7 @@ final class LoginViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .red
     }
 }
 

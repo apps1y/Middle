@@ -16,14 +16,12 @@ final class EmailPresenter {
     var router: EmailRouterInput
     
     private let networkService: NetworkAuthServiceProtocol
-    private let authManager: AuthManager
     private let stringsValidation: StringsValidationProtocol
 
-    init(view: EmailViewProtocol?, router: EmailRouterInput, networkService: NetworkAuthServiceProtocol, authManager: AuthManager, stringsValidation: StringsValidationProtocol) {
+    init(view: EmailViewProtocol?, router: EmailRouterInput, networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol) {
         self.view = view
         self.router = router
         self.networkService = networkService
-        self.authManager = authManager
         self.stringsValidation = stringsValidation
     }
 }

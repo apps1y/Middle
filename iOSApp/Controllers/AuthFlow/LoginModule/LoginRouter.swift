@@ -14,10 +14,11 @@ protocol LoginRouterInput {
 final class LoginRouter: LoginRouterInput {
     
     weak var viewController: LoginViewController?
-    
     private let emailAssembly: EmailAssembly
+    private let emailRecAssembly: EmailRecAssembly
     
-    init(emailAssembly: EmailAssembly) {
+    init(emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly) {
         self.emailAssembly = emailAssembly
+        self.emailRecAssembly = emailRecAssembly
     }
 }

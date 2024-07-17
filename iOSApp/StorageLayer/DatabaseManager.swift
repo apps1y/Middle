@@ -39,7 +39,7 @@ protocol DatabaseDetailsProtocol: AnyObject {
     func save(message: String)
 }
 
-class DatabaseManager: DatabasePreviewsProtocol, DatabaseDetailsProtocol {
+final class DatabaseManager: DatabasePreviewsProtocol, DatabaseDetailsProtocol {
     func fetch() {
         
     }

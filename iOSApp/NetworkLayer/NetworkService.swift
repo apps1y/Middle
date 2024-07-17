@@ -7,25 +7,10 @@
 
 import UIKit
 
-
-protocol NetworkMainServiceProtocol: AnyObject {
+/// от него наследуются все другие networkManager's
+public class NetworkService {
     
-}
-
-
-protocol NetworkAuthServiceProtocol: AnyObject {
-    
-    /// Вход пользователя
-    /// - Parameters:
-    ///   - mail: почта юзера
-    ///   - password: пароль юзера
-    func login(with mail: String, password: String, completion: @escaping (NetworkResult<AuthModel>) -> ())
-}
-
-
-final class NetworkService {
-    
-    private let session = URLSession.shared
+    let session = URLSession.shared
     
     /// модель запроса
     /// - Parameters:
@@ -63,17 +48,5 @@ final class NetworkService {
         
         task.resume()
     }
-    
-}
-
-
-extension NetworkService: NetworkAuthServiceProtocol {
-    func login(with mail: String, password: String, completion: @escaping (NetworkResult<AuthModel>) -> ()) {
-        // code
-    }
-}
-
-
-extension NetworkService: NetworkMainServiceProtocol {
     
 }

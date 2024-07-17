@@ -13,7 +13,7 @@ final class AppAssembly {
         
         // MARK: - DI
         /// NetworkLayer
-        let networkService = NetworkService()
+        let networkAuthService = NetworkAuthService()
         
         /// StorageLayer
         let databaseManager = DatabaseManager()
@@ -21,16 +21,28 @@ final class AppAssembly {
         
         /// ManagersLayer
         let stringsValidationManager = StringsValidationManager()
-        let authManager = AuthManager(keychainManager: keychainManager)
         
         
-        // MARK: - Assembly сборки
-        let emailAssembly = EmailAssembly(networkService: networkService, authManager: authManager, stringsValidation: stringsValidationManager)
+        // MARK: - Assembly сборки Auth Flow
+        let passwordAssembly = PasswordAssembly(networkService: networkAuthService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)
         
-        let loginAssembly = LoginAssembly(networkService: networkService, authManager: authManager, stringsValidation: stringsValidationManager, emailAssembly: emailAssembly)
+        let passwordRecAssembly = PasswordRecAssembly(networkService: networkAuthService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)
+        
+        let emailRecAssembly = EmailRecAssembly(networkService: networkAuthService, stringsValidation: stringsValidationManager, passwordRecAssembly: passwordRecAssembly)
+        
+        let emailAssembly = EmailAssembly(networkService: networkAuthService,
+                                          stringsValidation: stringsValidationManager, passwordAssembly: passwordAssembly)
+        
+        let loginAssembly = LoginAssembly(networkService: networkAuthService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager, emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly)
         
         
-        let appCoordinator = AppCoordinator(window: window, loginAssembly: loginAssembly)
+        // MARK: - Assembly сборки Main Flow
+        let tabBarController = MainTabBarController()
+        
+        
+        // MARK: - App Coordinator
+        let appCoordinator = AppCoordinator(window: window, keychainBearerManager: keychainManager, loginAssembly: loginAssembly, tabBarController: tabBarController)
+        
         return appCoordinator
     }
 }
