@@ -30,5 +30,7 @@ public struct NetworkRequest {
         self.queryParams = queryParams
         self.httpMethod = httpMethod
         self.stringURL = baseUrl + path
+        
+        
     }
 }
