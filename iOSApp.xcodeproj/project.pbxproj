@@ -728,6 +728,7 @@
 				DEVELOPMENT_TEAM = 8YJ26SYSQ5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSApp/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = middle;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -761,6 +762,7 @@
 				DEVELOPMENT_TEAM = 8YJ26SYSQ5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOSApp/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = middle;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

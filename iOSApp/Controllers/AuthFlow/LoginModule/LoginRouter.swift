@@ -8,7 +8,9 @@
 import UIKit
 
 protocol LoginRouterInput {
+    func pushEmailViewController()
     
+    func presentEmailRecViewController()
 }
 
 final class LoginRouter: LoginRouterInput {
@@ -20,5 +22,19 @@ final class LoginRouter: LoginRouterInput {
     init(emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly) {
         self.emailAssembly = emailAssembly
         self.emailRecAssembly = emailRecAssembly
+        
     }
+    
+    func pushEmailViewController() {
+        let view = emailAssembly.assemble()
+        viewController?.navigationController?.pushViewController(view, animated: true)
+    }
+    
+    func presentEmailRecViewController() {
+        let view = emailRecAssembly.assemble()
+        view.isModalInPresentation = true
+        viewController?.present(view, animated: true)
+    }
+    
+    
 }

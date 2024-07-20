@@ -15,7 +15,7 @@ final class NetworkService {
     /// - Parameters:
     ///   - request: запрос на сервер в виде модели NetworkRequest
     ///   - completion: блок с возвращением модели или ошибки
-    private func perform<Model: Decodable>(request: NetworkRequest, _ completion: @escaping (Result<Model, NetworkServiceError>) -> Void) {
+    func perform<Model: Decodable>(request: NetworkRequest, _ completion: @escaping (Result<Model, NetworkServiceError>) -> Void) {
         guard var urlComponents = URLComponents(string: request.stringURL) else {
             return completion(.failure(.invalidURL))
         }

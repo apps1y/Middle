@@ -8,7 +8,11 @@
 import UIKit
 
 protocol LoginPresenterProtocol: AnyObject {
-    func viewDidLoaded()
+    func loginRequest(with email: String, password: String)
+    
+    func openRegistration()
+    
+    func openRecover()
 }
 
 final class LoginPresenter {
@@ -29,7 +33,25 @@ final class LoginPresenter {
 }
 
 extension LoginPresenter: LoginPresenterProtocol {
-    func viewDidLoaded() {
-        // first setup view
+    
+    func loginRequest(with email: String, password: String) {
+        
+        if let errorDescription = stringsValidation.validate(email: email) {
+            view?.finishLoading(with: (.emailTextField, errorDescription))
+            return
+        }
+        
+        view?.startLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            self?.view?.finishLoading(with: nil)
+        }
+    }
+    
+    func openRegistration() {
+        router.pushEmailViewController()
+    }
+    
+    func openRecover() {
+        router.presentEmailRecViewController()
     }
 }

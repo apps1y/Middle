@@ -23,6 +23,7 @@ final class AppAssembly {
         let stringsValidationManager = StringsValidationManager()
         
         
+        
         // MARK: - Assembly сборки Auth Flow
         let passwordAssembly = PasswordAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)
         
@@ -36,12 +37,14 @@ final class AppAssembly {
         let loginAssembly = LoginAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager, emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly)
         
         
+        
         // MARK: - Assembly сборки Main Flow
         let homeAssembly = HomeAssembly(networkService: networkService, databasePreviewsManager: databaseManager)
-        
+
         let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager)
         
         let tabBarController = MainTabBarController(homeAssembly: homeAssembly, settingsAssembly: settingsAssembly)
+        
         
         
         // MARK: - App Coordinator

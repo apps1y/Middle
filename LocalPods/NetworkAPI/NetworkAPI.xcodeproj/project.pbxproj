@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		529C07952C4A54E900E6D1BB /* NetworkAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 529C07942C4A54E900E6D1BB /* NetworkAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		529C07A82C4A57B500E6D1BB /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 529C07A72C4A57B500E6D1BB /* OpenAPIRuntime */; };
+		529C07AB2C4A57D200E6D1BB /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 529C07AA2C4A57D200E6D1BB /* OpenAPIURLSession */; };
+		529C07B22C4A595400E6D1BB /* NetworkAuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C07B12C4A595400E6D1BB /* NetworkAuthServiceProtocol.swift */; };
+		529C07B42C4A596400E6D1BB /* NetworkMainServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C07B32C4A596400E6D1BB /* NetworkMainServiceProtocol.swift */; };
+		529C07B62C4A597F00E6D1BB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C07B52C4A597F00E6D1BB /* NetworkService.swift */; };
+		529C07B82C4A598900E6D1BB /* NetworkAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C07B72C4A598900E6D1BB /* NetworkAuthService.swift */; };
+		529C07BA2C4A599100E6D1BB /* NetworkMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C07B92C4A599100E6D1BB /* NetworkMainService.swift */; };
+		529C07BD2C4A5FC400E6D1BB /* openapi-generator-config.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 529C07BB2C4A5FC400E6D1BB /* openapi-generator-config.yaml */; };
+		529C07BE2C4A5FC400E6D1BB /* openapi.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 529C07BC2C4A5FC400E6D1BB /* openapi.yaml */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		529C07912C4A54E900E6D1BB /* NetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		529C07942C4A54E900E6D1BB /* NetworkAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkAPI.h; sourceTree = "<group>"; };
+		529C07B12C4A595400E6D1BB /* NetworkAuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthServiceProtocol.swift; sourceTree = "<group>"; };
+		529C07B32C4A596400E6D1BB /* NetworkMainServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMainServiceProtocol.swift; sourceTree = "<group>"; };
+		529C07B52C4A597F00E6D1BB /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		529C07B72C4A598900E6D1BB /* NetworkAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthService.swift; sourceTree = "<group>"; };
+		529C07B92C4A599100E6D1BB /* NetworkMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMainService.swift; sourceTree = "<group>"; };
+		529C07BB2C4A5FC400E6D1BB /* openapi-generator-config.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "openapi-generator-config.yaml"; sourceTree = "<group>"; };
+		529C07BC2C4A5FC400E6D1BB /* openapi.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = openapi.yaml; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		529C078E2C4A54E900E6D1BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				529C07AB2C4A57D200E6D1BB /* OpenAPIURLSession in Frameworks */,
+				529C07A82C4A57B500E6D1BB /* OpenAPIRuntime in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5212C5032C4AC6BE004EB136 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		529C07872C4A54E800E6D1BB = {
+			isa = PBXGroup;
+			children = (
+				529C07932C4A54E900E6D1BB /* NetworkAPI */,
+				529C07922C4A54E900E6D1BB /* Products */,
+				5212C5032C4AC6BE004EB136 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		529C07922C4A54E900E6D1BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				529C07912C4A54E900E6D1BB /* NetworkAPI.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		529C07932C4A54E900E6D1BB /* NetworkAPI */ = {
+			isa = PBXGroup;
+			children = (
+				529C07BB2C4A5FC400E6D1BB /* openapi-generator-config.yaml */,
+				529C07BC2C4A5FC400E6D1BB /* openapi.yaml */,
+				529C07AE2C4A587600E6D1BB /* Protocols */,
+				529C07AF2C4A588100E6D1BB /* Services */,
+				529C07B02C4A589000E6D1BB /* Utils */,
+				529C07942C4A54E900E6D1BB /* NetworkAPI.h */,
+			);
+			path = NetworkAPI;
+			sourceTree = "<group>";
+		};
+		529C07AE2C4A587600E6D1BB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				529C07B12C4A595400E6D1BB /* NetworkAuthServiceProtocol.swift */,
+				529C07B32C4A596400E6D1BB /* NetworkMainServiceProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		529C07AF2C4A588100E6D1BB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				529C07B52C4A597F00E6D1BB /* NetworkService.swift */,
+				529C07B72C4A598900E6D1BB /* NetworkAuthService.swift */,
+				529C07B92C4A599100E6D1BB /* NetworkMainService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		529C07B02C4A589000E6D1BB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		529C078C2C4A54E900E6D1BB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				529C07952C4A54E900E6D1BB /* NetworkAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		529C07902C4A54E900E6D1BB /* NetworkAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 529C07982C4A54E900E6D1BB /* Build configuration list for PBXNativeTarget "NetworkAPI" */;
+			buildPhases = (
+				529C078C2C4A54E900E6D1BB /* Headers */,
+				529C078D2C4A54E900E6D1BB /* Sources */,
+				529C078E2C4A54E900E6D1BB /* Frameworks */,
+				529C078F2C4A54E900E6D1BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				529C07AD2C4A57E500E6D1BB /* PBXTargetDependency */,
+			);
+			name = NetworkAPI;
+			packageProductDependencies = (
+				529C07A72C4A57B500E6D1BB /* OpenAPIRuntime */,
+				529C07AA2C4A57D200E6D1BB /* OpenAPIURLSession */,
+			);
+			productName = NetworkAPI;
+			productReference = 529C07912C4A54E900E6D1BB /* NetworkAPI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		529C07882C4A54E800E6D1BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					529C07902C4A54E900E6D1BB = {
+						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
+					};
+				};
+			};
+			buildConfigurationList = 529C078B2C4A54E800E6D1BB /* Build configuration list for PBXProject "NetworkAPI" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 529C07872C4A54E800E6D1BB;
+			packageReferences = (
+				529C07A12C4A579E00E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-generator" */,
+				529C07A62C4A57B500E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */,
+				529C07A92C4A57D200E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */,
+			);
+			productRefGroup = 529C07922C4A54E900E6D1BB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				529C07902C4A54E900E6D1BB /* NetworkAPI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		529C078F2C4A54E900E6D1BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				529C07BD2C4A5FC400E6D1BB /* openapi-generator-config.yaml in Resources */,
+				529C07BE2C4A5FC400E6D1BB /* openapi.yaml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		529C078D2C4A54E900E6D1BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				529C07BA2C4A599100E6D1BB /* NetworkMainService.swift in Sources */,
+				529C07B82C4A598900E6D1BB /* NetworkAuthService.swift in Sources */,
+				529C07B42C4A596400E6D1BB /* NetworkMainServiceProtocol.swift in Sources */,
+				529C07B62C4A597F00E6D1BB /* NetworkService.swift in Sources */,
+				529C07B22C4A595400E6D1BB /* NetworkAuthServiceProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		529C07AD2C4A57E500E6D1BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 529C07AC2C4A57E500E6D1BB /* OpenAPIGenerator */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		529C07962C4A54E900E6D1BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		529C07972C4A54E900E6D1BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		529C07992C4A54E900E6D1BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8YJ26SYSQ5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = vanyaluk.NetworkAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		529C079A2C4A54E900E6D1BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8YJ26SYSQ5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = vanyaluk.NetworkAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		529C078B2C4A54E800E6D1BB /* Build configuration list for PBXProject "NetworkAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				529C07962C4A54E900E6D1BB /* Debug */,
+				529C07972C4A54E900E6D1BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		529C07982C4A54E900E6D1BB /* Build configuration list for PBXNativeTarget "NetworkAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				529C07992C4A54E900E6D1BB /* Debug */,
+				529C079A2C4A54E900E6D1BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		529C07A12C4A579E00E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-generator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-generator";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+		529C07A62C4A57B500E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-runtime";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
+		529C07A92C4A57D200E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-urlsession";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		529C07A72C4A57B500E6D1BB /* OpenAPIRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 529C07A62C4A57B500E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */;
+			productName = OpenAPIRuntime;
+		};
+		529C07AA2C4A57D200E6D1BB /* OpenAPIURLSession */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 529C07A92C4A57D200E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */;
+			productName = OpenAPIURLSession;
+		};
+		529C07AC2C4A57E500E6D1BB /* OpenAPIGenerator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 529C07A12C4A579E00E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-generator" */;
+			productName = "plugin:OpenAPIGenerator";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 529C07882C4A54E800E6D1BB /* Project object */;
+}

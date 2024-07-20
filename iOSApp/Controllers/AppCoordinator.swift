@@ -34,15 +34,22 @@ final class AppCoordinator: FlowCoordinator {
     }
     
     func start() {
-        if let bearer = keychainBearerManager.getKey() {
-            // прокинуть этот ключ в MainFlow
-            window?.rootViewController = tabBarController
-            tabBarController.setup { [weak self] in
-                self?.start()
-            }
-            
+        if false /*keychainBearerManager.getKey() != nil*/ {
+            mainFlow()
         } else {
-            window?.rootViewController = loginAssembly.assemble()
+            authFlow()
         }
+    }
+    
+    private func mainFlow() {
+        tabBarController.setup { [weak self] in
+            self?.start()
+        }
+        window?.rootViewController = tabBarController
+    }
+    
+    private func authFlow() {
+        let vc = UINavigationController(rootViewController: loginAssembly.assemble())
+        window?.rootViewController = vc
     }
 }

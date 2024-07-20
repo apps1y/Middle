@@ -15,14 +15,16 @@ import Foundation
 
 /// доступ к этим функциям только в AuthManager
 protocol KeychainBearerProtocol: AnyObject {
-        /// Сохранение ключа
-        func saveKey(_ value: String)
-        
-        /// Извлечение ключа
-        func getKey() -> String?
-        
-        /// Удаление ключа
-        func clearKey()
+    /// Сохранение ключа
+    /// - Parameters:
+    ///   - value: ключ для сохранения
+    func saveKey(_ value: String)
+    
+    /// Извлечение ключа
+    func getKey() -> String?
+    
+    /// Удаление ключа
+    func clearKey()
 }
 
 /// информация о пробной подписки
