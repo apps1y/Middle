@@ -26,10 +26,10 @@ final class LoginAssembly {
         self.emailRecAssembly = emailRecAssembly
     }
     
-    func assemble() -> LoginViewController {
+    func assemble(reloadCoordinator: @escaping () -> Void) -> LoginViewController {
         let router = LoginRouter(emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly)
         let viewController = LoginViewController()
-        let presenter = LoginPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, stringsValidation: stringsValidation)
+        let presenter = LoginPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, stringsValidation: stringsValidation, reloadCoordinator: reloadCoordinator)
         
         viewController.presenter = presenter
         router.viewController = viewController

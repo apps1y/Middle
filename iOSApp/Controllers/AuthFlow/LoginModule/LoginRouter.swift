@@ -10,7 +10,7 @@ import UIKit
 protocol LoginRouterInput {
     func pushEmailViewController()
     
-    func presentEmailRecViewController()
+    func presentEmailRecViewController(email: String?)
 }
 
 final class LoginRouter: LoginRouterInput {
@@ -30,10 +30,11 @@ final class LoginRouter: LoginRouterInput {
         viewController?.navigationController?.pushViewController(view, animated: true)
     }
     
-    func presentEmailRecViewController() {
-        let view = emailRecAssembly.assemble()
-        view.isModalInPresentation = true
-        viewController?.present(view, animated: true)
+    func presentEmailRecViewController(email: String?) {
+        let view = emailRecAssembly.assemble(email: email)
+        let navc = UINavigationController(rootViewController: view)
+        navc.isModalInPresentation = true
+        viewController?.present(navc, animated: true)
     }
     
     

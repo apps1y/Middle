@@ -55,9 +55,8 @@ public final class Button: UIButton {
         isEnabled = false
         UIView.animate(withDuration: 0.1) {
             self.titleLabel?.alpha = 0
-        } completion: { done in
-            self.spinner.startAnimating()
         }
+        spinner.startAnimating()
     }
     
     private func finishLoading() {

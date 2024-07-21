@@ -14,16 +14,16 @@ final class EmailAssembly {
     private let stringsValidation: StringsValidationProtocol
     
     /// Assembly's
-    private let passwordAssembly: PasswordAssembly
+    private let confirmAssembly: ConfirmAssembly
     
-    init(networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol, passwordAssembly: PasswordAssembly) {
+    init(networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol, confirmAssembly: ConfirmAssembly) {
         self.networkService = networkService
         self.stringsValidation = stringsValidation
-        self.passwordAssembly = passwordAssembly
+        self.confirmAssembly = confirmAssembly
     }
     
     func assemble() -> EmailViewController {
-        let router = EmailRouter(passwordRouter: passwordAssembly)
+        let router = EmailRouter(confirmAssembly: confirmAssembly)
         let viewController = EmailViewController()
         let presenter = EmailPresenter(view: viewController, router: router, networkService: networkService, stringsValidation: stringsValidation)
         

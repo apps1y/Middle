@@ -10,6 +10,8 @@
 		52039B4D2C4B918A00EA26DC /* AppUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 52039B4C2C4B918A00EA26DC /* AppUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52039B542C4B926400EA26DC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52039B532C4B926300EA26DC /* TextField.swift */; };
 		52971D252C4BD3CD00F44C4F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52971D242C4BD3CD00F44C4F /* Button.swift */; };
+		52FED24F2C4CF1E200AAF16B /* UIVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED24E2C4CF1E200AAF16B /* UIVerifyView.swift */; };
+		52FED2522C4CF2DA00AAF16B /* UIVerifyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2512C4CF2DA00AAF16B /* UIVerifyTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +19,8 @@
 		52039B4C2C4B918A00EA26DC /* AppUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUI.h; sourceTree = "<group>"; };
 		52039B532C4B926300EA26DC /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		52971D242C4BD3CD00F44C4F /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		52FED24E2C4CF1E200AAF16B /* UIVerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVerifyView.swift; sourceTree = "<group>"; };
+		52FED2512C4CF2DA00AAF16B /* UIVerifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVerifyTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +56,18 @@
 				52039B4C2C4B918A00EA26DC /* AppUI.h */,
 				52039B532C4B926300EA26DC /* TextField.swift */,
 				52971D242C4BD3CD00F44C4F /* Button.swift */,
+				52FED2502C4CF25500AAF16B /* UIVerifyView */,
 			);
 			path = AppUI;
+			sourceTree = "<group>";
+		};
+		52FED2502C4CF25500AAF16B /* UIVerifyView */ = {
+			isa = PBXGroup;
+			children = (
+				52FED24E2C4CF1E200AAF16B /* UIVerifyView.swift */,
+				52FED2512C4CF2DA00AAF16B /* UIVerifyTextField.swift */,
+			);
+			path = UIVerifyView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +151,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				52039B542C4B926400EA26DC /* TextField.swift in Sources */,
+				52FED2522C4CF2DA00AAF16B /* UIVerifyTextField.swift in Sources */,
+				52FED24F2C4CF1E200AAF16B /* UIVerifyView.swift in Sources */,
 				52971D252C4BD3CD00F44C4F /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

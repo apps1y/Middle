@@ -171,10 +171,13 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func recoverAccountButtonTapped() {
-        presenter?.openRecover()
+        guard let email = emailTextField.text else { return }
+        view.endEditing(true)
+        presenter?.openRecover(with: email)
     }
     
     @objc private func createAccountButtonTapped() {
+        view.endEditing(true)
         presenter?.openRegistration()
     }
 }
@@ -182,6 +185,7 @@ final class LoginViewController: UIViewController {
 // MARK: - View Protocol Realization
 extension LoginViewController: LoginViewProtocol {
     func startLoading() {
+        view.endEditing(true)
         continueButton.isLoading = true
         emailTextField.mode = .basic
         view.endEditing(true)
@@ -199,8 +203,10 @@ extension LoginViewController: LoginViewProtocol {
         switch field {
         case .emailTextField:
             emailTextField.mode = .error
+            emailTextField.becomeFirstResponder()
         case .passwordTextField:
             passwordTextField.mode = .error
+            passwordTextField.becomeFirstResponder()
         }
     }
 }

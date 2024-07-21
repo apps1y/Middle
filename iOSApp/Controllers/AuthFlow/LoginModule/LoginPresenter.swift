@@ -12,7 +12,7 @@ protocol LoginPresenterProtocol: AnyObject {
     
     func openRegistration()
     
-    func openRecover()
+    func openRecover(with email: String)
 }
 
 final class LoginPresenter {
@@ -22,13 +22,16 @@ final class LoginPresenter {
     private let networkService: NetworkAuthServiceProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     private let stringsValidation: StringsValidationProtocol
+    
+    private var reloadCoordinator: () -> Void
 
-    init(view: LoginViewProtocol?, router: LoginRouterInput, networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol) {
+    init(view: LoginViewProtocol?, router: LoginRouterInput, networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, reloadCoordinator: @escaping () -> Void) {
         self.view = view
         self.router = router
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation
+        self.reloadCoordinator = reloadCoordinator
     }
 }
 
@@ -36,14 +39,16 @@ extension LoginPresenter: LoginPresenterProtocol {
     
     func loginRequest(with email: String, password: String) {
         
+        view?.startLoading()
+        
         if let errorDescription = stringsValidation.validate(email: email) {
             view?.finishLoading(with: (.emailTextField, errorDescription))
             return
         }
         
-        view?.startLoading()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.view?.finishLoading(with: nil)
+            self?.reloadCoordinator()
         }
     }
     
@@ -51,7 +56,12 @@ extension LoginPresenter: LoginPresenterProtocol {
         router.pushEmailViewController()
     }
     
-    func openRecover() {
-        router.presentEmailRecViewController()
+    func openRecover(with email: String) {
+        if stringsValidation.validate(email: email) == nil {
+            router.presentEmailRecViewController(email: email)
+        } else {
+            router.presentEmailRecViewController(email: nil)
+        }
+        
     }
 }

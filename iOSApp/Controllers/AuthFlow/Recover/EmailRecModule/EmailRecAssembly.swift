@@ -22,9 +22,9 @@ final class EmailRecAssembly {
         self.passwordRecAssembly = passwordRecAssembly
     }
     
-    func assemble() -> EmailRecViewController {
+    func assemble(email: String?) -> EmailRecViewController {
         let router = EmailRecRouter(passwordRecAssembly: passwordRecAssembly)
-        let viewController = EmailRecViewController()
+        let viewController = EmailRecViewController(email: email)
         let presenter = EmailRecPresenter(view: viewController, router: router, networkService: networkService, stringsValidation: stringsValidation)
         
         viewController.presenter = presenter

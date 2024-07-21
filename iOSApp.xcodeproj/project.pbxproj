@@ -60,6 +60,10 @@
 		529BF9D32C47BB5F009954D5 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */; };
 		529BF9D42C47BB5F009954D5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */; };
 		529BF9D52C47BB5F009954D5 /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */; };
+		52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */; };
+		52FED2592C4D0E1700AAF16B /* ConfirmRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2552C4D0E1700AAF16B /* ConfirmRouter.swift */; };
+		52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */; };
+		52FED25B2C4D0E1700AAF16B /* ConfirmAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */; };
 		C70B37831DC02C8053658339 /* Pods_iOSApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C0DE74DB99FD4CE6CC47FE /* Pods_iOSApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +123,10 @@
 		529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
+		52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPresenter.swift; sourceTree = "<group>"; };
+		52FED2552C4D0E1700AAF16B /* ConfirmRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmRouter.swift; sourceTree = "<group>"; };
+		52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAssembly.swift; sourceTree = "<group>"; };
 		762DFFC918ED99E25DA5C76B /* Pods-iOSApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSApp.debug.xcconfig"; path = "Target Support Files/Pods-iOSApp/Pods-iOSApp.debug.xcconfig"; sourceTree = "<group>"; };
 		81E5498B69CD23AFA4A64A16 /* Pods-iOSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSApp.release.xcconfig"; path = "Target Support Files/Pods-iOSApp/Pods-iOSApp.release.xcconfig"; sourceTree = "<group>"; };
 		F1C0DE74DB99FD4CE6CC47FE /* Pods_iOSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				529BF97D2C46F9B5009954D5 /* EmailModule */,
+				52FED2532C4D0DE200AAF16B /* ConfirmModule */,
 				529BF9862C46F9F3009954D5 /* PasswordModule */,
 			);
 			path = Registration;
@@ -406,6 +415,17 @@
 				529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */,
 			);
 			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		52FED2532C4D0DE200AAF16B /* ConfirmModule */ = {
+			isa = PBXGroup;
+			children = (
+				52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */,
+				52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */,
+				52FED2552C4D0E1700AAF16B /* ConfirmRouter.swift */,
+				52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */,
+			);
+			path = ConfirmModule;
 			sourceTree = "<group>";
 		};
 		B0B60004AE358ED6972D701A /* Frameworks */ = {
@@ -539,6 +559,10 @@
 				529BF98C2C46FA0B009954D5 /* PasswordRouter.swift in Sources */,
 				529BF9A72C4797FA009954D5 /* NetworkAuthService.swift in Sources */,
 				529BF98D2C46FA0B009954D5 /* PasswordViewController.swift in Sources */,
+				52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */,
+				52FED2592C4D0E1700AAF16B /* ConfirmRouter.swift in Sources */,
+				52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */,
+				52FED25B2C4D0E1700AAF16B /* ConfirmAssembly.swift in Sources */,
 				529BF9C92C47BB30009954D5 /* MessagePresenter.swift in Sources */,
 				529BF9CA2C47BB30009954D5 /* MessageRouter.swift in Sources */,
 				529BF9CB2C47BB30009954D5 /* MessageViewController.swift in Sources */,

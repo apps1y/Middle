@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EmailRecPresenterProtocol: AnyObject {
-    func viewDidLoaded()
+    func register(with email: String)
 }
 
 final class EmailRecPresenter {
@@ -27,7 +27,10 @@ final class EmailRecPresenter {
 }
 
 extension EmailRecPresenter: EmailRecPresenterProtocol {
-    func viewDidLoaded() {
-        // first setup view
+    func register(with email: String) {
+        view?.startLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            self?.view?.finishLoading(with: nil)
+        }
     }
 }

@@ -52,7 +52,7 @@ final class EmailViewController: UIViewController {
     
     private lazy var continueButton: Button = {
         let button = Button()
-        button.setTitle("Войти", for: .normal)
+        button.setTitle("Продолжить", for: .normal)
         button.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -66,7 +66,7 @@ final class EmailViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        navigationItem.setHidesBackButton(true, animated: true)
+        // navigationItem.setHidesBackButton(true, animated: true)
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
@@ -103,7 +103,6 @@ final class EmailViewController: UIViewController {
             make.bottom.equalTo(emailTextField.snp.top)
             make.top.equalTo(backgroundView)
         }
-        
     }
     
     // MARK: - @objc funcs
@@ -111,7 +110,6 @@ final class EmailViewController: UIViewController {
     @objc private func continueButtonTapped() {
         presenter?.register(with: "")
     }
-    
 }
 
 // MARK: - View Protocol Realization

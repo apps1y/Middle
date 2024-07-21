@@ -1,5 +1,6 @@
 PODS:
-  - AppUI (0.1.0)
+  - AppUI (0.1.0):
+    - SnapKit
   - SnapKit (5.7.1)
 
 DEPENDENCIES:
@@ -15,7 +16,7 @@ EXTERNAL SOURCES:
     :path: "./LocalPods/AppUI"
 
 SPEC CHECKSUMS:
-  AppUI: 78d1e7a5cec53660d0efd5984dc279f6e183d7ac
+  AppUI: 60aa7f40748669c7e63e0f3621c473a79d9fec5b
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
 
 PODFILE CHECKSUM: 505ff97e10e161fca2513d1608efc0f4c9afdb64

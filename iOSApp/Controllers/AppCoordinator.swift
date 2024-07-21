@@ -34,7 +34,7 @@ final class AppCoordinator: FlowCoordinator {
     }
     
     func start() {
-        if false /*keychainBearerManager.getKey() != nil*/ {
+        if keychainBearerManager.getKey() != nil {
             mainFlow()
         } else {
             authFlow()
@@ -49,7 +49,10 @@ final class AppCoordinator: FlowCoordinator {
     }
     
     private func authFlow() {
-        let vc = UINavigationController(rootViewController: loginAssembly.assemble())
-        window?.rootViewController = vc
+        let vc = loginAssembly.assemble { [weak self] in
+            self?.start()
+        }
+        let navVC = UINavigationController(rootViewController: vc)
+        window?.rootViewController = navVC
     }
 }

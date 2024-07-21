@@ -14,9 +14,10 @@ protocol EmailRouterInput {
 final class EmailRouter: EmailRouterInput {
     
     weak var viewController: EmailViewController?
-    private let passwordRouter: PasswordAssembly
     
-    init(passwordRouter: PasswordAssembly) {
-        self.passwordRouter = passwordRouter
+    private let confirmAssembly: ConfirmAssembly
+    
+    init(confirmAssembly: ConfirmAssembly) {
+        self.confirmAssembly = confirmAssembly
     }
 }
