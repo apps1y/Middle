@@ -32,19 +32,22 @@ protocol KeychainSubscriptionProtocol: AnyObject {
     
 }
 
-final class KeychainManager {}
+final class KeychainManager {
+    private var string: String? = nil
+}
 
 extension KeychainManager: KeychainBearerProtocol {
+    
     func saveKey(_ value: String) {
-        
+        string = value
     }
     
     func getKey() -> String? {
-        nil
+        string
     }
     
     func clearKey() {
-        
+        string = nil
     }
 }
 

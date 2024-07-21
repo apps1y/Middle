@@ -8,7 +8,12 @@
 import UIKit
 
 protocol ConfirmPresenterProtocol: AnyObject {
-    func viewDidLoaded()
+    
+    /// Подтверждение почты
+    /// - Parameters:
+    ///   - mail: почта, которую ввели на предыдущем экране
+    ///   - code: код подтверждения
+    func confirm(mail: String, with code: String)
 }
 
 final class ConfirmPresenter {
@@ -22,7 +27,12 @@ final class ConfirmPresenter {
 }
 
 extension ConfirmPresenter: ConfirmPresenterProtocol {
-    func viewDidLoaded() {
-        // first setup view
+    func confirm(mail: String, with code: String) {
+        view?.startLoading()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            self?.view?.finishLoading(error: nil)
+            self?.router.pushPasswordModule()
+        }
     }
 }

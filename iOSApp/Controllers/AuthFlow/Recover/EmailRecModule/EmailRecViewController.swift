@@ -113,7 +113,7 @@ final class EmailRecViewController: UIViewController {
             make.top.equalTo(backgroundView)
         }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(cancelButtonTapped))
     }
     
     // MARK: - @objc funcs
@@ -136,13 +136,13 @@ extension EmailRecViewController: EmailRecViewProtocol {
         emailTextField.mode = .basic
         view.endEditing(true)
         emailTextField.isEnabled = false
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.leftBarButtonItem?.isEnabled = false
     }
     
     func finishLoading(with error: String?) {
         continueButton.isLoading = false
         emailTextField.isEnabled = true
-        navigationItem.rightBarButtonItem?.isEnabled = true
+        navigationItem.leftBarButtonItem?.isEnabled = true
         
         guard let text = error else { return }
         // errorLabel.text = text

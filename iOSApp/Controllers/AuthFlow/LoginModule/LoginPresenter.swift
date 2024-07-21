@@ -8,10 +8,16 @@
 import UIKit
 
 protocol LoginPresenterProtocol: AnyObject {
+    
+    /// запрос на вход пользователя
+    /// - Parameters:
+    ///   - error: какое поле загорится красным, текст ошибки для пользователя
     func loginRequest(with email: String, password: String)
     
+    /// открытие экрана регистрации
     func openRegistration()
     
+    /// открытие экрана восстановления
     func openRecover(with email: String)
 }
 
@@ -46,8 +52,11 @@ extension LoginPresenter: LoginPresenterProtocol {
             return
         }
         
+        /// эмитация запроса на сервер с ответом 3 секунжы
+        // TODO: прописать запрос на сервер
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.view?.finishLoading(with: nil)
+            self?.keychainBearerManager.saveKey("key")
             self?.reloadCoordinator()
         }
     }

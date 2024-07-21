@@ -9,6 +9,7 @@ import UIKit
 import AppUI
 import SnapKit
 
+/// какое поле загорится красным
 enum TextFeildChoise {
     case emailTextField
     case passwordTextField
@@ -17,8 +18,13 @@ enum TextFeildChoise {
 
 // MARK: - View Protocol
 protocol LoginViewProtocol: AnyObject {
+    
+    /// начало анимации загрузки LoginViewController
     func startLoading()
     
+    /// завершение анимации загрузки с возможной ошибкой
+    /// - Parameters:
+    ///   - error: какое поле загорится красным, текст ошибки для пользователя
     func finishLoading(with error: (TextFeildChoise, String)?)
 }
 

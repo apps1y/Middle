@@ -8,8 +8,12 @@
 import UIKit
 
 protocol LoginRouterInput {
+    /// открытие экрана регистрации
     func pushEmailViewController()
     
+    /// открытие экрана восстановления
+    /// - Parameters:
+    ///   - email: почта, которая уже будет вбита в открывшемся экране
     func presentEmailRecViewController(email: String?)
 }
 

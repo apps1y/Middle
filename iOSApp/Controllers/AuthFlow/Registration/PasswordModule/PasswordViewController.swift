@@ -25,6 +25,19 @@ final class PasswordViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        
+        navigationItem.setHidesBackButton(true, animated: true)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(backButtonTapped))
+        
+        
+    }
+    
+    // MARK: - @objc func
+    
+    @objc private func backButtonTapped() {
+        /// на предыдущий экран
+        view.endEditing(true)
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 

@@ -21,9 +21,18 @@ public final class CodeField: UIView {
     var fieldStack = UIStackView()
     var verifyTextFields = [UIVerifyTextField]()
     
+    /// отключает/включает  взаимодействие с полем
+    public var isEnable: Bool = true {
+        didSet {
+            verifyTextFields.forEach { field in
+                field.isEnabled = isEnable
+            }
+        }
+    }
+    
     private let countOfFields: Int
     
-    init(countOfFields: Int) {
+    public init(countOfFields: Int) {
         self.countOfFields = countOfFields
         super.init(frame: .zero)
         
@@ -60,13 +69,13 @@ public final class CodeField: UIView {
         return code
     }
     
-    func clearFields() {
+    public func clearFields() {
         verifyTextFields.forEach { field in
             field.text = ""
         }
     }
     
-    func startAgain() {
+    public func startAgain() {
         verifyTextFields[0].becomeFirstResponder()
     }
 }

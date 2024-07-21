@@ -9,6 +9,8 @@ import UIKit
 
 protocol EmailRouterInput {
     
+    /// открытие экрана подверждения почты
+    func pushConfirmView()
 }
 
 final class EmailRouter: EmailRouterInput {
@@ -19,5 +21,10 @@ final class EmailRouter: EmailRouterInput {
     
     init(confirmAssembly: ConfirmAssembly) {
         self.confirmAssembly = confirmAssembly
+    }
+    
+    func pushConfirmView() {
+        let view = confirmAssembly.assemble()
+        viewController?.navigationController?.pushViewController(view, animated: true)
     }
 }

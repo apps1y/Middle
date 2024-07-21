@@ -31,8 +31,9 @@ final class AppAssembly {
         
         let emailRecAssembly = EmailRecAssembly(networkService: networkService, stringsValidation: stringsValidationManager, passwordRecAssembly: passwordRecAssembly)
         
-        let emailAssembly = EmailAssembly(networkService: networkService,
-                                          stringsValidation: stringsValidationManager, passwordAssembly: passwordAssembly)
+        let confirmAssembly = ConfirmAssembly(networkService: networkService, passwordAssembly: passwordAssembly)
+        
+        let emailAssembly = EmailAssembly(networkService: networkService, stringsValidation: stringsValidationManager, confirmAssembly: confirmAssembly)
         
         let loginAssembly = LoginAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager, emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly)
         

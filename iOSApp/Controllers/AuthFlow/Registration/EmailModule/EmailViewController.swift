@@ -11,8 +11,13 @@ import SnapKit
 
 // MARK: - View Protocol
 protocol EmailViewProtocol: AnyObject {
+    
+    /// начало анимации загрузки EmailViewController
     func startLoading()
     
+    /// завершение анимации загрузки с возможной ошибкой
+    /// - Parameters:
+    ///   - error: текст ошибки для пользователя (если nil, то ошибки нет)
     func finishLoading(with error: String?)
 }
 
@@ -40,6 +45,14 @@ final class EmailViewController: UIViewController {
         return label
     }()
     
+    private lazy var loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Уже есть аккаунт?", for: .normal)
+        button.setTitleColor(.link, for: .normal)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var emailTextField: TextField = {
         let field = TextField()
         field.placeholder = "Введите почту"
@@ -47,6 +60,7 @@ final class EmailViewController: UIViewController {
         field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
+        field.text = "mail@mail.com"
         return field
     }()
     
@@ -66,7 +80,7 @@ final class EmailViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        // navigationItem.setHidesBackButton(true, animated: true)
+        navigationItem.setHidesBackButton(true, animated: true)
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
@@ -103,12 +117,25 @@ final class EmailViewController: UIViewController {
             make.bottom.equalTo(emailTextField.snp.top)
             make.top.equalTo(backgroundView)
         }
+        
+        backgroundScrollView.addSubview(loginButton)
+        loginButton.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(backgroundView).inset(15)
+            make.bottom.equalTo(continueButton.snp.top).inset(-10)
+            make.height.equalTo(40)
+        }
     }
     
     // MARK: - @objc funcs
     
     @objc private func continueButtonTapped() {
-        presenter?.register(with: "")
+        guard let email = emailTextField.text else { return }
+        presenter?.register(with: email)
+    }
+    
+    @objc private func loginButtonTapped() {
+        view.endEditing(true)
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -119,11 +146,13 @@ extension EmailViewController: EmailViewProtocol {
         emailTextField.mode = .basic
         view.endEditing(true)
         emailTextField.isEnabled = false
+        loginButton.isEnabled = false
     }
     
     func finishLoading(with error: String?) {
         continueButton.isLoading = false
         emailTextField.isEnabled = true
+        loginButton.isEnabled = true
         
         guard let text = error else { return }
         // errorLabel.text = text

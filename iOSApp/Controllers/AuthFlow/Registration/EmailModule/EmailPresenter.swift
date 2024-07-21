@@ -8,6 +8,10 @@
 import UIKit
 
 protocol EmailPresenterProtocol: AnyObject {
+    
+    /// запрос на регистрацию
+    /// - Parameters:
+    ///   - email: почта пользователя
     func register(with email: String)
 }
 
@@ -29,8 +33,15 @@ final class EmailPresenter {
 extension EmailPresenter: EmailPresenterProtocol {
     func register(with email: String) {
         view?.startLoading()
+        
+        if let errorDescription = stringsValidation.validate(email: email) {
+            view?.finishLoading(with: errorDescription)
+            return
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.view?.finishLoading(with: "")
+            self?.view?.finishLoading(with: nil)
+            self?.router.pushConfirmView()
         }
     }
 }
