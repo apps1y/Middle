@@ -78,6 +78,10 @@ final class EmailViewController: UIViewController {
         setupUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        emailTextField.becomeFirstResponder()
+    }
+    
     private func setupUI() {
         view.backgroundColor = .systemBackground
         navigationItem.setHidesBackButton(true, animated: true)

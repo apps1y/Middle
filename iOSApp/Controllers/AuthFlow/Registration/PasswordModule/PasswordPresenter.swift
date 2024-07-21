@@ -8,7 +8,12 @@
 import UIKit
 
 protocol PasswordPresenterProtocol: AnyObject {
-    func viewDidLoaded()
+    
+    /// направление придуманного пароля
+    /// - Parameters:
+    ///   - firstPassword: пароль
+    ///   - secondPassword: подтверждение пароля
+    func create(firstPassword: String, secondPassword: String)
 }
 
 final class PasswordPresenter {
@@ -29,7 +34,13 @@ final class PasswordPresenter {
 }
 
 extension PasswordPresenter: PasswordPresenterProtocol {
-    func viewDidLoaded() {
-        // first setup view
+    func create(firstPassword: String, secondPassword: String) {
+        view?.startLoading()
+        
+        // эмитация запроса на сервер с ответом 3 секунжы
+        // TODO: прописать запрос на сервер
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            self?.view?.finishLoading(with: (.second, ""))
+        }
     }
 }

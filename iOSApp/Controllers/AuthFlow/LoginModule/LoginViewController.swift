@@ -194,7 +194,6 @@ extension LoginViewController: LoginViewProtocol {
         view.endEditing(true)
         continueButton.isLoading = true
         emailTextField.mode = .basic
-        view.endEditing(true)
         emailTextField.isEnabled = false
         passwordTextField.isEnabled = false
     }

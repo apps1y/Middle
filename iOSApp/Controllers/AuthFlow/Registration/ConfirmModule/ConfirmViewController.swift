@@ -132,11 +132,13 @@ extension ConfirmViewController: ConfirmViewProtocol {
     func startLoading() {
         spinnerView.startAnimating()
         codeField.isEnable = false
+        navigationItem.leftBarButtonItem?.isEnabled = false
     }
     
     func finishLoading(error: String?) {
         codeField.isEnable = true
         spinnerView.stopAnimating()
+        navigationItem.leftBarButtonItem?.isEnabled = true
         
         guard let error else { return }
         codeField.clearFields()

@@ -44,13 +44,12 @@ final class LoginPresenter {
 extension LoginPresenter: LoginPresenterProtocol {
     
     func loginRequest(with email: String, password: String) {
-        
-        view?.startLoading()
-        
         if let errorDescription = stringsValidation.validate(email: email) {
             view?.finishLoading(with: (.emailTextField, errorDescription))
             return
         }
+        
+        view?.startLoading()
         
         /// эмитация запроса на сервер с ответом 3 секунжы
         // TODO: прописать запрос на сервер

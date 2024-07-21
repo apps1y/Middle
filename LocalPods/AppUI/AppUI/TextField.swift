@@ -26,7 +26,6 @@ public final class TextField: UITextField {
     
     public init() {
         super.init(frame: .zero)
-        
         setupUI()
         setBasicMode()
     }
@@ -43,11 +42,10 @@ public final class TextField: UITextField {
         leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.frame.height))
         rightView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.frame.height))
         autocorrectionType = .no
+        rightViewMode = .always
     }
     
-    // MARK: - Publics funcs
-    
-    /// Возвращает обычный цвет для TextField
+    /// Делает обычный цвет для TextField
     private func setBasicMode() {
         UIView.animate(withDuration: 0.2) {
             self.backgroundColor = .secondarySystemBackground
@@ -62,4 +60,29 @@ public final class TextField: UITextField {
             self.layer.borderWidth = 1
         }
     }
+    
+    @objc private func togglePasswordView(_ sender: UIButton) {
+            sender.isSelected.toggle()
+            isSecureTextEntry.toggle()
+        }
+    
+    // MARK: - Publics funcs
+    
+    /// настройка значка показа пароля
+    public func addShowButton() {
+        let passwordToggleButton = UIButton(type: .custom)
+        passwordToggleButton.setImage(UIImage(systemName: "eye"), for: .selected)
+        passwordToggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        passwordToggleButton.addTarget(self, action: #selector(togglePasswordView), for: .touchUpInside)
+        passwordToggleButton.tintColor = .lightGray
+        
+        // Создаем контейнер с отступами для кнопки
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        passwordToggleButton.frame = CGRect(x: 0, y: 5, width: 35, height: 30)
+        paddingView.addSubview(passwordToggleButton)
+        
+        rightView = paddingView
+    }
+    
+    
 }

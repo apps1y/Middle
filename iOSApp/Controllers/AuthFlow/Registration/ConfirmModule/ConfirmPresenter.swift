@@ -30,7 +30,7 @@ extension ConfirmPresenter: ConfirmPresenterProtocol {
     func confirm(mail: String, with code: String) {
         view?.startLoading()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.view?.finishLoading(error: nil)
             self?.router.pushPasswordModule()
         }
