@@ -25,6 +25,7 @@ final class SettingsViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        title = "Настройки"
     }
 }
 

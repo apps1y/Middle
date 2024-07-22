@@ -14,13 +14,12 @@ public enum TextFeildMode {
 
 public final class TextField: UITextField {
     
+    private let passwordToggleButton = UIButton(type: .custom)
+    
     public var mode: TextFeildMode = .basic {
         didSet {
-            if mode == .basic {
-                setBasicMode()
-            } else {
-                setErrorMode()
-            }
+            if mode == .basic { setBasicMode() }
+            else { setErrorMode() }
         }
     }
     
@@ -43,6 +42,7 @@ public final class TextField: UITextField {
         rightView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.frame.height))
         autocorrectionType = .no
         rightViewMode = .always
+        keyboardType = .asciiCapable
     }
     
     /// Делает обычный цвет для TextField
@@ -50,6 +50,7 @@ public final class TextField: UITextField {
         UIView.animate(withDuration: 0.2) {
             self.backgroundColor = .secondarySystemBackground
             self.layer.borderWidth = 0
+            self.passwordToggleButton.tintColor = .lightGray
         }
     }
     
@@ -58,6 +59,7 @@ public final class TextField: UITextField {
         UIView.animate(withDuration: 0.2) {
             self.backgroundColor = .systemRed.withAlphaComponent(0.2)
             self.layer.borderWidth = 1
+            self.passwordToggleButton.tintColor = .systemRed
         }
     }
     
@@ -69,15 +71,14 @@ public final class TextField: UITextField {
     // MARK: - Publics funcs
     
     /// настройка значка показа пароля
-    public func addShowButton() {
-        let passwordToggleButton = UIButton(type: .custom)
+    public func addShowPasswordButton() {
         passwordToggleButton.setImage(UIImage(systemName: "eye"), for: .selected)
         passwordToggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         passwordToggleButton.addTarget(self, action: #selector(togglePasswordView), for: .touchUpInside)
         passwordToggleButton.tintColor = .lightGray
         
         // Создаем контейнер с отступами для кнопки
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: 40))
         passwordToggleButton.frame = CGRect(x: 0, y: 5, width: 35, height: 30)
         paddingView.addSubview(passwordToggleButton)
         

@@ -20,16 +20,21 @@ final class PasswordPresenter {
     weak var view: PasswordViewProtocol?
     var router: PasswordRouterInput
 
+    /// DI
     private let networkService: NetworkAuthServiceProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     private let stringsValidation: StringsValidationProtocol
     
-    init(view: PasswordViewProtocol?, router: PasswordRouterInput, networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol) {
+    /// app coordinator
+    weak var coordinator: FlowCoordinator?
+    
+    init(view: PasswordViewProtocol?, router: PasswordRouterInput, networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator?) {
         self.view = view
         self.router = router
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation
+        self.coordinator = coordinator
     }
 }
 
@@ -40,7 +45,8 @@ extension PasswordPresenter: PasswordPresenterProtocol {
         // эмитация запроса на сервер с ответом 3 секунжы
         // TODO: прописать запрос на сервер
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.view?.finishLoading(with: (.second, ""))
+            self?.view?.finishLoading(with: nil)
+            self?.coordinator?.start()
         }
     }
 }

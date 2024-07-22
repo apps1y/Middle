@@ -25,7 +25,7 @@ protocol LoginViewProtocol: AnyObject {
     /// завершение анимации загрузки с возможной ошибкой
     /// - Parameters:
     ///   - error: какое поле загорится красным, текст ошибки для пользователя
-    func finishLoading(with error: (TextFeildChoise, String)?)
+    func finishLoading(withErrorOf field: TextFeildChoise?)
 }
 
 
@@ -45,7 +45,14 @@ final class LoginViewController: UIViewController {
         return view
     }()
     
-    private lazy var pageNameLabel: UILabel = {
+    private lazy var logoImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(named: "onboardingLogo")
+        return view
+    }()
+    
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Вход"
         label.font = .systemFont(ofSize: 28, weight: .semibold)
@@ -70,6 +77,7 @@ final class LoginViewController: UIViewController {
         field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
+        field.addShowPasswordButton()
         return field
     }()
     
@@ -82,18 +90,40 @@ final class LoginViewController: UIViewController {
     
     private lazy var recoverAccountButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Восстановить пароль", for: .normal)
+        button.setTitle("Забыли пароль?", for: .normal)
         button.addTarget(self, action: #selector(recoverAccountButtonTapped), for: .touchUpInside)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
+        button.contentHorizontalAlignment = .leading
         return button
     }()
     
     private lazy var createAccountButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Создать аккаунт", for: .normal)
+        button.setTitle("Зарегистрироваться", for: .normal)
         button.addTarget(self, action: #selector(createAccountButtonTapped), for: .touchUpInside)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         return button
+    }()
+    
+    lazy var noAccountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Ещё нет аккаунта?"
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        return label
+    }()
+    
+    lazy var createAccountView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            noAccountLabel,
+            createAccountButton
+        ])
+        sv.axis = .horizontal
+        sv.alignment = .center
+        sv.spacing = 4
+        return sv
     }()
     
     var presenter: LoginPresenterProtocol?
@@ -113,7 +143,8 @@ final class LoginViewController: UIViewController {
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(-15)
         }
         if #available(iOS 15.0, *) {
             view.keyboardLayoutGuide.topAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
@@ -140,32 +171,40 @@ final class LoginViewController: UIViewController {
             make.height.equalTo(50)
         }
         
+        backgroundScrollView.addSubview(createAccountView)
+        createAccountView.snp.makeConstraints { make in
+            make.bottom.equalTo(backgroundView).inset(10)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(35)
+        }
+        
         backgroundScrollView.addSubview(continueButton)
         continueButton.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(backgroundView).inset(20)
+            make.bottom.equalTo(createAccountView.snp.top).offset(-5)
             make.height.equalTo(50)
         }
         
-        backgroundScrollView.addSubview(pageNameLabel)
-        pageNameLabel.snp.makeConstraints { make in
+        backgroundScrollView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
             make.bottom.equalTo(emailTextField.snp.top)
+            make.height.greaterThanOrEqualTo(70)
+        }
+        
+        backgroundScrollView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { make in
             make.top.equalTo(backgroundView)
+            make.leading.trailing.equalTo(backgroundView)
+            make.bottom.equalTo(titleLabel.snp.top)
+            make.height.lessThanOrEqualTo(200)
         }
         
         backgroundScrollView.addSubview(recoverAccountButton)
         recoverAccountButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.height.equalTo(35)
-            make.bottom.equalTo(continueButton.snp.top)
-        }
-        
-        backgroundScrollView.addSubview(createAccountButton)
-        createAccountButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.height.equalTo(35)
-            make.bottom.equalTo(recoverAccountButton.snp.top)
+            make.leading.equalTo(backgroundView).inset(20)
+            make.height.equalTo(30)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(2)
         }
     }
     
@@ -198,12 +237,12 @@ extension LoginViewController: LoginViewProtocol {
         passwordTextField.isEnabled = false
     }
     
-    func finishLoading(with error: (TextFeildChoise, String)?) {
+    func finishLoading(withErrorOf field: TextFeildChoise?) {
         continueButton.isLoading = false
         emailTextField.isEnabled = true
         passwordTextField.isEnabled = true
         
-        guard let (field, text) = error else { return }
+        guard let field else { return }
         // errorLabel.text = text
         switch field {
         case .emailTextField:

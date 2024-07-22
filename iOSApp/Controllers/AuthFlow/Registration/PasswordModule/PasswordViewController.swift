@@ -57,7 +57,7 @@ final class PasswordViewController: UIViewController {
         field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
-        field.addShowButton()
+        field.addShowPasswordButton()
         return field
     }()
     
@@ -68,7 +68,7 @@ final class PasswordViewController: UIViewController {
         field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
-        field.addShowButton()
+        field.addShowPasswordButton()
         return field
     }()
     
@@ -84,10 +84,6 @@ final class PasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        firstPasswordTextField.becomeFirstResponder()
     }
     
     private func setupUI() {

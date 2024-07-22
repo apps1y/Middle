@@ -18,6 +18,9 @@ final class LoginAssembly {
     private let emailAssembly: EmailAssembly
     private let emailRecAssembly: EmailRecAssembly
     
+    /// app coordinator
+    weak var coordinator: FlowCoordinator?
+    
     init(networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
@@ -26,10 +29,14 @@ final class LoginAssembly {
         self.emailRecAssembly = emailRecAssembly
     }
     
-    func assemble(reloadCoordinator: @escaping () -> Void) -> LoginViewController {
+    func assemble() -> LoginViewController {
         let router = LoginRouter(emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly)
         let viewController = LoginViewController()
-        let presenter = LoginPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, stringsValidation: stringsValidation, reloadCoordinator: reloadCoordinator)
+        let presenter = LoginPresenter(view: viewController, router: router, 
+                                       networkService: networkService, 
+                                       keychainBearerManager: keychainBearerManager,
+                                       stringsValidation: stringsValidation, 
+                                       coordinator: coordinator)
         
         viewController.presenter = presenter
         router.viewController = viewController

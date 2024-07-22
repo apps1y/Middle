@@ -16,7 +16,8 @@ final class EmailAssembly {
     /// Assembly's
     private let confirmAssembly: ConfirmAssembly
     
-    init(networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol, confirmAssembly: ConfirmAssembly) {
+    init(networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol, 
+         confirmAssembly: ConfirmAssembly) {
         self.networkService = networkService
         self.stringsValidation = stringsValidation
         self.confirmAssembly = confirmAssembly
@@ -32,5 +33,4 @@ final class EmailAssembly {
         
         return viewController
     }
-    
 }

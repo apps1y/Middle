@@ -30,7 +30,7 @@ final class AppCoordinator: FlowCoordinator {
         self.loginAssembly = loginAssembly
         self.tabBarController = tabBarController
         
-        UIView.transition(with: window ?? UIView(), duration: 0.2, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        animationConfigure()
     }
     
     func start() {
@@ -49,10 +49,14 @@ final class AppCoordinator: FlowCoordinator {
     }
     
     private func authFlow() {
-        let vc = loginAssembly.assemble { [weak self] in
-            self?.start()
-        }
+        let vc = loginAssembly.assemble()
         let navVC = UINavigationController(rootViewController: vc)
         window?.rootViewController = navVC
+    }
+    
+    private func animationConfigure() {
+        if let window {
+            UIView.transition(with: window, duration: 0.2, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        }
     }
 }

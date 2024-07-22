@@ -23,7 +23,7 @@ final class ConfirmAssembly {
     func assemble() -> ConfirmViewController {
         let router = ConfirmRouter(passwordAssembly: passwordAssembly)
         let viewController = ConfirmViewController()
-        let presenter = ConfirmPresenter(view: viewController, router: router)
+        let presenter = ConfirmPresenter(view: viewController, router: router, networkService: networkService)
         
         viewController.presenter = presenter
         router.viewController = viewController

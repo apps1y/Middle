@@ -25,27 +25,29 @@ final class LoginPresenter {
     weak var view: LoginViewProtocol?
     var router: LoginRouterInput
     
+    /// DI
     private let networkService: NetworkAuthServiceProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     private let stringsValidation: StringsValidationProtocol
     
-    private var reloadCoordinator: () -> Void
+    /// координатор для перезагрузки
+    weak var coordinator: FlowCoordinator?
 
-    init(view: LoginViewProtocol?, router: LoginRouterInput, networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, reloadCoordinator: @escaping () -> Void) {
+    init(view: LoginViewProtocol?, router: LoginRouterInput, networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator?) {
         self.view = view
         self.router = router
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation
-        self.reloadCoordinator = reloadCoordinator
+        self.coordinator = coordinator
     }
 }
 
 extension LoginPresenter: LoginPresenterProtocol {
     
     func loginRequest(with email: String, password: String) {
-        if let errorDescription = stringsValidation.validate(email: email) {
-            view?.finishLoading(with: (.emailTextField, errorDescription))
+        if stringsValidation.validate(email: email) != nil {
+            view?.finishLoading(withErrorOf: .passwordTextField)
             return
         }
         
@@ -54,9 +56,9 @@ extension LoginPresenter: LoginPresenterProtocol {
         /// эмитация запроса на сервер с ответом 3 секунжы
         // TODO: прописать запрос на сервер
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.view?.finishLoading(with: nil)
+            self?.view?.finishLoading(withErrorOf: nil)
             self?.keychainBearerManager.saveKey("key")
-            self?.reloadCoordinator()
+            self?.coordinator?.start()
         }
     }
     
