@@ -7,6 +7,7 @@
 
 import UIKit
 import AppUI
+import SnapKit
 
 // MARK: - View Protocol
 protocol EmailRecViewProtocol: AnyObject {
@@ -125,7 +126,7 @@ final class EmailRecViewController: UIViewController {
     
     @objc private func cancelButtonTapped() {
         view.endEditing(true)
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
 }
 

@@ -11,25 +11,23 @@ final class PasswordAssembly {
     
     /// DI
     private let networkService: NetworkAuthServiceProtocol
-    private let keychainBearerManager: KeychainBearerProtocol
     private let stringsValidation: StringsValidationProtocol
     
-    /// app coordinator
-    weak var coordinator: FlowCoordinator?
+    /// Assembly's
+    private let confirmAssembly: ConfirmAssembly
     
-    init(networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol) {
+    init(networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol, confirmAssembly: ConfirmAssembly) {
         self.networkService = networkService
-        self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation
+        self.confirmAssembly = confirmAssembly
     }
     
-    func assemble() -> PasswordViewController {
-        let router = PasswordRouter()
+    func assemble(email: String) -> PasswordViewController {
+        let router = PasswordRouter(confirmAssembly: confirmAssembly)
         let viewController = PasswordViewController()
         let presenter = PasswordPresenter(view: viewController, router: router,
                                           networkService: networkService,
-                                          keychainBearerManager: keychainBearerManager,
-                                          stringsValidation: stringsValidation, coordinator: coordinator)
+                                          stringsValidation: stringsValidation, email: email)
         
         viewController.presenter = presenter
         router.viewController = viewController

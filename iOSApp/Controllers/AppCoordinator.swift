@@ -29,11 +29,10 @@ final class AppCoordinator: FlowCoordinator {
         self.keychainBearerManager = keychainBearerManager
         self.loginAssembly = loginAssembly
         self.tabBarController = tabBarController
-        
-        animationConfigure()
     }
     
     func start() {
+        animationConfigure()
         if keychainBearerManager.getKey() != nil {
             mainFlow()
         } else {

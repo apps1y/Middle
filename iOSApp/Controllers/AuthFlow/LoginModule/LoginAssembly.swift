@@ -17,16 +17,18 @@ final class LoginAssembly {
     /// Assembly модули других классов
     private let emailAssembly: EmailAssembly
     private let emailRecAssembly: EmailRecAssembly
+    private let confirmAssembly: ConfirmAssembly
     
     /// app coordinator
     weak var coordinator: FlowCoordinator?
     
-    init(networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly) {
+    init(networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation
         self.emailAssembly = emailAssembly
         self.emailRecAssembly = emailRecAssembly
+        self.confirmAssembly = confirmAssembly
     }
     
     func assemble() -> LoginViewController {

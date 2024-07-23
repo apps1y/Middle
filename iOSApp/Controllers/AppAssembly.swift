@@ -25,17 +25,23 @@ final class AppAssembly {
         
         
         // MARK: - Assembly сборки Auth Flow
-        var passwordAssembly = PasswordAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)
+        /// регистрация
+        var confirmAssembly = ConfirmAssembly(networkService: networkService, keychainBearerManager: keychainManager)
         
-        var passwordRecAssembly = PasswordRecAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)
+        var passwordAssembly = PasswordAssembly(networkService: networkService, stringsValidation: stringsValidationManager, confirmAssembly: confirmAssembly)
         
-        var emailRecAssembly = EmailRecAssembly(networkService: networkService, stringsValidation: stringsValidationManager, passwordRecAssembly: passwordRecAssembly)
+        var emailAssembly = EmailAssembly(stringsValidation: stringsValidationManager, passwordAssembly: passwordAssembly)
         
-        var confirmAssembly = ConfirmAssembly(networkService: networkService, passwordAssembly: passwordAssembly)
+        /// восстановление
+        var newPasswordRecAssembly = NewPasswordRecAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)
         
-        var emailAssembly = EmailAssembly(networkService: networkService, stringsValidation: stringsValidationManager, confirmAssembly: confirmAssembly)
+        var confirmRecAssembly = ConfirmRecAssembly(networkService: networkService, newPasswordRecAssembly: newPasswordRecAssembly)
         
-        var loginAssembly = LoginAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager, emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly)
+        var emailRecAssembly = EmailRecAssembly(networkService: networkService, stringsValidation: stringsValidationManager, confirmRecAssembly: confirmRecAssembly)
+        
+        var loginAssembly = LoginAssembly(networkService: networkService, keychainBearerManager: keychainManager, 
+                                          stringsValidation: stringsValidationManager, emailAssembly: emailAssembly,
+                                          emailRecAssembly: emailRecAssembly, confirmAssembly: confirmAssembly)
         
         
         
@@ -53,6 +59,8 @@ final class AppAssembly {
         
         /// coordinator's DI
         loginAssembly.coordinator = appCoordinator
+        confirmAssembly.coordinator = appCoordinator
+        newPasswordRecAssembly.coordinator = appCoordinator
         
         return appCoordinator
     }

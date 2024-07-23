@@ -8,9 +8,20 @@
 import UIKit
 
 protocol PasswordRouterInput {
-    
+    func pushConfirmView(bearer: String)
 }
 
 final class PasswordRouter: PasswordRouterInput {
     weak var viewController: PasswordViewController?
+    
+    private let confirmAssembly: ConfirmAssembly
+    
+    init(confirmAssembly: ConfirmAssembly) {
+        self.confirmAssembly = confirmAssembly
+    }
+    
+    func pushConfirmView(bearer: String) {
+        let view = confirmAssembly.assemble(bearer: bearer)
+        viewController?.navigationController?.pushViewController(view, animated: true)
+    }
 }

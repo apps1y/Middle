@@ -14,16 +14,16 @@ final class EmailRecAssembly {
     private let stringsValidation: StringsValidationProtocol
     
     /// Assembly's
-    private let passwordRecAssembly: PasswordRecAssembly
+    private let confirmRecAssembly: ConfirmRecAssembly
     
-    init(networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol, passwordRecAssembly: PasswordRecAssembly) {
+    init(networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol, confirmRecAssembly: ConfirmRecAssembly) {
         self.networkService = networkService
         self.stringsValidation = stringsValidation
-        self.passwordRecAssembly = passwordRecAssembly
+        self.confirmRecAssembly = confirmRecAssembly
     }
     
     func assemble(email: String?) -> EmailRecViewController {
-        let router = EmailRecRouter(passwordRecAssembly: passwordRecAssembly)
+        let router = EmailRecRouter(confirmRecAssembly: confirmRecAssembly)
         let viewController = EmailRecViewController(email: email)
         let presenter = EmailRecPresenter(view: viewController, router: router, networkService: networkService, stringsValidation: stringsValidation)
         

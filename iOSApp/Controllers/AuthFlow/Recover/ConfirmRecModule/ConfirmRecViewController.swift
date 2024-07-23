@@ -1,8 +1,8 @@
 //
-//  ConfirmViewController.swift
+//  ConfirmRecViewController.swift
 //  Super easy dev
 //
-//  Created by vanyaluk on 21.07.2024
+//  Created by vanyaluk on 23.07.2024
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import AppUI
 import SnapKit
 
 // MARK: - View Protocol
-protocol ConfirmViewProtocol: AnyObject {
+protocol ConfirmRecViewProtocol: AnyObject {
     
     /// начало анимации загрузки EmailViewController
     func startLoading()
@@ -22,7 +22,7 @@ protocol ConfirmViewProtocol: AnyObject {
 }
 
 // MARK: - View Controller
-final class ConfirmViewController: UIViewController {
+final class ConfirmRecViewController: UIViewController {
     
     // MARK: - UI
     private lazy var backgroundScrollView: UIScrollView = {
@@ -57,7 +57,7 @@ final class ConfirmViewController: UIViewController {
         return view
     }()
     
-    var presenter: ConfirmPresenterProtocol?
+    var presenter: ConfirmRecPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,12 +117,12 @@ final class ConfirmViewController: UIViewController {
     @objc private func backButtonTapped() {
         /// на предыдущий экран
         view.endEditing(true)
-        navigationController?.popToRootViewController(animated: true)
+        dismiss(animated: true)
     }
 }
 
 // MARK: - View Protocol Realization
-extension ConfirmViewController: ConfirmViewProtocol {
+extension ConfirmRecViewController: ConfirmRecViewProtocol {
     func startLoading() {
         spinnerView.startAnimating()
         codeField.isEnable = false
@@ -140,7 +140,7 @@ extension ConfirmViewController: ConfirmViewProtocol {
     }
 }
 
-extension ConfirmViewController: CodeFieldDelegate {
+extension ConfirmRecViewController: CodeFieldDelegate {
     func didFillAllFields(code: String) {
         presenter?.confirm(mail: "", with: "")
     }

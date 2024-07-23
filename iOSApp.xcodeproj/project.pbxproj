@@ -37,10 +37,6 @@
 		529BF9992C478677009954D5 /* EmailRecRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9952C478677009954D5 /* EmailRecRouter.swift */; };
 		529BF99A2C478677009954D5 /* EmailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9962C478677009954D5 /* EmailRecViewController.swift */; };
 		529BF99B2C478677009954D5 /* EmailRecAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9972C478677009954D5 /* EmailRecAssembly.swift */; };
-		529BF9A02C47869F009954D5 /* PasswordRecPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF99C2C47869F009954D5 /* PasswordRecPresenter.swift */; };
-		529BF9A12C47869F009954D5 /* PasswordRecRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF99D2C47869F009954D5 /* PasswordRecRouter.swift */; };
-		529BF9A22C47869F009954D5 /* PasswordRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF99E2C47869F009954D5 /* PasswordRecViewController.swift */; };
-		529BF9A32C47869F009954D5 /* PasswordRecAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF99F2C47869F009954D5 /* PasswordRecAssembly.swift */; };
 		529BF9A52C479725009954D5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9A42C479725009954D5 /* MainTabBarController.swift */; };
 		529BF9A72C4797FA009954D5 /* NetworkAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9A62C4797FA009954D5 /* NetworkAuthService.swift */; };
 		529BF9A92C479803009954D5 /* NetworkMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9A82C479803009954D5 /* NetworkMainService.swift */; };
@@ -60,8 +56,15 @@
 		529BF9D32C47BB5F009954D5 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */; };
 		529BF9D42C47BB5F009954D5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */; };
 		529BF9D52C47BB5F009954D5 /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */; };
+		52ABB7A92C502FD8004551B5 /* ConfirmRecPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7A52C502FD8004551B5 /* ConfirmRecPresenter.swift */; };
+		52ABB7AA2C502FD8004551B5 /* ConfirmRecRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7A62C502FD8004551B5 /* ConfirmRecRouter.swift */; };
+		52ABB7AB2C502FD8004551B5 /* ConfirmRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7A72C502FD8004551B5 /* ConfirmRecViewController.swift */; };
+		52ABB7AC2C502FD8004551B5 /* ConfirmRecAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7A82C502FD8004551B5 /* ConfirmRecAssembly.swift */; };
+		52ABB7B12C502FE9004551B5 /* NewPasswordRecPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7AD2C502FE9004551B5 /* NewPasswordRecPresenter.swift */; };
+		52ABB7B22C502FE9004551B5 /* NewPasswordRecRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7AE2C502FE9004551B5 /* NewPasswordRecRouter.swift */; };
+		52ABB7B32C502FE9004551B5 /* NewPasswordRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7AF2C502FE9004551B5 /* NewPasswordRecViewController.swift */; };
+		52ABB7B42C502FE9004551B5 /* NewPasswordRecAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7B02C502FE9004551B5 /* NewPasswordRecAssembly.swift */; };
 		52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */; };
-		52FED2592C4D0E1700AAF16B /* ConfirmRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2552C4D0E1700AAF16B /* ConfirmRouter.swift */; };
 		52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */; };
 		52FED25B2C4D0E1700AAF16B /* ConfirmAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */; };
 		C70B37831DC02C8053658339 /* Pods_iOSApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C0DE74DB99FD4CE6CC47FE /* Pods_iOSApp.framework */; };
@@ -100,10 +103,6 @@
 		529BF9952C478677009954D5 /* EmailRecRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRecRouter.swift; sourceTree = "<group>"; };
 		529BF9962C478677009954D5 /* EmailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRecViewController.swift; sourceTree = "<group>"; };
 		529BF9972C478677009954D5 /* EmailRecAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRecAssembly.swift; sourceTree = "<group>"; };
-		529BF99C2C47869F009954D5 /* PasswordRecPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecPresenter.swift; sourceTree = "<group>"; };
-		529BF99D2C47869F009954D5 /* PasswordRecRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecRouter.swift; sourceTree = "<group>"; };
-		529BF99E2C47869F009954D5 /* PasswordRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecViewController.swift; sourceTree = "<group>"; };
-		529BF99F2C47869F009954D5 /* PasswordRecAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecAssembly.swift; sourceTree = "<group>"; };
 		529BF9A42C479725009954D5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		529BF9A62C4797FA009954D5 /* NetworkAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthService.swift; sourceTree = "<group>"; };
 		529BF9A82C479803009954D5 /* NetworkMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMainService.swift; sourceTree = "<group>"; };
@@ -123,8 +122,15 @@
 		529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
+		52ABB7A52C502FD8004551B5 /* ConfirmRecPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmRecPresenter.swift; sourceTree = "<group>"; };
+		52ABB7A62C502FD8004551B5 /* ConfirmRecRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmRecRouter.swift; sourceTree = "<group>"; };
+		52ABB7A72C502FD8004551B5 /* ConfirmRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmRecViewController.swift; sourceTree = "<group>"; };
+		52ABB7A82C502FD8004551B5 /* ConfirmRecAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmRecAssembly.swift; sourceTree = "<group>"; };
+		52ABB7AD2C502FE9004551B5 /* NewPasswordRecPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordRecPresenter.swift; sourceTree = "<group>"; };
+		52ABB7AE2C502FE9004551B5 /* NewPasswordRecRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordRecRouter.swift; sourceTree = "<group>"; };
+		52ABB7AF2C502FE9004551B5 /* NewPasswordRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordRecViewController.swift; sourceTree = "<group>"; };
+		52ABB7B02C502FE9004551B5 /* NewPasswordRecAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordRecAssembly.swift; sourceTree = "<group>"; };
 		52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPresenter.swift; sourceTree = "<group>"; };
-		52FED2552C4D0E1700AAF16B /* ConfirmRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmRouter.swift; sourceTree = "<group>"; };
 		52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAssembly.swift; sourceTree = "<group>"; };
 		762DFFC918ED99E25DA5C76B /* Pods-iOSApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSApp.debug.xcconfig"; path = "Target Support Files/Pods-iOSApp/Pods-iOSApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -296,8 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				529BF97D2C46F9B5009954D5 /* EmailModule */,
-				52FED2532C4D0DE200AAF16B /* ConfirmModule */,
 				529BF9862C46F9F3009954D5 /* PasswordModule */,
+				52FED2532C4D0DE200AAF16B /* ConfirmModule */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -328,7 +334,8 @@
 			isa = PBXGroup;
 			children = (
 				529BF9922C478658009954D5 /* EmailRecModule */,
-				529BF9932C478662009954D5 /* PasswordRecModule */,
+				52ABB7A32C502F45004551B5 /* ConfirmRecModule */,
+				52ABB7A42C502F62004551B5 /* NewPasswordRecModule */,
 			);
 			path = Recover;
 			sourceTree = "<group>";
@@ -342,17 +349,6 @@
 				529BF9972C478677009954D5 /* EmailRecAssembly.swift */,
 			);
 			path = EmailRecModule;
-			sourceTree = "<group>";
-		};
-		529BF9932C478662009954D5 /* PasswordRecModule */ = {
-			isa = PBXGroup;
-			children = (
-				529BF99E2C47869F009954D5 /* PasswordRecViewController.swift */,
-				529BF99C2C47869F009954D5 /* PasswordRecPresenter.swift */,
-				529BF99D2C47869F009954D5 /* PasswordRecRouter.swift */,
-				529BF99F2C47869F009954D5 /* PasswordRecAssembly.swift */,
-			);
-			path = PasswordRecModule;
 			sourceTree = "<group>";
 		};
 		529BF9B02C47BA68009954D5 /* Home */ = {
@@ -417,12 +413,33 @@
 			path = SettingsModule;
 			sourceTree = "<group>";
 		};
+		52ABB7A32C502F45004551B5 /* ConfirmRecModule */ = {
+			isa = PBXGroup;
+			children = (
+				52ABB7A72C502FD8004551B5 /* ConfirmRecViewController.swift */,
+				52ABB7A52C502FD8004551B5 /* ConfirmRecPresenter.swift */,
+				52ABB7A62C502FD8004551B5 /* ConfirmRecRouter.swift */,
+				52ABB7A82C502FD8004551B5 /* ConfirmRecAssembly.swift */,
+			);
+			path = ConfirmRecModule;
+			sourceTree = "<group>";
+		};
+		52ABB7A42C502F62004551B5 /* NewPasswordRecModule */ = {
+			isa = PBXGroup;
+			children = (
+				52ABB7AF2C502FE9004551B5 /* NewPasswordRecViewController.swift */,
+				52ABB7AD2C502FE9004551B5 /* NewPasswordRecPresenter.swift */,
+				52ABB7AE2C502FE9004551B5 /* NewPasswordRecRouter.swift */,
+				52ABB7B02C502FE9004551B5 /* NewPasswordRecAssembly.swift */,
+			);
+			path = NewPasswordRecModule;
+			sourceTree = "<group>";
+		};
 		52FED2532C4D0DE200AAF16B /* ConfirmModule */ = {
 			isa = PBXGroup;
 			children = (
 				52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */,
 				52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */,
-				52FED2552C4D0E1700AAF16B /* ConfirmRouter.swift */,
 				52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */,
 			);
 			path = ConfirmModule;
@@ -560,7 +577,6 @@
 				529BF9A72C4797FA009954D5 /* NetworkAuthService.swift in Sources */,
 				529BF98D2C46FA0B009954D5 /* PasswordViewController.swift in Sources */,
 				52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */,
-				52FED2592C4D0E1700AAF16B /* ConfirmRouter.swift in Sources */,
 				52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */,
 				52FED25B2C4D0E1700AAF16B /* ConfirmAssembly.swift in Sources */,
 				529BF9C92C47BB30009954D5 /* MessagePresenter.swift in Sources */,
@@ -571,6 +587,10 @@
 				529BF9B72C47BAD7009954D5 /* HomeRouter.swift in Sources */,
 				529BF9B82C47BAD7009954D5 /* HomeViewController.swift in Sources */,
 				529BF9B92C47BAD7009954D5 /* HomeAssembly.swift in Sources */,
+				52ABB7B12C502FE9004551B5 /* NewPasswordRecPresenter.swift in Sources */,
+				52ABB7B22C502FE9004551B5 /* NewPasswordRecRouter.swift in Sources */,
+				52ABB7B32C502FE9004551B5 /* NewPasswordRecViewController.swift in Sources */,
+				52ABB7B42C502FE9004551B5 /* NewPasswordRecAssembly.swift in Sources */,
 				529BF98E2C46FA0B009954D5 /* PasswordAssembly.swift in Sources */,
 				529BF9682C468361009954D5 /* NetworkRequest.swift in Sources */,
 				529BF9A92C479803009954D5 /* NetworkMainService.swift in Sources */,
@@ -594,12 +614,12 @@
 				529BF9702C46B847009954D5 /* AuthModel.swift in Sources */,
 				529BF9612C459D3C009954D5 /* LoginAssembly.swift in Sources */,
 				529BF9732C46D9B6009954D5 /* DatabaseManager.swift in Sources */,
-				529BF9A02C47869F009954D5 /* PasswordRecPresenter.swift in Sources */,
-				529BF9A12C47869F009954D5 /* PasswordRecRouter.swift in Sources */,
-				529BF9A22C47869F009954D5 /* PasswordRecViewController.swift in Sources */,
-				529BF9A32C47869F009954D5 /* PasswordRecAssembly.swift in Sources */,
 				529BF96B2C468B14009954D5 /* NetworkService.swift in Sources */,
 				529BF9C02C47BB07009954D5 /* NewMessagePresenter.swift in Sources */,
+				52ABB7A92C502FD8004551B5 /* ConfirmRecPresenter.swift in Sources */,
+				52ABB7AA2C502FD8004551B5 /* ConfirmRecRouter.swift in Sources */,
+				52ABB7AB2C502FD8004551B5 /* ConfirmRecViewController.swift in Sources */,
+				52ABB7AC2C502FD8004551B5 /* ConfirmRecAssembly.swift in Sources */,
 				529BF9C12C47BB07009954D5 /* NewMessageRouter.swift in Sources */,
 				529BF9C22C47BB07009954D5 /* NewMessageViewController.swift in Sources */,
 				529BF9C32C47BB07009954D5 /* NewMessageAssembly.swift in Sources */,

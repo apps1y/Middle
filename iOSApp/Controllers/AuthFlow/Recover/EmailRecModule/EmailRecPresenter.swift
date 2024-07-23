@@ -31,6 +31,7 @@ extension EmailRecPresenter: EmailRecPresenterProtocol {
         view?.startLoading()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.view?.finishLoading(with: nil)
+            self?.router.pushConfirmView(email: "")
         }
     }
 }

@@ -19,13 +19,11 @@ final class EmailPresenter {
     weak var view: EmailViewProtocol?
     var router: EmailRouterInput
     
-    private let networkService: NetworkAuthServiceProtocol
     private let stringsValidation: StringsValidationProtocol
 
-    init(view: EmailViewProtocol?, router: EmailRouterInput, networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol) {
+    init(view: EmailViewProtocol?, router: EmailRouterInput, stringsValidation: StringsValidationProtocol) {
         self.view = view
         self.router = router
-        self.networkService = networkService
         self.stringsValidation = stringsValidation
     }
 }
@@ -41,7 +39,7 @@ extension EmailPresenter: EmailPresenterProtocol {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.view?.finishLoading(with: nil)
-            self?.router.pushConfirmView()
+            self?.router.pushPasswordView(email: "") // success email enter
         }
     }
 }

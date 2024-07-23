@@ -10,23 +10,21 @@ import UIKit
 final class ConfirmAssembly {
     
     /// DI
-    private let networkService: NetworkAuthServiceProtocol
+    private var networkService: NetworkAuthServiceProtocol
+    private var keychainBearerManager: KeychainBearerProtocol
     
-    /// Assembly's
-    private let passwordAssembly: PasswordAssembly
+    /// app coordinator
+    weak var coordinator: FlowCoordinator?
     
-    init(networkService: NetworkAuthServiceProtocol, passwordAssembly: PasswordAssembly) {
+    init(networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol) {
         self.networkService = networkService
-        self.passwordAssembly = passwordAssembly
+        self.keychainBearerManager = keychainBearerManager
     }
     
-    func assemble() -> ConfirmViewController {
-        let router = ConfirmRouter(passwordAssembly: passwordAssembly)
+    func assemble(bearer: String) -> ConfirmViewController {
         let viewController = ConfirmViewController()
-        let presenter = ConfirmPresenter(view: viewController, router: router, networkService: networkService)
-        
+        let presenter = ConfirmPresenter(view: viewController, networkService: networkService)
         viewController.presenter = presenter
-        router.viewController = viewController
         
         return viewController
     }

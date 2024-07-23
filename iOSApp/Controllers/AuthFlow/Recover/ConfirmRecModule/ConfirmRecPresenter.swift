@@ -1,13 +1,13 @@
 //
-//  ConfirmPresenter.swift
+//  ConfirmRecPresenter.swift
 //  Super easy dev
 //
-//  Created by vanyaluk on 21.07.2024
+//  Created by vanyaluk on 23.07.2024
 //
 
 import UIKit
 
-protocol ConfirmPresenterProtocol: AnyObject {
+protocol ConfirmRecPresenterProtocol: AnyObject {
     
     /// Подтверждение почты
     /// - Parameters:
@@ -16,23 +16,23 @@ protocol ConfirmPresenterProtocol: AnyObject {
     func confirm(mail: String, with code: String)
 }
 
-final class ConfirmPresenter {
-    weak var view: ConfirmViewProtocol?
-    
-    private let networkService: NetworkAuthServiceProtocol
+final class ConfirmRecPresenter {
+    weak var view: ConfirmRecViewProtocol?
+    var router: ConfirmRecRouterInput
 
-    init(view: ConfirmViewProtocol?, networkService: NetworkAuthServiceProtocol) {
+    init(view: ConfirmRecViewProtocol, router: ConfirmRecRouterInput) {
         self.view = view
-        self.networkService = networkService
+        self.router = router
     }
 }
 
-extension ConfirmPresenter: ConfirmPresenterProtocol {
+extension ConfirmRecPresenter: ConfirmRecPresenterProtocol {
     func confirm(mail: String, with code: String) {
         view?.startLoading()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.view?.finishLoading(error: "")
+            self?.view?.finishLoading(error: nil)
+            self?.router.pushNewPasswordView(bearer: "")
         }
     }
 }

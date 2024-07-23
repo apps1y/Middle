@@ -10,21 +10,21 @@ import UIKit
 protocol EmailRouterInput {
     
     /// открытие экрана подверждения почты
-    func pushConfirmView()
+    func pushPasswordView(email: String)
 }
 
 final class EmailRouter: EmailRouterInput {
     
     weak var viewController: EmailViewController?
     
-    private let confirmAssembly: ConfirmAssembly
+    private let passwordAssembly: PasswordAssembly
     
-    init(confirmAssembly: ConfirmAssembly) {
-        self.confirmAssembly = confirmAssembly
+    init(passwordAssembly: PasswordAssembly) {
+        self.passwordAssembly = passwordAssembly
     }
     
-    func pushConfirmView() {
-        let view = confirmAssembly.assemble()
+    func pushPasswordView(email: String) {
+        let view = passwordAssembly.assemble(email: email)
         viewController?.navigationController?.pushViewController(view, animated: true)
     }
 }
