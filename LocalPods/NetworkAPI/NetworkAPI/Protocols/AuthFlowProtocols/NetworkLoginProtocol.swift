@@ -7,18 +7,22 @@
 
 import Foundation
 
-/// тело запроса
+// MARK: - login
+/// тело запроса login
 public struct LoginRequestModel: Encodable {
-    let email: String
-    let password: String
+    public let email: String
+    public let password: String
 }
 
-/// парсинг запроса
+/// парсинг запроса login
 public struct LoginResponseModel: Decodable {
-    let status: String
-    let token: String
+    public let isActive: Bool
+    public let token: String
 }
 
+
+
+// MARK: - Protocols
 public protocol NetworkLoginProtocol: AnyObject {
     
     /// Вход пользователя
@@ -27,6 +31,6 @@ public protocol NetworkLoginProtocol: AnyObject {
     ///   - password: пароль юзера
     ///   - completion: блок с моделькой или текстовой ошибкой
     func login(email: String, password: String,
-               completion: @escaping (NResult) -> Void)
+               completion: @escaping (NResult<LoginResponseModel>) -> Void)
     
 }

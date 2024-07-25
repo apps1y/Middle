@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import NetworkAPI
 
 final class LoginAssembly {
     
     /// DI
-    private let networkService: NetworkAuthServiceProtocol
+    private let networkService: NetworkLoginProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     private let stringsValidation: StringsValidationProtocol
     
@@ -22,7 +23,7 @@ final class LoginAssembly {
     /// app coordinator
     weak var coordinator: FlowCoordinator?
     
-    init(networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly) {
+    init(networkService: NetworkLoginProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation
@@ -32,7 +33,7 @@ final class LoginAssembly {
     }
     
     func assemble() -> LoginViewController {
-        let router = LoginRouter(emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly)
+        let router = LoginRouter(emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly, confirmAssembly: confirmAssembly)
         let viewController = LoginViewController()
         let presenter = LoginPresenter(view: viewController, router: router, 
                                        networkService: networkService, 

@@ -17,10 +17,6 @@
 		529BF95F2C459D3C009954D5 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF95B2C459D3C009954D5 /* LoginRouter.swift */; };
 		529BF9602C459D3C009954D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF95C2C459D3C009954D5 /* LoginViewController.swift */; };
 		529BF9612C459D3C009954D5 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF95D2C459D3C009954D5 /* LoginAssembly.swift */; };
-		529BF9682C468361009954D5 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9672C468361009954D5 /* NetworkRequest.swift */; };
-		529BF96B2C468B14009954D5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF96A2C468B14009954D5 /* NetworkService.swift */; };
-		529BF96D2C468B1E009954D5 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF96C2C468B1E009954D5 /* NetworkServiceError.swift */; };
-		529BF9702C46B847009954D5 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF96F2C46B847009954D5 /* AuthModel.swift */; };
 		529BF9732C46D9B6009954D5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9722C46D9B6009954D5 /* DatabaseManager.swift */; };
 		529BF9752C46DBE2009954D5 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9742C46DBE2009954D5 /* KeychainManager.swift */; };
 		529BF9792C46EAEF009954D5 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9782C46EAEF009954D5 /* UserDefaultsManager.swift */; };
@@ -38,8 +34,6 @@
 		529BF99A2C478677009954D5 /* EmailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9962C478677009954D5 /* EmailRecViewController.swift */; };
 		529BF99B2C478677009954D5 /* EmailRecAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9972C478677009954D5 /* EmailRecAssembly.swift */; };
 		529BF9A52C479725009954D5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9A42C479725009954D5 /* MainTabBarController.swift */; };
-		529BF9A72C4797FA009954D5 /* NetworkAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9A62C4797FA009954D5 /* NetworkAuthService.swift */; };
-		529BF9A92C479803009954D5 /* NetworkMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9A82C479803009954D5 /* NetworkMainService.swift */; };
 		529BF9B62C47BAD7009954D5 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9B22C47BAD7009954D5 /* HomePresenter.swift */; };
 		529BF9B72C47BAD7009954D5 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9B32C47BAD7009954D5 /* HomeRouter.swift */; };
 		529BF9B82C47BAD7009954D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9B42C47BAD7009954D5 /* HomeViewController.swift */; };
@@ -83,10 +77,6 @@
 		529BF95B2C459D3C009954D5 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		529BF95C2C459D3C009954D5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		529BF95D2C459D3C009954D5 /* LoginAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
-		529BF9672C468361009954D5 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
-		529BF96A2C468B14009954D5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		529BF96C2C468B1E009954D5 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
-		529BF96F2C46B847009954D5 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		529BF9722C46D9B6009954D5 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		529BF9742C46DBE2009954D5 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		529BF9782C46EAEF009954D5 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -104,8 +94,6 @@
 		529BF9962C478677009954D5 /* EmailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRecViewController.swift; sourceTree = "<group>"; };
 		529BF9972C478677009954D5 /* EmailRecAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRecAssembly.swift; sourceTree = "<group>"; };
 		529BF9A42C479725009954D5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		529BF9A62C4797FA009954D5 /* NetworkAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthService.swift; sourceTree = "<group>"; };
-		529BF9A82C479803009954D5 /* NetworkMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMainService.swift; sourceTree = "<group>"; };
 		529BF9B22C47BAD7009954D5 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		529BF9B32C47BAD7009954D5 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		529BF9B42C47BAD7009954D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -181,7 +169,6 @@
 			isa = PBXGroup;
 			children = (
 				529BF94E2C458746009954D5 /* Application */,
-				529BF9502C4587AA009954D5 /* NetworkLayer */,
 				529BF9712C46D92E009954D5 /* StorageLayer */,
 				529BF9622C463E80009954D5 /* ManagersLayer */,
 				529BF94F2C45874E009954D5 /* Controllers */,
@@ -218,17 +205,6 @@
 				529BF9582C459D0B009954D5 /* AuthFlow */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		529BF9502C4587AA009954D5 /* NetworkLayer */ = {
-			isa = PBXGroup;
-			children = (
-				529BF96E2C46B832009954D5 /* DecodableModels */,
-				529BF9692C468B05009954D5 /* NetworkUtils */,
-				529BF9A62C4797FA009954D5 /* NetworkAuthService.swift */,
-				529BF9A82C479803009954D5 /* NetworkMainService.swift */,
-			);
-			path = NetworkLayer;
 			sourceTree = "<group>";
 		};
 		529BF9572C459D01009954D5 /* MainFlow */ = {
@@ -268,24 +244,6 @@
 				529BF97A2C46F8C7009954D5 /* StringsValidationManager.swift */,
 			);
 			path = ManagersLayer;
-			sourceTree = "<group>";
-		};
-		529BF9692C468B05009954D5 /* NetworkUtils */ = {
-			isa = PBXGroup;
-			children = (
-				529BF9672C468361009954D5 /* NetworkRequest.swift */,
-				529BF96C2C468B1E009954D5 /* NetworkServiceError.swift */,
-				529BF96A2C468B14009954D5 /* NetworkService.swift */,
-			);
-			path = NetworkUtils;
-			sourceTree = "<group>";
-		};
-		529BF96E2C46B832009954D5 /* DecodableModels */ = {
-			isa = PBXGroup;
-			children = (
-				529BF96F2C46B847009954D5 /* AuthModel.swift */,
-			);
-			path = DecodableModels;
 			sourceTree = "<group>";
 		};
 		529BF9712C46D92E009954D5 /* StorageLayer */ = {
@@ -574,7 +532,6 @@
 				529BF95E2C459D3C009954D5 /* LoginPresenter.swift in Sources */,
 				529BF98B2C46FA0B009954D5 /* PasswordPresenter.swift in Sources */,
 				529BF98C2C46FA0B009954D5 /* PasswordRouter.swift in Sources */,
-				529BF9A72C4797FA009954D5 /* NetworkAuthService.swift in Sources */,
 				529BF98D2C46FA0B009954D5 /* PasswordViewController.swift in Sources */,
 				52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */,
 				52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */,
@@ -592,8 +549,6 @@
 				52ABB7B32C502FE9004551B5 /* NewPasswordRecViewController.swift in Sources */,
 				52ABB7B42C502FE9004551B5 /* NewPasswordRecAssembly.swift in Sources */,
 				529BF98E2C46FA0B009954D5 /* PasswordAssembly.swift in Sources */,
-				529BF9682C468361009954D5 /* NetworkRequest.swift in Sources */,
-				529BF9A92C479803009954D5 /* NetworkMainService.swift in Sources */,
 				529BF9752C46DBE2009954D5 /* KeychainManager.swift in Sources */,
 				529BF9D22C47BB5F009954D5 /* SettingsPresenter.swift in Sources */,
 				529BF9D32C47BB5F009954D5 /* SettingsRouter.swift in Sources */,
@@ -611,10 +566,8 @@
 				529BF95F2C459D3C009954D5 /* LoginRouter.swift in Sources */,
 				529BF9602C459D3C009954D5 /* LoginViewController.swift in Sources */,
 				529BF97B2C46F8C7009954D5 /* StringsValidationManager.swift in Sources */,
-				529BF9702C46B847009954D5 /* AuthModel.swift in Sources */,
 				529BF9612C459D3C009954D5 /* LoginAssembly.swift in Sources */,
 				529BF9732C46D9B6009954D5 /* DatabaseManager.swift in Sources */,
-				529BF96B2C468B14009954D5 /* NetworkService.swift in Sources */,
 				529BF9C02C47BB07009954D5 /* NewMessagePresenter.swift in Sources */,
 				52ABB7A92C502FD8004551B5 /* ConfirmRecPresenter.swift in Sources */,
 				52ABB7AA2C502FD8004551B5 /* ConfirmRecRouter.swift in Sources */,
@@ -624,7 +577,6 @@
 				529BF9C22C47BB07009954D5 /* NewMessageViewController.swift in Sources */,
 				529BF9C32C47BB07009954D5 /* NewMessageAssembly.swift in Sources */,
 				529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */,
-				529BF96D2C468B1E009954D5 /* NetworkServiceError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

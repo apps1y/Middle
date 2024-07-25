@@ -6,16 +6,17 @@
 //
 
 import UIKit
+import NetworkAPI
 
 final class ConfirmRecAssembly {
     
     /// DI
-    private let networkService: NetworkAuthServiceProtocol
+    private let networkService: NetworkRecoverProtocol
     
     /// Assembly's
     private let newPasswordRecAssembly: NewPasswordRecAssembly
     
-    init(networkService: NetworkAuthServiceProtocol, newPasswordRecAssembly: NewPasswordRecAssembly) {
+    init(networkService: NetworkRecoverProtocol, newPasswordRecAssembly: NewPasswordRecAssembly) {
         self.networkService = networkService
         self.newPasswordRecAssembly = newPasswordRecAssembly
     }
@@ -23,7 +24,7 @@ final class ConfirmRecAssembly {
     func assemble(email: String) -> ConfirmRecViewController {
         let router = ConfirmRecRouter(newPasswordRecAssembly: newPasswordRecAssembly)
         let viewController = ConfirmRecViewController()
-        let presenter = ConfirmRecPresenter(view: viewController, router: router)
+        let presenter = ConfirmRecPresenter(view: viewController, router: router, networkService: networkService)
         
         viewController.presenter = presenter
         router.viewController = viewController

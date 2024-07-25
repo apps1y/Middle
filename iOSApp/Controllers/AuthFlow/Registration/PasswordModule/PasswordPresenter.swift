@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkAPI
 
 protocol PasswordPresenterProtocol: AnyObject {
     
@@ -21,13 +22,13 @@ final class PasswordPresenter {
     var router: PasswordRouterInput
 
     /// DI
-    private let networkService: NetworkAuthServiceProtocol
+    private let networkService: NetworkRegisterProtocol
     private let stringsValidation: StringsValidationProtocol
     
     /// Data
     private var email: String
     
-    init(view: PasswordViewProtocol?, router: PasswordRouterInput, networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol, email: String) {
+    init(view: PasswordViewProtocol?, router: PasswordRouterInput, networkService: NetworkRegisterProtocol, stringsValidation: StringsValidationProtocol, email: String) {
         self.view = view
         self.router = router
         self.networkService = networkService

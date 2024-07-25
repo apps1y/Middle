@@ -211,8 +211,8 @@ final class LoginViewController: UIViewController {
     // MARK: - @objc funcs
     
     @objc private func continueButtonTapped() {
-        guard let email = emailTextField.text else { return }
-        presenter?.loginRequest(with: email, password: "")
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        presenter?.login(with: email, password: password)
     }
     
     @objc private func recoverAccountButtonTapped() {
@@ -242,6 +242,8 @@ extension LoginViewController: LoginViewProtocol {
         emailTextField.isEnabled = true
         passwordTextField.isEnabled = true
         
+        emailTextField.mode = .basic
+        passwordTextField.mode = .basic
         guard let field else { return }
         // errorLabel.text = text
         switch field {

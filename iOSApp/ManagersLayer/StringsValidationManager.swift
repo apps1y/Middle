@@ -18,6 +18,12 @@ protocol StringsValidationProtocol {
     /// - Parameters:
     ///   - email: почта
     func validate(email: String) -> String?
+    
+    /// проверка строки на пробелы и пустоту
+    /// - Parameters:
+    ///   - line: любая строка
+    /// - Returns: `true`, если строка не содержит пробелов и не пустая, иначе `false`.
+    func isValid(_ string: String) -> Bool
 }
 
 class StringsValidationManager: StringsValidationProtocol {
@@ -69,4 +75,7 @@ class StringsValidationManager: StringsValidationProtocol {
         return emailTest.evaluate(with: email) ? nil : "Введите существующую почту."
     }
     
+    func isValid(_ string: String) -> Bool {
+        return !string.isEmpty && !string.contains(" ")
+    }
 }

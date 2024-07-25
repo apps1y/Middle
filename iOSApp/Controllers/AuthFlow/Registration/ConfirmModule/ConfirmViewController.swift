@@ -134,7 +134,7 @@ extension ConfirmViewController: ConfirmViewProtocol {
         spinnerView.stopAnimating()
         navigationItem.leftBarButtonItem?.isEnabled = true
         
-        guard let error else { return }
+        // guard let error else { return }
         codeField.clearFields()
         codeField.startAgain()
     }
@@ -142,6 +142,6 @@ extension ConfirmViewController: ConfirmViewProtocol {
 
 extension ConfirmViewController: CodeFieldDelegate {
     func didFillAllFields(code: String) {
-        presenter?.confirm(mail: "", with: "")
+        presenter?.confirm(with: code)
     }
 }

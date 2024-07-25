@@ -9,17 +9,16 @@ import Foundation
 
 extension NetworkService: NetworkLoginProtocol {
     public func login(email: String, password: String,
-                      completion: @escaping (NResult) -> Void) {
+                      completion: @escaping (NResult<LoginResponseModel>) -> Void) {
         
         let request = NetworkRequest(stringURL: "/api/auth/login", headers: [:], httpMethod: .post)
         let requestModel = LoginRequestModel(email: email, password: password)
         
-        perform(request: request, requestModel: requestModel) { (result: Result<NetworkResponse<LoginResponseModel>, 
-                                                                 NetworkServiceError>) in
+        perform(request: request, requestModel: requestModel) { (result: Result<NetworkResponse<LoginResponseModel>, NetworkServiceError>) in
             switch result {
             case .success(let response):
                 if response.httpCode == 200, let model = response.data {
-                    return completion(.success(model))
+                    return completion(.success(data: model, httpCode: response.httpCode))
                 }
                 
                 switch response.httpCode {

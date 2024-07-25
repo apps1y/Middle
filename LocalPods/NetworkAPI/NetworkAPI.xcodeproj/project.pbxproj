@@ -22,6 +22,12 @@
 		52ABB7D12C51333D004551B5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7D02C51333D004551B5 /* HTTPMethod.swift */; };
 		52ABB7D32C5140BB004551B5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7D22C5140BB004551B5 /* NetworkService.swift */; };
 		52ABB7D52C515C46004551B5 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7D42C515C46004551B5 /* NetworkResponse.swift */; };
+		52ABB7D72C522A3E004551B5 /* NetworkMainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7D62C522A3E004551B5 /* NetworkMainProtocol.swift */; };
+		52ABB7D92C522A54004551B5 /* NetworkMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7D82C522A54004551B5 /* NetworkMainService.swift */; };
+		52ABB7DF2C529126004551B5 /* NetworkServiceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7DE2C529126004551B5 /* NetworkServiceStub.swift */; };
+		52ABB7E52C5291CB004551B5 /* AuthFlowStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7E42C5291CB004551B5 /* AuthFlowStubs.swift */; };
+		52ABB7E82C52954C004551B5 /* None.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7E72C52954C004551B5 /* None.swift */; };
+		52ABB7EA2C52BF7D004551B5 /* MainFlowStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7E92C52BF7D004551B5 /* MainFlowStubs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +47,12 @@
 		52ABB7D02C51333D004551B5 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		52ABB7D22C5140BB004551B5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		52ABB7D42C515C46004551B5 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		52ABB7D62C522A3E004551B5 /* NetworkMainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMainProtocol.swift; sourceTree = "<group>"; };
+		52ABB7D82C522A54004551B5 /* NetworkMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMainService.swift; sourceTree = "<group>"; };
+		52ABB7DE2C529126004551B5 /* NetworkServiceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceStub.swift; sourceTree = "<group>"; };
+		52ABB7E42C5291CB004551B5 /* AuthFlowStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowStubs.swift; sourceTree = "<group>"; };
+		52ABB7E72C52954C004551B5 /* None.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = None.swift; sourceTree = "<group>"; };
+		52ABB7E92C52BF7D004551B5 /* MainFlowStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowStubs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +93,12 @@
 		529C07932C4A54E900E6D1BB /* NetworkAPI */ = {
 			isa = PBXGroup;
 			children = (
+				529C07942C4A54E900E6D1BB /* NetworkAPI.h */,
 				52ABB7D22C5140BB004551B5 /* NetworkService.swift */,
 				529C07AE2C4A587600E6D1BB /* Protocols */,
 				529C07AF2C4A588100E6D1BB /* Realisation */,
 				529C07B02C4A589000E6D1BB /* Utils */,
-				529C07942C4A54E900E6D1BB /* NetworkAPI.h */,
+				52ABB7DD2C5290FD004551B5 /* Stubs */,
 			);
 			path = NetworkAPI;
 			sourceTree = "<group>";
@@ -116,6 +129,7 @@
 				52ABB7D02C51333D004551B5 /* HTTPMethod.swift */,
 				52ABB7CA2C5132A7004551B5 /* NetworkServiceError.swift */,
 				52ABB7CC2C5132B9004551B5 /* NResult.swift */,
+				52ABB7E72C52954C004551B5 /* None.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -134,6 +148,7 @@
 		52ABB7BF2C512CC9004551B5 /* MainFlowProtocols */ = {
 			isa = PBXGroup;
 			children = (
+				52ABB7D62C522A3E004551B5 /* NetworkMainProtocol.swift */,
 			);
 			path = MainFlowProtocols;
 			sourceTree = "<group>";
@@ -152,8 +167,27 @@
 		52ABB7C12C512DB5004551B5 /* MainFlowServices */ = {
 			isa = PBXGroup;
 			children = (
+				52ABB7D82C522A54004551B5 /* NetworkMainService.swift */,
 			);
 			path = MainFlowServices;
+			sourceTree = "<group>";
+		};
+		52ABB7DD2C5290FD004551B5 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				52ABB7DE2C529126004551B5 /* NetworkServiceStub.swift */,
+				52ABB7E32C5291BA004551B5 /* StubsRealisation */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
+		52ABB7E32C5291BA004551B5 /* StubsRealisation */ = {
+			isa = PBXGroup;
+			children = (
+				52ABB7E42C5291CB004551B5 /* AuthFlowStubs.swift */,
+				52ABB7E92C52BF7D004551B5 /* MainFlowStubs.swift */,
+			);
+			path = StubsRealisation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,12 +275,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				52ABB7BA2C511325004551B5 /* NetworkRegisterProtocol.swift in Sources */,
+				52ABB7D72C522A3E004551B5 /* NetworkMainProtocol.swift in Sources */,
 				52ABB7C52C512DD9004551B5 /* NetworkLoginService.swift in Sources */,
+				52ABB7E52C5291CB004551B5 /* AuthFlowStubs.swift in Sources */,
+				52ABB7D92C522A54004551B5 /* NetworkMainService.swift in Sources */,
 				52ABB7CD2C5132B9004551B5 /* NResult.swift in Sources */,
+				52ABB7DF2C529126004551B5 /* NetworkServiceStub.swift in Sources */,
 				52ABB7C32C512DCD004551B5 /* NetworkRecoverService.swift in Sources */,
 				52ABB7BC2C511346004551B5 /* NetworkConfirmProtocol.swift in Sources */,
+				52ABB7E82C52954C004551B5 /* None.swift in Sources */,
 				52ABB7B82C51131C004551B5 /* NetworkLoginProtocol.swift in Sources */,
 				52ABB7CB2C5132A7004551B5 /* NetworkServiceError.swift in Sources */,
+				52ABB7EA2C52BF7D004551B5 /* MainFlowStubs.swift in Sources */,
 				52ABB7C92C512DF0004551B5 /* NetworkConfirmService.swift in Sources */,
 				52ABB7B62C511311004551B5 /* NetworkRecoverProtocol.swift in Sources */,
 				52ABB7D52C515C46004551B5 /* NetworkResponse.swift in Sources */,

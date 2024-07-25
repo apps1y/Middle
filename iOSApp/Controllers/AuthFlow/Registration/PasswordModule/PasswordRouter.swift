@@ -21,7 +21,7 @@ final class PasswordRouter: PasswordRouterInput {
     }
     
     func pushConfirmView(bearer: String) {
-        let view = confirmAssembly.assemble(bearer: bearer)
+        let view = confirmAssembly.assemble(token: bearer)
         viewController?.navigationController?.pushViewController(view, animated: true)
     }
 }

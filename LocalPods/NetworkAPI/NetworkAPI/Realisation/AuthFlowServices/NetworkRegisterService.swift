@@ -8,8 +8,13 @@
 import Foundation
 
 extension NetworkService: NetworkRegisterProtocol {
+    
+    public func checkAbility(email: String, completion: @escaping (NResult<None>) -> Void) {
+        
+    }
+    
     public func register(email: String, password: String, 
-                         completion: @escaping (NResult) -> Void) {
+                         completion: @escaping (NResult<RegisterResponseModel>) -> Void) {
         
         let request = NetworkRequest(stringURL: "/api/auth/register", headers: [:], httpMethod: .post)
         let requestModel = RegisterRequestModel(email: email, password: password)
@@ -18,8 +23,8 @@ extension NetworkService: NetworkRegisterProtocol {
                                                                  NetworkServiceError>) in
             switch result {
             case .success(let response):
-                if response.httpCode == 200, let model = response.data {
-                    return completion(.success(model))
+                if response.httpCode == 200, let data = response.data {
+                    return completion(.success(data: data, httpCode: response.httpCode))
                 }
                 
                 switch response.httpCode {

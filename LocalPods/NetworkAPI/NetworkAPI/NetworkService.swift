@@ -7,7 +7,14 @@
 
 import Foundation
 
+// MARK: Потоки
+/// все запросы приходят не в main потоке
+/// в этом фреймворке отсутствует перенаправление на осносной поток
+/// это нужно делать при обращении в контроллере
+
 public final class NetworkService {
+    
+    public init() {}
     
     private let session = URLSession.shared
     
@@ -17,7 +24,7 @@ public final class NetworkService {
     ///   - requestModel: моделька для отправления запроса (опционально)
     ///   - responseModel: моделька для парсинга
     ///   - completion: блок с возвращением модели или ошибки
-    func perform<RequestModel: Encodable, ResponseModel: Decodable>(request: NetworkRequest, requestModel: RequestModel?, _ completion: @escaping (Result<NetworkResponse<ResponseModel>, NetworkServiceError>) -> Void) {
+    func perform<RequestModel: Encodable, ResponseModel: Decodable>(request: NetworkRequest, requestModel: RequestModel?, completion: @escaping (Result<NetworkResponse<ResponseModel>, NetworkServiceError>) -> Void) {
         
         guard var urlComponents = URLComponents(string: request.stringURL) else {
             return completion(.failure(.invalidURL))
@@ -55,6 +62,12 @@ public final class NetworkService {
             }
             
             guard let data = data else {
+                let responseModel = NetworkResponse<ResponseModel>(httpCode: (response as? HTTPURLResponse)?.statusCode ?? -1,
+                                                    data: nil)
+                return completion(.success(responseModel))
+            }
+            
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
                 let responseModel = NetworkResponse<ResponseModel>(httpCode: (response as? HTTPURLResponse)?.statusCode ?? -1,
                                                     data: nil)
                 return completion(.success(responseModel))

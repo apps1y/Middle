@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkAPI
 
 final class AppAssembly {
     
@@ -13,7 +14,9 @@ final class AppAssembly {
         
         // MARK: - DI
         /// NetworkLayer
-        let networkService = NetworkService()
+        /// Для тестирования есть `NetworkServiceStub`
+        // let networkService = NetworkService()
+        let networkService = NetworkServiceStub()
         
         /// StorageLayer
         let databaseManager = DatabaseManager()
@@ -30,7 +33,7 @@ final class AppAssembly {
         
         var passwordAssembly = PasswordAssembly(networkService: networkService, stringsValidation: stringsValidationManager, confirmAssembly: confirmAssembly)
         
-        var emailAssembly = EmailAssembly(stringsValidation: stringsValidationManager, passwordAssembly: passwordAssembly)
+        var emailAssembly = EmailAssembly(stringsValidation: stringsValidationManager, networkService: networkService, passwordAssembly: passwordAssembly)
         
         /// восстановление
         var newPasswordRecAssembly = NewPasswordRecAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)

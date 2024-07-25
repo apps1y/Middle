@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import NetworkAPI
 
 final class SettingsAssembly {
     
-    private let networkService: NetworkMainServiceProtocol
+    private let networkService: NetworkMainProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     
-    init(networkService: NetworkMainServiceProtocol, keychainBearerManager: KeychainBearerProtocol) {
+    init(networkService: NetworkMainProtocol, keychainBearerManager: KeychainBearerProtocol) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
     }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkAPI
 
 protocol ConfirmRecPresenterProtocol: AnyObject {
     
@@ -20,9 +21,12 @@ final class ConfirmRecPresenter {
     weak var view: ConfirmRecViewProtocol?
     var router: ConfirmRecRouterInput
 
-    init(view: ConfirmRecViewProtocol, router: ConfirmRecRouterInput) {
+    private let networkService: NetworkRecoverProtocol
+    
+    init(view: ConfirmRecViewProtocol?, router: ConfirmRecRouterInput, networkService: NetworkRecoverProtocol) {
         self.view = view
         self.router = router
+        self.networkService = networkService
     }
 }
 

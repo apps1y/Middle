@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import NetworkAPI
 
 final class HomeAssembly {
     
-    private let networkService: NetworkMainServiceProtocol
+    private let networkService: NetworkMainProtocol
     private let databasePreviewsManager: DatabasePreviewsProtocol
     
-    init(networkService: NetworkMainServiceProtocol, databasePreviewsManager: DatabasePreviewsProtocol) {
+    init(networkService: NetworkMainProtocol, databasePreviewsManager: DatabasePreviewsProtocol) {
         self.networkService = networkService
         self.databasePreviewsManager = databasePreviewsManager
     }

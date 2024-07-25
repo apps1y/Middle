@@ -7,18 +7,30 @@
 
 import Foundation
 
-/// тело запроса
+// MARK: - register
+/// тело запроса register
 public struct RegisterRequestModel: Encodable {
-    let email: String
-    let password: String
+    public let email: String
+    public let password: String
 }
 
-/// парсинг запроса
+/// парсинг запроса register
 public struct RegisterResponseModel: Decodable {
-    let status: String
+    public let isActive: Bool
+    public let token: String
+}
+
+
+
+// MARK: - checkAbility
+/// тело запроса register
+public struct CheckAbilityRequestModel: Decodable {
+    let isActive: Bool
     let token: String
 }
 
+
+// MARK: - Protocols
 public protocol NetworkRegisterProtocol: AnyObject {
     
     /// Регистрация пользователя
@@ -27,5 +39,11 @@ public protocol NetworkRegisterProtocol: AnyObject {
     ///   - password: пароль юзера
     ///   - completion: блок с моделью или текстовой ошибкой
     func register(email: String, password: String,
-                  completion: @escaping (NResult) -> Void)
+                  completion: @escaping (NResult<RegisterResponseModel>) -> Void)
+    
+    /// Проверка, есть ли пользователь с такой почтой в системе
+    /// - Parameters:
+    ///   - email: почта юзера
+    ///   - completion: блок с моделью или текстовой ошибкой
+    func checkAbility(email: String, completion: @escaping (NResult<None>) -> Void)
 }

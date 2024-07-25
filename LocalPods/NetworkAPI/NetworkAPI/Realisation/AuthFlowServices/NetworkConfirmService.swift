@@ -8,5 +8,7 @@
 import Foundation
 
 extension NetworkService: NetworkConfirmProtocol {
-    
+    public func confirm(token: String, code: String, completion: @escaping (NResult<None>) -> Void) {
+        
+    }
 }

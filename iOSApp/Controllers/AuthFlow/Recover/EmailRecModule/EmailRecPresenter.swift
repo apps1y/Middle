@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkAPI
 
 protocol EmailRecPresenterProtocol: AnyObject {
     func register(with email: String)
@@ -15,10 +16,10 @@ final class EmailRecPresenter {
     weak var view: EmailRecViewProtocol?
     var router: EmailRecRouterInput
     
-    private let networkService: NetworkAuthServiceProtocol
+    private let networkService: NetworkRecoverProtocol
     private let stringsValidation: StringsValidationProtocol
 
-    init(view: EmailRecViewProtocol?, router: EmailRecRouterInput, networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol) {
+    init(view: EmailRecViewProtocol?, router: EmailRecRouterInput, networkService: NetworkRecoverProtocol, stringsValidation: StringsValidationProtocol) {
         self.view = view
         self.router = router
         self.networkService = networkService

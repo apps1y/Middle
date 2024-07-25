@@ -7,14 +7,13 @@
 
 import Foundation
 
-
-/// result с возвращением String в случае ошибки
-public enum NResult {
+/// `Result` с возвращением `String` в случае ошибки
+public enum NResult<Result: Decodable> {
     
-    /// A success, storing a `Success` value.
-    case success(Decodable)
+    /// A success, storing a `Decodable` value and httpCode `Int` value
+    case success(data: Result?, httpCode: Int)
     
-    /// A failure, storing a `Failure` value.
+    /// A failure, storing a `String` value.
     case failure(String)
 }
 

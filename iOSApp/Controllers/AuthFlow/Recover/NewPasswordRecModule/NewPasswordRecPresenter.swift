@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkAPI
 
 protocol NewPasswordRecPresenterProtocol: AnyObject {
     
@@ -21,14 +22,14 @@ final class NewPasswordRecPresenter {
     var router: NewPasswordRecRouterInput
     
     /// DI
-    private var networkService: NetworkAuthServiceProtocol
+    private var networkService: NetworkRecoverProtocol
     private var keychainBearerManager: KeychainBearerProtocol
     private var stringsValidation: StringsValidationProtocol
     
     /// app coordinator
     weak var coordinator: FlowCoordinator?
 
-    init(view: NewPasswordRecViewProtocol?, router: NewPasswordRecRouterInput, networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator?) {
+    init(view: NewPasswordRecViewProtocol?, router: NewPasswordRecRouterInput, networkService: NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator?) {
         self.view = view
         self.router = router
         self.networkService = networkService

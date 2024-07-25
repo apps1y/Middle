@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkAPI
 
 protocol ConfirmPresenterProtocol: AnyObject {
     
@@ -13,35 +14,55 @@ protocol ConfirmPresenterProtocol: AnyObject {
     /// - Parameters:
     ///   - mail: почта, которую ввели на предыдущем экране
     ///   - code: код подтверждения
-    func confirm(mail: String, with code: String)
+    func confirm(with code: String)
 }
 
 final class ConfirmPresenter {
     weak var view: ConfirmViewProtocol?
     
     /// DI
-    private var networkService: NetworkAuthServiceProtocol
+    private var networkService: NetworkConfirmProtocol
     private var keychainBearerManager: KeychainBearerProtocol
     
     /// app coordinator
     weak var coordinator: FlowCoordinator?
+    private var token: String
 
-    init(view: ConfirmViewProtocol?, networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?) {
+    init(view: ConfirmViewProtocol?, networkService: NetworkConfirmProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?, token: String) {
         self.view = view
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.coordinator = coordinator
+        self.token = token
     }
 }
 
 extension ConfirmPresenter: ConfirmPresenterProtocol {
-    func confirm(mail: String, with code: String) {
+    func confirm(with code: String) {
         view?.startLoading()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.view?.finishLoading(error: nil)
-            self?.keychainBearerManager.saveKey("123")
-            self?.coordinator?.start()
+        networkService.confirm(token: token, code: code) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data, let httpCode):
+                    switch httpCode {
+                    case 200:
+                        if let token = self?.token {
+                            self?.view?.finishLoading(error: nil)
+                            self?.keychainBearerManager.saveKey(token)
+                            self?.coordinator?.start()
+                        } else {
+                            self?.view?.finishLoading(error: "Ошибка при обнаружении токена")
+                        }
+                    case 401:
+                        self?.view?.finishLoading(error: "Неверный код")
+                    default:
+                        break
+                    }
+                case .failure(let string):
+                    break // 
+                }
+            }
         }
     }
 }

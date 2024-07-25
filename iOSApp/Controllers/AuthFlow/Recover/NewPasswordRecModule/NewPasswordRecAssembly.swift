@@ -6,18 +6,19 @@
 //
 
 import UIKit
+import NetworkAPI
 
 final class NewPasswordRecAssembly {
     
     /// DI
-    private var networkService: NetworkAuthServiceProtocol
+    private var networkService: NetworkRecoverProtocol
     private var keychainBearerManager: KeychainBearerProtocol
     private var stringsValidation: StringsValidationProtocol
     
     /// app coordinator
     weak var coordinator: FlowCoordinator?
     
-    init(networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol) {
+    init(networkService: NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation

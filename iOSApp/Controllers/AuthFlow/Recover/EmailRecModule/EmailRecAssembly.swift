@@ -6,17 +6,18 @@
 //
 
 import UIKit
+import NetworkAPI
 
 final class EmailRecAssembly {
     
     /// DI
-    private let networkService: NetworkAuthServiceProtocol
+    private let networkService: NetworkRecoverProtocol
     private let stringsValidation: StringsValidationProtocol
     
     /// Assembly's
     private let confirmRecAssembly: ConfirmRecAssembly
     
-    init(networkService: NetworkAuthServiceProtocol, stringsValidation: StringsValidationProtocol, confirmRecAssembly: ConfirmRecAssembly) {
+    init(networkService: NetworkRecoverProtocol, stringsValidation: StringsValidationProtocol, confirmRecAssembly: ConfirmRecAssembly) {
         self.networkService = networkService
         self.stringsValidation = stringsValidation
         self.confirmRecAssembly = confirmRecAssembly
