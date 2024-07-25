@@ -23,7 +23,7 @@ final class ConfirmAssembly {
     
     func assemble(bearer: String) -> ConfirmViewController {
         let viewController = ConfirmViewController()
-        let presenter = ConfirmPresenter(view: viewController, networkService: networkService)
+        let presenter = ConfirmPresenter(view: viewController, networkService: networkService, keychainBearerManager: keychainBearerManager, coordinator: coordinator)
         viewController.presenter = presenter
         
         return viewController

@@ -19,11 +19,18 @@ protocol ConfirmPresenterProtocol: AnyObject {
 final class ConfirmPresenter {
     weak var view: ConfirmViewProtocol?
     
-    private let networkService: NetworkAuthServiceProtocol
+    /// DI
+    private var networkService: NetworkAuthServiceProtocol
+    private var keychainBearerManager: KeychainBearerProtocol
+    
+    /// app coordinator
+    weak var coordinator: FlowCoordinator?
 
-    init(view: ConfirmViewProtocol?, networkService: NetworkAuthServiceProtocol) {
+    init(view: ConfirmViewProtocol?, networkService: NetworkAuthServiceProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?) {
         self.view = view
         self.networkService = networkService
+        self.keychainBearerManager = keychainBearerManager
+        self.coordinator = coordinator
     }
 }
 
@@ -32,7 +39,9 @@ extension ConfirmPresenter: ConfirmPresenterProtocol {
         view?.startLoading()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.view?.finishLoading(error: "")
+            self?.view?.finishLoading(error: nil)
+            self?.keychainBearerManager.saveKey("123")
+            self?.coordinator?.start()
         }
     }
 }

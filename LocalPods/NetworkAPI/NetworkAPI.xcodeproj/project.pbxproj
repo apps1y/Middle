@@ -8,27 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		529C07952C4A54E900E6D1BB /* NetworkAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 529C07942C4A54E900E6D1BB /* NetworkAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		529C07A82C4A57B500E6D1BB /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 529C07A72C4A57B500E6D1BB /* OpenAPIRuntime */; };
-		529C07AB2C4A57D200E6D1BB /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 529C07AA2C4A57D200E6D1BB /* OpenAPIURLSession */; };
-		529C07B22C4A595400E6D1BB /* NetworkAuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C07B12C4A595400E6D1BB /* NetworkAuthServiceProtocol.swift */; };
-		529C07B42C4A596400E6D1BB /* NetworkMainServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C07B32C4A596400E6D1BB /* NetworkMainServiceProtocol.swift */; };
-		529C07B62C4A597F00E6D1BB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C07B52C4A597F00E6D1BB /* NetworkService.swift */; };
-		529C07B82C4A598900E6D1BB /* NetworkAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C07B72C4A598900E6D1BB /* NetworkAuthService.swift */; };
-		529C07BA2C4A599100E6D1BB /* NetworkMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C07B92C4A599100E6D1BB /* NetworkMainService.swift */; };
-		529C07BD2C4A5FC400E6D1BB /* openapi-generator-config.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 529C07BB2C4A5FC400E6D1BB /* openapi-generator-config.yaml */; };
-		529C07BE2C4A5FC400E6D1BB /* openapi.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 529C07BC2C4A5FC400E6D1BB /* openapi.yaml */; };
+		52ABB7B62C511311004551B5 /* NetworkRecoverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7B52C511311004551B5 /* NetworkRecoverProtocol.swift */; };
+		52ABB7B82C51131C004551B5 /* NetworkLoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7B72C51131C004551B5 /* NetworkLoginProtocol.swift */; };
+		52ABB7BA2C511325004551B5 /* NetworkRegisterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7B92C511325004551B5 /* NetworkRegisterProtocol.swift */; };
+		52ABB7BC2C511346004551B5 /* NetworkConfirmProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7BB2C511346004551B5 /* NetworkConfirmProtocol.swift */; };
+		52ABB7C32C512DCD004551B5 /* NetworkRecoverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7C22C512DCD004551B5 /* NetworkRecoverService.swift */; };
+		52ABB7C52C512DD9004551B5 /* NetworkLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7C42C512DD9004551B5 /* NetworkLoginService.swift */; };
+		52ABB7C72C512DE9004551B5 /* NetworkRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7C62C512DE9004551B5 /* NetworkRegisterService.swift */; };
+		52ABB7C92C512DF0004551B5 /* NetworkConfirmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7C82C512DF0004551B5 /* NetworkConfirmService.swift */; };
+		52ABB7CB2C5132A7004551B5 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7CA2C5132A7004551B5 /* NetworkServiceError.swift */; };
+		52ABB7CD2C5132B9004551B5 /* NResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7CC2C5132B9004551B5 /* NResult.swift */; };
+		52ABB7CF2C513328004551B5 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7CE2C513328004551B5 /* NetworkRequest.swift */; };
+		52ABB7D12C51333D004551B5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7D02C51333D004551B5 /* HTTPMethod.swift */; };
+		52ABB7D32C5140BB004551B5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7D22C5140BB004551B5 /* NetworkService.swift */; };
+		52ABB7D52C515C46004551B5 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7D42C515C46004551B5 /* NetworkResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		529C07912C4A54E900E6D1BB /* NetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		529C07942C4A54E900E6D1BB /* NetworkAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkAPI.h; sourceTree = "<group>"; };
-		529C07B12C4A595400E6D1BB /* NetworkAuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthServiceProtocol.swift; sourceTree = "<group>"; };
-		529C07B32C4A596400E6D1BB /* NetworkMainServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMainServiceProtocol.swift; sourceTree = "<group>"; };
-		529C07B52C4A597F00E6D1BB /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		529C07B72C4A598900E6D1BB /* NetworkAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthService.swift; sourceTree = "<group>"; };
-		529C07B92C4A599100E6D1BB /* NetworkMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMainService.swift; sourceTree = "<group>"; };
-		529C07BB2C4A5FC400E6D1BB /* openapi-generator-config.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "openapi-generator-config.yaml"; sourceTree = "<group>"; };
-		529C07BC2C4A5FC400E6D1BB /* openapi.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = openapi.yaml; sourceTree = "<group>"; };
+		52ABB7B52C511311004551B5 /* NetworkRecoverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRecoverProtocol.swift; sourceTree = "<group>"; };
+		52ABB7B72C51131C004551B5 /* NetworkLoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoginProtocol.swift; sourceTree = "<group>"; };
+		52ABB7B92C511325004551B5 /* NetworkRegisterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRegisterProtocol.swift; sourceTree = "<group>"; };
+		52ABB7BB2C511346004551B5 /* NetworkConfirmProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfirmProtocol.swift; sourceTree = "<group>"; };
+		52ABB7C22C512DCD004551B5 /* NetworkRecoverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRecoverService.swift; sourceTree = "<group>"; };
+		52ABB7C42C512DD9004551B5 /* NetworkLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoginService.swift; sourceTree = "<group>"; };
+		52ABB7C62C512DE9004551B5 /* NetworkRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRegisterService.swift; sourceTree = "<group>"; };
+		52ABB7C82C512DF0004551B5 /* NetworkConfirmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfirmService.swift; sourceTree = "<group>"; };
+		52ABB7CA2C5132A7004551B5 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		52ABB7CC2C5132B9004551B5 /* NResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NResult.swift; sourceTree = "<group>"; };
+		52ABB7CE2C513328004551B5 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		52ABB7D02C51333D004551B5 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		52ABB7D22C5140BB004551B5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		52ABB7D42C515C46004551B5 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,8 +48,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				529C07AB2C4A57D200E6D1BB /* OpenAPIURLSession in Frameworks */,
-				529C07A82C4A57B500E6D1BB /* OpenAPIRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,10 +81,9 @@
 		529C07932C4A54E900E6D1BB /* NetworkAPI */ = {
 			isa = PBXGroup;
 			children = (
-				529C07BB2C4A5FC400E6D1BB /* openapi-generator-config.yaml */,
-				529C07BC2C4A5FC400E6D1BB /* openapi.yaml */,
+				52ABB7D22C5140BB004551B5 /* NetworkService.swift */,
 				529C07AE2C4A587600E6D1BB /* Protocols */,
-				529C07AF2C4A588100E6D1BB /* Services */,
+				529C07AF2C4A588100E6D1BB /* Realisation */,
 				529C07B02C4A589000E6D1BB /* Utils */,
 				529C07942C4A54E900E6D1BB /* NetworkAPI.h */,
 			);
@@ -84,27 +93,67 @@
 		529C07AE2C4A587600E6D1BB /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				529C07B12C4A595400E6D1BB /* NetworkAuthServiceProtocol.swift */,
-				529C07B32C4A596400E6D1BB /* NetworkMainServiceProtocol.swift */,
+				52ABB7BE2C51135A004551B5 /* AuthFlowProtocols */,
+				52ABB7BF2C512CC9004551B5 /* MainFlowProtocols */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		529C07AF2C4A588100E6D1BB /* Services */ = {
+		529C07AF2C4A588100E6D1BB /* Realisation */ = {
 			isa = PBXGroup;
 			children = (
-				529C07B52C4A597F00E6D1BB /* NetworkService.swift */,
-				529C07B72C4A598900E6D1BB /* NetworkAuthService.swift */,
-				529C07B92C4A599100E6D1BB /* NetworkMainService.swift */,
+				52ABB7C02C512D80004551B5 /* AuthFlowServices */,
+				52ABB7C12C512DB5004551B5 /* MainFlowServices */,
 			);
-			path = Services;
+			path = Realisation;
 			sourceTree = "<group>";
 		};
 		529C07B02C4A589000E6D1BB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				52ABB7CE2C513328004551B5 /* NetworkRequest.swift */,
+				52ABB7D42C515C46004551B5 /* NetworkResponse.swift */,
+				52ABB7D02C51333D004551B5 /* HTTPMethod.swift */,
+				52ABB7CA2C5132A7004551B5 /* NetworkServiceError.swift */,
+				52ABB7CC2C5132B9004551B5 /* NResult.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		52ABB7BE2C51135A004551B5 /* AuthFlowProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				52ABB7B72C51131C004551B5 /* NetworkLoginProtocol.swift */,
+				52ABB7B92C511325004551B5 /* NetworkRegisterProtocol.swift */,
+				52ABB7B52C511311004551B5 /* NetworkRecoverProtocol.swift */,
+				52ABB7BB2C511346004551B5 /* NetworkConfirmProtocol.swift */,
+			);
+			path = AuthFlowProtocols;
+			sourceTree = "<group>";
+		};
+		52ABB7BF2C512CC9004551B5 /* MainFlowProtocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainFlowProtocols;
+			sourceTree = "<group>";
+		};
+		52ABB7C02C512D80004551B5 /* AuthFlowServices */ = {
+			isa = PBXGroup;
+			children = (
+				52ABB7C42C512DD9004551B5 /* NetworkLoginService.swift */,
+				52ABB7C62C512DE9004551B5 /* NetworkRegisterService.swift */,
+				52ABB7C22C512DCD004551B5 /* NetworkRecoverService.swift */,
+				52ABB7C82C512DF0004551B5 /* NetworkConfirmService.swift */,
+			);
+			path = AuthFlowServices;
+			sourceTree = "<group>";
+		};
+		52ABB7C12C512DB5004551B5 /* MainFlowServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainFlowServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,12 +182,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				529C07AD2C4A57E500E6D1BB /* PBXTargetDependency */,
 			);
 			name = NetworkAPI;
 			packageProductDependencies = (
-				529C07A72C4A57B500E6D1BB /* OpenAPIRuntime */,
-				529C07AA2C4A57D200E6D1BB /* OpenAPIURLSession */,
 			);
 			productName = NetworkAPI;
 			productReference = 529C07912C4A54E900E6D1BB /* NetworkAPI.framework */;
@@ -169,9 +215,6 @@
 			);
 			mainGroup = 529C07872C4A54E800E6D1BB;
 			packageReferences = (
-				529C07A12C4A579E00E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-generator" */,
-				529C07A62C4A57B500E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */,
-				529C07A92C4A57D200E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */,
 			);
 			productRefGroup = 529C07922C4A54E900E6D1BB /* Products */;
 			projectDirPath = "";
@@ -187,8 +230,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				529C07BD2C4A5FC400E6D1BB /* openapi-generator-config.yaml in Resources */,
-				529C07BE2C4A5FC400E6D1BB /* openapi.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,22 +240,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				529C07BA2C4A599100E6D1BB /* NetworkMainService.swift in Sources */,
-				529C07B82C4A598900E6D1BB /* NetworkAuthService.swift in Sources */,
-				529C07B42C4A596400E6D1BB /* NetworkMainServiceProtocol.swift in Sources */,
-				529C07B62C4A597F00E6D1BB /* NetworkService.swift in Sources */,
-				529C07B22C4A595400E6D1BB /* NetworkAuthServiceProtocol.swift in Sources */,
+				52ABB7BA2C511325004551B5 /* NetworkRegisterProtocol.swift in Sources */,
+				52ABB7C52C512DD9004551B5 /* NetworkLoginService.swift in Sources */,
+				52ABB7CD2C5132B9004551B5 /* NResult.swift in Sources */,
+				52ABB7C32C512DCD004551B5 /* NetworkRecoverService.swift in Sources */,
+				52ABB7BC2C511346004551B5 /* NetworkConfirmProtocol.swift in Sources */,
+				52ABB7B82C51131C004551B5 /* NetworkLoginProtocol.swift in Sources */,
+				52ABB7CB2C5132A7004551B5 /* NetworkServiceError.swift in Sources */,
+				52ABB7C92C512DF0004551B5 /* NetworkConfirmService.swift in Sources */,
+				52ABB7B62C511311004551B5 /* NetworkRecoverProtocol.swift in Sources */,
+				52ABB7D52C515C46004551B5 /* NetworkResponse.swift in Sources */,
+				52ABB7D12C51333D004551B5 /* HTTPMethod.swift in Sources */,
+				52ABB7CF2C513328004551B5 /* NetworkRequest.swift in Sources */,
+				52ABB7D32C5140BB004551B5 /* NetworkService.swift in Sources */,
+				52ABB7C72C512DE9004551B5 /* NetworkRegisterService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		529C07AD2C4A57E500E6D1BB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 529C07AC2C4A57E500E6D1BB /* OpenAPIGenerator */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		529C07962C4A54E900E6D1BB /* Debug */ = {
@@ -270,7 +313,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -330,7 +373,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -358,7 +401,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -398,7 +441,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -443,51 +486,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		529C07A12C4A579E00E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-generator" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-openapi-generator";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.2.1;
-			};
-		};
-		529C07A62C4A57B500E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-openapi-runtime";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.4.0;
-			};
-		};
-		529C07A92C4A57D200E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-openapi-urlsession";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		529C07A72C4A57B500E6D1BB /* OpenAPIRuntime */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 529C07A62C4A57B500E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */;
-			productName = OpenAPIRuntime;
-		};
-		529C07AA2C4A57D200E6D1BB /* OpenAPIURLSession */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 529C07A92C4A57D200E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */;
-			productName = OpenAPIURLSession;
-		};
-		529C07AC2C4A57E500E6D1BB /* OpenAPIGenerator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 529C07A12C4A579E00E6D1BB /* XCRemoteSwiftPackageReference "swift-openapi-generator" */;
-			productName = "plugin:OpenAPIGenerator";
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 529C07882C4A54E800E6D1BB /* Project object */;
 }
