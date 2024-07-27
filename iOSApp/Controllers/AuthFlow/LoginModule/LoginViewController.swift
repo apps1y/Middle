@@ -64,7 +64,7 @@ final class LoginViewController: UIViewController {
         let field = TextField()
         field.placeholder = "Почта"
         field.keyboardType = .emailAddress
-        field.textContentType = .none
+        field.autocapitalizationType = .none
         field.delegate = self
         field.returnKeyType = .continue
         return field
@@ -74,7 +74,6 @@ final class LoginViewController: UIViewController {
         let field = TextField()
         field.placeholder = "Пароль"
         field.isSecureTextEntry = true
-        field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
         field.addShowPasswordButton()
@@ -93,7 +92,7 @@ final class LoginViewController: UIViewController {
         button.setTitle("Забыли пароль?", for: .normal)
         button.addTarget(self, action: #selector(recoverAccountButtonTapped), for: .touchUpInside)
         button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
         button.contentHorizontalAlignment = .leading
         return button
     }()
@@ -103,27 +102,9 @@ final class LoginViewController: UIViewController {
         button.setTitle("Зарегистрироваться", for: .normal)
         button.addTarget(self, action: #selector(createAccountButtonTapped), for: .touchUpInside)
         button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
+        button.contentHorizontalAlignment = .center
         return button
-    }()
-    
-    lazy var noAccountLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Ещё нет аккаунта?"
-        label.textColor = .label
-        label.font = .systemFont(ofSize: 16, weight: .regular)
-        return label
-    }()
-    
-    lazy var createAccountView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [
-            noAccountLabel,
-            createAccountButton
-        ])
-        sv.axis = .horizontal
-        sv.alignment = .center
-        sv.spacing = 4
-        return sv
     }()
     
     var presenter: LoginPresenterProtocol?
@@ -171,17 +152,17 @@ final class LoginViewController: UIViewController {
             make.height.equalTo(50)
         }
         
-        backgroundScrollView.addSubview(createAccountView)
-        createAccountView.snp.makeConstraints { make in
+        backgroundScrollView.addSubview(createAccountButton)
+        createAccountButton.snp.makeConstraints { make in
             make.bottom.equalTo(backgroundView).inset(10)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(35)
+            make.leading.trailing.equalTo(backgroundView).inset(15)
+            make.height.equalTo(40)
         }
         
         backgroundScrollView.addSubview(continueButton)
         continueButton.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(createAccountView.snp.top).offset(-5)
+            make.bottom.equalTo(createAccountButton.snp.top).offset(-5)
             make.height.equalTo(50)
         }
         
@@ -217,7 +198,6 @@ final class LoginViewController: UIViewController {
     
     @objc private func recoverAccountButtonTapped() {
         guard let email = emailTextField.text else { return }
-        view.endEditing(true)
         presenter?.openRecover(with: email)
     }
     
@@ -274,6 +254,10 @@ extension LoginViewController: UITextFieldDelegate {
         }
         if textField == passwordTextField && passwordTextField.mode == .error {
             passwordTextField.mode = .basic
+        }
+        
+        if string.count > 1 || string == " " {
+            return false
         }
         return true
     }

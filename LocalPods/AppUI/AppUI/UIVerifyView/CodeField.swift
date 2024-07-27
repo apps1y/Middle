@@ -2,7 +2,7 @@
 //  CodeField.swift
 //  AppUI
 //
-//  Created by Иван Лукъянычев on 21.07.2024.
+//  Created by Иван Лукъянычев on 27.07.2024.
 //
 
 import UIKit
@@ -98,5 +98,6 @@ extension CodeField: UIVerifyTextFieldDelegate {
     
     
 }
+
 
 

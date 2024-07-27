@@ -25,6 +25,8 @@ final class AppAssembly {
         /// ManagersLayer
         let stringsValidationManager = StringsValidationManager()
         
+        /// Fabrics
+        let alertFabric = AlertFabric()
         
         
         // MARK: - Assembly сборки Auth Flow
@@ -33,7 +35,7 @@ final class AppAssembly {
         
         var passwordAssembly = PasswordAssembly(networkService: networkService, stringsValidation: stringsValidationManager, confirmAssembly: confirmAssembly)
         
-        var emailAssembly = EmailAssembly(stringsValidation: stringsValidationManager, networkService: networkService, passwordAssembly: passwordAssembly)
+        var emailAssembly = EmailAssembly(stringsValidation: stringsValidationManager, networkService: networkService, passwordAssembly: passwordAssembly, alertFabric: alertFabric)
         
         /// восстановление
         var newPasswordRecAssembly = NewPasswordRecAssembly(networkService: networkService, keychainBearerManager: keychainManager, stringsValidation: stringsValidationManager)

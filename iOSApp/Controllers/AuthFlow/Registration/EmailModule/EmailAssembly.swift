@@ -17,14 +17,18 @@ final class EmailAssembly {
     /// Assembly's
     private let passwordAssembly: PasswordAssembly
     
-    init(stringsValidation: StringsValidationProtocol, networkService: NetworkRegisterProtocol, passwordAssembly: PasswordAssembly) {
+    /// Fabrics
+    private let alertFabric: AlertFabricProtocol
+    
+    init(stringsValidation: StringsValidationProtocol, networkService: NetworkRegisterProtocol, passwordAssembly: PasswordAssembly, alertFabric: AlertFabricProtocol) {
         self.stringsValidation = stringsValidation
         self.networkService = networkService
         self.passwordAssembly = passwordAssembly
+        self.alertFabric = alertFabric
     }
     
     func assemble() -> EmailViewController {
-        let router = EmailRouter(passwordAssembly: passwordAssembly)
+        let router = EmailRouter(passwordAssembly: passwordAssembly, alertFabric: alertFabric)
         let viewController = EmailViewController()
         let presenter = EmailPresenter(view: viewController, router: router, networkService: networkService, stringsValidation: stringsValidation)
         

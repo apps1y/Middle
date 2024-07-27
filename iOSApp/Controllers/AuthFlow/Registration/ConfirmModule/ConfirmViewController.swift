@@ -37,7 +37,7 @@ final class ConfirmViewController: UIViewController {
         return view
     }()
     
-    private lazy var pageNameLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Введите код"
         label.font = .systemFont(ofSize: 28, weight: .semibold)
@@ -54,6 +54,13 @@ final class ConfirmViewController: UIViewController {
     private lazy var spinnerView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
         view.hidesWhenStopped = true
+        return view
+    }()
+    
+    private lazy var logoImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(named: "onboardingLogo")
         return view
     }()
     
@@ -76,7 +83,8 @@ final class ConfirmViewController: UIViewController {
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(-12)
         }
         if #available(iOS 15.0, *) {
             view.keyboardLayoutGuide.topAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
@@ -97,11 +105,19 @@ final class ConfirmViewController: UIViewController {
             make.width.equalTo(210)
         }
         
-        backgroundScrollView.addSubview(pageNameLabel)
-        pageNameLabel.snp.makeConstraints { make in
+        backgroundScrollView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
             make.bottom.equalTo(codeField.snp.top)
+            make.height.greaterThanOrEqualTo(100)
+        }
+        
+        backgroundScrollView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { make in
             make.top.equalTo(backgroundView)
+            make.leading.trailing.equalTo(backgroundView)
+            make.bottom.equalTo(titleLabel.snp.top)
+            make.height.lessThanOrEqualTo(200)
         }
         
         backgroundScrollView.addSubview(spinnerView)

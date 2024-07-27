@@ -58,6 +58,7 @@
 		52ABB7B22C502FE9004551B5 /* NewPasswordRecRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7AE2C502FE9004551B5 /* NewPasswordRecRouter.swift */; };
 		52ABB7B32C502FE9004551B5 /* NewPasswordRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7AF2C502FE9004551B5 /* NewPasswordRecViewController.swift */; };
 		52ABB7B42C502FE9004551B5 /* NewPasswordRecAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7B02C502FE9004551B5 /* NewPasswordRecAssembly.swift */; };
+		52ABB7F82C553878004551B5 /* AlertFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7F72C553878004551B5 /* AlertFabric.swift */; };
 		52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */; };
 		52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */; };
 		52FED25B2C4D0E1700AAF16B /* ConfirmAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */; };
@@ -118,6 +119,7 @@
 		52ABB7AE2C502FE9004551B5 /* NewPasswordRecRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordRecRouter.swift; sourceTree = "<group>"; };
 		52ABB7AF2C502FE9004551B5 /* NewPasswordRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordRecViewController.swift; sourceTree = "<group>"; };
 		52ABB7B02C502FE9004551B5 /* NewPasswordRecAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordRecAssembly.swift; sourceTree = "<group>"; };
+		52ABB7F72C553878004551B5 /* AlertFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFabric.swift; sourceTree = "<group>"; };
 		52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPresenter.swift; sourceTree = "<group>"; };
 		52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAssembly.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				529BF94E2C458746009954D5 /* Application */,
 				529BF9712C46D92E009954D5 /* StorageLayer */,
 				529BF9622C463E80009954D5 /* ManagersLayer */,
+				52ABB7F62C553202004551B5 /* Fabrics */,
 				529BF94F2C45874E009954D5 /* Controllers */,
 				529BF94D2C458739009954D5 /* SupportingFiles */,
 			);
@@ -393,6 +396,14 @@
 			path = NewPasswordRecModule;
 			sourceTree = "<group>";
 		};
+		52ABB7F62C553202004551B5 /* Fabrics */ = {
+			isa = PBXGroup;
+			children = (
+				52ABB7F72C553878004551B5 /* AlertFabric.swift */,
+			);
+			path = Fabrics;
+			sourceTree = "<group>";
+		};
 		52FED2532C4D0DE200AAF16B /* ConfirmModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +585,7 @@
 				52ABB7AB2C502FD8004551B5 /* ConfirmRecViewController.swift in Sources */,
 				52ABB7AC2C502FD8004551B5 /* ConfirmRecAssembly.swift in Sources */,
 				529BF9C12C47BB07009954D5 /* NewMessageRouter.swift in Sources */,
+				52ABB7F82C553878004551B5 /* AlertFabric.swift in Sources */,
 				529BF9C22C47BB07009954D5 /* NewMessageViewController.swift in Sources */,
 				529BF9C32C47BB07009954D5 /* NewMessageAssembly.swift in Sources */,
 				529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */,

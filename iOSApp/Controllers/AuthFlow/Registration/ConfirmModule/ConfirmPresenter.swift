@@ -60,7 +60,8 @@ extension ConfirmPresenter: ConfirmPresenterProtocol {
                         break
                     }
                 case .failure(let string):
-                    break // 
+                    self?.view?.finishLoading(error: string)
+                    // alert
                 }
             }
         }

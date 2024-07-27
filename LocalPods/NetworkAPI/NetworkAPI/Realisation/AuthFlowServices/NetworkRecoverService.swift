@@ -16,7 +16,8 @@ extension NetworkService: NetworkRecoverProtocol {
         
     }
     
-    public func updatePassword(token: String, password: String, completion: @escaping (NResult<None>) -> Void) {
+    public func updatePassword(token: String, password: String,
+                               completion: @escaping (NResult<UpdatePasswordResponseModel>) -> Void) {
         
     }
     

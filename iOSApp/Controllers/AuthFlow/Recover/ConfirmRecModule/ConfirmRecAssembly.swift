@@ -24,7 +24,8 @@ final class ConfirmRecAssembly {
     func assemble(email: String) -> ConfirmRecViewController {
         let router = ConfirmRecRouter(newPasswordRecAssembly: newPasswordRecAssembly)
         let viewController = ConfirmRecViewController()
-        let presenter = ConfirmRecPresenter(view: viewController, router: router, networkService: networkService)
+        let presenter = ConfirmRecPresenter(view: viewController, router: router,
+                                            networkService: networkService, email: email)
         
         viewController.presenter = presenter
         router.viewController = viewController

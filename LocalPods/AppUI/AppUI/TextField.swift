@@ -40,9 +40,11 @@ public final class TextField: UITextField {
         layer.borderColor = UIColor.systemRed.cgColor
         leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.frame.height))
         rightView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.frame.height))
+        textContentType = .oneTimeCode
         autocorrectionType = .no
         rightViewMode = .always
         keyboardType = .asciiCapable
+        autocapitalizationType = .none
     }
     
     /// Делает обычный цвет для TextField

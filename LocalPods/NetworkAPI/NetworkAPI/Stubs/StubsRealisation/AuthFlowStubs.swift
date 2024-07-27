@@ -21,13 +21,13 @@ extension NetworkServiceStub: NetworkLoginProtocol {
 // MARK: NetworkRegisterProtocol stub
 extension NetworkServiceStub: NetworkRegisterProtocol {
     public func checkAbility(email: String, completion: @escaping (NResult<None>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completion(.success(data: nil, httpCode: 200))
         }
     }
     
     public func register(email: String, password: String, completion: @escaping (NResult<RegisterResponseModel>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             let responseModel = RegisterResponseModel(isActive: false, token: "stubs_token")
             completion(.success(data: responseModel, httpCode: 200))
         }
@@ -37,7 +37,8 @@ extension NetworkServiceStub: NetworkRegisterProtocol {
 
 // MARK: NetworkRecoverProtocol stub
 extension NetworkServiceStub: NetworkRecoverProtocol {
-    public func updatePassword(token: String, password: String, completion: @escaping (NResult<None>) -> Void) {
+    public func updatePassword(token: String, password: String,
+                               completion: @escaping (NResult<UpdatePasswordResponseModel>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             completion(.success(data: nil, httpCode: 200))
         }

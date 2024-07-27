@@ -14,7 +14,7 @@ protocol PasswordPresenterProtocol: AnyObject {
     /// - Parameters:
     ///   - firstPassword: пароль
     ///   - secondPassword: подтверждение пароля
-    func create(firstPassword: String, secondPassword: String)
+    func input(firstPassword: String, secondPassword: String)
 }
 
 final class PasswordPresenter {
@@ -38,14 +38,32 @@ final class PasswordPresenter {
 }
 
 extension PasswordPresenter: PasswordPresenterProtocol {
-    func create(firstPassword: String, secondPassword: String) {
+    func input(firstPassword: String, secondPassword: String) {
+        if let error = stringsValidation.validate(password: firstPassword) {
+            view?.finishLoading(with: (.first, error))
+            return
+        }
+        
+        if firstPassword != secondPassword {
+            view?.finishLoading(with: (.second, "Пароли не совпадают."))
+            return
+        }
+        
         view?.startLoading()
         
-        // эмитация запроса на сервер с ответом 3 секунжы
-        // TODO: прописать запрос на сервер
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.view?.finishLoading(with: nil)
-            self?.router.pushConfirmView(bearer: "")
+        networkService.register(email: email, password: firstPassword) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data, let httpCode):
+                    if httpCode == 200, let data {
+                        self?.router.pushConfirmView(bearer: data.token)
+                    } else {
+                        self?.view?.finishLoading(with: (.first, "Ошибка"))
+                    }
+                case .failure(let string):
+                    self?.view?.finishLoading(with: (.first, string))
+                }
+            }
         }
     }
 }

@@ -101,7 +101,7 @@ extension LoginPresenter: LoginPresenterProtocol {
                     }
                     
                 case .failure(let error):
-                    break // сделать alert
+                    self?.view?.finishLoading(withErrorOf: nil)
                 }
             }
         }

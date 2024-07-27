@@ -11,6 +11,9 @@ protocol EmailRouterInput {
     
     /// открытие экрана подверждения почты
     func pushPasswordView(email: String)
+    
+    /// предупреждение
+    func presentWarningAlert(message: String)
 }
 
 final class EmailRouter: EmailRouterInput {
@@ -18,13 +21,20 @@ final class EmailRouter: EmailRouterInput {
     weak var viewController: EmailViewController?
     
     private let passwordAssembly: PasswordAssembly
+    private let alertFabric: AlertFabricProtocol
     
-    init(passwordAssembly: PasswordAssembly) {
+    init(passwordAssembly: PasswordAssembly, alertFabric: AlertFabricProtocol) {
         self.passwordAssembly = passwordAssembly
+        self.alertFabric = alertFabric
     }
     
     func pushPasswordView(email: String) {
         let view = passwordAssembly.assemble(email: email)
         viewController?.navigationController?.pushViewController(view, animated: true)
+    }
+    
+    func presentWarningAlert(message: String) {
+        let alert = alertFabric.errorAuthAlert(message: message)
+        viewController?.present(alert, animated: true)
     }
 }

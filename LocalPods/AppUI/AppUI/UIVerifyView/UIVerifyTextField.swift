@@ -39,6 +39,8 @@ final class UIVerifyTextField: UITextField {
         textAlignment = .center
         delegate = self
         keyboardType = .numberPad
+        textContentType = .oneTimeCode
+        autocapitalizationType = .none
     }
     
     override func deleteBackward() {

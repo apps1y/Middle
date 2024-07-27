@@ -22,11 +22,13 @@ final class ConfirmRecPresenter {
     var router: ConfirmRecRouterInput
 
     private let networkService: NetworkRecoverProtocol
+    private let email: String
     
-    init(view: ConfirmRecViewProtocol?, router: ConfirmRecRouterInput, networkService: NetworkRecoverProtocol) {
+    init(view: ConfirmRecViewProtocol?, router: ConfirmRecRouterInput, networkService: NetworkRecoverProtocol, email: String) {
         self.view = view
         self.router = router
         self.networkService = networkService
+        self.email = email
     }
 }
 
@@ -34,9 +36,20 @@ extension ConfirmRecPresenter: ConfirmRecPresenterProtocol {
     func confirm(mail: String, with code: String) {
         view?.startLoading()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.view?.finishLoading(error: nil)
-            self?.router.pushNewPasswordView(bearer: "")
+        networkService.confirmResert(email: email, code: code) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data, let httpCode):
+                    if httpCode == 200, let data {
+                        self?.view?.finishLoading(error: nil)
+                        self?.router.pushNewPasswordView(bearer: data.token)
+                    } else {
+                        self?.view?.finishLoading(error: "Неверный код")
+                    }
+                case .failure(let string):
+                    self?.view?.finishLoading(error: string)
+                }
+            }
         }
     }
 }

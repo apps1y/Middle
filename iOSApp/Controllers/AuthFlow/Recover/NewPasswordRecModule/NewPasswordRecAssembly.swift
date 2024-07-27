@@ -27,7 +27,7 @@ final class NewPasswordRecAssembly {
     func assemble(bearer: String) -> NewPasswordRecViewController {
         let router = NewPasswordRecRouter()
         let viewController = NewPasswordRecViewController()
-        let presenter = NewPasswordRecPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, stringsValidation: stringsValidation, coordinator: coordinator)
+        let presenter = NewPasswordRecPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, stringsValidation: stringsValidation, coordinator: coordinator, token: bearer)
         
         viewController.presenter = presenter
         router.viewController = viewController

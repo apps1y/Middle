@@ -12,5 +12,6 @@ Pod::Spec.new do |s|
   s.module_map = false
  
   s.source_files          = '**/*.{swift,h,n,xib,storyboard}'
+
   s.dependency 'SnapKit'
 end

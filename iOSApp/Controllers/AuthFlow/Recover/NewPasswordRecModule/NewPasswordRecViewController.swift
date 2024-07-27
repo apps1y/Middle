@@ -52,6 +52,7 @@ final class NewPasswordRecViewController: UIViewController {
         field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
+        field.autocapitalizationType = .none
         field.addShowPasswordButton()
         return field
     }()
@@ -63,6 +64,7 @@ final class NewPasswordRecViewController: UIViewController {
         field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
+        field.autocapitalizationType = .none
         field.addShowPasswordButton()
         return field
     }()
@@ -193,6 +195,10 @@ extension NewPasswordRecViewController: UITextFieldDelegate {
         }
         if textField == secondPasswordTextField && secondPasswordTextField.mode == .error {
             secondPasswordTextField.mode = .basic
+        }
+        
+        if string.count > 1 || string == " " {
+            return false
         }
         return true
     }

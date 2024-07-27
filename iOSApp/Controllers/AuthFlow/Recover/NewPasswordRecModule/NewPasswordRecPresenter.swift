@@ -28,28 +28,51 @@ final class NewPasswordRecPresenter {
     
     /// app coordinator
     weak var coordinator: FlowCoordinator?
+    
+    var token: String
 
-    init(view: NewPasswordRecViewProtocol?, router: NewPasswordRecRouterInput, networkService: NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator?) {
+    init(view: NewPasswordRecViewProtocol?, router: NewPasswordRecRouterInput, networkService: NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator?, token: String) {
         self.view = view
         self.router = router
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation
         self.coordinator = coordinator
+        self.token = token
     }
 }
 
 extension NewPasswordRecPresenter: NewPasswordRecPresenterProtocol {
     
     func create(firstPassword: String, secondPassword: String) {
+        if let error = stringsValidation.validate(password: firstPassword) {
+            view?.finishLoading(with: (.first, error))
+            return
+        }
+        
+        if firstPassword != secondPassword {
+            view?.finishLoading(with: (.second, "Пароли не совпадают."))
+            return
+        }
+        
         view?.startLoading()
         
-        // эмитация запроса на сервер с ответом 3 секунжы
-        // TODO: прописать запрос на сервер
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.view?.finishLoading(with: nil)
-            self?.keychainBearerManager.saveKey("123")
-            self?.coordinator?.start()
+        networkService.updatePassword(token: token, password: firstPassword) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data, let httpCode):
+                    if httpCode == 200, let data {
+                        self?.view?.finishLoading(with: nil)
+                        self?.keychainBearerManager.saveKey(data.token)
+                        self?.coordinator?.start()
+                    } else {
+                        self?.view?.finishLoading(with: (.first, "Неизвестная ошибка"))
+                    }
+                case .failure(let string):
+                    self?.view?.finishLoading(with: (.first, string))
+                    // alert
+                }
+            }
         }
     }
 }

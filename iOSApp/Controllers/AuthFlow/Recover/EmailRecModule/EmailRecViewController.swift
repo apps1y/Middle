@@ -44,6 +44,7 @@ final class EmailRecViewController: UIViewController {
         let field = TextField()
         field.placeholder = "Введите почту"
         field.keyboardType = .emailAddress
+        field.autocapitalizationType = .none
         field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
@@ -73,6 +74,13 @@ final class EmailRecViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if email == nil {
+            emailTextField.becomeFirstResponder()
+        }
     }
     
     private func setupUI() {
@@ -156,6 +164,10 @@ extension EmailRecViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if emailTextField.mode == .error {
             emailTextField.mode = .basic
+        }
+        
+        if string.count > 1 || string == " " {
+            return false
         }
         return true
     }

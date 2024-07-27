@@ -37,20 +37,19 @@ final class EmailViewController: UIViewController {
         return view
     }()
     
-    private lazy var pageNameLabel: UILabel = {
+    private lazy var logoImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(named: "onboardingLogo")
+        return view
+    }()
+    
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
         label.font = .systemFont(ofSize: 28, weight: .semibold)
         label.textAlignment = .center
         return label
-    }()
-    
-    private lazy var loginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Уже есть аккаунт?", for: .normal)
-        button.setTitleColor(.link, for: .normal)
-        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        return button
     }()
     
     private lazy var emailTextField: TextField = {
@@ -60,7 +59,7 @@ final class EmailViewController: UIViewController {
         field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
-        field.text = "mail@mail.com"
+        field.text = "vanyaluk@mail.ru"
         return field
     }()
     
@@ -70,6 +69,18 @@ final class EmailViewController: UIViewController {
         button.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    private lazy var loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Уже есть аккаунт", for: .normal)
+        button.setTitleColor(.link, for: .normal)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
+        button.contentHorizontalAlignment = .center
+        return button
+    }()
+    
+    private lazy var errorLabel = ErrorLabel()
     
     var presenter: EmailPresenterProtocol?
 
@@ -84,7 +95,8 @@ final class EmailViewController: UIViewController {
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(-15)
         }
         if #available(iOS 15.0, *) {
             view.keyboardLayoutGuide.topAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
@@ -104,25 +116,39 @@ final class EmailViewController: UIViewController {
             make.height.equalTo(50)
         }
         
+        backgroundScrollView.addSubview(loginButton)
+        loginButton.snp.makeConstraints { make in
+            make.bottom.equalTo(backgroundView).inset(10)
+            make.leading.trailing.equalTo(backgroundView).inset(15)
+            make.height.equalTo(40)
+        }
+        
         backgroundScrollView.addSubview(continueButton)
         continueButton.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(backgroundView).inset(20)
+            make.bottom.equalTo(loginButton.snp.top).offset(-5)
             make.height.equalTo(50)
         }
         
-        backgroundScrollView.addSubview(pageNameLabel)
-        pageNameLabel.snp.makeConstraints { make in
+        backgroundScrollView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
             make.bottom.equalTo(emailTextField.snp.top)
-            make.top.equalTo(backgroundView)
+            make.height.greaterThanOrEqualTo(100)
         }
         
-        backgroundScrollView.addSubview(loginButton)
-        loginButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(continueButton.snp.top).inset(-10)
-            make.height.equalTo(40)
+        backgroundScrollView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { make in
+            make.top.equalTo(backgroundView)
+            make.leading.trailing.equalTo(backgroundView)
+            make.bottom.equalTo(titleLabel.snp.top)
+            make.height.lessThanOrEqualTo(200)
+        }
+        
+        backgroundScrollView.addSubview(errorLabel)
+        errorLabel.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(8)
+            make.leading.trailing.equalTo(backgroundView).inset(20)
         }
     }
     
@@ -147,6 +173,7 @@ extension EmailViewController: EmailViewProtocol {
         view.endEditing(true)
         emailTextField.isEnabled = false
         loginButton.isEnabled = false
+        errorLabel.hideWarning()
     }
     
     func finishLoading(with error: String?) {
@@ -154,8 +181,8 @@ extension EmailViewController: EmailViewProtocol {
         emailTextField.isEnabled = true
         loginButton.isEnabled = true
         
-        guard let text = error else { return }
-        // errorLabel.text = text
+        guard let error else { return }
+        errorLabel.showWarning(message: error)
         emailTextField.mode = .error
     }
 }
@@ -166,6 +193,11 @@ extension EmailViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if emailTextField.mode == .error {
             emailTextField.mode = .basic
+            errorLabel.hideWarning()
+        }
+        
+        if string.count > 1 || string == " " {
+            return false
         }
         return true
     }

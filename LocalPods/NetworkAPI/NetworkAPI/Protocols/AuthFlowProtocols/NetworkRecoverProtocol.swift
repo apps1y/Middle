@@ -35,6 +35,10 @@ public struct UpdatePasswordRequestModel: Encodable {
     public let password: String
 }
 
+public struct UpdatePasswordResponseModel: Decodable {
+    public let token: String
+}
+
 
 
 // MARK: - Protocols
@@ -55,5 +59,5 @@ public protocol NetworkRecoverProtocol: AnyObject {
     
     
     func updatePassword(token: String, password: String,
-                        completion: @escaping (NResult<None>) -> Void)
+                        completion: @escaping (NResult<UpdatePasswordResponseModel>) -> Void)
 }

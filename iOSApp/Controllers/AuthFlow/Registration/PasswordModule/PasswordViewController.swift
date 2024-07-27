@@ -42,7 +42,7 @@ final class PasswordViewController: UIViewController {
         return view
     }()
     
-    private lazy var pageNameLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Придумайте пароль"
         label.font = .systemFont(ofSize: 28, weight: .semibold)
@@ -54,10 +54,10 @@ final class PasswordViewController: UIViewController {
         let field = TextField()
         field.placeholder = "Пароль"
         field.isSecureTextEntry = true
-        field.textContentType = .none
         field.delegate = self
-        field.returnKeyType = .done
+        field.returnKeyType = .continue
         field.addShowPasswordButton()
+        field.text = "qqqqq1"
         return field
     }()
     
@@ -65,10 +65,10 @@ final class PasswordViewController: UIViewController {
         let field = TextField()
         field.placeholder = "Повторите пароль"
         field.isSecureTextEntry = true
-        field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
         field.addShowPasswordButton()
+        field.text = "qqqqq1"
         return field
     }()
     
@@ -78,6 +78,15 @@ final class PasswordViewController: UIViewController {
         button.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    private lazy var logoImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(named: "onboardingLogo")
+        return view
+    }()
+    
+    private lazy var errorLabel = ErrorLabel()
     
     var presenter: PasswordPresenterProtocol?
 
@@ -94,7 +103,8 @@ final class PasswordViewController: UIViewController {
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         if #available(iOS 15.0, *) {
             view.keyboardLayoutGuide.topAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
@@ -128,11 +138,25 @@ final class PasswordViewController: UIViewController {
             make.height.equalTo(50)
         }
         
-        backgroundScrollView.addSubview(pageNameLabel)
-        pageNameLabel.snp.makeConstraints { make in
+        backgroundScrollView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
             make.bottom.equalTo(firstPasswordTextField.snp.top)
+            make.height.greaterThanOrEqualTo(100)
+        }
+        
+        backgroundScrollView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { make in
             make.top.equalTo(backgroundView)
+            make.leading.trailing.equalTo(backgroundView)
+            make.bottom.equalTo(titleLabel.snp.top)
+            make.height.lessThanOrEqualTo(200)
+        }
+        
+        backgroundScrollView.addSubview(errorLabel)
+        errorLabel.snp.makeConstraints { make in
+            make.top.equalTo(secondPasswordTextField.snp.bottom).offset(8)
+            make.leading.trailing.equalTo(backgroundView).inset(20)
         }
     }
     
@@ -141,7 +165,7 @@ final class PasswordViewController: UIViewController {
     @objc private func continueButtonTapped() {
         guard let firstPassword = firstPasswordTextField.text,
                 let secondPassword = secondPasswordTextField.text else { return }
-        presenter?.create(firstPassword: firstPassword, secondPassword: secondPassword)
+        presenter?.input(firstPassword: firstPassword, secondPassword: secondPassword)
     }
     
     @objc private func backButtonTapped() {
@@ -159,6 +183,7 @@ extension PasswordViewController: PasswordViewProtocol {
         firstPasswordTextField.isEnabled = false
         secondPasswordTextField.isEnabled = false
         navigationItem.leftBarButtonItem?.isEnabled = false
+        errorLabel.hideWarning()
     }
     
     func finishLoading(with error: (PasswordFieldChoise, String)?) {
@@ -166,9 +191,10 @@ extension PasswordViewController: PasswordViewProtocol {
         firstPasswordTextField.isEnabled = true
         secondPasswordTextField.isEnabled = true
         navigationItem.leftBarButtonItem?.isEnabled = true
+        errorLabel.hideWarning()
         
         guard let (field, text) = error else { return }
-        // errorLabel.text = text
+        errorLabel.showWarning(message: text)
         switch field {
         case .first:
             firstPasswordTextField.mode = .error
@@ -193,11 +219,17 @@ extension PasswordViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == firstPasswordTextField && firstPasswordTextField.mode == .error {
+        errorLabel.hideWarning()
+        
+        if firstPasswordTextField.mode == .error {
             firstPasswordTextField.mode = .basic
         }
-        if textField == secondPasswordTextField && secondPasswordTextField.mode == .error {
+        if secondPasswordTextField.mode == .error {
             secondPasswordTextField.mode = .basic
+        }
+        
+        if string.count > 1 || string == " " {
+            return false
         }
         return true
     }
