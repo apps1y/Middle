@@ -16,13 +16,17 @@ final class ConfirmRecAssembly {
     /// Assembly's
     private let newPasswordRecAssembly: NewPasswordRecAssembly
     
-    init(networkService: NetworkRecoverProtocol, newPasswordRecAssembly: NewPasswordRecAssembly) {
+    /// Fabrics
+    private let alertFabric: AlertFabricProtocol
+    
+    init(networkService: NetworkRecoverProtocol, newPasswordRecAssembly: NewPasswordRecAssembly, alertFabric: AlertFabricProtocol) {
         self.networkService = networkService
         self.newPasswordRecAssembly = newPasswordRecAssembly
+        self.alertFabric = alertFabric
     }
     
     func assemble(email: String) -> ConfirmRecViewController {
-        let router = ConfirmRecRouter(newPasswordRecAssembly: newPasswordRecAssembly)
+        let router = ConfirmRecRouter(newPasswordRecAssembly: newPasswordRecAssembly, alertFabric: alertFabric)
         let viewController = ConfirmRecViewController()
         let presenter = ConfirmRecPresenter(view: viewController, router: router,
                                             networkService: networkService, email: email)

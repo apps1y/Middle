@@ -17,15 +17,22 @@ final class ConfirmAssembly {
     /// app coordinator
     weak var coordinator: FlowCoordinator?
     
-    init(networkService: NetworkConfirmProtocol, keychainBearerManager: KeychainBearerProtocol) {
+    /// Fabrics
+    private let alertFabric: AlertFabricProtocol
+    
+    init(networkService: NetworkConfirmProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabricProtocol) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
+        self.coordinator = coordinator
+        self.alertFabric = alertFabric
     }
     
     func assemble(token: String) -> ConfirmViewController {
         let viewController = ConfirmViewController()
-        let presenter = ConfirmPresenter(view: viewController, networkService: networkService, keychainBearerManager: keychainBearerManager, coordinator: coordinator, token: token)
+        let router = ConfirmRouter(alertFabric: alertFabric)
+        let presenter = ConfirmPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, coordinator: coordinator, token: token)
         viewController.presenter = presenter
+        router.viewController = viewController
         
         return viewController
     }

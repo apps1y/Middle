@@ -1,20 +1,19 @@
 //
-//  NewPasswordRecRouter.swift
-//  Super easy dev
+//  ConfirmRouter.swift
+//  iOSApp
 //
-//  Created by vanyaluk on 23.07.2024
+//  Created by Иван Лукъянычев on 28.07.2024.
 //
 
 import UIKit
 
-protocol NewPasswordRecRouterInput {
+protocol ConfirmRouterInput {
     func presentWarningAlert(message: String)
 }
 
-final class NewPasswordRecRouter: NewPasswordRecRouterInput {
-    weak var viewController: NewPasswordRecViewController?
+final class ConfirmRouter: ConfirmRouterInput {
+    weak var viewController: ConfirmViewController?
     
-    /// Fabrics
     private let alertFabric: AlertFabricProtocol
     
     init(alertFabric: AlertFabricProtocol) {

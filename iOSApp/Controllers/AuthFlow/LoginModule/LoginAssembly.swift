@@ -23,17 +23,22 @@ final class LoginAssembly {
     /// app coordinator
     weak var coordinator: FlowCoordinator?
     
-    init(networkService: NetworkLoginProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly) {
+    /// Fabrics
+    private let alertFabric: AlertFabricProtocol
+    
+    init(networkService: NetworkLoginProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabricProtocol) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation
         self.emailAssembly = emailAssembly
         self.emailRecAssembly = emailRecAssembly
         self.confirmAssembly = confirmAssembly
+        self.coordinator = coordinator
+        self.alertFabric = alertFabric
     }
     
     func assemble() -> LoginViewController {
-        let router = LoginRouter(emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly, confirmAssembly: confirmAssembly)
+        let router = LoginRouter(emailAssembly: emailAssembly, emailRecAssembly: emailRecAssembly, confirmAssembly: confirmAssembly, alertFabric: alertFabric)
         let viewController = LoginViewController()
         let presenter = LoginPresenter(view: viewController, router: router, 
                                        networkService: networkService, 

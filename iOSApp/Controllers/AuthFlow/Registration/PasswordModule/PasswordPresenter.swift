@@ -61,6 +61,7 @@ extension PasswordPresenter: PasswordPresenterProtocol {
                         self?.view?.finishLoading(with: (.first, "Ошибка"))
                     }
                 case .failure(let error):
+                    self?.view?.finishLoading(with: nil)
                     self?.router.presentWarningAlert(message: error)
                 }
             }

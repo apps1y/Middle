@@ -18,18 +18,19 @@ protocol ConfirmPresenterProtocol: AnyObject {
 }
 
 final class ConfirmPresenter {
+    
     weak var view: ConfirmViewProtocol?
+    var router: ConfirmRouterInput
     
     /// DI
     private var networkService: NetworkConfirmProtocol
     private var keychainBearerManager: KeychainBearerProtocol
-    
-    /// app coordinator
     weak var coordinator: FlowCoordinator?
     private var token: String
 
-    init(view: ConfirmViewProtocol?, networkService: NetworkConfirmProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?, token: String) {
+    init(view: ConfirmViewProtocol?, router: ConfirmRouterInput, networkService: NetworkConfirmProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?, token: String) {
         self.view = view
+        self.router = router
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.coordinator = coordinator
@@ -60,8 +61,8 @@ extension ConfirmPresenter: ConfirmPresenterProtocol {
                         self?.view?.finishLoading(error: "Неизвестная ошибка")
                     }
                 case .failure(let string):
-                    self?.view?.finishLoading(error: string)
-                    // alert
+                    self?.view?.finishLoading(error: nil)
+                    self?.router.presentWarningAlert(message: string)
                 }
             }
         }

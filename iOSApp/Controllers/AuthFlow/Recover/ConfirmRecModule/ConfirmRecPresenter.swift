@@ -46,8 +46,9 @@ extension ConfirmRecPresenter: ConfirmRecPresenterProtocol {
                     } else {
                         self?.view?.finishLoading(error: "Неверный код")
                     }
-                case .failure(let string):
-                    self?.view?.finishLoading(error: string)
+                case .failure(let error):
+                    self?.view?.finishLoading(error: nil)
+                    self?.router.presentWarningAlert(message: error)
                 }
             }
         }

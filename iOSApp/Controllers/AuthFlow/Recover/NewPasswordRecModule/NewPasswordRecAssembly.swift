@@ -18,14 +18,19 @@ final class NewPasswordRecAssembly {
     /// app coordinator
     weak var coordinator: FlowCoordinator?
     
-    init(networkService: NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol) {
+    /// Fabrics
+    private let alertFabric: AlertFabricProtocol
+    
+    init(networkService: NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabricProtocol) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation
+        self.coordinator = coordinator
+        self.alertFabric = alertFabric
     }
     
     func assemble(bearer: String) -> NewPasswordRecViewController {
-        let router = NewPasswordRecRouter()
+        let router = NewPasswordRecRouter(alertFabric: alertFabric)
         let viewController = NewPasswordRecViewController()
         let presenter = NewPasswordRecPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, stringsValidation: stringsValidation, coordinator: coordinator, token: bearer)
         

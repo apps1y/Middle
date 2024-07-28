@@ -18,6 +18,8 @@ final class PasswordRouter: PasswordRouterInput {
     weak var viewController: PasswordViewController?
     
     private let confirmAssembly: ConfirmAssembly
+    
+    /// Fabrics
     private let alertFabric: AlertFabricProtocol
     
     init(confirmAssembly: ConfirmAssembly, alertFabric: AlertFabricProtocol) {

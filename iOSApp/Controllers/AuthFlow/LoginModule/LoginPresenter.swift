@@ -102,6 +102,7 @@ extension LoginPresenter: LoginPresenterProtocol {
                     
                 case .failure(let error):
                     self?.view?.finishLoading(withErrorOf: nil)
+                    self?.router.presentWarningAlert(message: error)
                 }
             }
         }

@@ -18,6 +18,9 @@ protocol LoginRouterInput {
     
     /// открытие экрана подтверждения
     func pushConfirmViewController(token: String)
+    
+    /// предупреждение
+    func presentWarningAlert(message: String)
 }
 
 final class LoginRouter: LoginRouterInput {
@@ -28,10 +31,14 @@ final class LoginRouter: LoginRouterInput {
     private let emailRecAssembly: EmailRecAssembly
     private let confirmAssembly: ConfirmAssembly
     
-    init(emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly) {
+    /// Fabrics
+    private let alertFabric: AlertFabricProtocol
+    
+    init(emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly, alertFabric: AlertFabricProtocol) {
         self.emailAssembly = emailAssembly
         self.emailRecAssembly = emailRecAssembly
         self.confirmAssembly = confirmAssembly
+        self.alertFabric = alertFabric
     }
     
     func pushEmailViewController() {
@@ -49,5 +56,10 @@ final class LoginRouter: LoginRouterInput {
     func pushConfirmViewController(token: String) {
         let view = confirmAssembly.assemble(token: token)
         viewController?.navigationController?.pushViewController(view, animated: true)
+    }
+    
+    func presentWarningAlert(message: String) {
+        let alert = alertFabric.errorAuthAlert(message: message)
+        viewController?.present(alert, animated: true)
     }
 }

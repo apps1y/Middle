@@ -68,9 +68,9 @@ extension NewPasswordRecPresenter: NewPasswordRecPresenterProtocol {
                     } else {
                         self?.view?.finishLoading(with: (.first, "Неизвестная ошибка"))
                     }
-                case .failure(let string):
-                    self?.view?.finishLoading(with: (.first, string))
-                    // alert
+                case .failure(let error):
+                    self?.view?.finishLoading(with: nil)
+                    self?.router.presentWarningAlert(message: error)
                 }
             }
         }

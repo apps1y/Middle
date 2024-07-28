@@ -95,7 +95,9 @@ final class NewPasswordRecViewController: UIViewController {
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(-15)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
+                -(navigationController?.navigationBar.frame.size.height ?? -25)
+            )
         }
         if #available(iOS 15.0, *) {
             view.keyboardLayoutGuide.topAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
@@ -139,9 +141,9 @@ final class NewPasswordRecViewController: UIViewController {
         backgroundScrollView.addSubview(logoImageView)
         logoImageView.snp.makeConstraints { make in
             make.top.equalTo(backgroundView)
-            make.leading.trailing.equalTo(backgroundView)
+            make.centerX.equalTo(backgroundView)
+            make.width.equalTo(200)
             make.bottom.equalTo(titleLabel.snp.top)
-            make.height.lessThanOrEqualTo(200)
         }
     }
     
