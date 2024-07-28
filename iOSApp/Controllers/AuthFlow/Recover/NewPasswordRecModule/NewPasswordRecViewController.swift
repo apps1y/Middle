@@ -37,7 +37,7 @@ final class NewPasswordRecViewController: UIViewController {
         return view
     }()
     
-    private lazy var pageNameLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Придумайте пароль"
         label.font = .systemFont(ofSize: 28, weight: .semibold)
@@ -49,10 +49,8 @@ final class NewPasswordRecViewController: UIViewController {
         let field = TextField()
         field.placeholder = "Пароль"
         field.isSecureTextEntry = true
-        field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
-        field.autocapitalizationType = .none
         field.addShowPasswordButton()
         return field
     }()
@@ -61,10 +59,8 @@ final class NewPasswordRecViewController: UIViewController {
         let field = TextField()
         field.placeholder = "Повторите пароль"
         field.isSecureTextEntry = true
-        field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
-        field.autocapitalizationType = .none
         field.addShowPasswordButton()
         return field
     }()
@@ -74,6 +70,13 @@ final class NewPasswordRecViewController: UIViewController {
         button.setTitle("Продолжить", for: .normal)
         button.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         return button
+    }()
+    
+    private lazy var logoImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(named: "onboardingLogo")
+        return view
     }()
     
     var presenter: NewPasswordRecPresenterProtocol?
@@ -91,7 +94,8 @@ final class NewPasswordRecViewController: UIViewController {
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(-15)
         }
         if #available(iOS 15.0, *) {
             view.keyboardLayoutGuide.topAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
@@ -125,11 +129,19 @@ final class NewPasswordRecViewController: UIViewController {
             make.height.equalTo(50)
         }
         
-        backgroundScrollView.addSubview(pageNameLabel)
-        pageNameLabel.snp.makeConstraints { make in
+        backgroundScrollView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
             make.bottom.equalTo(firstPasswordTextField.snp.top)
+            make.height.greaterThanOrEqualTo(70)
+        }
+        
+        backgroundScrollView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { make in
             make.top.equalTo(backgroundView)
+            make.leading.trailing.equalTo(backgroundView)
+            make.bottom.equalTo(titleLabel.snp.top)
+            make.height.lessThanOrEqualTo(200)
         }
     }
     

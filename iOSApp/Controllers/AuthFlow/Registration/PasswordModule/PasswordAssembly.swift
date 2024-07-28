@@ -16,15 +16,17 @@ final class PasswordAssembly {
     
     /// Assembly's
     private let confirmAssembly: ConfirmAssembly
+    private let alertFabric: AlertFabricProtocol
     
-    init(networkService: NetworkRegisterProtocol, stringsValidation: StringsValidationProtocol, confirmAssembly: ConfirmAssembly) {
+    init(networkService: NetworkRegisterProtocol, stringsValidation: StringsValidationProtocol, confirmAssembly: ConfirmAssembly, alertFabric: AlertFabricProtocol) {
         self.networkService = networkService
         self.stringsValidation = stringsValidation
         self.confirmAssembly = confirmAssembly
+        self.alertFabric = alertFabric
     }
     
     func assemble(email: String) -> PasswordViewController {
-        let router = PasswordRouter(confirmAssembly: confirmAssembly)
+        let router = PasswordRouter(confirmAssembly: confirmAssembly, alertFabric: alertFabric)
         let viewController = PasswordViewController()
         let presenter = PasswordPresenter(view: viewController, router: router,
                                           networkService: networkService,

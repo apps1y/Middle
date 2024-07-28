@@ -32,17 +32,28 @@ final class EmailRecViewController: UIViewController {
         return view
     }()
     
-    private lazy var pageNameLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Восстановление"
+        label.text = "Введите почту"
         label.font = .systemFont(ofSize: 28, weight: .semibold)
         label.textAlignment = .center
         return label
     }()
     
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "На нее придет код для сброса пароля."
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textAlignment = .center
+        label.textColor = .secondaryLabel
+        return label
+    }()
+    
+    private lazy var titleView = UIView()
+    
     private lazy var emailTextField: TextField = {
         let field = TextField()
-        field.placeholder = "Введите почту"
+        field.placeholder = "Почта"
         field.keyboardType = .emailAddress
         field.autocapitalizationType = .none
         field.textContentType = .none
@@ -58,6 +69,15 @@ final class EmailRecViewController: UIViewController {
         button.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    private lazy var logoImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(named: "onboardingLogo")
+        return view
+    }()
+    
+    private lazy var errorLabel = ErrorLabel()
     
     private let email: String?
     var presenter: EmailRecPresenterProtocol?
@@ -88,7 +108,8 @@ final class EmailRecViewController: UIViewController {
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(-15)
         }
         if #available(iOS 15.0, *) {
             view.keyboardLayoutGuide.topAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
@@ -115,11 +136,37 @@ final class EmailRecViewController: UIViewController {
             make.height.equalTo(50)
         }
         
-        backgroundScrollView.addSubview(pageNameLabel)
-        pageNameLabel.snp.makeConstraints { make in
+        backgroundScrollView.addSubview(titleView)
+        titleView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
             make.bottom.equalTo(emailTextField.snp.top)
+            make.height.greaterThanOrEqualTo(100)
+        }
+        
+        backgroundScrollView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(backgroundView).inset(15)
+            make.bottom.equalTo(titleView.snp.centerY).offset(-5)
+        }
+        
+        backgroundScrollView.addSubview(descriptionLabel)
+        descriptionLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(backgroundView).inset(15)
+            make.top.equalTo(titleView.snp.centerY).offset(5)
+        }
+        
+        backgroundScrollView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { make in
             make.top.equalTo(backgroundView)
+            make.leading.trailing.equalTo(backgroundView)
+            make.bottom.equalTo(titleView.snp.top)
+            make.height.lessThanOrEqualTo(200)
+        }
+        
+        backgroundScrollView.addSubview(errorLabel)
+        errorLabel.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(8)
+            make.leading.trailing.equalTo(backgroundView).inset(20)
         }
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(cancelButtonTapped))
@@ -146,6 +193,7 @@ extension EmailRecViewController: EmailRecViewProtocol {
         view.endEditing(true)
         emailTextField.isEnabled = false
         navigationItem.leftBarButtonItem?.isEnabled = false
+        errorLabel.hideWarning()
     }
     
     func finishLoading(with error: String?) {
@@ -153,8 +201,8 @@ extension EmailRecViewController: EmailRecViewProtocol {
         emailTextField.isEnabled = true
         navigationItem.leftBarButtonItem?.isEnabled = true
         
-        guard let text = error else { return }
-        // errorLabel.text = text
+        guard let error else { return }
+        errorLabel.showWarning(message: error)
         emailTextField.mode = .error
     }
 }
@@ -164,6 +212,7 @@ extension EmailRecViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if emailTextField.mode == .error {
             emailTextField.mode = .basic
+            errorLabel.hideWarning()
         }
         
         if string.count > 1 || string == " " {

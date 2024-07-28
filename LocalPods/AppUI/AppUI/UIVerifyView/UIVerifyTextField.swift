@@ -43,6 +43,7 @@ final class UIVerifyTextField: UITextField {
         autocapitalizationType = .none
     }
     
+    
     override func deleteBackward() {
         fieldDelegate?.activePreviosField(tag: tag)
     }

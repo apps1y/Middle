@@ -33,7 +33,7 @@ final class AppAssembly {
         /// регистрация
         var confirmAssembly = ConfirmAssembly(networkService: networkService, keychainBearerManager: keychainManager)
         
-        var passwordAssembly = PasswordAssembly(networkService: networkService, stringsValidation: stringsValidationManager, confirmAssembly: confirmAssembly)
+        var passwordAssembly = PasswordAssembly(networkService: networkService, stringsValidation: stringsValidationManager, confirmAssembly: confirmAssembly, alertFabric: alertFabric)
         
         var emailAssembly = EmailAssembly(stringsValidation: stringsValidationManager, networkService: networkService, passwordAssembly: passwordAssembly, alertFabric: alertFabric)
         

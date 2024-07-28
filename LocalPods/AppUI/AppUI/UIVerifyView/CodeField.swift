@@ -95,8 +95,6 @@ extension CodeField: UIVerifyTextFieldDelegate {
             verifyTextFields[tag - 1].becomeFirstResponder()
         }
     }
-    
-    
 }
 
 

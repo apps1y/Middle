@@ -57,7 +57,7 @@ extension ConfirmPresenter: ConfirmPresenterProtocol {
                     case 401:
                         self?.view?.finishLoading(error: "Неверный код")
                     default:
-                        break
+                        self?.view?.finishLoading(error: "Неизвестная ошибка")
                     }
                 case .failure(let string):
                     self?.view?.finishLoading(error: string)

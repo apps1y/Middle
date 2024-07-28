@@ -9,19 +9,29 @@ import UIKit
 
 protocol PasswordRouterInput {
     func pushConfirmView(bearer: String)
+    
+    /// предупреждение
+    func presentWarningAlert(message: String)
 }
 
 final class PasswordRouter: PasswordRouterInput {
     weak var viewController: PasswordViewController?
     
     private let confirmAssembly: ConfirmAssembly
+    private let alertFabric: AlertFabricProtocol
     
-    init(confirmAssembly: ConfirmAssembly) {
+    init(confirmAssembly: ConfirmAssembly, alertFabric: AlertFabricProtocol) {
         self.confirmAssembly = confirmAssembly
+        self.alertFabric = alertFabric
     }
     
     func pushConfirmView(bearer: String) {
         let view = confirmAssembly.assemble(token: bearer)
         viewController?.navigationController?.pushViewController(view, animated: true)
+    }
+    
+    func presentWarningAlert(message: String) {
+        let alert = alertFabric.errorAuthAlert(message: message)
+        viewController?.present(alert, animated: true)
     }
 }
