@@ -8,7 +8,7 @@
 import Foundation
 
 /// обработка ошибок при запросе
-public enum NetworkServiceError: Error {
+public enum NetworkRequestError: Error {
     case invalidURL
     case noResponse
     case httpError(statusCode: Int)

@@ -39,16 +39,14 @@ extension EmailPresenter: EmailPresenterProtocol {
         }
         view?.startLoading()
         
-        networkService.checkAbility(email: email) { [weak self] result in
+        networkService.checkEmail(email: email) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let data, let httpCode):
-                    if httpCode == 200 {
-                        self?.router.pushPasswordView(email: email)
-                        self?.view?.finishLoading(with: nil)
-                    } else {
-                        self?.view?.finishLoading(with: "Почта занята")
-                    }
+                case .success200(let data):
+                    self?.view?.finishLoading(with: nil)
+                    self?.router.pushPasswordView(email: email)
+                case .success400(let status):
+                    self?.view?.finishLoading(with: status.localizedDescription)
                 case .failure(let error):
                     self?.view?.finishLoading(with: nil)
                     self?.router.presentWarningAlert(message: error)

@@ -103,18 +103,21 @@ final class EmailRecViewController: UIViewController {
         }
     }
     
+    
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
-                -(navigationController?.navigationBar.frame.size.height ?? -25)
-            )
+            make.leading.trailing.top.equalToSuperview()
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
+//                -(navigationController?.navigationBar.frame.size.height ?? 25)
+//            )
         }
         if #available(iOS 15.0, *) {
-            view.keyboardLayoutGuide.topAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
+            backgroundView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).isActive = true
         } else {
             backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         }
@@ -142,7 +145,7 @@ final class EmailRecViewController: UIViewController {
         titleView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
             make.bottom.equalTo(emailTextField.snp.top)
-            make.height.greaterThanOrEqualTo(100)
+            make.height.equalTo(70)
         }
         
         backgroundScrollView.addSubview(titleLabel)
@@ -170,8 +173,6 @@ final class EmailRecViewController: UIViewController {
             make.top.equalTo(emailTextField.snp.bottom).offset(8)
             make.leading.trailing.equalTo(backgroundView).inset(20)
         }
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(cancelButtonTapped))
     }
     
     // MARK: - @objc funcs
@@ -182,7 +183,6 @@ final class EmailRecViewController: UIViewController {
     }
     
     @objc private func cancelButtonTapped() {
-        view.endEditing(true)
         dismiss(animated: true)
     }
 }

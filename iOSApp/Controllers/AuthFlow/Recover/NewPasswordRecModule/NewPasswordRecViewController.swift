@@ -188,6 +188,7 @@ extension NewPasswordRecViewController: NewPasswordRecViewProtocol {
         case .second:
             secondPasswordTextField.mode = .error
             secondPasswordTextField.becomeFirstResponder()
+        case .none: break
         }
     }
 }

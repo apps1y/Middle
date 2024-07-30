@@ -16,7 +16,8 @@ final class AppAssembly {
         /// NetworkLayer
         /// Для тестирования есть `NetworkServiceStub`
         // let networkService = NetworkService()
-        let networkService = NetworkServiceStub()
+        let networkService = NetworkService()
+        // let networkStub = NetworkServiceStub()
         
         /// StorageLayer
         let databaseManager = DatabaseManager()

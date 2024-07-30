@@ -36,16 +36,14 @@ extension ConfirmRecPresenter: ConfirmRecPresenterProtocol {
     func confirm(mail: String, with code: String) {
         view?.startLoading()
         
-        networkService.confirmResert(email: email, code: code) { [weak self] result in
+        networkService.confirmResert(email: mail, code: code) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let data, let httpCode):
-                    if httpCode == 200, let data {
-                        self?.view?.finishLoading(error: nil)
-                        self?.router.pushNewPasswordView(bearer: data.token)
-                    } else {
-                        self?.view?.finishLoading(error: "Неверный код")
-                    }
+                case .success200(let data):
+                    self?.view?.finishLoading(error: nil)
+                    self?.router.pushNewPasswordView(bearer: data.token)
+                case .success400(let status):
+                    self?.view?.finishLoading(error: status.localizedDescription)
                 case .failure(let error):
                     self?.view?.finishLoading(error: nil)
                     self?.router.presentWarningAlert(message: error)

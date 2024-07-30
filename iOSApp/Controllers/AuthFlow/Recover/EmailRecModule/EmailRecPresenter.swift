@@ -39,16 +39,14 @@ extension EmailRecPresenter: EmailRecPresenterProtocol {
         networkService.sendCode(email: email) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(_, let httpCode):
-                    if httpCode == 200 {
-                        self?.view?.finishLoading(with: nil)
-                        self?.router.pushConfirmView(email: email)
-                    } else {
-                        self?.view?.finishLoading(with: "Ошибка с почтой")
-                    }
-                case .failure(let string):
+                case .success200(let data):
                     self?.view?.finishLoading(with: nil)
-                    self?.router.presentWarningAlert(message: string)
+                    self?.router.pushConfirmView(email: email)
+                case .success400(let status):
+                    self?.view?.finishLoading(with: status.localizedDescription)
+                case .failure(let error):
+                    self?.view?.finishLoading(with: nil)
+                    self?.router.presentWarningAlert(message: error)
                 }
             }
         }

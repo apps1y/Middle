@@ -9,8 +9,14 @@ import Foundation
 
 extension NetworkService: NetworkRegisterProtocol {
     
-    public func checkAbility(email: String, completion: @escaping (NResult<None>) -> Void) {
+    public func checkEmail(email: String, completion: @escaping (NResult<None>) -> Void) {
+        let request = NetworkRequest(stringURL: "/api/auth/check-email", headers: [:], httpMethod: .post)
+        let requestModel = CheckEmailRequestModel(email: email)
         
+        perform(request: request, requestModel: requestModel) { (result: Result<NetworkResponse<None>, NetworkRequestError>) in
+            let nresult = StatusValidation.validate(result: result)
+            completion(nresult)
+        }
     }
     
     public func register(email: String, password: String, 
@@ -19,26 +25,9 @@ extension NetworkService: NetworkRegisterProtocol {
         let request = NetworkRequest(stringURL: "/api/auth/register", headers: [:], httpMethod: .post)
         let requestModel = RegisterRequestModel(email: email, password: password)
         
-        perform(request: request, requestModel: requestModel) { (result: Result<NetworkResponse<RegisterResponseModel>, 
-                                                                 NetworkServiceError>) in
-            switch result {
-            case .success(let response):
-                if response.httpCode == 200, let data = response.data {
-                    return completion(.success(data: data, httpCode: response.httpCode))
-                }
-                
-                switch response.httpCode {
-                case 401:
-                    return completion(.failure("Неверный пароль"))
-                case 404:
-                    return completion(.failure("Такого пользователя не существует"))
-                default:
-                    return completion(.failure("Ошибка"))
-                }
-                
-            case .failure(let error):
-                return completion(.failure(error.localizedDescription))
-            }
+        perform(request: request, requestModel: requestModel) { (result: Result<NetworkResponse<RegisterResponseModel>, NetworkRequestError>) in
+            let nresult = StatusValidation.validate(result: result)
+            completion(nresult)
         }
         
     }

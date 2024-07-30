@@ -14,25 +14,9 @@ extension NetworkService: NetworkLoginProtocol {
         let request = NetworkRequest(stringURL: "/api/auth/login", headers: [:], httpMethod: .post)
         let requestModel = LoginRequestModel(email: email, password: password)
         
-        perform(request: request, requestModel: requestModel) { (result: Result<NetworkResponse<LoginResponseModel>, NetworkServiceError>) in
-            switch result {
-            case .success(let response):
-                if response.httpCode == 200, let model = response.data {
-                    return completion(.success(data: model, httpCode: response.httpCode))
-                }
-                
-                switch response.httpCode {
-                case 401:
-                    return completion(.failure("Неверный пароль"))
-                case 404:
-                    return completion(.failure("Такого пользователя не существует"))
-                default:
-                    return completion(.failure("Ошибка"))
-                }
-                
-            case .failure(let error):
-                return completion(.failure(error.localizedDescription))
-            }
+        perform(request: request, requestModel: requestModel) { (result: Result<NetworkResponse<LoginResponseModel>, NetworkRequestError>) in
+            let nresult = StatusValidation.validate(result: result)
+            completion(nresult)
         }
     }
 }

@@ -54,12 +54,11 @@ extension PasswordPresenter: PasswordPresenterProtocol {
         networkService.register(email: email, password: firstPassword) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let data, let httpCode):
-                    if httpCode == 200, let data {
-                        self?.router.pushConfirmView(bearer: data.token)
-                    } else {
-                        self?.view?.finishLoading(with: (.first, "Ошибка"))
-                    }
+                case .success200(let data):
+                    self?.view?.finishLoading(with: nil)
+                    self?.router.pushConfirmView(bearer: data.token)
+                case .success400(let status):
+                    self?.view?.finishLoading(with: (.none, status.localizedDescription))
                 case .failure(let error):
                     self?.view?.finishLoading(with: nil)
                     self?.router.presentWarningAlert(message: error)

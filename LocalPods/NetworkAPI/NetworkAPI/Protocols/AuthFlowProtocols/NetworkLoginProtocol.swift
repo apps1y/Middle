@@ -10,14 +10,15 @@ import Foundation
 // MARK: - login
 /// тело запроса login
 public struct LoginRequestModel: Encodable {
-    public let email: String
-    public let password: String
+    public var email: String
+    public var password: String
 }
 
 /// парсинг запроса login
-public struct LoginResponseModel: Decodable {
-    public let isActive: Bool
-    public let token: String
+public struct LoginResponseModel: Decodable, Statusable {
+    public var confirmed: Bool
+    public var status: String
+    public var token: String
 }
 
 

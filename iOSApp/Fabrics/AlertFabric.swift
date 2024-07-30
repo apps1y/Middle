@@ -10,7 +10,7 @@ import UIKit
 protocol AlertFabricProtocol {
     
     /// предупреждающий alert
-    /// - Parameter text: текст предупреждения
+    /// - Parameter message: текст предупреждения
     /// - Returns: настроенный alert
     func errorAuthAlert(message: String) -> UIAlertController
 }

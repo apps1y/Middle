@@ -42,27 +42,20 @@ extension ConfirmPresenter: ConfirmPresenterProtocol {
     func confirm(with code: String) {
         view?.startLoading()
         
+        let token = token
+        
         networkService.confirm(token: token, code: code) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let data, let httpCode):
-                    switch httpCode {
-                    case 200:
-                        if let token = self?.token {
-                            self?.view?.finishLoading(error: nil)
-                            self?.keychainBearerManager.saveKey(token)
-                            self?.coordinator?.start()
-                        } else {
-                            self?.view?.finishLoading(error: "Ошибка при обнаружении токена")
-                        }
-                    case 401:
-                        self?.view?.finishLoading(error: "Неверный код")
-                    default:
-                        self?.view?.finishLoading(error: "Неизвестная ошибка")
-                    }
-                case .failure(let string):
+                case .success200(let data):
                     self?.view?.finishLoading(error: nil)
-                    self?.router.presentWarningAlert(message: string)
+                    self?.keychainBearerManager.saveKey(token)
+                    self?.coordinator?.start()
+                case .success400(let status):
+                    self?.view?.finishLoading(error: status.localizedDescription)
+                case .failure(let error):
+                    self?.view?.finishLoading(error: nil)
+                    self?.router.presentWarningAlert(message: error)
                 }
             }
         }

@@ -126,7 +126,7 @@ final class LoginViewController: UIViewController {
         backgroundView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
-                -(navigationController?.navigationBar.frame.size.height ?? -25)
+                -(navigationController?.navigationBar.frame.size.height ?? 25)
             )
         }
         if #available(iOS 15.0, *) {
@@ -172,7 +172,7 @@ final class LoginViewController: UIViewController {
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
             make.bottom.equalTo(emailTextField.snp.top)
-            make.height.greaterThanOrEqualTo(70)
+            make.height.equalTo(70)
         }
         
         backgroundScrollView.addSubview(logoImageView)
@@ -258,7 +258,7 @@ extension LoginViewController: UITextFieldDelegate {
             passwordTextField.mode = .basic
         }
         
-        if string.count > 1 || string == " " {
+        if string == " " {
             return false
         }
         return true

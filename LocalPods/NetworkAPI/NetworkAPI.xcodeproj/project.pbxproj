@@ -16,7 +16,7 @@
 		52ABB7C52C512DD9004551B5 /* NetworkLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7C42C512DD9004551B5 /* NetworkLoginService.swift */; };
 		52ABB7C72C512DE9004551B5 /* NetworkRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7C62C512DE9004551B5 /* NetworkRegisterService.swift */; };
 		52ABB7C92C512DF0004551B5 /* NetworkConfirmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7C82C512DF0004551B5 /* NetworkConfirmService.swift */; };
-		52ABB7CB2C5132A7004551B5 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7CA2C5132A7004551B5 /* NetworkServiceError.swift */; };
+		52ABB7CB2C5132A7004551B5 /* NetworkRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7CA2C5132A7004551B5 /* NetworkRequestError.swift */; };
 		52ABB7CD2C5132B9004551B5 /* NResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7CC2C5132B9004551B5 /* NResult.swift */; };
 		52ABB7CF2C513328004551B5 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7CE2C513328004551B5 /* NetworkRequest.swift */; };
 		52ABB7D12C51333D004551B5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7D02C51333D004551B5 /* HTTPMethod.swift */; };
@@ -26,8 +26,10 @@
 		52ABB7D92C522A54004551B5 /* NetworkMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7D82C522A54004551B5 /* NetworkMainService.swift */; };
 		52ABB7DF2C529126004551B5 /* NetworkServiceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7DE2C529126004551B5 /* NetworkServiceStub.swift */; };
 		52ABB7E52C5291CB004551B5 /* AuthFlowStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7E42C5291CB004551B5 /* AuthFlowStubs.swift */; };
-		52ABB7E82C52954C004551B5 /* None.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7E72C52954C004551B5 /* None.swift */; };
+		52ABB7E82C52954C004551B5 /* AuthNone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7E72C52954C004551B5 /* AuthNone.swift */; };
 		52ABB7EA2C52BF7D004551B5 /* MainFlowStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7E92C52BF7D004551B5 /* MainFlowStubs.swift */; };
+		52ABB7FC2C578F35004551B5 /* StatusEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7FB2C578F35004551B5 /* StatusEnums.swift */; };
+		52CF747B2C5811F800E0AA7D /* StatusValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF747A2C5811F800E0AA7D /* StatusValidation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +43,7 @@
 		52ABB7C42C512DD9004551B5 /* NetworkLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoginService.swift; sourceTree = "<group>"; };
 		52ABB7C62C512DE9004551B5 /* NetworkRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRegisterService.swift; sourceTree = "<group>"; };
 		52ABB7C82C512DF0004551B5 /* NetworkConfirmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfirmService.swift; sourceTree = "<group>"; };
-		52ABB7CA2C5132A7004551B5 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		52ABB7CA2C5132A7004551B5 /* NetworkRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestError.swift; sourceTree = "<group>"; };
 		52ABB7CC2C5132B9004551B5 /* NResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NResult.swift; sourceTree = "<group>"; };
 		52ABB7CE2C513328004551B5 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		52ABB7D02C51333D004551B5 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -51,8 +53,10 @@
 		52ABB7D82C522A54004551B5 /* NetworkMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMainService.swift; sourceTree = "<group>"; };
 		52ABB7DE2C529126004551B5 /* NetworkServiceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceStub.swift; sourceTree = "<group>"; };
 		52ABB7E42C5291CB004551B5 /* AuthFlowStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowStubs.swift; sourceTree = "<group>"; };
-		52ABB7E72C52954C004551B5 /* None.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = None.swift; sourceTree = "<group>"; };
+		52ABB7E72C52954C004551B5 /* AuthNone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNone.swift; sourceTree = "<group>"; };
 		52ABB7E92C52BF7D004551B5 /* MainFlowStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowStubs.swift; sourceTree = "<group>"; };
+		52ABB7FB2C578F35004551B5 /* StatusEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusEnums.swift; sourceTree = "<group>"; };
+		52CF747A2C5811F800E0AA7D /* StatusValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusValidation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,12 +128,9 @@
 		529C07B02C4A589000E6D1BB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				52ABB7CE2C513328004551B5 /* NetworkRequest.swift */,
-				52ABB7D42C515C46004551B5 /* NetworkResponse.swift */,
-				52ABB7D02C51333D004551B5 /* HTTPMethod.swift */,
-				52ABB7CA2C5132A7004551B5 /* NetworkServiceError.swift */,
+				52CF747C2C58125500E0AA7D /* Request */,
+				52CF747D2C58127600E0AA7D /* Response */,
 				52ABB7CC2C5132B9004551B5 /* NResult.swift */,
-				52ABB7E72C52954C004551B5 /* None.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -188,6 +189,27 @@
 				52ABB7E92C52BF7D004551B5 /* MainFlowStubs.swift */,
 			);
 			path = StubsRealisation;
+			sourceTree = "<group>";
+		};
+		52CF747C2C58125500E0AA7D /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				52ABB7CE2C513328004551B5 /* NetworkRequest.swift */,
+				52ABB7D02C51333D004551B5 /* HTTPMethod.swift */,
+				52ABB7CA2C5132A7004551B5 /* NetworkRequestError.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		52CF747D2C58127600E0AA7D /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				52ABB7D42C515C46004551B5 /* NetworkResponse.swift */,
+				52CF747A2C5811F800E0AA7D /* StatusValidation.swift */,
+				52ABB7FB2C578F35004551B5 /* StatusEnums.swift */,
+				52ABB7E72C52954C004551B5 /* AuthNone.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,18 +296,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CF747B2C5811F800E0AA7D /* StatusValidation.swift in Sources */,
 				52ABB7BA2C511325004551B5 /* NetworkRegisterProtocol.swift in Sources */,
 				52ABB7D72C522A3E004551B5 /* NetworkMainProtocol.swift in Sources */,
 				52ABB7C52C512DD9004551B5 /* NetworkLoginService.swift in Sources */,
 				52ABB7E52C5291CB004551B5 /* AuthFlowStubs.swift in Sources */,
 				52ABB7D92C522A54004551B5 /* NetworkMainService.swift in Sources */,
 				52ABB7CD2C5132B9004551B5 /* NResult.swift in Sources */,
+				52ABB7FC2C578F35004551B5 /* StatusEnums.swift in Sources */,
 				52ABB7DF2C529126004551B5 /* NetworkServiceStub.swift in Sources */,
 				52ABB7C32C512DCD004551B5 /* NetworkRecoverService.swift in Sources */,
 				52ABB7BC2C511346004551B5 /* NetworkConfirmProtocol.swift in Sources */,
-				52ABB7E82C52954C004551B5 /* None.swift in Sources */,
+				52ABB7E82C52954C004551B5 /* AuthNone.swift in Sources */,
 				52ABB7B82C51131C004551B5 /* NetworkLoginProtocol.swift in Sources */,
-				52ABB7CB2C5132A7004551B5 /* NetworkServiceError.swift in Sources */,
+				52ABB7CB2C5132A7004551B5 /* NetworkRequestError.swift in Sources */,
 				52ABB7EA2C52BF7D004551B5 /* MainFlowStubs.swift in Sources */,
 				52ABB7C92C512DF0004551B5 /* NetworkConfirmService.swift in Sources */,
 				52ABB7B62C511311004551B5 /* NetworkRecoverProtocol.swift in Sources */,

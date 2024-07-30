@@ -12,6 +12,7 @@ import AppUI
 enum PasswordFieldChoise {
     case first
     case second
+    case none
 }
 
 // MARK: - View Protocol
@@ -204,6 +205,8 @@ extension PasswordViewController: PasswordViewProtocol {
         case .second:
             secondPasswordTextField.mode = .error
             secondPasswordTextField.becomeFirstResponder()
+        case .none:
+            break
         }
     }
 }

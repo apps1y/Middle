@@ -77,29 +77,25 @@ extension LoginPresenter: LoginPresenterProtocol {
         networkService.login(email: email, password: password) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let data, let httpCode):
-                    switch httpCode {
-                    case 200:
-                        guard let data else {
-                            self?.view?.finishLoading(withErrorOf: .passwordTextField)
-                            return
-                        }
-                        if data.isActive {
-                            self?.keychainBearerManager.saveKey(data.token)
-                            self?.coordinator?.start()
-                        } else {
-                            self?.router.pushConfirmViewController(token: data.token)
-                        }
-                        self?.view?.finishLoading(withErrorOf: nil)
-                        
-                    case 401:
-                        self?.view?.finishLoading(withErrorOf: .passwordTextField)
-                    case 404:
-                        self?.view?.finishLoading(withErrorOf: .emailTextField)
-                    default:
-                        self?.view?.finishLoading(withErrorOf: .emailTextField)
+                case .success200(let data):
+                    self?.view?.finishLoading(withErrorOf: nil)
+                    if data.confirmed {
+                        self?.keychainBearerManager.saveKey(data.token)
+                        self?.coordinator?.start()
+                    } else {
+                        self?.router.pushConfirmViewController(token: data.token)
                     }
                     
+                case .success400(let status):
+                    switch status {
+                    case .notFound:
+                        self?.view?.finishLoading(withErrorOf: .emailTextField)
+                    case .unauthorized:
+                        self?.view?.finishLoading(withErrorOf: .passwordTextField)
+                    default:
+                        self?.view?.finishLoading(withErrorOf: nil)
+                        self?.router.presentWarningAlert(message: "Неизвестная ошибка.")
+                    }
                 case .failure(let error):
                     self?.view?.finishLoading(withErrorOf: nil)
                     self?.router.presentWarningAlert(message: error)
@@ -110,3 +106,23 @@ extension LoginPresenter: LoginPresenterProtocol {
     
 }
 
+
+//switch result {
+//case .success(let data, let httpCode):
+//    print(httpCode)
+//    if let data, httpCode == 200 {
+//        self?.view?.finishLoading(withErrorOf: nil)
+//        if data.confirmed {
+//            self?.keychainBearerManager.saveKey(data.token)
+//            self?.coordinator?.start()
+//        } else {
+//            self?.router.pushConfirmViewController(token: data.token)
+//        }
+//    } else {
+//        self?.view?.finishLoading(withErrorOf: .emailTextField)
+//    }
+//    
+//case .failure(let error):
+//    self?.view?.finishLoading(withErrorOf: nil)
+//    self?.router.presentWarningAlert(message: error)
+//}

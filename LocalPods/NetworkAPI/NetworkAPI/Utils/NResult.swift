@@ -10,11 +10,14 @@ import Foundation
 /// `Result` с возвращением `String` в случае ошибки
 public enum NResult<Result: Decodable> {
     
-    /// A success, storing a `Decodable` value and httpCode `Int` value
-    case success(data: Result?, httpCode: Int)
+    /// A success 200, storing a `Result` model
+    case success200(data: Result)
+    
+    /// A success (400, 401, 404), storing a `Status400` enum
+    case success400(status: Status400)
     
     /// A failure, storing a `String` value.
-    case failure(String)
+    case failure(error: String)
 }
 
 

@@ -15,18 +15,18 @@ public struct RegisterRequestModel: Encodable {
 }
 
 /// парсинг запроса register
-public struct RegisterResponseModel: Decodable {
+public struct RegisterResponseModel: Decodable, Statusable {
+    public var status: String
     public let isActive: Bool
     public let token: String
 }
 
 
 
-// MARK: - checkAbility
+// MARK: - checkEmail
 /// тело запроса register
-public struct CheckAbilityRequestModel: Decodable {
-    let isActive: Bool
-    let token: String
+public struct CheckEmailRequestModel: Encodable {
+    let email: String
 }
 
 
@@ -45,5 +45,5 @@ public protocol NetworkRegisterProtocol: AnyObject {
     /// - Parameters:
     ///   - email: почта юзера
     ///   - completion: блок с моделью или текстовой ошибкой
-    func checkAbility(email: String, completion: @escaping (NResult<None>) -> Void)
+    func checkEmail(email: String, completion: @escaping (NResult<None>) -> Void)
 }

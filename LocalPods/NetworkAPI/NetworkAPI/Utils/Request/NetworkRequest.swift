@@ -28,7 +28,7 @@ public struct NetworkRequest {
     ///   - httpMethod: метод запроса
     ///   - bearer: токен для запроса пользователя, не обязательно указывать
     public init(stringURL: String, headers: [String : String], httpMethod: HTTPMethod, bearer: String? = nil) {
-        self.stringURL = stringURL
+        self.stringURL = baseUrl + stringURL
         self.headers = headers
         self.httpMethod = httpMethod
         self.bearer = bearer

@@ -31,7 +31,7 @@ protocol StringsValidationProtocol {
 final class StringsValidationManager: StringsValidationProtocol {
     func validate(password: String) -> String? {
         /// проверка на длину не меньше 6
-        guard password.count >= 6  else {
+        guard password.count >= 6 else {
             return "Пароль должен быть от 6 знаков."
         }
         
@@ -44,7 +44,7 @@ final class StringsValidationManager: StringsValidationProtocol {
         let containsLetterRegex = ".*[A-Za-z]+.*"
         let containsLetterTest = NSPredicate(format: "SELF MATCHES %@", containsLetterRegex)
         if !containsLetterTest.evaluate(with: password) {
-            return "Должна быть хотя бы одна букву."
+            return "Должна быть хотя бы одна буква."
         }
         
         /// Проверка на наличие хотя бы одной цифры
@@ -58,14 +58,14 @@ final class StringsValidationManager: StringsValidationProtocol {
         let containsWhitespaceRegex = ".*\\s+.*"
         let containsWhitespaceTest = NSPredicate(format: "SELF MATCHES %@", containsWhitespaceRegex)
         if containsWhitespaceTest.evaluate(with: password) {
-            return "Не должны быть пробелы."
+            return "Не должно быть пробелов."
         }
         
-        /// Проверка на допустимые символы (буквы и цифры)
-        let validCharactersRegex = "^[A-Za-z\\d]+$"
+        /// Проверка на допустимые символы (буквы, цифры и спецсимволы)
+        let validCharactersRegex = "^[A-Za-z\\d!№%._+@#$^&*()]+$"
         let validCharactersTest = NSPredicate(format: "SELF MATCHES %@", validCharactersRegex)
         if !validCharactersTest.evaluate(with: password) {
-            return "Используйте только буквы и цифры."
+            return "Используйте только буквы, цифры и допустимые спецсимволы: !№%.()_+@#$^&*"
         }
         
         return nil

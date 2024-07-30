@@ -23,8 +23,10 @@ public struct ConfirmResertRequestModel: Encodable {
 }
 
 /// парсинг запроса confirmResert
-public struct ConfirmResertResponseModel: Decodable {
-    public let token: String
+public struct ConfirmResertResponseModel: Decodable, Statusable {
+    public var status: String
+    public var token: String
+    public var confirmed: Bool
 }
 
 
@@ -35,8 +37,10 @@ public struct UpdatePasswordRequestModel: Encodable {
     public let password: String
 }
 
-public struct UpdatePasswordResponseModel: Decodable {
-    public let token: String
+public struct UpdatePasswordResponseModel: Decodable, Statusable {
+    public var status: String
+    public var token: String
+    public var confirmed: Bool
 }
 
 

@@ -24,7 +24,7 @@ public final class NetworkService {
     ///   - requestModel: моделька для отправления запроса (опционально)
     ///   - responseModel: моделька для парсинга
     ///   - completion: блок с возвращением модели или ошибки
-    func perform<RequestModel: Encodable, ResponseModel: Decodable>(request: NetworkRequest, requestModel: RequestModel?, completion: @escaping (Result<NetworkResponse<ResponseModel>, NetworkServiceError>) -> Void) {
+    func perform<RequestModel: Encodable, ResponseModel: Decodable & Statusable>(request: NetworkRequest, requestModel: RequestModel?, completion: @escaping (Result<NetworkResponse<ResponseModel>, NetworkRequestError>) -> Void) {
         
         guard var urlComponents = URLComponents(string: request.stringURL) else {
             return completion(.failure(.invalidURL))
@@ -40,6 +40,8 @@ public final class NetworkService {
         var urlRequest = URLRequest(url: url)
         /// метод запроса
         urlRequest.httpMethod = request.httpMethod.rawValue
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         /// добавление bearer токена
         if let token = request.bearer {
@@ -49,7 +51,8 @@ public final class NetworkService {
         /// добавление тела запроса
         if let requestModel {
             do {
-                urlRequest.httpBody = try JSONEncoder().encode(requestModel)
+                let data = try JSONEncoder().encode(requestModel)
+                urlRequest.httpBody = data
             } catch {
                 return completion(.failure(.encodingError(error: error)))
             }
@@ -62,24 +65,30 @@ public final class NetworkService {
             }
             
             guard let data = data else {
-                let responseModel = NetworkResponse<ResponseModel>(httpCode: (response as? HTTPURLResponse)?.statusCode ?? -1,
+                let responseModel = NetworkResponse<ResponseModel>(httpCode: (response as? HTTPURLResponse)?.statusCode ?? -1, status: "",
                                                     data: nil)
                 return completion(.success(responseModel))
             }
             
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-                let responseModel = NetworkResponse<ResponseModel>(httpCode: (response as? HTTPURLResponse)?.statusCode ?? -1,
-                                                    data: nil)
-                return completion(.success(responseModel))
-            }
-            
-            do {
-                let model = try JSONDecoder().decode(ResponseModel.self, from: data)
-                let responseModel = NetworkResponse(httpCode: (response as? HTTPURLResponse)?.statusCode ?? -1,
-                                                    data: model)
-                return completion(.success(responseModel))
-            } catch {
-                completion(.failure(.parsingError(error: error)))
+            if let httpCode = (response as? HTTPURLResponse)?.statusCode, httpCode == 200 {
+                do {
+                    let model = try JSONDecoder().decode(ResponseModel.self, from: data)
+                    let responseModel = NetworkResponse(httpCode: httpCode, status: model.status, data: model)
+                    return completion(.success(responseModel))
+                } catch {
+                    completion(.failure(.parsingError(error: error)))
+                }
+                
+            } else {
+                
+                do {
+                    let model = try JSONDecoder().decode(None.self, from: data)
+                    let responseModel = NetworkResponse<ResponseModel>(httpCode: (response as? HTTPURLResponse)?.statusCode ?? -1, status: model.status, data: nil)
+                    return completion(.success(responseModel))
+                } catch {
+                    completion(.failure(.parsingError(error: error)))
+                }
+                
             }
         }
         
