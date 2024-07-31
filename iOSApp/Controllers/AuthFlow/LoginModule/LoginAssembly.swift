@@ -11,7 +11,7 @@ import NetworkAPI
 final class LoginAssembly {
     
     /// DI
-    private let networkService: NetworkLoginProtocol
+    private let networkService: NetworkAuthProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     private let stringsValidation: StringsValidationProtocol
     
@@ -26,7 +26,7 @@ final class LoginAssembly {
     /// Fabrics
     private let alertFabric: AlertFabricProtocol
     
-    init(networkService: NetworkLoginProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabricProtocol) {
+    init(networkService: NetworkAuthProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabricProtocol) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation

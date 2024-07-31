@@ -212,7 +212,7 @@ extension NewPasswordRecViewController: UITextFieldDelegate {
             secondPasswordTextField.mode = .basic
         }
         
-        if string.count > 1 || string == " " {
+        if string == " " {
             return false
         }
         return true

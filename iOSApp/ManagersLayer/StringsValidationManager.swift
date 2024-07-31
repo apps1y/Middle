@@ -30,44 +30,36 @@ protocol StringsValidationProtocol {
 
 final class StringsValidationManager: StringsValidationProtocol {
     func validate(password: String) -> String? {
-        /// проверка на длину не меньше 6
-        guard password.count >= 6 else {
-            return "Пароль должен быть от 6 знаков."
+        let minLengthRegex = "^.{8,}$"
+        let maxLengthRegex = "^.{0,30}$"
+        let lowercaseRegex = ".*[a-z]+.*"
+        let uppercaseRegex = ".*[A-Z]+.*"
+        let digitRegex = ".*\\d+.*"
+        let specialCharRegex = ".*[#$@!%&*?]+.*"
+        let allowedCharsRegex = "^[A-Za-z\\d#$@!%&*?]+$"
+
+        if !NSPredicate(format: "SELF MATCHES %@", minLengthRegex).evaluate(with: password) {
+            return "Пароль должен быть от 8 символов."
         }
-        
-        /// проверка на длину не больше 12
-        guard password.count <= 12 else {
-            return "Пароль должен быть до 12 знаков."
+        if !NSPredicate(format: "SELF MATCHES %@", maxLengthRegex).evaluate(with: password) {
+            return "Пароль должен быть до 12 символов."
         }
-        
-        /// Проверка на наличие хотя бы одной буквы
-        let containsLetterRegex = ".*[A-Za-z]+.*"
-        let containsLetterTest = NSPredicate(format: "SELF MATCHES %@", containsLetterRegex)
-        if !containsLetterTest.evaluate(with: password) {
-            return "Должна быть хотя бы одна буква."
+        if !NSPredicate(format: "SELF MATCHES %@", lowercaseRegex).evaluate(with: password) {
+            return "Хотя бы одна строчная буква."
         }
-        
-        /// Проверка на наличие хотя бы одной цифры
-        let containsDigitRegex = ".*\\d+.*"
-        let containsDigitTest = NSPredicate(format: "SELF MATCHES %@", containsDigitRegex)
-        if !containsDigitTest.evaluate(with: password) {
-            return "Должна быть хотя бы одна цифра."
+        if !NSPredicate(format: "SELF MATCHES %@", uppercaseRegex).evaluate(with: password) {
+            return "Хотя бы одна заглавная буква."
         }
-        
-        /// Проверка на отсутствие пробелов
-        let containsWhitespaceRegex = ".*\\s+.*"
-        let containsWhitespaceTest = NSPredicate(format: "SELF MATCHES %@", containsWhitespaceRegex)
-        if containsWhitespaceTest.evaluate(with: password) {
-            return "Не должно быть пробелов."
+        if !NSPredicate(format: "SELF MATCHES %@", digitRegex).evaluate(with: password) {
+            return "Хотя бы одна цифра."
         }
-        
-        /// Проверка на допустимые символы (буквы, цифры и спецсимволы)
-        let validCharactersRegex = "^[A-Za-z\\d!№%._+@#$^&*()]+$"
-        let validCharactersTest = NSPredicate(format: "SELF MATCHES %@", validCharactersRegex)
-        if !validCharactersTest.evaluate(with: password) {
-            return "Используйте только буквы, цифры и допустимые спецсимволы: !№%.()_+@#$^&*"
+        if !NSPredicate(format: "SELF MATCHES %@", specialCharRegex).evaluate(with: password) {
+            return "Хотя бы один спецсимвол из #$@!%&*?"
         }
-        
+        if !NSPredicate(format: "SELF MATCHES %@", allowedCharsRegex).evaluate(with: password) {
+            return "Используйте только буквы, цифры и допустимые спецсимволы: #$@!%&*?"
+        }
+
         return nil
     }
     

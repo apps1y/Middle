@@ -22,13 +22,13 @@ final class PasswordPresenter {
     var router: PasswordRouterInput
 
     /// DI
-    private let networkService: NetworkRegisterProtocol
+    private let networkService: NetworkAuthProtocol
     private let stringsValidation: StringsValidationProtocol
     
     /// Data
     private var email: String
     
-    init(view: PasswordViewProtocol?, router: PasswordRouterInput, networkService: NetworkRegisterProtocol, stringsValidation: StringsValidationProtocol, email: String) {
+    init(view: PasswordViewProtocol?, router: PasswordRouterInput, networkService: NetworkAuthProtocol, stringsValidation: StringsValidationProtocol, email: String) {
         self.view = view
         self.router = router
         self.networkService = networkService

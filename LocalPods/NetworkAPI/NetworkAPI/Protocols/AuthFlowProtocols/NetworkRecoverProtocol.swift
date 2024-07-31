@@ -62,6 +62,11 @@ public protocol NetworkRecoverProtocol: AnyObject {
                        completion: @escaping (NResult<ConfirmResertResponseModel>) -> Void)
     
     
+    /// Установка нового пароля
+    /// - Parameters:
+    ///   - token: bearer token
+    ///   - password: новый пароль
+    ///   - completion: возвращает токен при success
     func updatePassword(token: String, password: String,
                         completion: @escaping (NResult<UpdatePasswordResponseModel>) -> Void)
 }

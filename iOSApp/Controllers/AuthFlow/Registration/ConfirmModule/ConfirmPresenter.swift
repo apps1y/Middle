@@ -23,12 +23,12 @@ final class ConfirmPresenter {
     var router: ConfirmRouterInput
     
     /// DI
-    private var networkService: NetworkConfirmProtocol
+    private var networkService: NetworkValidationProtocol
     private var keychainBearerManager: KeychainBearerProtocol
     weak var coordinator: FlowCoordinator?
     private var token: String
 
-    init(view: ConfirmViewProtocol?, router: ConfirmRouterInput, networkService: NetworkConfirmProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?, token: String) {
+    init(view: ConfirmViewProtocol?, router: ConfirmRouterInput, networkService: NetworkValidationProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?, token: String) {
         self.view = view
         self.router = router
         self.networkService = networkService
@@ -44,7 +44,7 @@ extension ConfirmPresenter: ConfirmPresenterProtocol {
         
         let token = token
         
-        networkService.confirm(token: token, code: code) { [weak self] result in
+        networkService.validateAccount(token: token, code: code) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success200(let data):

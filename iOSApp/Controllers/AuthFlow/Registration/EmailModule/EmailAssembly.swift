@@ -12,7 +12,7 @@ final class EmailAssembly {
     
     /// DI
     private let stringsValidation: StringsValidationProtocol
-    private let networkService: NetworkRegisterProtocol
+    private let networkService: NetworkValidationProtocol
     
     /// Assembly's
     private let passwordAssembly: PasswordAssembly
@@ -20,7 +20,7 @@ final class EmailAssembly {
     /// Fabrics
     private let alertFabric: AlertFabricProtocol
     
-    init(stringsValidation: StringsValidationProtocol, networkService: NetworkRegisterProtocol, passwordAssembly: PasswordAssembly, alertFabric: AlertFabricProtocol) {
+    init(stringsValidation: StringsValidationProtocol, networkService: NetworkValidationProtocol, passwordAssembly: PasswordAssembly, alertFabric: AlertFabricProtocol) {
         self.stringsValidation = stringsValidation
         self.networkService = networkService
         self.passwordAssembly = passwordAssembly

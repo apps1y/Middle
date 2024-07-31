@@ -11,14 +11,14 @@ import NetworkAPI
 final class PasswordAssembly {
     
     /// DI
-    private let networkService: NetworkRegisterProtocol
+    private let networkService: NetworkAuthProtocol
     private let stringsValidation: StringsValidationProtocol
     
     /// Assembly's
     private let confirmAssembly: ConfirmAssembly
     private let alertFabric: AlertFabricProtocol
     
-    init(networkService: NetworkRegisterProtocol, stringsValidation: StringsValidationProtocol, confirmAssembly: ConfirmAssembly, alertFabric: AlertFabricProtocol) {
+    init(networkService: NetworkAuthProtocol, stringsValidation: StringsValidationProtocol, confirmAssembly: ConfirmAssembly, alertFabric: AlertFabricProtocol) {
         self.networkService = networkService
         self.stringsValidation = stringsValidation
         self.confirmAssembly = confirmAssembly

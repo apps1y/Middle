@@ -111,10 +111,10 @@ final class EmailRecViewController: UIViewController {
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
-//                -(navigationController?.navigationBar.frame.size.height ?? 25)
-//            )
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
+                -(navigationController?.navigationBar.frame.size.height ?? 25)
+            )
         }
         if #available(iOS 15.0, *) {
             backgroundView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).isActive = true
@@ -217,7 +217,7 @@ extension EmailRecViewController: UITextFieldDelegate {
             errorLabel.hideWarning()
         }
         
-        if string.count > 1 || string == " " {
+        if string == " " {
             return false
         }
         return true

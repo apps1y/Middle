@@ -20,10 +20,10 @@ final class EmailPresenter {
     weak var view: EmailViewProtocol?
     var router: EmailRouterInput
     
-    private let networkService: NetworkRegisterProtocol
+    private let networkService: NetworkValidationProtocol
     private let stringsValidation: StringsValidationProtocol
 
-    init(view: EmailViewProtocol?, router: EmailRouterInput, networkService: NetworkRegisterProtocol, stringsValidation: StringsValidationProtocol) {
+    init(view: EmailViewProtocol?, router: EmailRouterInput, networkService: NetworkValidationProtocol, stringsValidation: StringsValidationProtocol) {
         self.view = view
         self.router = router
         self.networkService = networkService

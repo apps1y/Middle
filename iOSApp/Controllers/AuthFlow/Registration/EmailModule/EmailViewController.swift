@@ -198,7 +198,7 @@ extension EmailViewController: UITextFieldDelegate {
             errorLabel.hideWarning()
         }
         
-        if string.count > 1 || string == " " {
+        if string == " " {
             return false
         }
         return true

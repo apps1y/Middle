@@ -11,7 +11,7 @@ import NetworkAPI
 final class ConfirmAssembly {
     
     /// DI
-    private var networkService: NetworkConfirmProtocol
+    private var networkService: NetworkValidationProtocol
     private var keychainBearerManager: KeychainBearerProtocol
     
     /// app coordinator
@@ -20,7 +20,7 @@ final class ConfirmAssembly {
     /// Fabrics
     private let alertFabric: AlertFabricProtocol
     
-    init(networkService: NetworkConfirmProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabricProtocol) {
+    init(networkService: NetworkValidationProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabricProtocol) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.coordinator = coordinator

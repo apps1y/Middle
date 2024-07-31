@@ -28,14 +28,14 @@ final class LoginPresenter {
     var router: LoginRouterInput
     
     /// DI
-    private let networkService: NetworkLoginProtocol
+    private let networkService: NetworkAuthProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     private let stringsValidation: StringsValidationProtocol
     
     /// координатор для перезагрузки
     weak var coordinator: FlowCoordinator?
 
-    init(view: LoginViewProtocol?, router: LoginRouterInput, networkService: NetworkLoginProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator?) {
+    init(view: LoginViewProtocol?, router: LoginRouterInput, networkService: NetworkAuthProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator?) {
         self.view = view
         self.router = router
         self.networkService = networkService
@@ -85,7 +85,6 @@ extension LoginPresenter: LoginPresenterProtocol {
                     } else {
                         self?.router.pushConfirmViewController(token: data.token)
                     }
-                    
                 case .success400(let status):
                     switch status {
                     case .notFound:
@@ -105,24 +104,3 @@ extension LoginPresenter: LoginPresenterProtocol {
     }
     
 }
-
-
-//switch result {
-//case .success(let data, let httpCode):
-//    print(httpCode)
-//    if let data, httpCode == 200 {
-//        self?.view?.finishLoading(withErrorOf: nil)
-//        if data.confirmed {
-//            self?.keychainBearerManager.saveKey(data.token)
-//            self?.coordinator?.start()
-//        } else {
-//            self?.router.pushConfirmViewController(token: data.token)
-//        }
-//    } else {
-//        self?.view?.finishLoading(withErrorOf: .emailTextField)
-//    }
-//    
-//case .failure(let error):
-//    self?.view?.finishLoading(withErrorOf: nil)
-//    self?.router.presentWarningAlert(message: error)
-//}

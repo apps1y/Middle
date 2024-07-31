@@ -38,6 +38,8 @@ public enum Status400: String, CaseIterable {
     // InvalidEmail Response 400
     case invalidEmail = "INVALID_EMAIL"
     
+    case invalidPassword = "INVALID_PASSWORD"
+    
     // InvalidEmailCode Response 401
     case invalidEmailCode = "INVALID_EMAIL_CODE"
     // Unauthorized Response 401
@@ -69,6 +71,8 @@ public enum Status400: String, CaseIterable {
             return "Неверный пароль."
         case .notFound:
             return "Такого аккаунта не существует."
+        case .invalidPassword:
+            return "Пароль не соответствует критериям."
         }
     }
 }
