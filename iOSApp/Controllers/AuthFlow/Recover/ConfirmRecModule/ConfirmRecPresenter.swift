@@ -12,9 +12,8 @@ protocol ConfirmRecPresenterProtocol: AnyObject {
     
     /// Подтверждение почты
     /// - Parameters:
-    ///   - mail: почта, которую ввели на предыдущем экране
     ///   - code: код подтверждения
-    func confirm(mail: String, with code: String)
+    func confirm(code: String)
 }
 
 final class ConfirmRecPresenter {
@@ -33,10 +32,10 @@ final class ConfirmRecPresenter {
 }
 
 extension ConfirmRecPresenter: ConfirmRecPresenterProtocol {
-    func confirm(mail: String, with code: String) {
+    func confirm(code: String) {
         view?.startLoading()
         
-        networkService.confirmResert(email: mail, code: code) { [weak self] result in
+        networkService.confirmResert(email: email, code: code) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success200(let data):

@@ -1,8 +1,8 @@
 //
-//  KeychainManager.swift
+//  KeychainProtocols.swift
 //  iOSApp
 //
-//  Created by Иван Лукъянычев on 16.07.2024.
+//  Created by Иван Лукъянычев on 01.08.2024.
 //
 
 import Foundation
@@ -18,39 +18,16 @@ protocol KeychainBearerProtocol: AnyObject {
     /// Сохранение ключа
     /// - Parameters:
     ///   - value: ключ для сохранения
-    func saveKey(_ value: String)
+    func save(token: String)
     
     /// Извлечение ключа
-    func getKey() -> String?
+    func getToken() -> String?
     
     /// Удаление ключа
-    func clearKey()
+    func clearToken()
 }
 
 /// информация о пробной подписки
 protocol KeychainSubscriptionProtocol: AnyObject {
-    
-}
-
-final class KeychainManager {
-    private var string: String? = nil
-}
-
-extension KeychainManager: KeychainBearerProtocol {
-    
-    func saveKey(_ value: String) {
-        string = value
-    }
-    
-    func getKey() -> String? {
-        string
-    }
-    
-    func clearKey() {
-        string = nil
-    }
-}
-
-extension KeychainManager: KeychainSubscriptionProtocol {
     
 }

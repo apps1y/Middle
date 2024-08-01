@@ -39,9 +39,10 @@ final class ConfirmRecViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Введите код"
+        label.text = "Введите код подтверждения"
         label.font = .systemFont(ofSize: 28, weight: .semibold)
         label.textAlignment = .center
+        label.numberOfLines = 2
         return label
     }()
     
@@ -101,7 +102,7 @@ final class ConfirmRecViewController: UIViewController {
         
         backgroundScrollView.addSubview(codeField)
         codeField.snp.makeConstraints { make in
-            make.centerY.equalTo(backgroundView.snp.centerY)
+            make.top.equalTo(backgroundView.snp.centerY)
             make.centerX.equalTo(backgroundView)
             make.height.equalTo(60)
             make.width.equalTo(210)
@@ -109,9 +110,9 @@ final class ConfirmRecViewController: UIViewController {
         
         backgroundScrollView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
+            make.leading.trailing.equalTo(backgroundView).inset(20)
             make.bottom.equalTo(codeField.snp.top)
-            make.height.greaterThanOrEqualTo(100)
+            make.height.greaterThanOrEqualTo(120)
         }
         
         backgroundScrollView.addSubview(logoImageView)
@@ -152,7 +153,7 @@ extension ConfirmRecViewController: ConfirmRecViewProtocol {
         spinnerView.stopAnimating()
         navigationItem.leftBarButtonItem?.isEnabled = true
         
-        guard let error else { return }
+        guard error != nil else { return }
         codeField.clearFields()
         codeField.startAgain()
     }
@@ -160,6 +161,6 @@ extension ConfirmRecViewController: ConfirmRecViewProtocol {
 
 extension ConfirmRecViewController: CodeFieldDelegate {
     func didFillAllFields(code: String) {
-        presenter?.confirm(mail: "", with: "")
+        presenter?.confirm(code: code)
     }
 }

@@ -79,6 +79,8 @@ final class NewPasswordRecViewController: UIViewController {
         return view
     }()
     
+    private lazy var errorLabel = ErrorLabel()
+    
     var presenter: NewPasswordRecPresenterProtocol?
 
     override func viewDidLoad() {
@@ -145,6 +147,12 @@ final class NewPasswordRecViewController: UIViewController {
             make.width.equalTo(200)
             make.bottom.equalTo(titleLabel.snp.top)
         }
+        
+        backgroundScrollView.addSubview(errorLabel)
+        errorLabel.snp.makeConstraints { make in
+            make.top.equalTo(secondPasswordTextField.snp.bottom).offset(8)
+            make.leading.trailing.equalTo(backgroundView).inset(20)
+        }
     }
     
     // MARK: - @objc func
@@ -171,6 +179,7 @@ extension NewPasswordRecViewController: NewPasswordRecViewProtocol {
         firstPasswordTextField.isEnabled = false
         secondPasswordTextField.isEnabled = false
         navigationItem.leftBarButtonItem?.isEnabled = false
+        errorLabel.hideWarning()
     }
     
     func finishLoading(with error: (PasswordFieldChoise, String)?) {
@@ -178,8 +187,10 @@ extension NewPasswordRecViewController: NewPasswordRecViewProtocol {
         firstPasswordTextField.isEnabled = true
         secondPasswordTextField.isEnabled = true
         navigationItem.leftBarButtonItem?.isEnabled = true
+        errorLabel.hideWarning()
         
         guard let (field, text) = error else { return }
+        errorLabel.showWarning(message: text)
         // errorLabel.text = text
         switch field {
         case .first:
@@ -205,6 +216,8 @@ extension NewPasswordRecViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        errorLabel.hideWarning()
+        
         if textField == firstPasswordTextField && firstPasswordTextField.mode == .error {
             firstPasswordTextField.mode = .basic
         }

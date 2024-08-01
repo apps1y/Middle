@@ -39,7 +39,7 @@ extension EmailRecPresenter: EmailRecPresenterProtocol {
         networkService.sendCode(email: email) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success200(let data):
+                case .success200(_):
                     self?.view?.finishLoading(with: nil)
                     self?.router.pushConfirmView(email: email)
                 case .success400(let status):

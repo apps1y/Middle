@@ -58,7 +58,6 @@ final class PasswordViewController: UIViewController {
         field.delegate = self
         field.returnKeyType = .continue
         field.addShowPasswordButton()
-        field.text = "qqqqq1"
         return field
     }()
     
@@ -69,7 +68,6 @@ final class PasswordViewController: UIViewController {
         field.delegate = self
         field.returnKeyType = .done
         field.addShowPasswordButton()
-        field.text = "qqqqq1"
         return field
     }()
     

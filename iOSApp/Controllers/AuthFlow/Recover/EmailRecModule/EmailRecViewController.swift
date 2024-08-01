@@ -29,6 +29,7 @@ final class EmailRecViewController: UIViewController {
     
     private lazy var backgroundView: UIView = {
         let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -43,9 +44,8 @@ final class EmailRecViewController: UIViewController {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "На нее придет код для сброса пароля."
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textAlignment = .center
-        label.textColor = .secondaryLabel
         return label
     }()
     
@@ -115,11 +115,11 @@ final class EmailRecViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
                 -(navigationController?.navigationBar.frame.size.height ?? 25)
             )
-        }
-        if #available(iOS 15.0, *) {
-            backgroundView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).isActive = true
-        } else {
-            backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+            if #available(iOS 15.0, *) {
+                make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
+            } else {
+                make.bottom.equalToSuperview()
+            }
         }
         
         view.addSubview(backgroundScrollView)

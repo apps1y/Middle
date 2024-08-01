@@ -80,7 +80,7 @@ extension LoginPresenter: LoginPresenterProtocol {
                 case .success200(let data):
                     self?.view?.finishLoading(withErrorOf: nil)
                     if data.confirmed {
-                        self?.keychainBearerManager.saveKey(data.token)
+                        self?.keychainBearerManager.save(token: data.token)
                         self?.coordinator?.start()
                     } else {
                         self?.router.pushConfirmViewController(token: data.token)

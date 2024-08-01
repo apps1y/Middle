@@ -47,9 +47,9 @@ extension ConfirmPresenter: ConfirmPresenterProtocol {
         networkService.validateAccount(token: token, code: code) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success200(let data):
+                case .success200(_):
                     self?.view?.finishLoading(error: nil)
-                    self?.keychainBearerManager.saveKey(token)
+                    self?.keychainBearerManager.save(token: token)
                     self?.coordinator?.start()
                 case .success400(let status):
                     self?.view?.finishLoading(error: status.localizedDescription)

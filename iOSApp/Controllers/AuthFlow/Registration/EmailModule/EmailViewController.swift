@@ -59,7 +59,6 @@ final class EmailViewController: UIViewController {
         field.textContentType = .none
         field.delegate = self
         field.returnKeyType = .done
-        field.text = "vanyaluk@mail.ru"
         return field
     }()
     
@@ -114,7 +113,7 @@ final class EmailViewController: UIViewController {
         backgroundScrollView.addSubview(emailTextField)
         emailTextField.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.centerY.equalTo(backgroundView.snp.centerY)
+            make.top.equalTo(backgroundView.snp.centerY)
             make.height.equalTo(50)
         }
         

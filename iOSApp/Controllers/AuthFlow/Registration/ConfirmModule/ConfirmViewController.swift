@@ -39,9 +39,10 @@ final class ConfirmViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Введите код"
+        label.text = "Введите код подтверждения"
         label.font = .systemFont(ofSize: 28, weight: .semibold)
         label.textAlignment = .center
+        label.numberOfLines = 2
         return label
     }()
     
@@ -101,7 +102,7 @@ final class ConfirmViewController: UIViewController {
         
         backgroundScrollView.addSubview(codeField)
         codeField.snp.makeConstraints { make in
-            make.centerY.equalTo(backgroundView.snp.centerY)
+            make.top.equalTo(backgroundView.snp.centerY)
             make.centerX.equalTo(backgroundView)
             make.height.equalTo(60)
             make.width.equalTo(210)
@@ -109,7 +110,7 @@ final class ConfirmViewController: UIViewController {
         
         backgroundScrollView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
+            make.leading.trailing.equalTo(backgroundView).inset(20)
             make.bottom.equalTo(codeField.snp.top)
             make.height.greaterThanOrEqualTo(100)
         }

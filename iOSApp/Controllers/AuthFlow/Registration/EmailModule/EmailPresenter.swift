@@ -42,7 +42,7 @@ extension EmailPresenter: EmailPresenterProtocol {
         networkService.checkEmail(email: email) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success200(let data):
+                case .success200(_):
                     self?.view?.finishLoading(with: nil)
                     self?.router.pushPasswordView(email: email)
                 case .success400(let status):
