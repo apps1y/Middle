@@ -21,9 +21,9 @@ final class EmailRouter: EmailRouterInput {
     weak var viewController: EmailViewController?
     
     private let passwordAssembly: PasswordAssembly
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(passwordAssembly: PasswordAssembly, alertFabric: AlertFabricProtocol) {
+    init(passwordAssembly: PasswordAssembly, alertFabric: AlertFabric) {
         self.passwordAssembly = passwordAssembly
         self.alertFabric = alertFabric
     }

@@ -46,7 +46,7 @@ public protocol NetworkAuthProtocol: AnyObject {
     ///   - password: пароль юзера
     ///   - completion: блок с моделькой или текстовой ошибкой
     func login(email: String, password: String,
-               completion: @escaping (NResult<LoginResponseModel>) -> Void)
+               completion: @escaping (AuthResult<LoginResponseModel>) -> Void)
     
     /// Регистрация пользователя
     /// - Parameters:
@@ -54,6 +54,6 @@ public protocol NetworkAuthProtocol: AnyObject {
     ///   - password: пароль юзера
     ///   - completion: блок с моделью или текстовой ошибкой
     func register(email: String, password: String,
-                  completion: @escaping (NResult<RegisterResponseModel>) -> Void)
+                  completion: @escaping (AuthResult<RegisterResponseModel>) -> Void)
     
 }

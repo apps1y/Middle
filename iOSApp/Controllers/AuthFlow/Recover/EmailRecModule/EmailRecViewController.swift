@@ -111,10 +111,7 @@ final class EmailRecViewController: UIViewController {
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
-                -(navigationController?.navigationBar.frame.size.height ?? 25)
-            )
+            make.leading.trailing.top.equalToSuperview()
             if #available(iOS 15.0, *) {
                 make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
             } else {
@@ -130,7 +127,7 @@ final class EmailRecViewController: UIViewController {
         backgroundScrollView.addSubview(emailTextField)
         emailTextField.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.centerY.equalTo(backgroundView.snp.centerY)
+            make.top.equalTo(backgroundView.snp.centerY).offset(20)
             make.height.equalTo(50)
         }
         
@@ -141,31 +138,24 @@ final class EmailRecViewController: UIViewController {
             make.height.equalTo(50)
         }
         
-        backgroundScrollView.addSubview(titleView)
-        titleView.snp.makeConstraints { make in
+        backgroundScrollView.addSubview(descriptionLabel)
+        descriptionLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(emailTextField.snp.top)
-            make.height.equalTo(70)
+            make.bottom.equalTo(emailTextField.snp.top).offset(-20)
         }
         
         backgroundScrollView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(titleView.snp.centerY).offset(-5)
+            make.bottom.equalTo(descriptionLabel.snp.top).offset(-5)
         }
         
-        backgroundScrollView.addSubview(descriptionLabel)
-        descriptionLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.top.equalTo(titleView.snp.centerY).offset(5)
-        }
-        
-        backgroundScrollView.addSubview(logoImageView)
+        view.addSubview(logoImageView)
         logoImageView.snp.makeConstraints { make in
-            make.top.equalTo(backgroundView)
             make.centerX.equalTo(backgroundView)
-            make.width.equalTo(200)
-            make.bottom.equalTo(titleView.snp.top)
+            make.width.equalTo(170)
+            make.bottom.equalTo(titleLabel.snp.top)
+            make.height.equalTo(170)
         }
         
         backgroundScrollView.addSubview(errorLabel)

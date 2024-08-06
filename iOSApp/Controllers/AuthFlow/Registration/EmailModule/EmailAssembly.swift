@@ -18,9 +18,9 @@ final class EmailAssembly {
     private let passwordAssembly: PasswordAssembly
     
     /// Fabrics
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(stringsValidation: StringsValidationProtocol, networkService: NetworkValidationProtocol, passwordAssembly: PasswordAssembly, alertFabric: AlertFabricProtocol) {
+    init(stringsValidation: StringsValidationProtocol, networkService: NetworkValidationProtocol, passwordAssembly: PasswordAssembly, alertFabric: AlertFabric) {
         self.stringsValidation = stringsValidation
         self.networkService = networkService
         self.passwordAssembly = passwordAssembly

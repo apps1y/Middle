@@ -32,9 +32,9 @@ final class LoginRouter: LoginRouterInput {
     private let confirmAssembly: ConfirmAssembly
     
     /// Fabrics
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly, alertFabric: AlertFabricProtocol) {
+    init(emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly, alertFabric: AlertFabric) {
         self.emailAssembly = emailAssembly
         self.emailRecAssembly = emailRecAssembly
         self.confirmAssembly = confirmAssembly

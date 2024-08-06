@@ -12,7 +12,7 @@ import Foundation
 public struct NetworkRequest {
     
     /// const адрес сервера для запроса
-    private let baseUrl: String = "https://defer-api.linuxfight.me"
+    private let baseUrl: String = "https://middle-app.ru"
     
     public let stringURL: String  /// строковый готовый URL
     

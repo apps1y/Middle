@@ -9,18 +9,33 @@
 /* Begin PBXBuildFile section */
 		52039B4D2C4B918A00EA26DC /* AppUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 52039B4C2C4B918A00EA26DC /* AppUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52039B542C4B926400EA26DC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52039B532C4B926300EA26DC /* TextField.swift */; };
+		529564F22C6279C8007E3352 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564F12C6279C8007E3352 /* SettingsTableCell.swift */; };
+		529564FD2C62ACE8007E3352 /* CodeField1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564FC2C62ACE8007E3352 /* CodeField1.swift */; };
 		52971D252C4BD3CD00F44C4F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52971D242C4BD3CD00F44C4F /* Button.swift */; };
-		52ABB7F12C55058F004551B5 /* CodeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7F02C55058F004551B5 /* CodeField.swift */; };
 		52ABB7F32C5505D2004551B5 /* ErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7F22C5505D2004551B5 /* ErrorLabel.swift */; };
 		52FED2522C4CF2DA00AAF16B /* UIVerifyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2512C4CF2DA00AAF16B /* UIVerifyTextField.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		529564F72C62A685007E3352 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		52039B492C4B918A00EA26DC /* AppUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52039B4C2C4B918A00EA26DC /* AppUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUI.h; sourceTree = "<group>"; };
 		52039B532C4B926300EA26DC /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		529564F12C6279C8007E3352 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
+		529564FC2C62ACE8007E3352 /* CodeField1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeField1.swift; sourceTree = "<group>"; };
 		52971D242C4BD3CD00F44C4F /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		52ABB7F02C55058F004551B5 /* CodeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeField.swift; sourceTree = "<group>"; };
 		52ABB7F22C5505D2004551B5 /* ErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLabel.swift; sourceTree = "<group>"; };
 		52FED2512C4CF2DA00AAF16B /* UIVerifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVerifyTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +74,7 @@
 				52039B532C4B926300EA26DC /* TextField.swift */,
 				52971D242C4BD3CD00F44C4F /* Button.swift */,
 				52ABB7F22C5505D2004551B5 /* ErrorLabel.swift */,
+				529564F12C6279C8007E3352 /* SettingsTableCell.swift */,
 				52FED2502C4CF25500AAF16B /* UIVerifyView */,
 			);
 			path = AppUI;
@@ -68,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				52FED2512C4CF2DA00AAF16B /* UIVerifyTextField.swift */,
-				52ABB7F02C55058F004551B5 /* CodeField.swift */,
+				529564FC2C62ACE8007E3352 /* CodeField1.swift */,
 			);
 			path = UIVerifyView;
 			sourceTree = "<group>";
@@ -95,12 +111,15 @@
 				52039B452C4B918A00EA26DC /* Sources */,
 				52039B462C4B918A00EA26DC /* Frameworks */,
 				52039B472C4B918A00EA26DC /* Resources */,
+				529564F72C62A685007E3352 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = AppUI;
+			packageProductDependencies = (
+			);
 			productName = AppUI;
 			productReference = 52039B492C4B918A00EA26DC /* AppUI.framework */;
 			productType = "com.apple.product-type.framework";
@@ -129,6 +148,8 @@
 				Base,
 			);
 			mainGroup = 52039B3F2C4B918A00EA26DC;
+			packageReferences = (
+			);
 			productRefGroup = 52039B4A2C4B918A00EA26DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,9 +175,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				52039B542C4B926400EA26DC /* TextField.swift in Sources */,
-				52ABB7F12C55058F004551B5 /* CodeField.swift in Sources */,
 				52FED2522C4CF2DA00AAF16B /* UIVerifyTextField.swift in Sources */,
+				529564F22C6279C8007E3352 /* SettingsTableCell.swift in Sources */,
 				52ABB7F32C5505D2004551B5 /* ErrorLabel.swift in Sources */,
+				529564FD2C62ACE8007E3352 /* CodeField1.swift in Sources */,
 				52971D252C4BD3CD00F44C4F /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

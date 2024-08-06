@@ -16,9 +16,9 @@ final class PasswordAssembly {
     
     /// Assembly's
     private let confirmAssembly: ConfirmAssembly
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(networkService: NetworkAuthProtocol, stringsValidation: StringsValidationProtocol, confirmAssembly: ConfirmAssembly, alertFabric: AlertFabricProtocol) {
+    init(networkService: NetworkAuthProtocol, stringsValidation: StringsValidationProtocol, confirmAssembly: ConfirmAssembly, alertFabric: AlertFabric) {
         self.networkService = networkService
         self.stringsValidation = stringsValidation
         self.confirmAssembly = confirmAssembly

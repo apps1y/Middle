@@ -19,9 +19,9 @@ final class ConfirmRecRouter: ConfirmRecRouterInput {
     private var newPasswordRecAssembly: NewPasswordRecAssembly
     
     /// Fabrics
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(newPasswordRecAssembly: NewPasswordRecAssembly, alertFabric: AlertFabricProtocol) {
+    init(newPasswordRecAssembly: NewPasswordRecAssembly, alertFabric: AlertFabric) {
         self.newPasswordRecAssembly = newPasswordRecAssembly
         self.alertFabric = alertFabric
     }

@@ -17,9 +17,9 @@ final class ConfirmRecAssembly {
     private let newPasswordRecAssembly: NewPasswordRecAssembly
     
     /// Fabrics
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(networkService: NetworkRecoverProtocol, newPasswordRecAssembly: NewPasswordRecAssembly, alertFabric: AlertFabricProtocol) {
+    init(networkService: NetworkRecoverProtocol, newPasswordRecAssembly: NewPasswordRecAssembly, alertFabric: AlertFabric) {
         self.networkService = networkService
         self.newPasswordRecAssembly = newPasswordRecAssembly
         self.alertFabric = alertFabric

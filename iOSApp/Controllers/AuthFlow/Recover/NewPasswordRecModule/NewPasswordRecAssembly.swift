@@ -19,9 +19,9 @@ final class NewPasswordRecAssembly {
     weak var coordinator: FlowCoordinator?
     
     /// Fabrics
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(networkService: NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabricProtocol) {
+    init(networkService: NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabric) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation

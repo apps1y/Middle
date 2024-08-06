@@ -14,9 +14,9 @@ protocol ConfirmRouterInput {
 final class ConfirmRouter: ConfirmRouterInput {
     weak var viewController: ConfirmViewController?
     
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(alertFabric: AlertFabricProtocol) {
+    init(alertFabric: AlertFabric) {
         self.alertFabric = alertFabric
     }
     

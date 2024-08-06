@@ -7,15 +7,12 @@
 
 import UIKit
 
-protocol AlertFabricProtocol {
+
+final class AlertFabric {
     
     /// предупреждающий alert
     /// - Parameter message: текст предупреждения
     /// - Returns: настроенный alert
-    func errorAuthAlert(message: String) -> UIAlertController
-}
-
-final class AlertFabric: AlertFabricProtocol {
     func errorAuthAlert(message: String) -> UIAlertController {
         let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
         let submitAction = UIAlertAction(title: "Понятно", style: .default)

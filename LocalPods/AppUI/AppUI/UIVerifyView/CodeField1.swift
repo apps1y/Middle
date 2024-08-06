@@ -1,12 +1,13 @@
 //
-//  CodeField.swift
+//  CodeField1.swift
 //  AppUI
 //
-//  Created by Иван Лукъянычев on 27.07.2024.
+//  Created by Иван Лукъянычев on 06.08.2024.
 //
 
 import UIKit
 import SnapKit
+
 
 public protocol CodeFieldDelegate: AnyObject {
     
@@ -96,6 +97,3 @@ extension CodeField: UIVerifyTextFieldDelegate {
         }
     }
 }
-
-
-

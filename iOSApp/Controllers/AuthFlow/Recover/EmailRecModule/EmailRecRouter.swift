@@ -19,9 +19,9 @@ final class EmailRecRouter: EmailRecRouterInput {
     private let confirmRecAssembly: ConfirmRecAssembly
     
     /// Fabrics
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(confirmRecAssembly: ConfirmRecAssembly, alertFabric: AlertFabricProtocol) {
+    init(confirmRecAssembly: ConfirmRecAssembly, alertFabric: AlertFabric) {
         self.confirmRecAssembly = confirmRecAssembly
         self.alertFabric = alertFabric
     }

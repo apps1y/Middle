@@ -9,7 +9,7 @@ import Foundation
 
 extension NetworkService: NetworkAuthProtocol {
     public func login(email: String, password: String,
-                      completion: @escaping (NResult<LoginResponseModel>) -> Void) {
+                      completion: @escaping (AuthResult<LoginResponseModel>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/auth/login", headers: [:], httpMethod: .post)
         let requestModel = LoginRequestModel(email: email, password: password)
         
@@ -20,7 +20,7 @@ extension NetworkService: NetworkAuthProtocol {
     }
     
     public func register(email: String, password: String,
-                         completion: @escaping (NResult<RegisterResponseModel>) -> Void) {
+                         completion: @escaping (AuthResult<RegisterResponseModel>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/auth/register", headers: [:], httpMethod: .post)
         let requestModel = RegisterRequestModel(email: email, password: password)
         

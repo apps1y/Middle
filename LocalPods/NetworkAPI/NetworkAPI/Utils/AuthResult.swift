@@ -1,14 +1,14 @@
 //
-//  NetworkResult.swift
+//  AuthResult.swift
 //  NetworkAPI
 //
-//  Created by Иван Лукъянычев on 24.07.2024.
+//  Created by Иван Лукъянычев on 05.08.2024.
 //
 
 import Foundation
 
 /// `Result` с возвращением `String` в случае ошибки
-public enum NResult<Result: Decodable> {
+public enum AuthResult<Result: Decodable> {
     
     /// A success 200, storing a `Result` model
     case success200(data: Result)
@@ -19,5 +19,3 @@ public enum NResult<Result: Decodable> {
     /// A failure, storing a `String` value.
     case failure(error: String)
 }
-
-

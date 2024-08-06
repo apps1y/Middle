@@ -20,9 +20,9 @@ final class PasswordRouter: PasswordRouterInput {
     private let confirmAssembly: ConfirmAssembly
     
     /// Fabrics
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(confirmAssembly: ConfirmAssembly, alertFabric: AlertFabricProtocol) {
+    init(confirmAssembly: ConfirmAssembly, alertFabric: AlertFabric) {
         self.confirmAssembly = confirmAssembly
         self.alertFabric = alertFabric
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 extension NetworkService: NetworkValidationProtocol {
-    public func validateAccount(token: String, code: String, completion: @escaping (NResult<None>) -> Void) {
+    public func validateAccount(token: String, code: String, completion: @escaping (AuthResult<None>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/validate/account", headers: [:], httpMethod: .post, bearer: token)
         let requestModel = ValidateAccountRequestModel(code: code)
         
@@ -18,7 +18,7 @@ extension NetworkService: NetworkValidationProtocol {
         }
     }
     
-    public func checkEmail(email: String, completion: @escaping (NResult<None>) -> Void) {
+    public func checkEmail(email: String, completion: @escaping (AuthResult<None>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/validate/email", headers: [:], httpMethod: .post)
         let requestModel = CheckEmailRequestModel(email: email)
         

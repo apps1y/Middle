@@ -84,7 +84,7 @@ final class ConfirmRecViewController: UIViewController {
         
         view.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
+            make.leading.top.trailing.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
                 -(navigationController?.navigationBar.frame.size.height ?? -25)
             )

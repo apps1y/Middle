@@ -18,9 +18,9 @@ final class EmailRecAssembly {
     private let confirmRecAssembly: ConfirmRecAssembly
     
     /// Fabrics
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(networkService: NetworkRecoverProtocol, stringsValidation: StringsValidationProtocol, confirmRecAssembly: ConfirmRecAssembly, alertFabric: AlertFabricProtocol) {
+    init(networkService: NetworkRecoverProtocol, stringsValidation: StringsValidationProtocol, confirmRecAssembly: ConfirmRecAssembly, alertFabric: AlertFabric) {
         self.networkService = networkService
         self.stringsValidation = stringsValidation
         self.confirmRecAssembly = confirmRecAssembly

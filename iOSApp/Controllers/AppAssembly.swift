@@ -15,13 +15,14 @@ final class AppAssembly {
         // MARK: - DI
         /// NetworkLayer
         /// Для тестирования есть `NetworkServiceStub`
-        let networkService = NetworkService()
+        // let networkService = NetworkService()
         /// uncomment next line to use network stubs
         // let networkStub = NetworkServiceStub()
+        let networkService = NetworkServiceStub()
         
         
         /// StorageLayer
-        let databaseManager = DatabaseManager()
+        let databaseManager = DatabasePreviewsProtocol()
         
         let keychainManager = KeychainStub()
         // let keychainManager = KeychainManager()

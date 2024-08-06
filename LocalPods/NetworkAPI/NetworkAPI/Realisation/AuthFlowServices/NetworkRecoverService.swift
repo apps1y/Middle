@@ -8,7 +8,7 @@
 import Foundation
 
 extension NetworkService: NetworkRecoverProtocol {
-    public func sendCode(email: String, completion: @escaping (NResult<None>) -> Void) {
+    public func sendCode(email: String, completion: @escaping (AuthResult<None>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/recovery/send-code", headers: [:], httpMethod: .post)
         let requestModel = SendCodeRequestModel(email: email)
         
@@ -18,7 +18,7 @@ extension NetworkService: NetworkRecoverProtocol {
         }
     }
     
-    public func confirmResert(email: String, code: String, completion: @escaping (NResult<ConfirmResertResponseModel>) -> Void) {
+    public func confirmResert(email: String, code: String, completion: @escaping (AuthResult<ConfirmResertResponseModel>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/recovery/confirm-reset", headers: [:], httpMethod: .post)
         let requestModel = ConfirmResertRequestModel(code: code, email: email)
         
@@ -29,7 +29,7 @@ extension NetworkService: NetworkRecoverProtocol {
     }
     
     public func updatePassword(token: String, password: String,
-                               completion: @escaping (NResult<UpdatePasswordResponseModel>) -> Void) {
+                               completion: @escaping (AuthResult<UpdatePasswordResponseModel>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/recovery/update-password", headers: [:], httpMethod: .post, bearer: token)
         let requestModel = UpdatePasswordRequestModel(password: password)
         

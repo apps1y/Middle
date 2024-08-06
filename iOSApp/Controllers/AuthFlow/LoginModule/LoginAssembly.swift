@@ -24,9 +24,9 @@ final class LoginAssembly {
     weak var coordinator: FlowCoordinator?
     
     /// Fabrics
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(networkService: NetworkAuthProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabricProtocol) {
+    init(networkService: NetworkAuthProtocol, keychainBearerManager: KeychainBearerProtocol, stringsValidation: StringsValidationProtocol, emailAssembly: EmailAssembly, emailRecAssembly: EmailRecAssembly, confirmAssembly: ConfirmAssembly, coordinator: FlowCoordinator? = nil, alertFabric: AlertFabric) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.stringsValidation = stringsValidation

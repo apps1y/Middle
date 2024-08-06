@@ -9,7 +9,7 @@ import Foundation
 
 class StatusValidation {
     
-    static func validate<ResponseModel: Statusable & Decodable>(result: Result<NetworkResponse<ResponseModel>, NetworkRequestError>) -> NResult<ResponseModel> {
+    static func validate<ResponseModel: Statusable & Decodable>(result: Result<NetworkResponse<ResponseModel>, NetworkRequestError>) -> AuthResult<ResponseModel> {
         switch result {
         case .success(let response):
             switch response.httpCode {

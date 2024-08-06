@@ -15,9 +15,9 @@ final class NewPasswordRecRouter: NewPasswordRecRouterInput {
     weak var viewController: NewPasswordRecViewController?
     
     /// Fabrics
-    private let alertFabric: AlertFabricProtocol
+    private let alertFabric: AlertFabric
     
-    init(alertFabric: AlertFabricProtocol) {
+    init(alertFabric: AlertFabric) {
         self.alertFabric = alertFabric
     }
     

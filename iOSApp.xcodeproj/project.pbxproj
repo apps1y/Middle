@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		529564F92C62A8F6007E3352 /* CashingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564F82C62A8F6007E3352 /* CashingRepository.swift */; };
 		529BF93A2C4579C1009954D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9392C4579C1009954D5 /* AppDelegate.swift */; };
 		529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF93B2C4579C1009954D5 /* SceneDelegate.swift */; };
 		529BF9432C4579C3009954D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 529BF9422C4579C3009954D5 /* Assets.xcassets */; };
@@ -17,7 +18,6 @@
 		529BF95F2C459D3C009954D5 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF95B2C459D3C009954D5 /* LoginRouter.swift */; };
 		529BF9602C459D3C009954D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF95C2C459D3C009954D5 /* LoginViewController.swift */; };
 		529BF9612C459D3C009954D5 /* LoginAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF95D2C459D3C009954D5 /* LoginAssembly.swift */; };
-		529BF9732C46D9B6009954D5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9722C46D9B6009954D5 /* StorageManager.swift */; };
 		529BF9752C46DBE2009954D5 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9742C46DBE2009954D5 /* KeychainManager.swift */; };
 		529BF9792C46EAEF009954D5 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9782C46EAEF009954D5 /* UserDefaultsManager.swift */; };
 		529BF97B2C46F8C7009954D5 /* StringsValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF97A2C46F8C7009954D5 /* StringsValidationManager.swift */; };
@@ -60,11 +60,12 @@
 		52ABB7B42C502FE9004551B5 /* NewPasswordRecAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7B02C502FE9004551B5 /* NewPasswordRecAssembly.swift */; };
 		52ABB7F82C553878004551B5 /* AlertFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7F72C553878004551B5 /* AlertFabric.swift */; };
 		52ABB7FA2C5642A3004551B5 /* ConfirmRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7F92C5642A3004551B5 /* ConfirmRouter.swift */; };
+		52B3E81B2C61EB5F00CCCF26 /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E81A2C61EB5F00CCCF26 /* CoreDataProtocol.swift */; };
 		52CF74812C5BB20B00E0AA7D /* KeychainStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF74802C5BB20B00E0AA7D /* KeychainStubs.swift */; };
 		52CF74832C5BB22F00E0AA7D /* KeychainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF74822C5BB22F00E0AA7D /* KeychainProtocols.swift */; };
-		52CF74882C5BB27700E0AA7D /* StorageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF74872C5BB27700E0AA7D /* StorageProtocols.swift */; };
-		52CF748A2C5BB28300E0AA7D /* StorageStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF74892C5BB28300E0AA7D /* StorageStubs.swift */; };
-		52CF748E2C5BB37000E0AA7D /* StringsValidationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF748D2C5BB37000E0AA7D /* StringsValidationProtocol.swift */; };
+		52FAB8C92C620AB5001C6697 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FAB8C82C620AB5001C6697 /* CoreDataService.swift */; };
+		52FAB8CF2C621524001C6697 /* iOSAppCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52FAB8CD2C621524001C6697 /* iOSAppCoreData.xcdatamodeld */; };
+		52FAB8D32C621574001C6697 /* TelegramAccount+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FAB8D12C621574001C6697 /* TelegramAccount+CoreData.swift */; };
 		52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */; };
 		52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */; };
 		52FED25B2C4D0E1700AAF16B /* ConfirmAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		529564F82C62A8F6007E3352 /* CashingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashingRepository.swift; sourceTree = "<group>"; };
 		529BF9362C4579C1009954D5 /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529BF9392C4579C1009954D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		529BF93B2C4579C1009954D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +86,6 @@
 		529BF95B2C459D3C009954D5 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		529BF95C2C459D3C009954D5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		529BF95D2C459D3C009954D5 /* LoginAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembly.swift; sourceTree = "<group>"; };
-		529BF9722C46D9B6009954D5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		529BF9742C46DBE2009954D5 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		529BF9782C46EAEF009954D5 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		529BF97A2C46F8C7009954D5 /* StringsValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsValidationManager.swift; sourceTree = "<group>"; };
@@ -127,11 +128,12 @@
 		52ABB7B02C502FE9004551B5 /* NewPasswordRecAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordRecAssembly.swift; sourceTree = "<group>"; };
 		52ABB7F72C553878004551B5 /* AlertFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFabric.swift; sourceTree = "<group>"; };
 		52ABB7F92C5642A3004551B5 /* ConfirmRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmRouter.swift; sourceTree = "<group>"; };
+		52B3E81A2C61EB5F00CCCF26 /* CoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		52CF74802C5BB20B00E0AA7D /* KeychainStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStubs.swift; sourceTree = "<group>"; };
 		52CF74822C5BB22F00E0AA7D /* KeychainProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainProtocols.swift; sourceTree = "<group>"; };
-		52CF74872C5BB27700E0AA7D /* StorageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProtocols.swift; sourceTree = "<group>"; };
-		52CF74892C5BB28300E0AA7D /* StorageStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageStubs.swift; sourceTree = "<group>"; };
-		52CF748D2C5BB37000E0AA7D /* StringsValidationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsValidationProtocol.swift; sourceTree = "<group>"; };
+		52FAB8C82C620AB5001C6697 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		52FAB8CE2C621524001C6697 /* iOSAppCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSAppCoreData.xcdatamodel; sourceTree = "<group>"; };
+		52FAB8D12C621574001C6697 /* TelegramAccount+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TelegramAccount+CoreData.swift"; sourceTree = "<group>"; };
 		52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPresenter.swift; sourceTree = "<group>"; };
 		52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAssembly.swift; sourceTree = "<group>"; };
@@ -183,7 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				529BF94E2C458746009954D5 /* Application */,
-				529BF9622C463E80009954D5 /* ManagersLayer */,
+				529BF9622C463E80009954D5 /* DataLayer */,
+				52B3E8172C61EB0B00CCCF26 /* ManagersLayer */,
 				52ABB7F62C553202004551B5 /* Fabrics */,
 				529BF94F2C45874E009954D5 /* Controllers */,
 				529BF94D2C458739009954D5 /* SupportingFiles */,
@@ -252,15 +255,14 @@
 			path = LoginModule;
 			sourceTree = "<group>";
 		};
-		529BF9622C463E80009954D5 /* ManagersLayer */ = {
+		529BF9622C463E80009954D5 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				52CF74852C5BB23900E0AA7D /* Keychain */,
 				52CF74862C5BB24B00E0AA7D /* Storage */,
+				52CF74852C5BB23900E0AA7D /* Keychain */,
 				52CF748B2C5BB32D00E0AA7D /* UserDefaults */,
-				52CF748C2C5BB35800E0AA7D /* StringsValidation */,
 			);
-			path = ManagersLayer;
+			path = DataLayer;
 			sourceTree = "<group>";
 		};
 		529BF97C2C46F970009954D5 /* Registration */ = {
@@ -408,6 +410,24 @@
 			path = Fabrics;
 			sourceTree = "<group>";
 		};
+		52B3E8172C61EB0B00CCCF26 /* ManagersLayer */ = {
+			isa = PBXGroup;
+			children = (
+				529564F82C62A8F6007E3352 /* CashingRepository.swift */,
+				529BF97A2C46F8C7009954D5 /* StringsValidationManager.swift */,
+			);
+			path = ManagersLayer;
+			sourceTree = "<group>";
+		};
+		52B3E8192C61EB4900CCCF26 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				52FAB8D12C621574001C6697 /* TelegramAccount+CoreData.swift */,
+				52FAB8CD2C621524001C6697 /* iOSAppCoreData.xcdatamodeld */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
 		52CF74852C5BB23900E0AA7D /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,9 +441,9 @@
 		52CF74862C5BB24B00E0AA7D /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				52CF74872C5BB27700E0AA7D /* StorageProtocols.swift */,
-				529BF9722C46D9B6009954D5 /* StorageManager.swift */,
-				52CF74892C5BB28300E0AA7D /* StorageStubs.swift */,
+				52B3E81A2C61EB5F00CCCF26 /* CoreDataProtocol.swift */,
+				52FAB8C82C620AB5001C6697 /* CoreDataService.swift */,
+				52B3E8192C61EB4900CCCF26 /* CoreDataModels */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -434,15 +454,6 @@
 				529BF9782C46EAEF009954D5 /* UserDefaultsManager.swift */,
 			);
 			path = UserDefaults;
-			sourceTree = "<group>";
-		};
-		52CF748C2C5BB35800E0AA7D /* StringsValidation */ = {
-			isa = PBXGroup;
-			children = (
-				52CF748D2C5BB37000E0AA7D /* StringsValidationProtocol.swift */,
-				529BF97A2C46F8C7009954D5 /* StringsValidationManager.swift */,
-			);
-			path = StringsValidation;
 			sourceTree = "<group>";
 		};
 		52FED2532C4D0DE200AAF16B /* ConfirmModule */ = {
@@ -583,11 +594,13 @@
 				529BF9792C46EAEF009954D5 /* UserDefaultsManager.swift in Sources */,
 				529BF93A2C4579C1009954D5 /* AppDelegate.swift in Sources */,
 				529BF95E2C459D3C009954D5 /* LoginPresenter.swift in Sources */,
+				52FAB8D32C621574001C6697 /* TelegramAccount+CoreData.swift in Sources */,
 				529BF98B2C46FA0B009954D5 /* PasswordPresenter.swift in Sources */,
 				529BF98C2C46FA0B009954D5 /* PasswordRouter.swift in Sources */,
 				529BF98D2C46FA0B009954D5 /* PasswordViewController.swift in Sources */,
 				52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */,
 				52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */,
+				529564F92C62A8F6007E3352 /* CashingRepository.swift in Sources */,
 				52FED25B2C4D0E1700AAF16B /* ConfirmAssembly.swift in Sources */,
 				529BF9C92C47BB30009954D5 /* MessagePresenter.swift in Sources */,
 				529BF9CA2C47BB30009954D5 /* MessageRouter.swift in Sources */,
@@ -596,8 +609,8 @@
 				529BF9B62C47BAD7009954D5 /* HomePresenter.swift in Sources */,
 				529BF9B72C47BAD7009954D5 /* HomeRouter.swift in Sources */,
 				529BF9B82C47BAD7009954D5 /* HomeViewController.swift in Sources */,
-				52CF748E2C5BB37000E0AA7D /* StringsValidationProtocol.swift in Sources */,
 				529BF9B92C47BAD7009954D5 /* HomeAssembly.swift in Sources */,
+				52FAB8C92C620AB5001C6697 /* CoreDataService.swift in Sources */,
 				52ABB7B12C502FE9004551B5 /* NewPasswordRecPresenter.swift in Sources */,
 				52ABB7B22C502FE9004551B5 /* NewPasswordRecRouter.swift in Sources */,
 				52ABB7B32C502FE9004551B5 /* NewPasswordRecViewController.swift in Sources */,
@@ -609,6 +622,8 @@
 				52CF74832C5BB22F00E0AA7D /* KeychainProtocols.swift in Sources */,
 				52ABB7FA2C5642A3004551B5 /* ConfirmRouter.swift in Sources */,
 				529BF9D42C47BB5F009954D5 /* SettingsViewController.swift in Sources */,
+				52FAB8CF2C621524001C6697 /* iOSAppCoreData.xcdatamodeld in Sources */,
+				52B3E81B2C61EB5F00CCCF26 /* CoreDataProtocol.swift in Sources */,
 				529BF9D52C47BB5F009954D5 /* SettingsAssembly.swift in Sources */,
 				529BF9982C478677009954D5 /* EmailRecPresenter.swift in Sources */,
 				52CF74812C5BB20B00E0AA7D /* KeychainStubs.swift in Sources */,
@@ -624,15 +639,12 @@
 				529BF9602C459D3C009954D5 /* LoginViewController.swift in Sources */,
 				529BF97B2C46F8C7009954D5 /* StringsValidationManager.swift in Sources */,
 				529BF9612C459D3C009954D5 /* LoginAssembly.swift in Sources */,
-				52CF748A2C5BB28300E0AA7D /* StorageStubs.swift in Sources */,
-				529BF9732C46D9B6009954D5 /* StorageManager.swift in Sources */,
 				529BF9C02C47BB07009954D5 /* NewMessagePresenter.swift in Sources */,
 				52ABB7A92C502FD8004551B5 /* ConfirmRecPresenter.swift in Sources */,
 				52ABB7AA2C502FD8004551B5 /* ConfirmRecRouter.swift in Sources */,
 				52ABB7AB2C502FD8004551B5 /* ConfirmRecViewController.swift in Sources */,
 				52ABB7AC2C502FD8004551B5 /* ConfirmRecAssembly.swift in Sources */,
 				529BF9C12C47BB07009954D5 /* NewMessageRouter.swift in Sources */,
-				52CF74882C5BB27700E0AA7D /* StorageProtocols.swift in Sources */,
 				52ABB7F82C553878004551B5 /* AlertFabric.swift in Sources */,
 				529BF9C22C47BB07009954D5 /* NewMessageViewController.swift in Sources */,
 				529BF9C32C47BB07009954D5 /* NewMessageAssembly.swift in Sources */,
@@ -863,6 +875,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		52FAB8CD2C621524001C6697 /* iOSAppCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				52FAB8CE2C621524001C6697 /* iOSAppCoreData.xcdatamodel */,
+			);
+			currentVersion = 52FAB8CE2C621524001C6697 /* iOSAppCoreData.xcdatamodel */;
+			name = iOSAppCoreData.xcdatamodeld;
+			path = /Users/test/Desktop/iOSApp/iOSApp/DataLayer/Storage/CoreDataModels/iOSAppCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 529BF92E2C4579C1009954D5 /* Project object */;
 }

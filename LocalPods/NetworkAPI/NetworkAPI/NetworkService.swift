@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OSLog
 
 // MARK: Потоки
 /// все запросы приходят не в main потоке
