@@ -32,7 +32,7 @@ public struct RegisterRequestModel: Encodable {
 /// парсинг запроса register
 public struct RegisterResponseModel: Decodable, Statusable {
     public var status: String
-    public let isActive: Bool
+    public let confirmed: Bool
     public let token: String
 }
 

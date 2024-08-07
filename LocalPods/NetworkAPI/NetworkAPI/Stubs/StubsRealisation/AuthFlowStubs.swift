@@ -11,7 +11,7 @@ import Foundation
 extension NetworkServiceStub: NetworkAuthProtocol {
     public func register(email: String, password: String, completion: @escaping (AuthResult<RegisterResponseModel>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let responseModel = RegisterResponseModel(status: "nil", isActive: true, token: "user_token")
+            let responseModel = RegisterResponseModel(status: "nil", confirmed: true, token: "user_token")
             completion(.success200(data: responseModel))
         }
     }

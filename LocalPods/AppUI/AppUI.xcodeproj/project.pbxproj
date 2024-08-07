@@ -11,6 +11,8 @@
 		52039B542C4B926400EA26DC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52039B532C4B926300EA26DC /* TextField.swift */; };
 		529564F22C6279C8007E3352 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564F12C6279C8007E3352 /* SettingsTableCell.swift */; };
 		529564FD2C62ACE8007E3352 /* CodeField1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564FC2C62ACE8007E3352 /* CodeField1.swift */; };
+		529565002C63A056007E3352 /* UserTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564FF2C63A056007E3352 /* UserTableCell.swift */; };
+		529565022C63A06A007E3352 /* AddUserTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529565012C63A06A007E3352 /* AddUserTableCell.swift */; };
 		52971D252C4BD3CD00F44C4F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52971D242C4BD3CD00F44C4F /* Button.swift */; };
 		52ABB7F32C5505D2004551B5 /* ErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7F22C5505D2004551B5 /* ErrorLabel.swift */; };
 		52FED2522C4CF2DA00AAF16B /* UIVerifyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2512C4CF2DA00AAF16B /* UIVerifyTextField.swift */; };
@@ -35,6 +37,8 @@
 		52039B532C4B926300EA26DC /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		529564F12C6279C8007E3352 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
 		529564FC2C62ACE8007E3352 /* CodeField1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeField1.swift; sourceTree = "<group>"; };
+		529564FF2C63A056007E3352 /* UserTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableCell.swift; sourceTree = "<group>"; };
+		529565012C63A06A007E3352 /* AddUserTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserTableCell.swift; sourceTree = "<group>"; };
 		52971D242C4BD3CD00F44C4F /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		52ABB7F22C5505D2004551B5 /* ErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLabel.swift; sourceTree = "<group>"; };
 		52FED2512C4CF2DA00AAF16B /* UIVerifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVerifyTextField.swift; sourceTree = "<group>"; };
@@ -71,13 +75,39 @@
 			isa = PBXGroup;
 			children = (
 				52039B4C2C4B918A00EA26DC /* AppUI.h */,
+				529565042C63F1B6007E3352 /* MainFlowUI */,
+				529565032C63F182007E3352 /* AuthFlowUI */,
+			);
+			path = AppUI;
+			sourceTree = "<group>";
+		};
+		529564FE2C63A034007E3352 /* SettingsCells */ = {
+			isa = PBXGroup;
+			children = (
+				529564F12C6279C8007E3352 /* SettingsTableCell.swift */,
+				529564FF2C63A056007E3352 /* UserTableCell.swift */,
+				529565012C63A06A007E3352 /* AddUserTableCell.swift */,
+			);
+			path = SettingsCells;
+			sourceTree = "<group>";
+		};
+		529565032C63F182007E3352 /* AuthFlowUI */ = {
+			isa = PBXGroup;
+			children = (
 				52039B532C4B926300EA26DC /* TextField.swift */,
 				52971D242C4BD3CD00F44C4F /* Button.swift */,
 				52ABB7F22C5505D2004551B5 /* ErrorLabel.swift */,
-				529564F12C6279C8007E3352 /* SettingsTableCell.swift */,
 				52FED2502C4CF25500AAF16B /* UIVerifyView */,
 			);
-			path = AppUI;
+			path = AuthFlowUI;
+			sourceTree = "<group>";
+		};
+		529565042C63F1B6007E3352 /* MainFlowUI */ = {
+			isa = PBXGroup;
+			children = (
+				529564FE2C63A034007E3352 /* SettingsCells */,
+			);
+			path = MainFlowUI;
 			sourceTree = "<group>";
 		};
 		52FED2502C4CF25500AAF16B /* UIVerifyView */ = {
@@ -174,11 +204,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				529565002C63A056007E3352 /* UserTableCell.swift in Sources */,
 				52039B542C4B926400EA26DC /* TextField.swift in Sources */,
 				52FED2522C4CF2DA00AAF16B /* UIVerifyTextField.swift in Sources */,
 				529564F22C6279C8007E3352 /* SettingsTableCell.swift in Sources */,
 				52ABB7F32C5505D2004551B5 /* ErrorLabel.swift in Sources */,
 				529564FD2C62ACE8007E3352 /* CodeField1.swift in Sources */,
+				529565022C63A06A007E3352 /* AddUserTableCell.swift in Sources */,
 				52971D252C4BD3CD00F44C4F /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

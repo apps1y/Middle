@@ -19,9 +19,9 @@ public class SettingsTableCell: UITableViewCell {
     
     private lazy var iconView: UIImageView = {
         let view = UIImageView()
-        let symbolConfiguration = UIImage.SymbolConfiguration(weight: .bold)
+        let symbolConfiguration = UIImage.SymbolConfiguration(weight: symbolWeight)
         view.image = UIImage(systemName: systemImage, withConfiguration: symbolConfiguration)
-        view.image?.withTintColor(iconTint)
+        view.tintColor = .white
         view.contentMode = .scaleAspectFit
         return view
     }()
@@ -36,14 +36,15 @@ public class SettingsTableCell: UITableViewCell {
     private let systemImage: String
     private let iconBackgroundColor: UIColor
     private let iconTint: UIColor
+    private let symbolWeight: UIImage.SymbolWeight
     
-    init(title: String, systemImage: String, iconBackgroundColor: UIColor, iconTint: UIColor = .white) {
+    public init(title: String, systemImage: String, iconBackgroundColor: UIColor, iconTint: UIColor = .white, symbolWeight: UIImage.SymbolWeight = .bold) {
         self.title = title
         self.systemImage = systemImage
         self.iconBackgroundColor = iconBackgroundColor
         self.iconTint = iconTint
-        super.init(frame: .zero)
-        
+        self.symbolWeight = symbolWeight
+        super.init(style: .default, reuseIdentifier: nil)
         setupUI()
     }
     
@@ -55,20 +56,20 @@ public class SettingsTableCell: UITableViewCell {
         contentView.addSubview(iconBackgroundView)
         iconBackgroundView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(14)
             make.size.equalTo(28)
         }
         
         iconBackgroundView.addSubview(iconView)
         iconView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.size.equalTo(26)
+            make.size.equalTo(20)
         }
         
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(iconBackgroundView.snp.trailing).offset(20)
+            make.leading.equalTo(iconBackgroundView.snp.trailing).offset(14)
             make.trailing.equalToSuperview().inset(20)
         }
     }

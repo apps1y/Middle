@@ -8,7 +8,7 @@
 import Foundation
 
 final class KeychainStub {
-    private var string: String? = nil
+    private var string: String? = "token"
 }
 
 extension KeychainStub: KeychainBearerProtocol {
