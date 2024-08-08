@@ -40,6 +40,8 @@ public class UserTableCell: UITableViewCell {
     }
     
     private func setupUI() {
+        selectionStyle = .none
+        
         contentView.addSubview(userImageView)
         userImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()

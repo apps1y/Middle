@@ -24,7 +24,7 @@ final class AppCoordinator: FlowCoordinator {
     private let loginAssembly: LoginAssembly
     private let tabBarController: MainTabBarController
     
-    init(window: UIWindow?, keychainBearerManager: KeychainStub, loginAssembly: LoginAssembly, tabBarController: MainTabBarController) {
+    init(window: UIWindow?, keychainBearerManager: KeychainBearerProtocol, loginAssembly: LoginAssembly, tabBarController: MainTabBarController) {
         self.window = window
         self.keychainBearerManager = keychainBearerManager
         self.loginAssembly = loginAssembly
@@ -41,9 +41,7 @@ final class AppCoordinator: FlowCoordinator {
     }
     
     private func mainFlow() {
-        tabBarController.setup { [weak self] in
-            self?.start()
-        }
+        tabBarController.setup()
         window?.rootViewController = tabBarController
     }
     

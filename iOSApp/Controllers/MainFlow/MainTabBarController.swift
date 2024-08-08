@@ -26,13 +26,13 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
     }
     
-    func setup(completion: @escaping () -> Void) {
+    func setup() {
         let homeVC = homeAssembly.assemble()
         let homeNavigationController = UINavigationController(rootViewController: homeVC)
         homeNavigationController.tabBarItem.title = "Главная"
         homeNavigationController.tabBarItem.image = UIImage(systemName: "list.bullet.below.rectangle")
         
-        let settingsVC = settingsAssembly.assemble(completion: completion)
+        let settingsVC = settingsAssembly.assemble()
         let settingsNavigationController = UINavigationController(rootViewController: settingsVC)
         settingsNavigationController.tabBarItem.title = "Настройки"
         settingsNavigationController.tabBarItem.image = UIImage(systemName: "gear")

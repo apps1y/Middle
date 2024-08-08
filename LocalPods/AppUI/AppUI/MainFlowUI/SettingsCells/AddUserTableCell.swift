@@ -13,7 +13,8 @@ public class AddUserTableCell: UITableViewCell {
     private lazy var iconView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(systemName: systemImage)
+        let symbolConfiguration = UIImage.SymbolConfiguration(weight: .light)
+        view.image = UIImage(systemName: systemImage, withConfiguration: symbolConfiguration)
         return view
     }()
     
@@ -43,7 +44,7 @@ public class AddUserTableCell: UITableViewCell {
         iconView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(14)
-            make.size.equalTo(28)
+            make.size.equalTo(26)
         }
         
         contentView.addSubview(titleLabel)

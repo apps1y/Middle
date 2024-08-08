@@ -24,8 +24,8 @@ final class AppAssembly {
         /// StorageLayer
         let databaseManager = DatabasePreviewsProtocol()
         
-        let keychainManager = KeychainStub()
-        // let keychainManager = KeychainManager()
+        // let keychainManager = KeychainStub()
+        let keychainManager = KeychainManager()
         
         
         /// ManagersLayer
@@ -73,6 +73,7 @@ final class AppAssembly {
         loginAssembly.coordinator = appCoordinator
         confirmAssembly.coordinator = appCoordinator
         newPasswordRecAssembly.coordinator = appCoordinator
+        settingsAssembly.coordinator = appCoordinator
         
         return appCoordinator
     }

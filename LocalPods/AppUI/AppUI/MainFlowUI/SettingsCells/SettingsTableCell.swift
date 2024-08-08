@@ -53,6 +53,8 @@ public class SettingsTableCell: UITableViewCell {
     }
     
     private func setupUI() {
+        accessoryType = .disclosureIndicator
+        
         contentView.addSubview(iconBackgroundView)
         iconBackgroundView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()

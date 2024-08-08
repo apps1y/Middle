@@ -64,7 +64,7 @@ extension NewPasswordRecPresenter: NewPasswordRecPresenterProtocol {
                 switch result {
                 case .success200(let data):
                     self?.view?.finishLoading(with: nil)
-                    self?.keychainBearerManager.save(token: token)
+                    self?.keychainBearerManager.save(token: data.token)
                     self?.coordinator?.start()
                 case .success400(let status):
                     self?.view?.finishLoading(with: (.none, status.localizedDescription))

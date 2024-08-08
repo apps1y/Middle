@@ -207,6 +207,10 @@ final class LoginViewController: UIViewController {
         view.endEditing(true)
         presenter?.openRegistration()
     }
+    
+    // MARK: - private funcs
+    
+    
 }
 
 // MARK: - View Protocol Realization
