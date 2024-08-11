@@ -35,6 +35,10 @@ final class AppAssembly {
         let alertFabric = AlertFabric()
         
         
+        
+        
+        
+        
         // MARK: - Assembly сборки Auth Flow
         /// регистрация
         let confirmAssembly = ConfirmAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric)
@@ -57,19 +61,27 @@ final class AppAssembly {
         
         
         
+        
+        
+        
         // MARK: - Assembly сборки Main Flow
+        let tgNumberAssembly = TgNumberAssembly(networkSevice: networkService)
+        let tgOneTimeCodeAssembly = TgOneTimeCodeAssembly(networkSevice: networkService)
+        let tgPasswordAssembly = TgPasswordAssembly(networkSevice: networkService)
+        
+        let telegramAddAssembly = TelegramAddAssembly(tgNumberAssembly: tgNumberAssembly, tgOneTimeCodeAssembly: tgOneTimeCodeAssembly, tgPasswordAssembly: tgPasswordAssembly)
+        
         let homeAssembly = HomeAssembly(networkService: networkService, databasePreviewsManager: databaseManager)
 
-        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager)
+        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric, telegramAddAssembly: telegramAddAssembly)
         
         let tabBarController = MainTabBarController(homeAssembly: homeAssembly, settingsAssembly: settingsAssembly)
-        
         
         
         // MARK: - App Coordinator
         let appCoordinator = AppCoordinator(window: window, keychainBearerManager: keychainManager, loginAssembly: loginAssembly, tabBarController: tabBarController)
         
-        /// coordinator's DI
+        /// appCoordinator's DI
         loginAssembly.coordinator = appCoordinator
         confirmAssembly.coordinator = appCoordinator
         newPasswordRecAssembly.coordinator = appCoordinator

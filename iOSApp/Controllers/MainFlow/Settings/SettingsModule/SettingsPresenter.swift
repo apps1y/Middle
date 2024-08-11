@@ -55,7 +55,7 @@ extension SettingsPresenter: SettingsPresenterProtocol {
     }
     
     func addNewTelegramAccount() {
-        // realisation
+        router.presentTelegramAddFlow()
     }
     
     func openSubscribeInformation() {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		52039B4D2C4B918A00EA26DC /* AppUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 52039B4C2C4B918A00EA26DC /* AppUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52039B542C4B926400EA26DC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52039B532C4B926300EA26DC /* TextField.swift */; };
+		520681E12C689976007ED7E7 /* UXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681E02C689976007ED7E7 /* UXViewController.swift */; };
 		529564F22C6279C8007E3352 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564F12C6279C8007E3352 /* SettingsTableCell.swift */; };
 		529564FD2C62ACE8007E3352 /* CodeField1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564FC2C62ACE8007E3352 /* CodeField1.swift */; };
 		529565002C63A056007E3352 /* UserTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564FF2C63A056007E3352 /* UserTableCell.swift */; };
@@ -35,6 +36,7 @@
 		52039B492C4B918A00EA26DC /* AppUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52039B4C2C4B918A00EA26DC /* AppUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUI.h; sourceTree = "<group>"; };
 		52039B532C4B926300EA26DC /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		520681E02C689976007ED7E7 /* UXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXViewController.swift; sourceTree = "<group>"; };
 		529564F12C6279C8007E3352 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
 		529564FC2C62ACE8007E3352 /* CodeField1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeField1.swift; sourceTree = "<group>"; };
 		529564FF2C63A056007E3352 /* UserTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableCell.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				52039B4C2C4B918A00EA26DC /* AppUI.h */,
+				520681E02C689976007ED7E7 /* UXViewController.swift */,
 				529565042C63F1B6007E3352 /* MainFlowUI */,
 				529565032C63F182007E3352 /* AuthFlowUI */,
 			);
@@ -206,6 +209,7 @@
 			files = (
 				529565002C63A056007E3352 /* UserTableCell.swift in Sources */,
 				52039B542C4B926400EA26DC /* TextField.swift in Sources */,
+				520681E12C689976007ED7E7 /* UXViewController.swift in Sources */,
 				52FED2522C4CF2DA00AAF16B /* UIVerifyTextField.swift in Sources */,
 				529564F22C6279C8007E3352 /* SettingsTableCell.swift in Sources */,
 				52ABB7F32C5505D2004551B5 /* ErrorLabel.swift in Sources */,

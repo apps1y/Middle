@@ -117,7 +117,18 @@ final class SettingsViewController: UIViewController {
     private var telegramAccounts: [String] = ["Иван", "Карим", "Арсений"]
     
     var presenter: SettingsPresenterProtocol?
-
+    
+    private let alertFabric: AlertFabric
+    
+    init(alertFabric: AlertFabric) {
+        self.alertFabric = alertFabric
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -168,6 +179,25 @@ final class SettingsViewController: UIViewController {
         
         navigationItem.titleView = titleView
     }
+    
+    // MARK: - privats funcs
+    private func logoutTelegramButtonTapped(indexPath: IndexPath) {
+        let message = "Сессия на выбранном аккаунте завершится. Активные сессии вы можете найти в telegram, в разделе устройства."
+        let actionSheet = alertFabric.confirmActionSheet(message: message, actionTitle: "Выйти") { [weak self] in
+            self?.telegramAccounts.remove(at: indexPath.row)
+            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        present(actionSheet, animated: true)
+    }
+    
+    private func logoutAppButtonTapped() {
+        let title = "Выйти"
+        let message = "Все подключенные telegram аккаунты останутся. В любой момент вы можете зайти, используя почту и пароль."
+        let alert = alertFabric.confirmAlert(title: title, message: message, actionTitle: "Выйти") { [weak self] in
+            self?.presenter?.logoutAccount()
+        }
+        present(alert, animated: true)
+    }
 }
 
 // MARK: - View Protocol Realization
@@ -182,8 +212,6 @@ extension SettingsViewController: SettingsViewProtocol {
     func show(accounts: [String]) {
         
     }
-    
-    
 }
 
 
@@ -243,7 +271,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case (4, 2):
             presenter?.shareWithFriends()
         case (5, 0):
-            presenter?.logoutAccount()
+            logoutAppButtonTapped()
         default: break
         }
     }
@@ -258,9 +286,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if indexPath.section == 2 && indexPath.row != telegramAccounts.count {
             let deleteAction = UIContextualAction(style: .destructive, title: "Выйти") { [weak self] (action, view, completionHandler) in
-                self?.telegramAccounts.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
                 completionHandler(true)
+                self?.logoutTelegramButtonTapped(indexPath: indexPath)
             }
             
             let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
