@@ -65,7 +65,7 @@ final class AppAssembly {
         
         
         // MARK: - Assembly сборки Main Flow
-        let tgNumberAssembly = TgNumberAssembly(networkSevice: networkService)
+        let tgNumberAssembly = TgNumberAssembly(networkSevice: networkService, alertFabric: alertFabric)
         let tgOneTimeCodeAssembly = TgOneTimeCodeAssembly(networkSevice: networkService)
         let tgPasswordAssembly = TgPasswordAssembly(networkSevice: networkService)
         
@@ -75,11 +75,11 @@ final class AppAssembly {
 
         let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric, telegramAddAssembly: telegramAddAssembly)
         
-        let tabBarController = MainTabBarController(homeAssembly: homeAssembly, settingsAssembly: settingsAssembly)
+        let mainTabBarAssembly = MainTabBarAssembly(homeAssembly: homeAssembly, settingsAssembly: settingsAssembly)
         
         
         // MARK: - App Coordinator
-        let appCoordinator = AppCoordinator(window: window, keychainBearerManager: keychainManager, loginAssembly: loginAssembly, tabBarController: tabBarController)
+        let appCoordinator = AppCoordinator(window: window, keychainBearerManager: keychainManager, loginAssembly: loginAssembly, mainTabBarAssembly: mainTabBarAssembly)
         
         /// appCoordinator's DI
         loginAssembly.coordinator = appCoordinator

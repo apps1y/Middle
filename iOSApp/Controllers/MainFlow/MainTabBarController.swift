@@ -16,6 +16,8 @@ class MainTabBarController: UITabBarController {
         self.homeAssembly = homeAssembly
         self.settingsAssembly = settingsAssembly
         super.init(nibName: nil, bundle: nil)
+        
+        setup()
     }
     
     required init?(coder: NSCoder) {
@@ -26,7 +28,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
     }
     
-    func setup() {
+    private func setup() {
         let homeVC = homeAssembly.assemble()
         let homeNavigationController = UINavigationController(rootViewController: homeVC)
         homeNavigationController.tabBarItem.title = "Главная"

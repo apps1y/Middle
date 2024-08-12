@@ -21,10 +21,11 @@ final class SettingsRouter: SettingsRouterInput {
     }
     
     func presentTelegramAddFlow() {
-        let navigationViewController = UINavigationController()
-        let telegramAddCoordinator = telegramAddAssembly.assemble(navigationController: navigationViewController)
+        let telegramAddCoordinator = telegramAddAssembly.assemble()
+        let navigationController = TelegramNavigationController(coordinator: telegramAddCoordinator)
+        telegramAddCoordinator.navigationController = navigationController
         telegramAddCoordinator.start()
-        navigationViewController.modalPresentationStyle = .fullScreen
-        viewController?.present(navigationViewController, animated: true)
+        navigationController.modalPresentationStyle = .fullScreen
+        viewController?.present(navigationController, animated: true)
     }
 }

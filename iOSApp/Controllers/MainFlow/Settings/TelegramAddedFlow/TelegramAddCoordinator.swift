@@ -14,30 +14,56 @@ enum StatusTelegramAdded {
     case success
 }
 
+
+final class TelegramNavigationController: UINavigationController {
+    var coordinator: TelegramAddCoordinator
+    
+    init(coordinator: TelegramAddCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+        print("navigationController init")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("navigationController deinit")
+    }
+}
+
+
 protocol TelegramAddCoordinatorProtocol: FlowCoordinator {
     
     var statusTelegramAdded: StatusTelegramAdded { get set }
     
+    var navigationController: TelegramNavigationController? { get }
 }
+
 
 final class TelegramAddCoordinator: TelegramAddCoordinatorProtocol {
     
     var statusTelegramAdded: StatusTelegramAdded = .waitingForNumber
     
-    private let navigationController: UINavigationController
+    weak var navigationController: TelegramNavigationController?
     
     private let tgNumberAssembly: TgNumberAssembly
     private let tgOneTimeCodeAssembly: TgOneTimeCodeAssembly
     private let tgPasswordAssembly: TgPasswordAssembly
     
-    init(navigationController: UINavigationController, tgNumberAssembly: TgNumberAssembly, tgOneTimeCodeAssembly: TgOneTimeCodeAssembly, tgPasswordAssembly: TgPasswordAssembly) {
-        self.navigationController = navigationController
+    init(tgNumberAssembly: TgNumberAssembly, tgOneTimeCodeAssembly: TgOneTimeCodeAssembly, tgPasswordAssembly: TgPasswordAssembly) {
         self.tgNumberAssembly = tgNumberAssembly
         self.tgOneTimeCodeAssembly = tgOneTimeCodeAssembly
         self.tgPasswordAssembly = tgPasswordAssembly
     }
     
+    deinit {
+        print("TelegramAddCoordinator deinit")
+    }
+    
     func start() {
+        print(statusTelegramAdded)
         switch statusTelegramAdded {
         case .waitingForNumber:
             pushNumberView()
@@ -51,21 +77,26 @@ final class TelegramAddCoordinator: TelegramAddCoordinatorProtocol {
     }
     
     private func pushNumberView() {
+        guard let navigationController else { return }
         let vc = tgNumberAssembly.assemble()
         navigationController.pushViewController(vc, animated: true)
     }
     
     private func pushOneTimeCodeView() {
+        guard let navigationController else { return }
         let vc = tgOneTimeCodeAssembly.assemble()
         navigationController.pushViewController(vc, animated: true)
+        
     }
     
     private func pushPasswordView() {
+        guard let navigationController else { return }
         let vc = tgPasswordAssembly.assemble()
         navigationController.pushViewController(vc, animated: true)
+        
     }
     
     private func successResult() {
-        navigationController.dismiss(animated: true)
+        navigationController?.dismiss(animated: true)
     }
 }

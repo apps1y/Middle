@@ -22,33 +22,23 @@ final class AppCoordinator: FlowCoordinator {
     
     /// Сборки Assembly's
     private let loginAssembly: LoginAssembly
-    private let tabBarController: MainTabBarController
+    private let mainTabBarAssembly: MainTabBarAssembly
     
-    init(window: UIWindow?, keychainBearerManager: KeychainBearerProtocol, loginAssembly: LoginAssembly, tabBarController: MainTabBarController) {
+    init(window: UIWindow?, keychainBearerManager: KeychainBearerProtocol, loginAssembly: LoginAssembly, mainTabBarAssembly: MainTabBarAssembly) {
         self.window = window
         self.keychainBearerManager = keychainBearerManager
         self.loginAssembly = loginAssembly
-        self.tabBarController = tabBarController
+        self.mainTabBarAssembly = mainTabBarAssembly
     }
     
     func start() {
         animationConfigure()
         if keychainBearerManager.getToken() != nil {
-            mainFlow()
+            window?.rootViewController = mainTabBarAssembly.assemble()
         } else {
-            authFlow()
+            let viewController = UINavigationController(rootViewController: loginAssembly.assemble())
+            window?.rootViewController = viewController
         }
-    }
-    
-    private func mainFlow() {
-        tabBarController.setup()
-        window?.rootViewController = tabBarController
-    }
-    
-    private func authFlow() {
-        let vc = loginAssembly.assemble()
-        let navVC = UINavigationController(rootViewController: vc)
-        window?.rootViewController = navVC
     }
     
     private func animationConfigure() {

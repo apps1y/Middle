@@ -18,6 +18,7 @@
 		520681D22C66667F007ED7E7 /* TgPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681CE2C66667F007ED7E7 /* TgPasswordViewController.swift */; };
 		520681D32C66667F007ED7E7 /* TgPasswordAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681CF2C66667F007ED7E7 /* TgPasswordAssembly.swift */; };
 		520681D52C673DC0007ED7E7 /* TelegramAddAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681D42C673DC0007ED7E7 /* TelegramAddAssembly.swift */; };
+		520681E32C68D568007ED7E7 /* MainTabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681E22C68D568007ED7E7 /* MainTabBarAssembly.swift */; };
 		529564F92C62A8F6007E3352 /* CashingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564F82C62A8F6007E3352 /* CashingRepository.swift */; };
 		529BF93A2C4579C1009954D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9392C4579C1009954D5 /* AppDelegate.swift */; };
 		529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF93B2C4579C1009954D5 /* SceneDelegate.swift */; };
@@ -95,6 +96,7 @@
 		520681CE2C66667F007ED7E7 /* TgPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TgPasswordViewController.swift; sourceTree = "<group>"; };
 		520681CF2C66667F007ED7E7 /* TgPasswordAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TgPasswordAssembly.swift; sourceTree = "<group>"; };
 		520681D42C673DC0007ED7E7 /* TelegramAddAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramAddAssembly.swift; sourceTree = "<group>"; };
+		520681E22C68D568007ED7E7 /* MainTabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarAssembly.swift; sourceTree = "<group>"; };
 		529564F82C62A8F6007E3352 /* CashingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashingRepository.swift; sourceTree = "<group>"; };
 		529BF9362C4579C1009954D5 /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529BF9392C4579C1009954D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				529BF9A42C479725009954D5 /* MainTabBarController.swift */,
+				520681E22C68D568007ED7E7 /* MainTabBarAssembly.swift */,
 				529BF9B02C47BA68009954D5 /* Home */,
 				529BF9B12C47BA75009954D5 /* Settings */,
 			);
@@ -674,6 +677,7 @@
 				529BF9CA2C47BB30009954D5 /* MessageRouter.swift in Sources */,
 				529BF9CB2C47BB30009954D5 /* MessageViewController.swift in Sources */,
 				529BF9CC2C47BB30009954D5 /* MessageAssembly.swift in Sources */,
+				520681E32C68D568007ED7E7 /* MainTabBarAssembly.swift in Sources */,
 				529BF9B62C47BAD7009954D5 /* HomePresenter.swift in Sources */,
 				529BF9B72C47BAD7009954D5 /* HomeRouter.swift in Sources */,
 				520681C82C666671007ED7E7 /* TgOneTimeCodePresenter.swift in Sources */,

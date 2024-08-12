@@ -12,7 +12,7 @@ import UIKit
 /// в основе лежит scrollView, на который нужно добавлять элементы
 /// от этого класса нужно наследоваться
 open class UXViewController: UIViewController {
-    public var scrollView: UIScrollView = {
+    public lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.keyboardDismissMode = .interactiveWithAccessory
         view.alwaysBounceVertical = true
@@ -20,12 +20,15 @@ open class UXViewController: UIViewController {
         return view
     }()
     
+    /// view behind scrollView
+    public lazy var background = UIView()
+    
     private lazy var keyboardTopAnchor: NSLayoutConstraint = {
-        keyboardLayout.topAnchor.constraint(equalTo: view.bottomAnchor,
+        keyboardLayoutGuide.topAnchor.constraint(equalTo: view.bottomAnchor,
                                             constant: view.safeAreaInsets.bottom)
     }()
     
-    public let keyboardLayout: UIView = {
+    public let keyboardLayoutGuide: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isUserInteractionEnabled = false
@@ -35,7 +38,7 @@ open class UXViewController: UIViewController {
     private var isListeningKeypadChange = false
     
     private lazy var maxKeyboardHeight: CGFloat = {
-        0.0
+        -1.0
     }()
     
     private var safeAreaBottomInsets: CGFloat = 0.0
@@ -55,9 +58,6 @@ open class UXViewController: UIViewController {
     }
     
     private func setupObservers() {
-        scrollView.backgroundColor = .systemBackground
-        keyboardLayout.backgroundColor = .red
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
@@ -66,12 +66,21 @@ open class UXViewController: UIViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(keyboardLayout)
+        view.addSubview(keyboardLayoutGuide)
         NSLayoutConstraint.activate([
-            keyboardLayout.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            keyboardLayout.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            keyboardLayout.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            keyboardLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            keyboardLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            keyboardLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             keyboardTopAnchor
+        ])
+        
+        view.addSubview(background)
+        background.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            background.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            background.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            background.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            background.topAnchor.constraint(equalTo: view.topAnchor)
         ])
         
         view.addSubview(scrollView)
@@ -83,9 +92,8 @@ open class UXViewController: UIViewController {
         ])
     }
     
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if maxKeyboardHeight == 0.0 {
+    open override func viewWillLayoutSubviews() {
+        if maxKeyboardHeight == -1.0 {
             maxKeyboardHeight = view.safeAreaInsets.bottom
             keyboardTopAnchor.constant = -view.safeAreaInsets.bottom
         }
@@ -119,7 +127,6 @@ open class UXViewController: UIViewController {
     
     @objc private func keyboardWillChange(_ notification: Notification) {
         if isListeningKeypadChange, let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            print(2)
             maxKeyboardHeight = value.cgRectValue.height
             keyboardTopAnchor.constant = -value.cgRectValue.height
         }
@@ -161,7 +168,6 @@ open class UXViewController: UIViewController {
             let dragY = view.frame.height - pan.location(in: view).y
             let duration = (1 - dragY / 336) * 0.25
             let safeDuration = max(duration, 0)
-            print(duration, dragY)
             UIView.animate(withDuration: safeDuration, delay: 0, animations: {
                 self.view.layoutIfNeeded()
             })

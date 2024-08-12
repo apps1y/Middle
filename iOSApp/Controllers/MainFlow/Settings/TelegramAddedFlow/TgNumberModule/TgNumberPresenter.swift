@@ -10,6 +10,9 @@ import NetworkAPI
 
 protocol TgNumberPresenterProtocol: AnyObject {
     
+    /// пользователь ввел номер телефона
+    /// - Parameter number: номер телефона
+    func login(with number: String)
 }
 
 final class TgNumberPresenter {
@@ -17,17 +20,32 @@ final class TgNumberPresenter {
     
     /// DI
     private let networkSevice: NetworkMainProtocol
+    private let alertFabric: AlertFabric
     
     /// coordinator
-    weak var telegramAddCoordinatorProtocol: TelegramAddCoordinatorProtocol?
+    weak var telegramAddCoordinator: TelegramAddCoordinatorProtocol?
 
-    init(view: TgNumberViewProtocol?, networkSevice: NetworkMainProtocol, telegramAddCoordinatorProtocol: TelegramAddCoordinatorProtocol?) {
+    init(view: TgNumberViewProtocol?, networkSevice: NetworkMainProtocol, alertFabric: AlertFabric, telegramAddCoordinator: TelegramAddCoordinatorProtocol?) {
         self.view = view
         self.networkSevice = networkSevice
-        self.telegramAddCoordinatorProtocol = telegramAddCoordinatorProtocol
+        self.alertFabric = alertFabric
+        self.telegramAddCoordinator = telegramAddCoordinator
+    }
+    
+    deinit {
+        print("TgNumberPresenterProtocol deinit")
     }
 }
 
 extension TgNumberPresenter: TgNumberPresenterProtocol {
-    
+    func login(with number: String) {
+        // локальные проверки
+        
+        view?.startLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.view?.finishLoading()
+            self?.telegramAddCoordinator?.statusTelegramAdded = .waitingForOneTimeCode
+            self?.telegramAddCoordinator?.start()
+        }
+    }
 }
