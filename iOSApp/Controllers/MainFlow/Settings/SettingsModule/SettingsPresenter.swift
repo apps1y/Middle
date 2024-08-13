@@ -9,77 +9,119 @@ import UIKit
 import NetworkAPI
 
 protocol SettingsPresenterProtocol: AnyObject {
+    /// загрузка view
     func viewDidLoaded()
     
-    func changePassword()
+    /// запрос на смену пароля
+    func changeUserPasswordTapped()
     
-    func addNewTelegramAccount()
+    /// удаление телеграм аккаунта
+    func removeTelegramAccount()
     
-    func openSubscribeInformation()
+    /// добавление нового телеграмм аккаунта
+    func newTelegramAccountTapped()
     
-    func openConfidentional()
+    /// показ экрана с подпиской
+    func subscribtionTapped()
     
-    func ratingApp()
+    /// показ прав конфеденциальности
+    func rulesOfConfidentialTapped()
     
-    func shareWithFriends()
+    /// оценить в AppStrore
+    func writeReviewTapped()
     
-    func logoutAccount()
+    /// поделиться с друзьями
+    func shareWithFriendsTapped()
+    
+    /// выйти из приложения
+    func logoutUserTapped()
 }
 
 final class SettingsPresenter {
     weak var view: SettingsViewProtocol?
     var router: SettingsRouterInput
     
-    private let networkService: NetworkMainProtocol & NetworkRecoverProtocol
+    private let networkService: NetworkTelegramProtocol & NetworkRecoverProtocol & NetworkProfileProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     
     /// app coordinator
     weak var coordinator: FlowCoordinator?
     
-    private var userEmail: String = "email"
+    private var user: UserModel?
 
-    init(view: SettingsViewProtocol?, router: SettingsRouterInput, networkService: NetworkMainProtocol & NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?) {
+    init(view: SettingsViewProtocol?, router: SettingsRouterInput, 
+         networkService: NetworkTelegramProtocol & NetworkRecoverProtocol & NetworkProfileProtocol,
+         keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?) {
         self.view = view
         self.router = router
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.coordinator = coordinator
     }
+    
+    private func requestToChangeUserPassword() {
+        guard let user else { return }
+        view?.startLoadingChangePasswordCell()
+        networkService.sendCode(email: user.email) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.view?.finishLoadingChangePasswordCell()
+                switch result {
+                case .success200(let data):
+                    self?.router.pushChangePasswordView(email: user.email)
+                case .success400(let status):
+                    self?.router.presentWarningAlert(message: status.localizedDescription)
+                case .failure(let error):
+                    self?.router.presentWarningAlert(message: error)
+                }
+            }
+        }
+    }
 }
 
 extension SettingsPresenter: SettingsPresenterProtocol {
     func viewDidLoaded() {
-        // first setup view
+        // request to cash
+        // and request to load data
+        // request to user information
+        user = UserModel(email: "ivanicloud_vanya@icloud.com")
     }
     
-    func changePassword() {
-        router.pushRecoveryFlow(email: userEmail)
-    }
-    
-    func addNewTelegramAccount() {
-        router.presentTelegramAddFlow { [weak self] userName in
-            self?.view?.add(newAccount: userName)
+    func changeUserPasswordTapped() {
+        router.presentChangePasswordAlert { [weak self] in
+            self?.requestToChangeUserPassword()
         }
     }
     
-    func openSubscribeInformation() {
-        // realisation
+    func removeTelegramAccount() {
+        router.presentLogoutTgSheet {
+            print("logout tg")
+        }
     }
     
-    func openConfidentional() {
-        // realisation
+    func newTelegramAccountTapped() {
+        
     }
     
-    func ratingApp() {
-        // realisation
+    func subscribtionTapped() {
+        
     }
     
-    func shareWithFriends() {
-        // realisation
+    func rulesOfConfidentialTapped() {
+        
     }
     
-    func logoutAccount() {
-        keychainBearerManager.clearToken()
-        coordinator?.start()
+    func writeReviewTapped() {
+        
+    }
+    
+    func shareWithFriendsTapped() {
+        
+    }
+    
+    func logoutUserTapped() {
+        router.presentLogoutAppAlert { [weak self] in
+            self?.keychainBearerManager.clearToken()
+            self?.coordinator?.start()
+        }
     }
 }

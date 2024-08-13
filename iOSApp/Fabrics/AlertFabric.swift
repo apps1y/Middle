@@ -37,7 +37,7 @@ final class AlertFabric {
     /// подтверждающий действие alert
     /// - Parameter message: текст предупреждения
     /// - Returns: настроенный alert
-    func confirmAlert(title: String? = nil, message: String? = nil, actionTitle: String? = nil, handler: @escaping () -> Void) -> UIAlertController {
+    func confirmAlert(title: String? = nil, message: String? = nil, actionTitle: String, handler: @escaping () -> Void) -> UIAlertController {
         let sheet = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let mainAction = UIAlertAction(title: actionTitle, style: .destructive) { action in
             handler()

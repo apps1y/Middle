@@ -19,6 +19,7 @@
 		520681D32C66667F007ED7E7 /* TgPasswordAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681CF2C66667F007ED7E7 /* TgPasswordAssembly.swift */; };
 		520681D52C673DC0007ED7E7 /* TelegramAddAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681D42C673DC0007ED7E7 /* TelegramAddAssembly.swift */; };
 		520681E32C68D568007ED7E7 /* MainTabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681E22C68D568007ED7E7 /* MainTabBarAssembly.swift */; };
+		520681E52C6B942F007ED7E7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681E42C6B942F007ED7E7 /* UserModel.swift */; };
 		529564F92C62A8F6007E3352 /* CashingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564F82C62A8F6007E3352 /* CashingRepository.swift */; };
 		529BF93A2C4579C1009954D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9392C4579C1009954D5 /* AppDelegate.swift */; };
 		529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF93B2C4579C1009954D5 /* SceneDelegate.swift */; };
@@ -97,6 +98,7 @@
 		520681CF2C66667F007ED7E7 /* TgPasswordAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TgPasswordAssembly.swift; sourceTree = "<group>"; };
 		520681D42C673DC0007ED7E7 /* TelegramAddAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramAddAssembly.swift; sourceTree = "<group>"; };
 		520681E22C68D568007ED7E7 /* MainTabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarAssembly.swift; sourceTree = "<group>"; };
+		520681E42C6B942F007ED7E7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		529564F82C62A8F6007E3352 /* CashingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashingRepository.swift; sourceTree = "<group>"; };
 		529BF9362C4579C1009954D5 /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529BF9392C4579C1009954D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				529BF9CE2C47BB5F009954D5 /* SettingsPresenter.swift */,
 				529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */,
 				529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */,
+				520681E42C6B942F007ED7E7 /* UserModel.swift */,
 			);
 			path = SettingsModule;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				529BF9982C478677009954D5 /* EmailRecPresenter.swift in Sources */,
 				52CF74812C5BB20B00E0AA7D /* KeychainStubs.swift in Sources */,
 				529BF9992C478677009954D5 /* EmailRecRouter.swift in Sources */,
+				520681E52C6B942F007ED7E7 /* UserModel.swift in Sources */,
 				520681B82C665E26007ED7E7 /* TelegramAddCoordinator.swift in Sources */,
 				529BF99A2C478677009954D5 /* EmailRecViewController.swift in Sources */,
 				529BF99B2C478677009954D5 /* EmailRecAssembly.swift in Sources */,

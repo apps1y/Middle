@@ -8,7 +8,7 @@
 import Foundation
 
 /// `Result` с возвращением `String` в случае ошибки
-public enum AuthResult<Result: Decodable> {
+public enum ShortResult<Result: Decodable> {
     
     /// A success 200, storing a `Result` model
     case success200(data: Result)

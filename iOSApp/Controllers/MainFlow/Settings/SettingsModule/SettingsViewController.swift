@@ -10,13 +10,22 @@ import AppUI
 
 // MARK: - View Protocol
 protocol SettingsViewProtocol: AnyObject {
-    func startLoading()
     
-    func finishLoading()
+    /// начало анимации загрузки экрана
+    func startLoadingView()
     
+    /// конец загрузки экрана
+    func finishLoadingView()
+    
+    /// отображение подключенных аккаунтов
+    /// - Parameter accounts: подгруженные аккаунты
     func show(accounts: [String])
     
-    func add(newAccount: String)
+    /// начало загрузки ячейки смены пароля
+    func startLoadingChangePasswordCell()
+    
+    /// конец загрузки ячейки смены пароля
+    func finishLoadingChangePasswordCell()
 }
 
 // MARK: - View Controller
@@ -120,17 +129,6 @@ final class SettingsViewController: UIViewController {
     
     var presenter: SettingsPresenterProtocol?
     
-    private let alertFabric: AlertFabric
-    
-    init(alertFabric: AlertFabric) {
-        self.alertFabric = alertFabric
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -181,34 +179,23 @@ final class SettingsViewController: UIViewController {
         
         navigationItem.titleView = titleView
     }
-    
-    // MARK: - privats funcs
-    private func logoutTelegramButtonTapped(indexPath: IndexPath) {
-        let message = "Сессия на выбранном аккаунте завершится. Активные сессии вы можете найти в telegram, в разделе устройства."
-        let actionSheet = alertFabric.confirmActionSheet(message: message, actionTitle: "Отвязать") { [weak self] in
-            self?.telegramAccounts.remove(at: indexPath.row)
-            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-        present(actionSheet, animated: true)
-    }
-    
-    private func logoutAppButtonTapped() {
-        let title = "Выйти"
-        let message = "Все подключенные telegram аккаунты останутся. В любой момент вы можете зайти, используя почту и пароль."
-        let alert = alertFabric.confirmAlert(title: title, message: message, actionTitle: "Выйти") { [weak self] in
-            self?.presenter?.logoutAccount()
-        }
-        present(alert, animated: true)
-    }
 }
 
 // MARK: - View Protocol Realization
 extension SettingsViewController: SettingsViewProtocol {
-    func startLoading() {
+    func startLoadingChangePasswordCell() {
         
     }
     
-    func finishLoading() {
+    func finishLoadingChangePasswordCell() {
+        
+    }
+    
+    func startLoadingView() {
+        
+    }
+    
+    func finishLoadingView() {
     }
     
     func show(accounts: [String]) {
@@ -266,19 +253,19 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         switch (indexPath.section, indexPath.row) {
         case (1, 0):
-            presenter?.changePassword()
+            presenter?.changeUserPasswordTapped()
         case (2, telegramAccounts.count):
-            presenter?.addNewTelegramAccount()
+            presenter?.newTelegramAccountTapped()
         case (3, 0):
-            presenter?.openSubscribeInformation()
+            presenter?.subscribtionTapped()
         case (4, 0):
-            presenter?.openConfidentional()
+            presenter?.rulesOfConfidentialTapped()
         case (4, 1):
-            presenter?.ratingApp()
+            presenter?.writeReviewTapped()
         case (4, 2):
-            presenter?.shareWithFriends()
+            presenter?.shareWithFriendsTapped()
         case (5, 0):
-            logoutAppButtonTapped()
+            presenter?.logoutUserTapped()
         default: break
         }
     }
@@ -294,7 +281,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 2 && indexPath.row != telegramAccounts.count {
             let deleteAction = UIContextualAction(style: .destructive, title: "Отвязать") { [weak self] (action, view, completionHandler) in
                 completionHandler(true)
-                self?.logoutTelegramButtonTapped(indexPath: indexPath)
+                self?.presenter?.removeTelegramAccount()
             }
             
             let configuration = UISwipeActionsConfiguration(actions: [deleteAction])

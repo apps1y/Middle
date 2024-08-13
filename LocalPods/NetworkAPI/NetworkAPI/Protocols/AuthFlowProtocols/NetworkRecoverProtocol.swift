@@ -52,14 +52,14 @@ public protocol NetworkRecoverProtocol: AnyObject {
     /// - Parameters:
     ///   - email: почта юзера
     ///   - completion: возвращает httpCode при success
-    func sendCode(email: String, completion: @escaping (AuthResult<None>) -> Void)
+    func sendCode(email: String, completion: @escaping (ShortResult<None>) -> Void)
     
     /// Подтверждение сброса пароля
     /// - Parameters:
     ///   - email: почта юзера
     ///   - completion: возвращает токен при success
     func confirmResert(email: String, code: String,
-                       completion: @escaping (AuthResult<ConfirmResertResponseModel>) -> Void)
+                       completion: @escaping (ShortResult<ConfirmResertResponseModel>) -> Void)
     
     
     /// Установка нового пароля
@@ -68,5 +68,5 @@ public protocol NetworkRecoverProtocol: AnyObject {
     ///   - password: новый пароль
     ///   - completion: возвращает токен при success
     func updatePassword(token: String, password: String,
-                        completion: @escaping (AuthResult<UpdatePasswordResponseModel>) -> Void)
+                        completion: @escaping (ShortResult<UpdatePasswordResponseModel>) -> Void)
 }

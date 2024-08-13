@@ -148,7 +148,7 @@ final class NewPasswordRecViewController: UXViewController {
     @objc private func backButtonTapped() {
         /// на предыдущий экран
         view.endEditing(true)
-        dismiss(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 

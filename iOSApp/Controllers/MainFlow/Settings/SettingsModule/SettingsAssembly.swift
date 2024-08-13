@@ -10,7 +10,7 @@ import NetworkAPI
 
 final class SettingsAssembly {
     
-    private let networkService: NetworkMainProtocol & NetworkRecoverProtocol
+    private let networkService: NetworkTelegramProtocol & NetworkRecoverProtocol & NetworkProfileProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     private let alertFabric: AlertFabric
     
@@ -20,7 +20,7 @@ final class SettingsAssembly {
     private let telegramAddAssembly: TelegramAddAssembly
     private var confirmRecAssembly: ConfirmRecAssembly
     
-    init(networkService: NetworkMainProtocol & NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, alertFabric: AlertFabric, coordinator: FlowCoordinator? = nil, telegramAddAssembly: TelegramAddAssembly, confirmRecAssembly: ConfirmRecAssembly) {
+    init(networkService: NetworkTelegramProtocol & NetworkRecoverProtocol & NetworkProfileProtocol, keychainBearerManager: KeychainBearerProtocol, alertFabric: AlertFabric, coordinator: FlowCoordinator? = nil, telegramAddAssembly: TelegramAddAssembly, confirmRecAssembly: ConfirmRecAssembly) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.alertFabric = alertFabric
@@ -30,8 +30,8 @@ final class SettingsAssembly {
     }
     
     func assemble() -> SettingsViewController {
-        let router = SettingsRouter(telegramAddAssembly: telegramAddAssembly, confirmRecAssembly: confirmRecAssembly)
-        let viewController = SettingsViewController(alertFabric: alertFabric)
+        let router = SettingsRouter(telegramAddAssembly: telegramAddAssembly, confirmRecAssembly: confirmRecAssembly, alertFabric: alertFabric)
+        let viewController = SettingsViewController()
         let presenter = SettingsPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, coordinator: coordinator)
         
         viewController.presenter = presenter

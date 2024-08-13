@@ -7,6 +7,6 @@
 
 import Foundation
 
-public struct None: Decodable, Statusable {
+public struct None: Codable, Statusable {
     public var status: String
 }

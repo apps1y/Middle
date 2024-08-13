@@ -27,12 +27,12 @@ public protocol NetworkValidationProtocol: AnyObject {
     /// - Parameters:
     ///   - email: почта юзера
     ///   - completion: возвращает httpCode при success
-    func validateAccount(token: String, code: String, completion: @escaping (AuthResult<None>) -> Void)
+    func validateAccount(token: String, code: String, completion: @escaping (ShortResult<None>) -> Void)
     
     
     /// Проверка, есть ли пользователь с такой почтой в системе
     /// - Parameters:
     ///   - email: почта юзера
     ///   - completion: блок с моделью или текстовой ошибкой
-    func checkEmail(email: String, completion: @escaping (AuthResult<None>) -> Void)
+    func checkEmail(email: String, completion: @escaping (ShortResult<None>) -> Void)
 }
