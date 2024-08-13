@@ -19,8 +19,11 @@ final class UIVerifyTextField: UITextField {
     
     weak var fieldDelegate: UIVerifyTextFieldDelegate?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    private let style: CodeFieldStyle
+    
+    init(style: CodeFieldStyle) {
+        self.style = style
+        super.init(frame: .zero)
         setupUI()
     }
     
@@ -29,18 +32,27 @@ final class UIVerifyTextField: UITextField {
     }
     
     private func setupUI() {
-        backgroundColor = .secondarySystemBackground
         layer.cornerRadius = 14
         layer.cornerCurve = .continuous
         tintColor = .clear
-        layer.borderColor = UIColor.systemBlue.cgColor
         textColor = .label
-        font = .systemFont(ofSize: 35, weight: .semibold)
         textAlignment = .center
         delegate = self
         keyboardType = .numberPad
         textContentType = .oneTimeCode
         autocapitalizationType = .none
+        
+        switch style {
+        case .system:
+            layer.borderColor = UIColor.systemBlue.cgColor
+            backgroundColor = .secondarySystemBackground
+            layer.borderWidth = 0
+            font = .systemFont(ofSize: 26, weight: .medium)
+        case .telegram:
+            layer.borderColor = UIColor.separator.cgColor
+            layer.borderWidth = 1.5
+            font = UIFont(name: "Menlo-Regular", size: 25)
+        }
     }
     
     
@@ -65,13 +77,23 @@ extension UIVerifyTextField: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.1) {
-            self.layer.borderWidth = 2
+            switch self.style {
+            case .system:
+                self.layer.borderWidth = 2
+            case .telegram:
+                self.layer.borderColor = UIColor.systemBlue.cgColor
+            }
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.1) {
-            self.layer.borderWidth = 0
+            switch self.style {
+            case .system:
+                self.layer.borderWidth = 0
+            case .telegram:
+                self.layer.borderColor = UIColor.separator.cgColor
+            }
         }
     }
 }

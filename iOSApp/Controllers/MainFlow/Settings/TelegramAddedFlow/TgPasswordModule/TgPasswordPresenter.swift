@@ -9,16 +9,25 @@ import UIKit
 
 protocol TgPasswordPresenterProtocol: AnyObject {
     
+    /// пользователь ввел номер телефона
+    /// - Parameter password: пароль
+    func enter(password: String)
 }
 
 final class TgPasswordPresenter {
     weak var view: TgPasswordViewProtocol?
 
-    init(view: TgPasswordViewProtocol) {
+    weak var telegramAddCoordinator: TelegramAddCoordinatorProtocol?
+    
+    init(view: TgPasswordViewProtocol?, telegramAddCoordinator: TelegramAddCoordinatorProtocol?) {
         self.view = view
+        self.telegramAddCoordinator = telegramAddCoordinator
     }
 }
 
 extension TgPasswordPresenter: TgPasswordPresenterProtocol {
-    
+    func enter(password: String) {
+        telegramAddCoordinator?.statusTelegramAdded = .success
+        telegramAddCoordinator?.start()
+    }
 }

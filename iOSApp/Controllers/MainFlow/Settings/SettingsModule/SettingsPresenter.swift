@@ -30,13 +30,15 @@ final class SettingsPresenter {
     weak var view: SettingsViewProtocol?
     var router: SettingsRouterInput
     
-    private let networkService: NetworkMainProtocol
+    private let networkService: NetworkMainProtocol & NetworkRecoverProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     
     /// app coordinator
     weak var coordinator: FlowCoordinator?
+    
+    private var userEmail: String = "email"
 
-    init(view: SettingsViewProtocol?, router: SettingsRouterInput, networkService: NetworkMainProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?) {
+    init(view: SettingsViewProtocol?, router: SettingsRouterInput, networkService: NetworkMainProtocol & NetworkRecoverProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?) {
         self.view = view
         self.router = router
         self.networkService = networkService
@@ -51,11 +53,13 @@ extension SettingsPresenter: SettingsPresenterProtocol {
     }
     
     func changePassword() {
-        // realisation
+        router.pushRecoveryFlow(email: userEmail)
     }
     
     func addNewTelegramAccount() {
-        router.presentTelegramAddFlow()
+        router.presentTelegramAddFlow { [weak self] userName in
+            self?.view?.add(newAccount: userName)
+        }
     }
     
     func openSubscribeInformation() {

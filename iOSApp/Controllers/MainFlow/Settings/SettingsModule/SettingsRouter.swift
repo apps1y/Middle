@@ -8,7 +8,9 @@
 import UIKit
 
 protocol SettingsRouterInput {
-    func presentTelegramAddFlow()
+    func presentTelegramAddFlow(successCompletion: @escaping (String) -> Void)
+    
+    func pushRecoveryFlow(email: String)
 }
 
 final class SettingsRouter: SettingsRouterInput {
@@ -16,16 +18,24 @@ final class SettingsRouter: SettingsRouterInput {
     
     private var telegramAddAssembly: TelegramAddAssembly
     
-    init(telegramAddAssembly: TelegramAddAssembly) {
+    private var confirmRecAssembly: ConfirmRecAssembly
+    
+    init(telegramAddAssembly: TelegramAddAssembly, confirmRecAssembly: ConfirmRecAssembly) {
         self.telegramAddAssembly = telegramAddAssembly
+        self.confirmRecAssembly = confirmRecAssembly
     }
     
-    func presentTelegramAddFlow() {
-        let telegramAddCoordinator = telegramAddAssembly.assemble()
+    func presentTelegramAddFlow(successCompletion: @escaping (String) -> Void) {
+        let telegramAddCoordinator = telegramAddAssembly.assemble(successCompletion: successCompletion)
         let navigationController = TelegramNavigationController(coordinator: telegramAddCoordinator)
         telegramAddCoordinator.navigationController = navigationController
         telegramAddCoordinator.start()
         navigationController.modalPresentationStyle = .fullScreen
         viewController?.present(navigationController, animated: true)
+    }
+    
+    func pushRecoveryFlow(email: String) {
+        let view = confirmRecAssembly.assemble(email: email)
+        viewController?.navigationController?.pushViewController(view, animated: true)
     }
 }

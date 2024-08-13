@@ -15,6 +15,8 @@ protocol SettingsViewProtocol: AnyObject {
     func finishLoading()
     
     func show(accounts: [String])
+    
+    func add(newAccount: String)
 }
 
 // MARK: - View Controller
@@ -183,7 +185,7 @@ final class SettingsViewController: UIViewController {
     // MARK: - privats funcs
     private func logoutTelegramButtonTapped(indexPath: IndexPath) {
         let message = "Сессия на выбранном аккаунте завершится. Активные сессии вы можете найти в telegram, в разделе устройства."
-        let actionSheet = alertFabric.confirmActionSheet(message: message, actionTitle: "Выйти") { [weak self] in
+        let actionSheet = alertFabric.confirmActionSheet(message: message, actionTitle: "Отвязать") { [weak self] in
             self?.telegramAccounts.remove(at: indexPath.row)
             self?.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
@@ -211,6 +213,11 @@ extension SettingsViewController: SettingsViewProtocol {
     
     func show(accounts: [String]) {
         
+    }
+    
+    func add(newAccount: String) {
+        telegramAccounts.append(newAccount)
+        tableView.reloadData()
     }
 }
 
@@ -285,7 +292,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if indexPath.section == 2 && indexPath.row != telegramAccounts.count {
-            let deleteAction = UIContextualAction(style: .destructive, title: "Выйти") { [weak self] (action, view, completionHandler) in
+            let deleteAction = UIContextualAction(style: .destructive, title: "Отвязать") { [weak self] (action, view, completionHandler) in
                 completionHandler(true)
                 self?.logoutTelegramButtonTapped(indexPath: indexPath)
             }

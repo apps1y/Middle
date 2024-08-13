@@ -14,7 +14,7 @@ final class TgPasswordAssembly {
     private let networkSevice: NetworkMainProtocol
     
     /// coordinator
-    weak var telegramAddCoordinatorProtocol: TelegramAddCoordinatorProtocol?
+    weak var telegramAddCoordinator: TelegramAddCoordinatorProtocol?
     
     init(networkSevice: NetworkMainProtocol) {
         self.networkSevice = networkSevice
@@ -22,7 +22,7 @@ final class TgPasswordAssembly {
     
     func assemble() -> TgPasswordViewController {
         let viewController = TgPasswordViewController()
-        let presenter = TgPasswordPresenter(view: viewController)
+        let presenter = TgPasswordPresenter(view: viewController, telegramAddCoordinator: telegramAddCoordinator)
         viewController.presenter = presenter
         
         return viewController

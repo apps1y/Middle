@@ -15,6 +15,11 @@ public protocol CodeFieldDelegate: AnyObject {
     func didFillAllFields(code: String)
 }
 
+public enum CodeFieldStyle {
+    case system
+    case telegram
+}
+
 public final class CodeField: UIView {
     
     public weak var verifyDelegate: CodeFieldDelegate?
@@ -32,9 +37,14 @@ public final class CodeField: UIView {
     }
     
     private let countOfFields: Int
+    private let spacing: CGFloat
     
-    public init(countOfFields: Int) {
+    private let style: CodeFieldStyle
+    
+    public init(countOfFields: Int, spacing: CGFloat = 5, style: CodeFieldStyle = .system) {
         self.countOfFields = countOfFields
+        self.spacing = spacing
+        self.style = style
         super.init(frame: .zero)
         
         setupUI()
@@ -45,11 +55,11 @@ public final class CodeField: UIView {
     }
     
     private func setupUI() {
-        fieldStack.spacing = 5
+        fieldStack.spacing = spacing
         fieldStack.distribution = .fillEqually
         
         for number in 0..<countOfFields {
-            let field = UIVerifyTextField()
+            let field = UIVerifyTextField(style: style)
             field.tag = number
             field.fieldDelegate = self
             verifyTextFields.append(field)

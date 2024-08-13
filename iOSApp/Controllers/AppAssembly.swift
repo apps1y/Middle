@@ -15,10 +15,10 @@ final class AppAssembly {
         // MARK: - DI
         /// NetworkLayer
         /// Для тестирования есть `NetworkServiceStub`
-        let networkService = NetworkService()
+        // let networkService = NetworkService()
         /// uncomment next line to use network stubs
         // let networkStub = NetworkServiceStub()
-        // let networkService = NetworkServiceStub()
+        let networkService = NetworkServiceStub()
         
         
         /// StorageLayer
@@ -73,7 +73,7 @@ final class AppAssembly {
         
         let homeAssembly = HomeAssembly(networkService: networkService, databasePreviewsManager: databaseManager)
 
-        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric, telegramAddAssembly: telegramAddAssembly)
+        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric, telegramAddAssembly: telegramAddAssembly, confirmRecAssembly: confirmRecAssembly)
         
         let mainTabBarAssembly = MainTabBarAssembly(homeAssembly: homeAssembly, settingsAssembly: settingsAssembly)
         

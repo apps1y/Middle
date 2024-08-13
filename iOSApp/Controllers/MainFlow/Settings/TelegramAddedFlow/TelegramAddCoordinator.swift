@@ -52,10 +52,15 @@ final class TelegramAddCoordinator: TelegramAddCoordinatorProtocol {
     private let tgOneTimeCodeAssembly: TgOneTimeCodeAssembly
     private let tgPasswordAssembly: TgPasswordAssembly
     
-    init(tgNumberAssembly: TgNumberAssembly, tgOneTimeCodeAssembly: TgOneTimeCodeAssembly, tgPasswordAssembly: TgPasswordAssembly) {
+    private var successCompletion: (String) -> Void
+    
+    private var user: String = "Никита"
+    
+    init(tgNumberAssembly: TgNumberAssembly, tgOneTimeCodeAssembly: TgOneTimeCodeAssembly, tgPasswordAssembly: TgPasswordAssembly, successCompletion: @escaping (String) -> Void) {
         self.tgNumberAssembly = tgNumberAssembly
         self.tgOneTimeCodeAssembly = tgOneTimeCodeAssembly
         self.tgPasswordAssembly = tgPasswordAssembly
+        self.successCompletion = successCompletion
     }
     
     deinit {
@@ -97,6 +102,7 @@ final class TelegramAddCoordinator: TelegramAddCoordinatorProtocol {
     }
     
     private func successResult() {
+        successCompletion(user)
         navigationController?.dismiss(animated: true)
     }
 }

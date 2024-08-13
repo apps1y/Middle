@@ -19,10 +19,12 @@ final class TelegramAddAssembly {
         self.tgPasswordAssembly = tgPasswordAssembly
     }
     
-    func assemble() -> TelegramAddCoordinator {
-        let telegramAddCoordinator = TelegramAddCoordinator(tgNumberAssembly: tgNumberAssembly, tgOneTimeCodeAssembly: tgOneTimeCodeAssembly, tgPasswordAssembly: tgPasswordAssembly)
+    func assemble(successCompletion: @escaping (String) -> Void) -> TelegramAddCoordinator {
+        let telegramAddCoordinator = TelegramAddCoordinator(tgNumberAssembly: tgNumberAssembly, tgOneTimeCodeAssembly: tgOneTimeCodeAssembly, tgPasswordAssembly: tgPasswordAssembly, successCompletion: successCompletion)
         
         tgNumberAssembly.telegramAddCoordinator = telegramAddCoordinator
+        tgOneTimeCodeAssembly.telegramAddCoordinator = telegramAddCoordinator
+        tgPasswordAssembly.telegramAddCoordinator = telegramAddCoordinator
         
         return telegramAddCoordinator
     }

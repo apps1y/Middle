@@ -39,7 +39,7 @@ final class TgNumberViewController: UXViewController {
         label.text = "Проверьте код страны и введите свой номер телефона."
         label.font = .systemFont(ofSize: 17)
         label.textAlignment = .center
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
     
@@ -54,6 +54,8 @@ final class TgNumberViewController: UXViewController {
         field.textAlignment = .center
         field.font = .systemFont(ofSize: 20, weight: .medium)
         field.text = "+7"
+        field.delegate = self
+        field.keyboardType = .numberPad
         return field
     }()
     
@@ -67,6 +69,8 @@ final class TgNumberViewController: UXViewController {
         let field = UITextField()
         field.font = .systemFont(ofSize: 20, weight: .medium)
         field.placeholder = "000 000 0000"
+        field.keyboardType = .numberPad
+        field.delegate = self
         return field
     }()
     
@@ -98,6 +102,7 @@ final class TgNumberViewController: UXViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        phoneBodyField.becomeFirstResponder()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(dismissScreen))
         
@@ -125,14 +130,12 @@ final class TgNumberViewController: UXViewController {
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(26)
-            make.top.equalTo(phoneImageLabel.snp.bottom).offset(25)
+            make.top.equalTo(phoneImageLabel.snp.bottom).offset(18)
         }
         
         contentView.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)
             make.top.equalTo(titleLabel.snp.bottom).offset(15)
         }
         
@@ -140,7 +143,7 @@ final class TgNumberViewController: UXViewController {
         topDividerLine.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(15)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(30)
         }
         
         contentView.addSubview(phoneCountryField)
@@ -179,24 +182,66 @@ final class TgNumberViewController: UXViewController {
     
     // MARK: - objc funcs
     @objc private func continueButtonTapped() {
-        presenter?.login(with: "number")
+        presenter?.enter(phone: "number")
     }
     
     @objc private func dismissScreen() {
-        self.navigationController?.dismiss(animated: true)
+        navigationController?.dismiss(animated: true)
     }
+    
+    // MARK: - privates func
+    /// форматирование под маску ввод
+    func format(with mask: String, phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex
+
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                result.append(numbers[index])
+                index = numbers.index(after: index)
+
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
+    }
+    
 }
 
 // MARK: - View Protocol Realization
 extension TgNumberViewController: TgNumberViewProtocol {
     func startLoading() {
-        view.endEditing(true)
         continueButton.isLoading = true
-        contentView.isUserInteractionEnabled = false
+        // contentView.isUserInteractionEnabled = false
     }
     
     func finishLoading() {
         continueButton.isLoading = false
         contentView.isUserInteractionEnabled = true
     }
+}
+
+
+extension TgNumberViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        
+        if textField == phoneBodyField {
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            textField.text = format(with: "XXX XXX XXXX", phone: newString)
+            return false
+        } else {
+            if let swiftRange = Range(range, in: text) {
+                let substringToDelete = text[swiftRange]
+                if substringToDelete.contains("+") { return false }
+            }
+            if text.count + string.count > 5 { return false }
+            
+            return true
+        }
+    }
+    
+    
 }

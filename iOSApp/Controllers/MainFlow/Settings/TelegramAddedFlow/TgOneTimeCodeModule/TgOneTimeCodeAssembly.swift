@@ -14,15 +14,15 @@ final class TgOneTimeCodeAssembly {
     private let networkSevice: NetworkMainProtocol
     
     /// coordinator
-    weak var telegramAddCoordinatorProtocol: TelegramAddCoordinatorProtocol?
+    weak var telegramAddCoordinator: TelegramAddCoordinatorProtocol?
     
     init(networkSevice: NetworkMainProtocol) {
         self.networkSevice = networkSevice
     }
     
     func assemble() -> TgOneTimeCodeViewController {
-        let viewController = TgOneTimeCodeViewController()
-        let presenter = TgOneTimeCodePresenter(view: viewController)
+        let viewController = TgOneTimeCodeViewController(number: "+7 905 717-77-60")
+        let presenter = TgOneTimeCodePresenter(view: viewController, telegramAddCoordinator: telegramAddCoordinator)
         viewController.presenter = presenter
         
         return viewController

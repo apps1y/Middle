@@ -12,7 +12,7 @@ protocol TgNumberPresenterProtocol: AnyObject {
     
     /// пользователь ввел номер телефона
     /// - Parameter number: номер телефона
-    func login(with number: String)
+    func enter(phone number: String)
 }
 
 final class TgNumberPresenter {
@@ -38,7 +38,7 @@ final class TgNumberPresenter {
 }
 
 extension TgNumberPresenter: TgNumberPresenterProtocol {
-    func login(with number: String) {
+    func enter(phone number: String) {
         // локальные проверки
         
         view?.startLoading()
