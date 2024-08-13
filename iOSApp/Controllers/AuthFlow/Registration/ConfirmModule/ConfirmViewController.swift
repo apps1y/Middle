@@ -22,32 +22,34 @@ protocol ConfirmViewProtocol: AnyObject {
 }
 
 // MARK: - View Controller
-final class ConfirmViewController: UIViewController {
+final class ConfirmViewController: UXViewController {
     
     // MARK: - UI
-    private lazy var backgroundScrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.keyboardDismissMode = .interactiveWithAccessory
-        view.alwaysBounceVertical = true
-        return view
-    }()
-    
-    private lazy var backgroundView: UIView = {
+    private lazy var contentView: UIView = {
         let view = UIView()
         return view
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Введите код подтверждения"
+        label.text = "Введите код"
         label.font = .systemFont(ofSize: 28, weight: .semibold)
         label.textAlignment = .center
         label.numberOfLines = 2
         return label
     }()
     
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Мы отправлили код Вам на почту. Он мог попасть в спам."
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
     private lazy var codeField: CodeField = {
-        let field = CodeField(countOfFields: 4)
+        let field = CodeField(countOfFields: 4, spacing: 7)
         field.verifyDelegate = self
         return field
     }()
@@ -82,52 +84,45 @@ final class ConfirmViewController: UIViewController {
         navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(backButtonTapped))
         
-        view.addSubview(backgroundView)
-        backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
-                -(navigationController?.navigationBar.frame.size.height ?? -25)
-            )
-        }
-        if #available(iOS 15.0, *) {
-            view.keyboardLayoutGuide.topAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
-        } else {
-            backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        }
-        
-        view.addSubview(backgroundScrollView)
-        backgroundScrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        backgroundScrollView.addSubview(codeField)
-        codeField.snp.makeConstraints { make in
-            make.top.equalTo(backgroundView.snp.centerY)
-            make.centerX.equalTo(backgroundView)
-            make.height.equalTo(60)
-            make.width.equalTo(210)
-        }
-        
-        backgroundScrollView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(20)
-            make.bottom.equalTo(codeField.snp.top)
-            make.height.greaterThanOrEqualTo(100)
-        }
-        
-        backgroundScrollView.addSubview(logoImageView)
-        logoImageView.snp.makeConstraints { make in
-            make.top.equalTo(backgroundView)
-            make.centerX.equalTo(backgroundView)
-            make.width.equalTo(200)
-            make.bottom.equalTo(titleLabel.snp.top)
-        }
-        
-        backgroundScrollView.addSubview(spinnerView)
+        scrollView.addSubview(spinnerView)
         spinnerView.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(backgroundView).inset(20)
+            make.leading.trailing.equalTo(view).inset(15)
+            make.bottom.equalTo(keyboardLayoutGuide.snp.top)
+            make.height.equalTo(45)
+        }
+        
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view).inset(15)
+            make.centerY.lessThanOrEqualTo(view.snp.centerY).offset(-50)
+            make.bottom.lessThanOrEqualTo(spinnerView.snp.top).offset(-30)
+        }
+        
+        contentView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.size.equalTo(min(view.frame.size.height * 0.25, 200))
+            make.centerX.equalToSuperview()
+        }
+        
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(logoImageView.snp.bottom).offset(10)
+        }
+        
+        contentView.addSubview(descriptionLabel)
+        descriptionLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(7)
+        }
+        
+        contentView.addSubview(codeField)
+        codeField.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(30)
             make.height.equalTo(50)
+            make.width.equalTo(186)
+            make.centerX.bottom.equalToSuperview()
         }
     }
     

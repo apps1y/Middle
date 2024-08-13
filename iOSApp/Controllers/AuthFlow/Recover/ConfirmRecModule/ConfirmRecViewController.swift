@@ -45,7 +45,7 @@ final class ConfirmRecViewController: UXViewController {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Мы отправлили код Вам на почту. Есть вероятность, что он мог попасть в спам."
+        label.text = "Мы отправлили код Вам на почту. Он мог попасть в спам."
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textAlignment = .center
         label.numberOfLines = 0
