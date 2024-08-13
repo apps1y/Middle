@@ -120,7 +120,7 @@ final class EmailRecViewController: UXViewController {
         contentView.addSubview(emailTextField)
         emailTextField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)
+            make.height.equalTo(48)
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
         }
         

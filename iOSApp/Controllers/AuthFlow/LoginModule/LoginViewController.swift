@@ -147,21 +147,21 @@ final class LoginViewController: UXViewController {
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(logoImageView.snp.bottom).offset(10)
+            make.top.equalTo(logoImageView.snp.bottom).offset(7)
         }
         
         contentView.addSubview(emailTextField)
         emailTextField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)
+            make.height.equalTo(48)
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
         }
         
         contentView.addSubview(passwordTextField)
         passwordTextField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)
-            make.top.equalTo(emailTextField.snp.bottom).offset(7)
+            make.height.equalTo(48)
+            make.top.equalTo(emailTextField.snp.bottom).offset(10)
         }
         
         contentView.addSubview(recoverAccountButton)
