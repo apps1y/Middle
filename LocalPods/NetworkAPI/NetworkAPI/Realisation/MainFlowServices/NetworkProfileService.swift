@@ -8,7 +8,7 @@
 import Foundation
 
 extension NetworkService: NetworkProfileProtocol {
-    func profile(token: String, completion: @escaping (CompleteResult<ProfileResponseModel>) -> Void) {
+    public func profile(token: String, completion: @escaping (CompleteResult<ProfileResponseModel>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/profile", headers: [:], httpMethod: .get, bearer: token)
         let requestModel: None? = nil
         

@@ -8,7 +8,7 @@
 import Foundation
 
 extension NetworkService: NetworkTelegramProtocol {
-    func getUserTelegramSessions(token: String, completion: @escaping (CompleteResult<UserSessionsResponseModel>) -> Void) {
+    public func getUserTelegramSessions(token: String, completion: @escaping (CompleteResult<UserSessionsResponseModel>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/telegram", headers: [:], httpMethod: .get, bearer: token)
         let requestModel: None? = nil
         
@@ -18,7 +18,7 @@ extension NetworkService: NetworkTelegramProtocol {
         }
     }
     
-    func addTelegramAccount(token: String, code: String, password: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
+    public func addTelegramAccount(token: String, code: String, password: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/telegram", headers: [:], httpMethod: .post, bearer: token)
         let requestModel = TelegramRequestModel(code: code, password: password, phone_number: phoneNumber)
         
@@ -28,7 +28,7 @@ extension NetworkService: NetworkTelegramProtocol {
         }
     }
     
-    func removeTelegramSession(token: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
+    public func removeTelegramSession(token: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/telegram", headers: [:], httpMethod: .delete, bearer: token)
         let requestModel = TelegramRequestModel(code: "", password: "", phone_number: phoneNumber)
         
@@ -38,7 +38,7 @@ extension NetworkService: NetworkTelegramProtocol {
         }
     }
     
-    func sendTelegramCode(token: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
+    public func sendTelegramCode(token: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/telegram/code", headers: [:], httpMethod: .post, bearer: token)
         let requestModel = TelegramRequestModel(code: "", password: "", phone_number: phoneNumber)
         
