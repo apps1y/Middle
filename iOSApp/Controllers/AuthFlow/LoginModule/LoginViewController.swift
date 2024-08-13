@@ -30,17 +30,10 @@ protocol LoginViewProtocol: AnyObject {
 
 
 // MARK: - View Controller
-final class LoginViewController: UIViewController {
+final class LoginViewController: UXViewController {
     
     // MARK: - UI
-    private lazy var backgroundScrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.keyboardDismissMode = .interactiveWithAccessory
-        view.alwaysBounceVertical = true
-        return view
-    }()
-    
-    private lazy var backgroundView: UIView = {
+    private lazy var contentView: UIView = {
         let view = UIView()
         return view
     }()
@@ -122,72 +115,61 @@ final class LoginViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         
-        view.addSubview(backgroundView)
-        backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(
-                -(navigationController?.navigationBar.frame.size.height ?? 25)
-            )
-        }
-        if #available(iOS 15.0, *) {
-            view.keyboardLayoutGuide.topAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
-        } else {
-            backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        }
-        
-        view.addSubview(backgroundScrollView)
-        backgroundScrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        backgroundScrollView.addSubview(emailTextField)
-        emailTextField.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(backgroundView.snp.centerY)
-            make.height.equalTo(50)
-        }
-        
-        backgroundScrollView.addSubview(passwordTextField)
-        passwordTextField.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.top.equalTo(backgroundView.snp.centerY).offset(9)
-            make.height.equalTo(50)
-        }
-        
-        backgroundScrollView.addSubview(createAccountButton)
+        scrollView.addSubview(createAccountButton)
         createAccountButton.snp.makeConstraints { make in
-            make.bottom.equalTo(backgroundView).inset(10)
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.height.equalTo(40)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-5)
+            make.leading.trailing.equalTo(view).inset(15)
+            make.height.equalTo(45)
         }
-        
-        backgroundScrollView.addSubview(continueButton)
+
+        scrollView.addSubview(continueButton)
         continueButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(createAccountButton.snp.top).offset(-5)
-            make.height.equalTo(50)
+            make.leading.trailing.equalTo(view).inset(15)
+            make.bottom.greaterThanOrEqualTo(createAccountButton.snp.top).offset(-5)
+            make.bottom.lessThanOrEqualTo(keyboardLayoutGuide.snp.top).offset(-10)
+            make.height.equalTo(47)
         }
         
-        backgroundScrollView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(emailTextField.snp.top)
-            make.height.equalTo(70)
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view).inset(15)
+            make.centerY.lessThanOrEqualTo(view.snp.centerY).offset(-70)
+            make.bottom.lessThanOrEqualTo(continueButton.snp.top).offset(-30)
         }
         
-        backgroundScrollView.addSubview(logoImageView)
+        contentView.addSubview(logoImageView)
         logoImageView.snp.makeConstraints { make in
-            make.top.equalTo(backgroundView)
-            make.centerX.equalTo(backgroundView)
-            make.width.equalTo(200)
-            make.bottom.equalTo(titleLabel.snp.top)
+            make.top.equalToSuperview()
+            make.size.equalTo(view.frame.size.height * 0.25)
+            make.centerX.equalToSuperview()
         }
         
-        backgroundScrollView.addSubview(recoverAccountButton)
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(logoImageView.snp.bottom).offset(10)
+        }
+        
+        contentView.addSubview(emailTextField)
+        emailTextField.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(50)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+        }
+        
+        contentView.addSubview(passwordTextField)
+        passwordTextField.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(50)
+            make.top.equalTo(emailTextField.snp.bottom).offset(7)
+        }
+        
+        contentView.addSubview(recoverAccountButton)
         recoverAccountButton.snp.makeConstraints { make in
-            make.leading.equalTo(backgroundView).inset(20)
-            make.height.equalTo(30)
-            make.top.equalTo(passwordTextField.snp.bottom).offset(2)
+            make.leading.trailing.equalToSuperview().inset(10)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(5)
+            make.height.equalTo(25)
+            make.bottom.equalToSuperview()
         }
     }
     
