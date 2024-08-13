@@ -16,10 +16,10 @@ final class HomePresenter {
     weak var view: HomeViewProtocol?
     var router: HomeRouterInput
     
-    private let networkService: NetworkMainProtocol
+    private let networkService: NetworkProfileProtocol
     private let databasePreviewsManager: DatabasePreviewsProtocol
 
-    init(view: HomeViewProtocol?, router: HomeRouterInput, networkService: NetworkMainProtocol, databasePreviewsManager: DatabasePreviewsProtocol) {
+    init(view: HomeViewProtocol?, router: HomeRouterInput, networkService: NetworkProfileProtocol, databasePreviewsManager: DatabasePreviewsProtocol) {
         self.view = view
         self.router = router
         self.networkService = networkService

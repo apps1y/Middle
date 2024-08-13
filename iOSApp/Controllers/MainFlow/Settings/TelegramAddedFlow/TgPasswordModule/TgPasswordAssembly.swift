@@ -11,12 +11,12 @@ import NetworkAPI
 final class TgPasswordAssembly {
     
     /// DI
-    private let networkSevice: NetworkMainProtocol
+    private let networkSevice: NetworkProfileProtocol
     
     /// coordinator
     weak var telegramAddCoordinator: TelegramAddCoordinatorProtocol?
     
-    init(networkSevice: NetworkMainProtocol) {
+    init(networkSevice: NetworkProfileProtocol) {
         self.networkSevice = networkSevice
     }
     

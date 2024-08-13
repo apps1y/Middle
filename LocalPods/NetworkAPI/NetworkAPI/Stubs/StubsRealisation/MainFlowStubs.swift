@@ -8,7 +8,7 @@
 import Foundation
 
 extension NetworkServiceStub: NetworkProfileProtocol {
-    func profile(token: String, completion: @escaping (CompleteResult<ProfileResponseModel>) -> Void) {
+    public func profile(token: String, completion: @escaping (CompleteResult<ProfileResponseModel>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let responseModel = ProfileResponseModel(status: "",
                                                      data: ProfileResponseModel.ProfoleData(confirmed: true,
@@ -21,7 +21,7 @@ extension NetworkServiceStub: NetworkProfileProtocol {
 }
 
 extension NetworkServiceStub: NetworkTelegramProtocol {
-    func getUserTelegramSessions(token: String, completion: @escaping (CompleteResult<UserSessionsResponseModel>) -> Void) {
+    public func getUserTelegramSessions(token: String, completion: @escaping (CompleteResult<UserSessionsResponseModel>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let sessions: [UserSessionsResponseModel.UserTelegramSession] = [
                 UserSessionsResponseModel.UserTelegramSession(name: "Андрей", phone: "+7800"),
@@ -32,21 +32,21 @@ extension NetworkServiceStub: NetworkTelegramProtocol {
         }
     }
     
-    func addTelegramAccount(token: String, code: String, password: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
+    public func addTelegramAccount(token: String, code: String, password: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let responseModel = None(status: "")
             completion(.success200(data: responseModel))
         }
     }
     
-    func removeTelegramSession(token: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
+    public func removeTelegramSession(token: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let responseModel = None(status: "")
             completion(.success200(data: responseModel))
         }
     }
     
-    func sendTelegramCode(token: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
+    public func sendTelegramCode(token: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let responseModel = None(status: "")
             completion(.success200(data: responseModel))

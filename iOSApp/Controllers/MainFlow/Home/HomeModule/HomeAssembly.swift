@@ -10,10 +10,10 @@ import NetworkAPI
 
 final class HomeAssembly {
     
-    private let networkService: NetworkMainProtocol
+    private let networkService: NetworkProfileProtocol
     private let databasePreviewsManager: DatabasePreviewsProtocol
     
-    init(networkService: NetworkMainProtocol, databasePreviewsManager: DatabasePreviewsProtocol) {
+    init(networkService: NetworkProfileProtocol, databasePreviewsManager: DatabasePreviewsProtocol) {
         self.networkService = networkService
         self.databasePreviewsManager = databasePreviewsManager
     }

@@ -19,13 +19,13 @@ final class TgNumberPresenter {
     weak var view: TgNumberViewProtocol?
     
     /// DI
-    private let networkSevice: NetworkMainProtocol
+    private let networkSevice: NetworkProfileProtocol
     private let alertFabric: AlertFabric
     
     /// coordinator
     weak var telegramAddCoordinator: TelegramAddCoordinatorProtocol?
 
-    init(view: TgNumberViewProtocol?, networkSevice: NetworkMainProtocol, alertFabric: AlertFabric, telegramAddCoordinator: TelegramAddCoordinatorProtocol?) {
+    init(view: TgNumberViewProtocol?, networkSevice: NetworkProfileProtocol, alertFabric: AlertFabric, telegramAddCoordinator: TelegramAddCoordinatorProtocol?) {
         self.view = view
         self.networkSevice = networkSevice
         self.alertFabric = alertFabric

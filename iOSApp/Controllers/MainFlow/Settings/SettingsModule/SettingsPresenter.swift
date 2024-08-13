@@ -66,7 +66,7 @@ final class SettingsPresenter {
             DispatchQueue.main.async {
                 self?.view?.finishLoadingChangePasswordCell()
                 switch result {
-                case .success200(let data):
+                case .success200(_):
                     self?.router.pushChangePasswordView(email: user.email)
                 case .success400(let status):
                     self?.router.presentWarningAlert(message: status.localizedDescription)

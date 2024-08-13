@@ -11,13 +11,13 @@ import NetworkAPI
 final class TgNumberAssembly {
     
     /// DI
-    private let networkSevice: NetworkMainProtocol
+    private let networkSevice: NetworkProfileProtocol
     private let alertFabric: AlertFabric
     
     /// coordinator
     weak var telegramAddCoordinator: TelegramAddCoordinatorProtocol?
     
-    init(networkSevice: NetworkMainProtocol, alertFabric: AlertFabric) {
+    init(networkSevice: NetworkProfileProtocol, alertFabric: AlertFabric) {
         self.networkSevice = networkSevice
         self.alertFabric = alertFabric
     }
