@@ -17,21 +17,11 @@ protocol EmailRecViewProtocol: AnyObject {
 }
 
 // MARK: - View Controller
-final class EmailRecViewController: UIViewController {
+final class EmailRecViewController: UXViewController {
     
     // MARK: - UI
-    private lazy var backgroundScrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.keyboardDismissMode = .interactiveWithAccessory
-        view.alwaysBounceVertical = true
-        return view
-    }()
     
-    private lazy var backgroundView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private lazy var contentView = UIView()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -48,8 +38,6 @@ final class EmailRecViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    
-    private lazy var titleView = UIView()
     
     private lazy var emailTextField: TextField = {
         let field = TextField()
@@ -84,7 +72,7 @@ final class EmailRecViewController: UIViewController {
     
     init(email: String?) {
         self.email = email
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
     
     required init?(coder: NSCoder) {
@@ -96,72 +84,45 @@ final class EmailRecViewController: UIViewController {
         setupUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if email == nil {
-            emailTextField.becomeFirstResponder()
-        }
-    }
-    
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(cancelButtonTapped))
         
-        view.addSubview(backgroundView)
-        backgroundView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-            if #available(iOS 15.0, *) {
-                make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
-            } else {
-                make.bottom.equalToSuperview()
-            }
-        }
-        
-        view.addSubview(backgroundScrollView)
-        backgroundScrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        backgroundScrollView.addSubview(emailTextField)
-        emailTextField.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.top.equalTo(backgroundView.snp.centerY).offset(20)
-            make.height.equalTo(50)
-        }
-        
-        backgroundScrollView.addSubview(continueButton)
+        scrollView.addSubview(continueButton)
         continueButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(backgroundView).inset(20)
-            make.height.equalTo(50)
+            make.leading.trailing.equalTo(view).inset(15)
+            make.bottom.equalTo(keyboardLayoutGuide.snp.top).offset(-10)
+            make.height.equalTo(47)
         }
         
-        backgroundScrollView.addSubview(descriptionLabel)
-        descriptionLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(emailTextField.snp.top).offset(-20)
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view).inset(15)
+            make.centerY.lessThanOrEqualTo(view.snp.centerY).offset(-50)
+            make.bottom.lessThanOrEqualTo(continueButton.snp.top).offset(-30)
         }
         
-        backgroundScrollView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView).inset(15)
-            make.bottom.equalTo(descriptionLabel.snp.top).offset(-5)
-        }
-        
-        view.addSubview(logoImageView)
+        contentView.addSubview(logoImageView)
         logoImageView.snp.makeConstraints { make in
-            make.centerX.equalTo(backgroundView)
-            make.width.equalTo(170)
-            make.bottom.equalTo(titleLabel.snp.top)
-            make.height.equalTo(170)
+            make.top.equalToSuperview()
+            make.size.equalTo(min(view.frame.size.height * 0.25, 200))
+            make.centerX.equalToSuperview()
         }
         
-        backgroundScrollView.addSubview(errorLabel)
-        errorLabel.snp.makeConstraints { make in
-            make.top.equalTo(emailTextField.snp.bottom).offset(8)
-            make.leading.trailing.equalTo(backgroundView).inset(20)
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(logoImageView.snp.bottom).offset(10)
+        }
+        
+        contentView.addSubview(emailTextField)
+        emailTextField.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(50)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
     

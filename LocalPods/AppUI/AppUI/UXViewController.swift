@@ -41,7 +41,7 @@ open class UXViewController: UIViewController {
         -1.0
     }()
     
-    private var safeAreaBottomInsets: CGFloat = 0.0
+    private var safeAreaBottomInsets: CGFloat = 34.0
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -93,9 +93,11 @@ open class UXViewController: UIViewController {
     }
     
     open override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         if maxKeyboardHeight == -1.0 {
             maxKeyboardHeight = view.safeAreaInsets.bottom
             keyboardTopAnchor.constant = -view.safeAreaInsets.bottom
+            print(view.safeAreaInsets.bottom)
         }
     }
     

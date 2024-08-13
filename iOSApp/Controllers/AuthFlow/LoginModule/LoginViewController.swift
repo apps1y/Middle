@@ -140,7 +140,7 @@ final class LoginViewController: UXViewController {
         contentView.addSubview(logoImageView)
         logoImageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.size.equalTo(view.frame.size.height * 0.25)
+            make.size.equalTo(min(view.frame.size.height * 0.25, 200))
             make.centerX.equalToSuperview()
         }
         
@@ -182,6 +182,7 @@ final class LoginViewController: UXViewController {
     
     @objc private func recoverAccountButtonTapped() {
         guard let email = emailTextField.text else { return }
+        view.endEditing(true)
         presenter?.openRecover(with: email)
     }
     
