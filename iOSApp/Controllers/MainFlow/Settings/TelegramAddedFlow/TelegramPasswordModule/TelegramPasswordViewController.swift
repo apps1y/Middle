@@ -1,22 +1,22 @@
 //
-//  TgPasswordViewController.swift
+//  TelegramPasswordViewController.swift
 //  Super easy dev
 //
-//  Created by vanyaluk on 09.08.2024
+//  Created by vanyaluk on 14.08.2024
 //
 
 import UIKit
 import AppUI
 
 // MARK: - View Protocol
-protocol TgPasswordViewProtocol: AnyObject {
+protocol TelegramPasswordViewProtocol: AnyObject {
     func startLoading()
     
     func finishLoading()
 }
 
 // MARK: - View Controller
-final class TgPasswordViewController: UXViewController {
+final class TelegramPasswordViewController: UXViewController {
     
     private lazy var monkeyImageLabel: UILabel = {
         let label = UILabel()
@@ -36,7 +36,7 @@ final class TgPasswordViewController: UXViewController {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Вы включили двухэтапную аутентификацию. Теперь Ваш аккаунт защищён дополнительным облачным паролем."
+        label.text = "Если Вы включили двухэтапную аутентификацию, то введите дополнительный облачный пароль. Если пароля нет, то оставьте поле пустым."
         label.font = .systemFont(ofSize: 17)
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -51,6 +51,7 @@ final class TgPasswordViewController: UXViewController {
         field.textContentType = .none
         field.keyboardType = .asciiCapable
         field.isSecureTextEntry = true
+        field.delegate = self
         return field
     }()
     
@@ -62,14 +63,14 @@ final class TgPasswordViewController: UXViewController {
     
     private lazy var continueButton: Button = {
         let button = Button()
-        button.setTitle("Продолжить", for: .normal)
+        button.setTitle("У меня нет пароля", for: .normal)
         button.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private lazy var contentView = UIView()
     
-    var presenter: TgPasswordPresenterProtocol?
+    var presenter: TelegramPasswordPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,12 +149,27 @@ final class TgPasswordViewController: UXViewController {
 }
 
 // MARK: - View Protocol Realization
-extension TgPasswordViewController: TgPasswordViewProtocol {
+extension TelegramPasswordViewController: TelegramPasswordViewProtocol {
     func startLoading() {
         continueButton.isLoading = true
     }
     
     func finishLoading() {
         continueButton.isLoading = false
+    }
+}
+
+
+extension TelegramPasswordViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard var text = textField.text, let buttonLabel = continueButton.titleLabel?.text else { return false }
+        let newString = (text as NSString).replacingCharacters(in: range, with: string)
+        if newString == "" {
+            continueButton.setTitle("У меня нет пароля", for: .normal)
+        } else if buttonLabel == "У меня нет пароля" {
+            continueButton.setTitle("Продолжить", for: .normal)
+        }
+        
+        return true
     }
 }

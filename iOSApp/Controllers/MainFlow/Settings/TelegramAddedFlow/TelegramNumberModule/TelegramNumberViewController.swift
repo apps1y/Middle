@@ -1,22 +1,22 @@
 //
-//  TgNumberViewController.swift
+//  TelegramNumberViewController.swift
 //  Super easy dev
 //
-//  Created by vanyaluk on 09.08.2024
+//  Created by vanyaluk on 14.08.2024
 //
 
 import UIKit
 import AppUI
 
 // MARK: - View Protocol
-protocol TgNumberViewProtocol: AnyObject {
+protocol TelegramNumberViewProtocol: AnyObject {
     func startLoading()
     
     func finishLoading()
 }
 
 // MARK: - View Controller
-final class TgNumberViewController: UXViewController {
+final class TelegramNumberViewController: UXViewController {
     
     private lazy var phoneImageLabel: UILabel = {
         let label = UILabel()
@@ -89,7 +89,7 @@ final class TgNumberViewController: UXViewController {
     
     private lazy var contentView = UIView()
     
-    var presenter: TgNumberPresenterProtocol?
+    var presenter: TelegramNumberPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,7 +182,8 @@ final class TgNumberViewController: UXViewController {
     
     // MARK: - objc funcs
     @objc private func continueButtonTapped() {
-        presenter?.enter(phone: "number")
+        guard let phoneCountry = phoneCountryField.text, let phoneBody = phoneBodyField.text else { return }
+        presenter?.enter(phoneCountry: phoneCountry, phoneBody: phoneBody)
     }
     
     @objc private func dismissScreen() {
@@ -211,10 +212,9 @@ final class TgNumberViewController: UXViewController {
 }
 
 // MARK: - View Protocol Realization
-extension TgNumberViewController: TgNumberViewProtocol {
+extension TelegramNumberViewController: TelegramNumberViewProtocol {
     func startLoading() {
         continueButton.isLoading = true
-        // contentView.isUserInteractionEnabled = false
     }
     
     func finishLoading() {
@@ -224,7 +224,7 @@ extension TgNumberViewController: TgNumberViewProtocol {
 }
 
 
-extension TgNumberViewController: UITextFieldDelegate {
+extension TelegramNumberViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
         
@@ -242,6 +242,4 @@ extension TgNumberViewController: UITextFieldDelegate {
             return true
         }
     }
-    
-    
 }

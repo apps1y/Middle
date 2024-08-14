@@ -1,22 +1,24 @@
 //
-//  TgOneTimeCodeViewController.swift
+//  TelegramCodeViewController.swift
 //  Super easy dev
 //
-//  Created by vanyaluk on 09.08.2024
+//  Created by vanyaluk on 14.08.2024
 //
 
 import UIKit
 import AppUI
 
 // MARK: - View Protocol
-protocol TgOneTimeCodeViewProtocol: AnyObject {
+protocol TelegramCodeViewProtocol: AnyObject {
+    func setDescriptionLabel(text: String)
+    
     func startLoading()
     
     func finishLoading(startAgain: Bool)
 }
 
 // MARK: - View Controller
-final class TgOneTimeCodeViewController: UXViewController {
+final class TelegramCodeViewController: UXViewController {
     
     private lazy var bubbleImageLabel: UILabel = {
         let label = UILabel()
@@ -36,7 +38,6 @@ final class TgOneTimeCodeViewController: UXViewController {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Мы отправили код через Telegram на другое устройство, где авторизован \(number)."
         label.font = .systemFont(ofSize: 17)
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -57,20 +58,11 @@ final class TgOneTimeCodeViewController: UXViewController {
     
     private lazy var contentView = UIView()
     
-    var presenter: TgOneTimeCodePresenterProtocol?
-    private let number: String
-    
-    init(number: String) {
-        self.number = number
-        super.init()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var presenter: TelegramCodePresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoaded()
         setupUI()
     }
     
@@ -135,7 +127,11 @@ final class TgOneTimeCodeViewController: UXViewController {
 }
 
 // MARK: - View Protocol Realization
-extension TgOneTimeCodeViewController: TgOneTimeCodeViewProtocol {
+extension TelegramCodeViewController: TelegramCodeViewProtocol {
+    func setDescriptionLabel(text: String) {
+        descriptionLabel.text = text
+    }
+    
     func startLoading() {
         spinner.startAnimating()
     }
@@ -149,8 +145,10 @@ extension TgOneTimeCodeViewController: TgOneTimeCodeViewProtocol {
     }
 }
 
-extension TgOneTimeCodeViewController: CodeFieldDelegate {
+extension TelegramCodeViewController: CodeFieldDelegate {
     func didFillAllFields(code: String) {
-        presenter?.enter(code: code)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            self?.presenter?.enter(code: code)
+        }
     }
 }

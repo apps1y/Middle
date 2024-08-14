@@ -32,7 +32,7 @@ final class ConfirmRecRouter: ConfirmRecRouterInput {
     }
     
     func presentWarningAlert(message: String) {
-        let alert = alertFabric.errorAuthAlert(message: message)
+        let alert = alertFabric.errorAlert(message: message)
         viewController?.present(alert, animated: true)
     }
 }

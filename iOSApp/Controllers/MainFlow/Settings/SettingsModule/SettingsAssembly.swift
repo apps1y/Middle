@@ -10,27 +10,27 @@ import NetworkAPI
 
 final class SettingsAssembly {
     
-    private let networkService: NetworkTelegramProtocol & NetworkRecoverProtocol & NetworkProfileProtocol
+    private let networkService:  NetworkRecoverProtocol & NetworkProfileProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     private let alertFabric: AlertFabric
     
     /// app coordinator
     weak var coordinator: FlowCoordinator?
     
-    private let telegramAddAssembly: TelegramAddAssembly
+    private let telegramNumberAssembly: TelegramNumberAssembly
     private var confirmRecAssembly: ConfirmRecAssembly
     
-    init(networkService: NetworkTelegramProtocol & NetworkRecoverProtocol & NetworkProfileProtocol, keychainBearerManager: KeychainBearerProtocol, alertFabric: AlertFabric, coordinator: FlowCoordinator? = nil, telegramAddAssembly: TelegramAddAssembly, confirmRecAssembly: ConfirmRecAssembly) {
+    init(networkService: NetworkRecoverProtocol & NetworkProfileProtocol, keychainBearerManager: KeychainBearerProtocol, alertFabric: AlertFabric, coordinator: FlowCoordinator? = nil, telegramNumberAssembly: TelegramNumberAssembly, confirmRecAssembly: ConfirmRecAssembly) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.alertFabric = alertFabric
         self.coordinator = coordinator
-        self.telegramAddAssembly = telegramAddAssembly
+        self.telegramNumberAssembly = telegramNumberAssembly
         self.confirmRecAssembly = confirmRecAssembly
     }
     
     func assemble() -> SettingsViewController {
-        let router = SettingsRouter(telegramAddAssembly: telegramAddAssembly, confirmRecAssembly: confirmRecAssembly, alertFabric: alertFabric)
+        let router = SettingsRouter(telegramNumberAssembly: telegramNumberAssembly, confirmRecAssembly: confirmRecAssembly, alertFabric: alertFabric)
         let viewController = SettingsViewController()
         let presenter = SettingsPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, coordinator: coordinator)
         

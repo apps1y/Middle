@@ -55,7 +55,7 @@ class StatusValidation {
             case 400, 404:
                 if let status = Status400.string(response.status) {
                     print("StatusValidation \(response.httpCode) with status: \(status.localizedDescription)")
-                    return .success400(status: status)
+                    return .failure(error: status.localizedDescription)
                 } else {
                     print("StatusValidation/### Error \(response.httpCode): неизвестный статус \(response.status)")
                     return .failure(error: "Ошибка на сервере... Чиним!")

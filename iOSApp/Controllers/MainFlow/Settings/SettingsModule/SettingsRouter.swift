@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SettingsRouterInput {
-    func presentTelegramAddFlow(successCompletion: @escaping (String) -> Void)
+    func presentTelegramAddFlow()
     
     func pushChangePasswordView(email: String)
     
@@ -25,22 +25,20 @@ final class SettingsRouter: SettingsRouterInput {
     
     weak var viewController: SettingsViewController?
     
-    private var telegramAddAssembly: TelegramAddAssembly
+    private var telegramNumberAssembly: TelegramNumberAssembly
     private var confirmRecAssembly: ConfirmRecAssembly
     
     private let alertFabric: AlertFabric
     
-    init(telegramAddAssembly: TelegramAddAssembly, confirmRecAssembly: ConfirmRecAssembly, alertFabric: AlertFabric) {
-        self.telegramAddAssembly = telegramAddAssembly
+    init(telegramNumberAssembly: TelegramNumberAssembly, confirmRecAssembly: ConfirmRecAssembly, alertFabric: AlertFabric) {
+        self.telegramNumberAssembly = telegramNumberAssembly
         self.confirmRecAssembly = confirmRecAssembly
         self.alertFabric = alertFabric
     }
     
-    func presentTelegramAddFlow(successCompletion: @escaping (String) -> Void) {
-        let telegramAddCoordinator = telegramAddAssembly.assemble(successCompletion: successCompletion)
-        let navigationController = TelegramNavigationController(coordinator: telegramAddCoordinator)
-        telegramAddCoordinator.navigationController = navigationController
-        telegramAddCoordinator.start()
+    func presentTelegramAddFlow() {
+        let view = telegramNumberAssembly.assemble()
+        let navigationController = UINavigationController(rootViewController: view)
         navigationController.modalPresentationStyle = .fullScreen
         viewController?.present(navigationController, animated: true)
     }
@@ -72,7 +70,7 @@ final class SettingsRouter: SettingsRouterInput {
     }
     
     func presentWarningAlert(message: String) {
-        let alert = alertFabric.errorAuthAlert(message: message)
+        let alert = alertFabric.errorAlert(message: message)
         viewController?.present(alert, animated: true)
     }
 }

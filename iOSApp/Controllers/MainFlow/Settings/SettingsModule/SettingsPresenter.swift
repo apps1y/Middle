@@ -41,7 +41,7 @@ final class SettingsPresenter {
     weak var view: SettingsViewProtocol?
     var router: SettingsRouterInput
     
-    private let networkService: NetworkTelegramProtocol & NetworkRecoverProtocol & NetworkProfileProtocol
+    private let networkService: NetworkRecoverProtocol & NetworkProfileProtocol
     private let keychainBearerManager: KeychainBearerProtocol
     
     /// app coordinator
@@ -50,7 +50,7 @@ final class SettingsPresenter {
     private var user: UserModel?
 
     init(view: SettingsViewProtocol?, router: SettingsRouterInput, 
-         networkService: NetworkTelegramProtocol & NetworkRecoverProtocol & NetworkProfileProtocol,
+         networkService: NetworkRecoverProtocol & NetworkProfileProtocol,
          keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?) {
         self.view = view
         self.router = router
@@ -99,7 +99,7 @@ extension SettingsPresenter: SettingsPresenterProtocol {
     }
     
     func newTelegramAccountTapped() {
-        
+        router.presentTelegramAddFlow()
     }
     
     func subscribtionTapped() {

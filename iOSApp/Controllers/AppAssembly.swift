@@ -65,15 +65,13 @@ final class AppAssembly {
         
         
         // MARK: - Assembly сборки Main Flow
-        let tgNumberAssembly = TgNumberAssembly(networkSevice: networkService, alertFabric: alertFabric)
-        let tgOneTimeCodeAssembly = TgOneTimeCodeAssembly(networkSevice: networkService)
-        let tgPasswordAssembly = TgPasswordAssembly(networkSevice: networkService)
-        
-        let telegramAddAssembly = TelegramAddAssembly(tgNumberAssembly: tgNumberAssembly, tgOneTimeCodeAssembly: tgOneTimeCodeAssembly, tgPasswordAssembly: tgPasswordAssembly)
-        
         let homeAssembly = HomeAssembly(networkService: networkService, databasePreviewsManager: databaseManager)
+        
+        let telegramPasswordAssembly = TelegramPasswordAssembly(networkSevice: networkService, alertFabric: alertFabric, keychainManager: keychainManager)
+        let telegramCodeAssembly = TelegramCodeAssembly(telegramPasswordAssembly: telegramPasswordAssembly)
+        let telegramNumberAssembly = TelegramNumberAssembly(networkSevice: networkService, alertFabric: alertFabric, keychainManager: keychainManager, telegramCodeAssembly: telegramCodeAssembly)
 
-        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric, telegramAddAssembly: telegramAddAssembly, confirmRecAssembly: confirmRecAssembly)
+        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric, telegramNumberAssembly: telegramNumberAssembly, confirmRecAssembly: confirmRecAssembly)
         
         let mainTabBarAssembly = MainTabBarAssembly(homeAssembly: homeAssembly, settingsAssembly: settingsAssembly)
         
@@ -86,6 +84,9 @@ final class AppAssembly {
         confirmAssembly.coordinator = appCoordinator
         newPasswordRecAssembly.coordinator = appCoordinator
         settingsAssembly.coordinator = appCoordinator
+        
+        telegramPasswordAssembly.coordinator = appCoordinator
+        telegramNumberAssembly.coordinator = appCoordinator
         
         return appCoordinator
     }

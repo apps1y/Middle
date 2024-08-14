@@ -97,7 +97,6 @@ open class UXViewController: UIViewController {
         if maxKeyboardHeight == -1.0 {
             maxKeyboardHeight = view.safeAreaInsets.bottom
             keyboardTopAnchor.constant = -view.safeAreaInsets.bottom
-            print(view.safeAreaInsets.bottom)
         }
     }
     
