@@ -9,7 +9,7 @@ import Foundation
 
 extension NetworkServiceStub: NetworkProfileProtocol {
     public func profile(token: String, completion: @escaping (CompleteResult<ProfileResponseModel>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             let responseModel = ProfileResponseModel(status: "",
                                                      data: ProfileResponseModel.ProfoleData(confirmed: true,
                                                                                             created_at: "18.01",
@@ -24,7 +24,7 @@ extension NetworkServiceStub: NetworkTelegramProtocol {
     public func getUserTelegramSessions(token: String, completion: @escaping (CompleteResult<UserSessionsResponseModel>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let sessions: [UserSessionsResponseModel.UserTelegramSession] = [
-                UserSessionsResponseModel.UserTelegramSession(name: "Андрей", phone: "+7800"),
+                UserSessionsResponseModel.UserTelegramSession(name: "Иван", phone: "+79254144498"),
                 UserSessionsResponseModel.UserTelegramSession(name: "Карим", phone: "+7800")
             ]
             let responseModel = UserSessionsResponseModel(sessions: sessions, status: "")

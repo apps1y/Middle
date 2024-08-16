@@ -13,10 +13,10 @@ public struct ProfileResponseModel: Decodable, Statusable {
     public var data: ProfoleData
     
     public struct ProfoleData: Decodable {
-        var confirmed: Bool
-        var created_at: String
-        var email: String
-        var updated_at: String
+        public var confirmed: Bool
+        public var created_at: String
+        public var email: String
+        public var updated_at: String
     }
 }
 

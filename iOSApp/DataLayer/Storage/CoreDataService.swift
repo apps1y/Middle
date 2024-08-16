@@ -25,10 +25,10 @@ final class CoreDataService: CoreDataProtocol {
         self.init(persistentContainer: container)
     }
     
-    func fetch<Entity: NSManagedObject, Model>(convertClosure: (Entity) -> Model) -> [Model] {
+    func fetch<Entity: NSManagedObject & EntityNamed, Model>(convertClosure: (Entity) -> Model) -> [Model] {
         var results: [Entity] = []
         viewContext.performAndWait {
-            let fetchRequest = NSFetchRequest<Entity>()
+            let fetchRequest = NSFetchRequest<Entity>(entityName: Entity.entityName)
             do {
                 results = try fetchRequest.execute()
             } catch {
@@ -52,9 +52,9 @@ final class CoreDataService: CoreDataProtocol {
         }
     }
     
-    func deleteAll<Entity: NSManagedObject>(_ type: Entity.Type) {
+    func deleteAll<Entity: NSManagedObject & EntityNamed>(_ type: Entity.Type) {
         viewContext.performAndWait {
-            let fetchRequest = NSFetchRequest<Entity>()
+            let fetchRequest = NSFetchRequest<Entity>(entityName: Entity.entityName)
             do {
                 let results = try fetchRequest.execute()
                 results.forEach { object in

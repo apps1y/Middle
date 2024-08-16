@@ -19,13 +19,11 @@ protocol SettingsViewProtocol: AnyObject {
     
     /// отображение подключенных аккаунтов
     /// - Parameter accounts: подгруженные аккаунты
-    func show(accounts: [String])
+    func show(accounts: [TelegramAccountModel])
     
-    /// начало загрузки ячейки смены пароля
-    func startLoadingChangePasswordCell()
-    
-    /// конец загрузки ячейки смены пароля
-    func finishLoadingChangePasswordCell()
+    /// отображение информации о юзере
+    /// - Parameter user: модель юзера
+    func show(user: UserModel)
 }
 
 // MARK: - View Controller
@@ -74,13 +72,13 @@ final class SettingsViewController: UIViewController {
     
     private lazy var emailLabel: UILabel = {
         let label = UILabel()
-        label.text = "ivanicloud_vanya@icloud.com"
+        label.text = "Загрузка..."
         return label
     }()
     
     private lazy var subscriptionInfoLabel: UILabel = {
         let label = UILabel()
-        label.text = "Пробный период до 21 июля"
+        label.text = "Безграничный доступ"
         label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 12)
         return label
@@ -125,7 +123,7 @@ final class SettingsViewController: UIViewController {
         return view
     }()
     
-    private var telegramAccounts: [String] = ["Иван", "Карим", "Арсений"]
+    private var telegramAccounts: [TelegramAccountModel] = []
     
     var presenter: SettingsPresenterProtocol?
     
@@ -183,28 +181,22 @@ final class SettingsViewController: UIViewController {
 
 // MARK: - View Protocol Realization
 extension SettingsViewController: SettingsViewProtocol {
-    func startLoadingChangePasswordCell() {
-        
-    }
-    
-    func finishLoadingChangePasswordCell() {
-        
-    }
     
     func startLoadingView() {
-        
+        loader.startAnimating()
     }
     
     func finishLoadingView() {
+        loader.stopAnimating()
     }
     
-    func show(accounts: [String]) {
-        
-    }
-    
-    func add(newAccount: String) {
-        telegramAccounts.append(newAccount)
+    func show(accounts: [TelegramAccountModel]) {
+        telegramAccounts = accounts
         tableView.reloadData()
+    }
+    
+    func show(user: UserModel) {
+        emailLabel.text = user.email
     }
 }
 
@@ -234,7 +226,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return changePasswordCell
         case 2:
             if indexPath.row == telegramAccounts.count { return addTelegramAccountCell }
-            else { return UserTableCell(title: telegramAccounts[indexPath.row], userImage: nil) }
+            else { return UserTableCell(title: telegramAccounts[indexPath.row].name, userImage: nil) }
         case 3:
             return subscribtionCell
         case 4:

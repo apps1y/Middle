@@ -14,8 +14,8 @@ public struct UserSessionsResponseModel: Statusable, Decodable {
     public var status: String
     
     public struct UserTelegramSession: Decodable {
-        var name: String
-        var phone: String
+        public var name: String
+        public var phone: String
     }
 }
 

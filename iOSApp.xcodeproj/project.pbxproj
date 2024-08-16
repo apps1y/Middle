@@ -21,6 +21,12 @@
 		520682082C6CAA74007ED7E7 /* TelegramPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682042C6CAA74007ED7E7 /* TelegramPasswordRouter.swift */; };
 		520682092C6CAA74007ED7E7 /* TelegramPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682052C6CAA74007ED7E7 /* TelegramPasswordViewController.swift */; };
 		5206820A2C6CAA74007ED7E7 /* TelegramPasswordAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682062C6CAA74007ED7E7 /* TelegramPasswordAssembly.swift */; };
+		5206820C2C6E241A007ED7E7 /* TelegramAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206820B2C6E2419007ED7E7 /* TelegramAccountModel.swift */; };
+		520682122C6F4FFC007ED7E7 /* RepasswordPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206820E2C6F4FFC007ED7E7 /* RepasswordPreviewPresenter.swift */; };
+		520682132C6F4FFC007ED7E7 /* RepasswordPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206820F2C6F4FFC007ED7E7 /* RepasswordPreviewRouter.swift */; };
+		520682142C6F4FFC007ED7E7 /* RepasswordPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682102C6F4FFC007ED7E7 /* RepasswordPreviewViewController.swift */; };
+		520682152C6F4FFC007ED7E7 /* RepasswordPreviewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682112C6F4FFC007ED7E7 /* RepasswordPreviewAssembly.swift */; };
+		5206821B2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206821A2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift */; };
 		529564F92C62A8F6007E3352 /* CashingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564F82C62A8F6007E3352 /* CashingRepository.swift */; };
 		529BF93A2C4579C1009954D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9392C4579C1009954D5 /* AppDelegate.swift */; };
 		529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF93B2C4579C1009954D5 /* SceneDelegate.swift */; };
@@ -79,7 +85,6 @@
 		52CF74832C5BB22F00E0AA7D /* KeychainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF74822C5BB22F00E0AA7D /* KeychainProtocols.swift */; };
 		52FAB8C92C620AB5001C6697 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FAB8C82C620AB5001C6697 /* CoreDataService.swift */; };
 		52FAB8CF2C621524001C6697 /* iOSAppCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52FAB8CD2C621524001C6697 /* iOSAppCoreData.xcdatamodeld */; };
-		52FAB8D32C621574001C6697 /* TelegramAccount+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FAB8D12C621574001C6697 /* TelegramAccount+CoreData.swift */; };
 		52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */; };
 		52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */; };
 		52FED25B2C4D0E1700AAF16B /* ConfirmAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */; };
@@ -101,6 +106,12 @@
 		520682042C6CAA74007ED7E7 /* TelegramPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramPasswordRouter.swift; sourceTree = "<group>"; };
 		520682052C6CAA74007ED7E7 /* TelegramPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramPasswordViewController.swift; sourceTree = "<group>"; };
 		520682062C6CAA74007ED7E7 /* TelegramPasswordAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramPasswordAssembly.swift; sourceTree = "<group>"; };
+		5206820B2C6E2419007ED7E7 /* TelegramAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramAccountModel.swift; sourceTree = "<group>"; };
+		5206820E2C6F4FFC007ED7E7 /* RepasswordPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepasswordPreviewPresenter.swift; sourceTree = "<group>"; };
+		5206820F2C6F4FFC007ED7E7 /* RepasswordPreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepasswordPreviewRouter.swift; sourceTree = "<group>"; };
+		520682102C6F4FFC007ED7E7 /* RepasswordPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepasswordPreviewViewController.swift; sourceTree = "<group>"; };
+		520682112C6F4FFC007ED7E7 /* RepasswordPreviewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepasswordPreviewAssembly.swift; sourceTree = "<group>"; };
+		5206821A2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TelegramAccount+CoreData.swift"; sourceTree = "<group>"; };
 		529564F82C62A8F6007E3352 /* CashingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashingRepository.swift; sourceTree = "<group>"; };
 		529BF9362C4579C1009954D5 /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529BF9392C4579C1009954D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,7 +172,6 @@
 		52CF74822C5BB22F00E0AA7D /* KeychainProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainProtocols.swift; sourceTree = "<group>"; };
 		52FAB8C82C620AB5001C6697 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		52FAB8CE2C621524001C6697 /* iOSAppCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSAppCoreData.xcdatamodel; sourceTree = "<group>"; };
-		52FAB8D12C621574001C6697 /* TelegramAccount+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TelegramAccount+CoreData.swift"; sourceTree = "<group>"; };
 		52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPresenter.swift; sourceTree = "<group>"; };
 		52FED2562C4D0E1700AAF16B /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		52FED2572C4D0E1700AAF16B /* ConfirmAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAssembly.swift; sourceTree = "<group>"; };
@@ -232,6 +242,17 @@
 				520682062C6CAA74007ED7E7 /* TelegramPasswordAssembly.swift */,
 			);
 			path = TelegramPasswordModule;
+			sourceTree = "<group>";
+		};
+		5206820D2C6F4F69007ED7E7 /* RepasswordPreviewModule */ = {
+			isa = PBXGroup;
+			children = (
+				520682102C6F4FFC007ED7E7 /* RepasswordPreviewViewController.swift */,
+				5206820E2C6F4FFC007ED7E7 /* RepasswordPreviewPresenter.swift */,
+				5206820F2C6F4FFC007ED7E7 /* RepasswordPreviewRouter.swift */,
+				520682112C6F4FFC007ED7E7 /* RepasswordPreviewAssembly.swift */,
+			);
+			path = RepasswordPreviewModule;
 			sourceTree = "<group>";
 		};
 		529BF92D2C4579C1009954D5 = {
@@ -404,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				529BF9CD2C47BB4F009954D5 /* SettingsModule */,
+				5206820D2C6F4F69007ED7E7 /* RepasswordPreviewModule */,
 				520681B62C665D85007ED7E7 /* TelegramAddedFlow */,
 			);
 			path = Settings;
@@ -450,6 +472,7 @@
 				529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */,
 				529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */,
 				520681E42C6B942F007ED7E7 /* UserModel.swift */,
+				5206820B2C6E2419007ED7E7 /* TelegramAccountModel.swift */,
 			);
 			path = SettingsModule;
 			sourceTree = "<group>";
@@ -496,7 +519,7 @@
 		52B3E8192C61EB4900CCCF26 /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
-				52FAB8D12C621574001C6697 /* TelegramAccount+CoreData.swift */,
+				5206821A2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift */,
 				52FAB8CD2C621524001C6697 /* iOSAppCoreData.xcdatamodeld */,
 			);
 			path = CoreDataModels;
@@ -665,10 +688,10 @@
 			files = (
 				529BF9542C458A3B009954D5 /* AppAssembly.swift in Sources */,
 				529BF9562C458A6B009954D5 /* AppCoordinator.swift in Sources */,
+				5206820C2C6E241A007ED7E7 /* TelegramAccountModel.swift in Sources */,
 				529BF9792C46EAEF009954D5 /* UserDefaultsManager.swift in Sources */,
 				529BF93A2C4579C1009954D5 /* AppDelegate.swift in Sources */,
 				529BF95E2C459D3C009954D5 /* LoginPresenter.swift in Sources */,
-				52FAB8D32C621574001C6697 /* TelegramAccount+CoreData.swift in Sources */,
 				529BF98B2C46FA0B009954D5 /* PasswordPresenter.swift in Sources */,
 				529BF98C2C46FA0B009954D5 /* PasswordRouter.swift in Sources */,
 				529BF98D2C46FA0B009954D5 /* PasswordViewController.swift in Sources */,
@@ -714,6 +737,10 @@
 				529BF9A52C479725009954D5 /* MainTabBarController.swift in Sources */,
 				529BF9832C46F9E5009954D5 /* EmailRouter.swift in Sources */,
 				529BF9842C46F9E5009954D5 /* EmailViewController.swift in Sources */,
+				520682122C6F4FFC007ED7E7 /* RepasswordPreviewPresenter.swift in Sources */,
+				520682132C6F4FFC007ED7E7 /* RepasswordPreviewRouter.swift in Sources */,
+				520682142C6F4FFC007ED7E7 /* RepasswordPreviewViewController.swift in Sources */,
+				520682152C6F4FFC007ED7E7 /* RepasswordPreviewAssembly.swift in Sources */,
 				529BF9852C46F9E5009954D5 /* EmailAssembly.swift in Sources */,
 				529BF95F2C459D3C009954D5 /* LoginRouter.swift in Sources */,
 				529BF9602C459D3C009954D5 /* LoginViewController.swift in Sources */,
@@ -724,6 +751,7 @@
 				529BF97B2C46F8C7009954D5 /* StringsValidationManager.swift in Sources */,
 				529BF9612C459D3C009954D5 /* LoginAssembly.swift in Sources */,
 				529BF9C02C47BB07009954D5 /* NewMessagePresenter.swift in Sources */,
+				5206821B2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift in Sources */,
 				52ABB7A92C502FD8004551B5 /* ConfirmRecPresenter.swift in Sources */,
 				52ABB7AA2C502FD8004551B5 /* ConfirmRecRouter.swift in Sources */,
 				52ABB7AB2C502FD8004551B5 /* ConfirmRecViewController.swift in Sources */,

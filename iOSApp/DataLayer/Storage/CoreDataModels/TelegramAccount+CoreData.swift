@@ -9,20 +9,24 @@
 import Foundation
 import CoreData
 
-
-@objc(TelegramAccount)
-public class TelegramAccount: NSManagedObject {
-
+protocol EntityNamed {
+    static var entityName: String { get }
 }
 
 
-extension TelegramAccount {
+@objc(TelegramAccountStorage)
+public class TelegramAccountStorage: NSManagedObject, EntityNamed {
+    static var entityName: String = "TelegramAccountStorage"
+}
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<TelegramAccount> {
-        return NSFetchRequest<TelegramAccount>(entityName: "TelegramAccount")
+
+extension TelegramAccountStorage {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<TelegramAccountStorage> {
+        return NSFetchRequest<TelegramAccountStorage>(entityName: "TelegramAccountStorage")
     }
 
     @NSManaged public var name: String
-    @NSManaged public var image: Data?
+    @NSManaged public var phone: String
 
 }

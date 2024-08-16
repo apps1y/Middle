@@ -14,7 +14,7 @@ protocol CoreDataProtocol: AnyObject {
     /// - Parameters:
     ///   - storedId: индификатор хранения
     ///   - convertClosure: блок для преобразования ДБ модели в обычную
-    func fetch<Entity: NSManagedObject, Model>(convertClosure: (Entity) -> Model) -> [Model]
+    func fetch<Entity: NSManagedObject & EntityNamed, Model>(convertClosure: (Entity) -> Model) -> [Model]
     
     /// Вставляет модели в БД
     /// - Parameters:
@@ -26,5 +26,5 @@ protocol CoreDataProtocol: AnyObject {
     /// - Parameters:
     ///   - models: модели для сохранения
     ///   - convertClosure: блок для преобразования ДБ модели в обычную
-    func deleteAll<Entity: NSManagedObject>(_ type: Entity.Type)
+    func deleteAll<Entity: NSManagedObject & EntityNamed>(_ type: Entity.Type)
 }

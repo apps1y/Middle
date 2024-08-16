@@ -22,11 +22,12 @@ final class AppAssembly {
         
         
         /// StorageLayer
-        let databaseManager = DatabasePreviewsProtocol()
+        let coreDaraService = CoreDataService()
         
         // let keychainManager = KeychainStub()
         let keychainManager = KeychainManager()
         
+        let userDefaultsManager = UserDefaultsManager()
         
         /// ManagersLayer
         let stringsValidationManager = StringsValidationManager()
@@ -34,7 +35,7 @@ final class AppAssembly {
         /// Fabrics
         let alertFabric = AlertFabric()
         
-        
+        let cashingRepository = CashingRepository(userDefaultsManager: userDefaultsManager, coreDataService: coreDaraService)
         
         
         
@@ -65,13 +66,15 @@ final class AppAssembly {
         
         
         // MARK: - Assembly сборки Main Flow
-        let homeAssembly = HomeAssembly(networkService: networkService, databasePreviewsManager: databaseManager)
+        let homeAssembly = HomeAssembly(networkService: networkService, coreDataService: coreDaraService)
         
         let telegramPasswordAssembly = TelegramPasswordAssembly(networkSevice: networkService, alertFabric: alertFabric, keychainManager: keychainManager)
         let telegramCodeAssembly = TelegramCodeAssembly(telegramPasswordAssembly: telegramPasswordAssembly)
         let telegramNumberAssembly = TelegramNumberAssembly(networkSevice: networkService, alertFabric: alertFabric, keychainManager: keychainManager, telegramCodeAssembly: telegramCodeAssembly)
 
-        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric, telegramNumberAssembly: telegramNumberAssembly, confirmRecAssembly: confirmRecAssembly)
+        let repasswordPreviewAssembly = RepasswordPreviewAssembly(networkService: networkService, alertFabric: alertFabric, confirmRecAssembly: confirmRecAssembly)
+        
+        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric, cashingRepository: cashingRepository, telegramNumberAssembly: telegramNumberAssembly, repasswordPreviewAssembly: repasswordPreviewAssembly)
         
         let mainTabBarAssembly = MainTabBarAssembly(homeAssembly: homeAssembly, settingsAssembly: settingsAssembly)
         

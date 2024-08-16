@@ -17,13 +17,13 @@ final class HomePresenter {
     var router: HomeRouterInput
     
     private let networkService: NetworkProfileProtocol
-    private let databasePreviewsManager: DatabasePreviewsProtocol
+    private let coreDataService: CoreDataProtocol
 
-    init(view: HomeViewProtocol?, router: HomeRouterInput, networkService: NetworkProfileProtocol, databasePreviewsManager: DatabasePreviewsProtocol) {
+    init(view: HomeViewProtocol?, router: HomeRouterInput, networkService: NetworkProfileProtocol, coreDataService: CoreDataProtocol) {
         self.view = view
         self.router = router
         self.networkService = networkService
-        self.databasePreviewsManager = databasePreviewsManager
+        self.coreDataService = coreDataService
     }
 }
 
