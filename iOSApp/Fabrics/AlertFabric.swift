@@ -23,11 +23,21 @@ final class AlertFabric {
     /// предупреждающий alert
     /// - Parameter message: текст предупреждения
     /// - Returns: настроенный alert
-    func warningAlertWithAction(title: String = "Ошибка", message: String, handler: @escaping () -> Void) -> UIAlertController {
+    func warningAlertWithAction(title: String = "Предупреждение", message: String, handler: @escaping () -> Void) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let submitAction = UIAlertAction(title: "Понятно", style: .default) { alert in
             handler()
         }
+        alert.addAction(submitAction)
+        return alert
+    }
+    
+    /// предупреждающий alert
+    /// - Parameter message: текст предупреждения
+    /// - Returns: настроенный alert
+    func warningAlertWithoutAction(title: String = "Предупреждение", message: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let submitAction = UIAlertAction(title: "Понятно", style: .default)
         alert.addAction(submitAction)
         return alert
     }

@@ -37,8 +37,9 @@ public enum Status400: String, CaseIterable {
     case invalidJson = "INVALID_JSON"
     // InvalidEmail Response 400
     case invalidEmail = "INVALID_EMAIL"
-    
-    case invalidPassword = "INVALID_PASSWORD"
+    case tooManyAccounts = ""
+    // много аккаунтов
+    case invalidPassword = "TOO_MANY_ACCOUNTS"
     
     // InvalidEmailCode Response 401
     case invalidEmailCode = "INVALID_EMAIL_CODE"
@@ -73,6 +74,8 @@ public enum Status400: String, CaseIterable {
             return "Такого аккаунта не существует."
         case .invalidPassword:
             return "Пароль не соответствует критериям."
+        case .tooManyAccounts:
+            return "У Вас добавлено много акканутов"
         }
     }
 }

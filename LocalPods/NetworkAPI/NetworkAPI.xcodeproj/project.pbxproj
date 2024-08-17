@@ -12,6 +12,7 @@
 		520681EB2C6BD663007ED7E7 /* CompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681EA2C6BD663007ED7E7 /* CompleteResult.swift */; };
 		520681ED2C6BD756007ED7E7 /* NetworkProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681EC2C6BD756007ED7E7 /* NetworkProfileService.swift */; };
 		520681EF2C6BD761007ED7E7 /* NetworkTelegramService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681EE2C6BD761007ED7E7 /* NetworkTelegramService.swift */; };
+		5206821F2C70A097007ED7E7 /* TelegramStatusValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206821E2C70A097007ED7E7 /* TelegramStatusValidation.swift */; };
 		529C07952C4A54E900E6D1BB /* NetworkAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 529C07942C4A54E900E6D1BB /* NetworkAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52ABB7B62C511311004551B5 /* NetworkRecoverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7B52C511311004551B5 /* NetworkRecoverProtocol.swift */; };
 		52ABB7B82C51131C004551B5 /* NetworkAuthProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB7B72C51131C004551B5 /* NetworkAuthProtocol.swift */; };
@@ -39,6 +40,7 @@
 		520681EA2C6BD663007ED7E7 /* CompleteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteResult.swift; sourceTree = "<group>"; };
 		520681EC2C6BD756007ED7E7 /* NetworkProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProfileService.swift; sourceTree = "<group>"; };
 		520681EE2C6BD761007ED7E7 /* NetworkTelegramService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTelegramService.swift; sourceTree = "<group>"; };
+		5206821E2C70A097007ED7E7 /* TelegramStatusValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramStatusValidation.swift; sourceTree = "<group>"; };
 		529C07912C4A54E900E6D1BB /* NetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		529C07942C4A54E900E6D1BB /* NetworkAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkAPI.h; sourceTree = "<group>"; };
 		52ABB7B52C511311004551B5 /* NetworkRecoverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRecoverProtocol.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				52ABB7E72C52954C004551B5 /* None.swift */,
 				52B3E7EF2C60E67F00CCCF26 /* ShortResult.swift */,
 				520681EA2C6BD663007ED7E7 /* CompleteResult.swift */,
+				5206821E2C70A097007ED7E7 /* TelegramStatusValidation.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				52ABB7DF2C529126004551B5 /* NetworkServiceStub.swift in Sources */,
 				52ABB7C32C512DCD004551B5 /* NetworkRecoverService.swift in Sources */,
 				520681ED2C6BD756007ED7E7 /* NetworkProfileService.swift in Sources */,
+				5206821F2C70A097007ED7E7 /* TelegramStatusValidation.swift in Sources */,
 				520681EB2C6BD663007ED7E7 /* CompleteResult.swift in Sources */,
 				52ABB7BC2C511346004551B5 /* NetworkValidationProtocol.swift in Sources */,
 				52ABB7E82C52954C004551B5 /* None.swift in Sources */,

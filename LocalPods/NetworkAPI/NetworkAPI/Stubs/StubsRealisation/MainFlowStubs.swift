@@ -27,7 +27,7 @@ extension NetworkServiceStub: NetworkTelegramProtocol {
                 UserSessionsResponseModel.UserTelegramSession(name: "Иван", phone: "+79254144498"),
                 UserSessionsResponseModel.UserTelegramSession(name: "Карим", phone: "+7800")
             ]
-            let responseModel = UserSessionsResponseModel(sessions: sessions, status: "")
+            let responseModel = UserSessionsResponseModel(Sessions: sessions, status: "")
             completion(.success200(data: responseModel))
         }
     }

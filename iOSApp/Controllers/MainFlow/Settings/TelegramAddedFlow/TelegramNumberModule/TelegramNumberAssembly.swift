@@ -14,22 +14,24 @@ final class TelegramNumberAssembly {
     private let networkSevice: NetworkTelegramProtocol
     private let alertFabric: AlertFabric
     private let keychainManager: KeychainManager
+    private let cashingRepository: CashingRepositoryProtocol
     
     private var telegramCodeAssembly: TelegramCodeAssembly
     
     weak var coordinator: FlowCoordinator?
     
-    init(networkSevice: NetworkTelegramProtocol, alertFabric: AlertFabric, keychainManager: KeychainManager, telegramCodeAssembly: TelegramCodeAssembly) {
+    init(networkSevice: NetworkTelegramProtocol, alertFabric: AlertFabric, keychainManager: KeychainManager, cashingRepository: CashingRepositoryProtocol, telegramCodeAssembly: TelegramCodeAssembly) {
         self.networkSevice = networkSevice
         self.alertFabric = alertFabric
         self.keychainManager = keychainManager
+        self.cashingRepository = cashingRepository
         self.telegramCodeAssembly = telegramCodeAssembly
     }
     
-    func assemble() -> TelegramNumberViewController {
-        let router = TelegramNumberRouter(telegramCodeAssembly: telegramCodeAssembly, alertFabric: alertFabric)
+    func assemble(completion: @escaping (TelegramAccountModel) -> Void) -> TelegramNumberViewController {
+        let router = TelegramNumberRouter(telegramCodeAssembly: telegramCodeAssembly, completion: completion, alertFabric: alertFabric)
         let viewController = TelegramNumberViewController()
-        let presenter = TelegramNumberPresenter(view: viewController, router: router, networkSevice: networkSevice, alertFabric: alertFabric, keychainManager: keychainManager, coordinator: coordinator)
+        let presenter = TelegramNumberPresenter(view: viewController, router: router, networkSevice: networkSevice, alertFabric: alertFabric, keychainManager: keychainManager, cashingRepository: cashingRepository, coordinator: coordinator)
         
         viewController.presenter = presenter
         router.viewController = viewController

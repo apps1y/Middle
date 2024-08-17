@@ -25,14 +25,17 @@ final class TelegramNumberPresenter {
     private let networkSevice: NetworkTelegramProtocol
     private let alertFabric: AlertFabric
     private let keychainManager: KeychainManager
+    private let cashingRepository: CashingRepositoryProtocol
+    
     weak var coordinator: FlowCoordinator?
     
-    init(view: TelegramNumberViewProtocol?, router: TelegramNumberRouterInput, networkSevice: NetworkTelegramProtocol, alertFabric: AlertFabric, keychainManager: KeychainManager, coordinator: FlowCoordinator?) {
+    init(view: TelegramNumberViewProtocol?, router: TelegramNumberRouterInput, networkSevice: NetworkTelegramProtocol, alertFabric: AlertFabric, keychainManager: KeychainManager, cashingRepository: CashingRepositoryProtocol, coordinator: FlowCoordinator?) {
         self.view = view
         self.router = router
         self.networkSevice = networkSevice
         self.alertFabric = alertFabric
         self.keychainManager = keychainManager
+        self.cashingRepository = cashingRepository
         self.coordinator = coordinator
     }
 }
@@ -45,7 +48,11 @@ extension TelegramNumberPresenter: TelegramNumberPresenterProtocol {
             return
         }
         
-        guard let token = keychainManager.getToken() else { return }
+        guard let token = keychainManager.getToken() else {
+            cashingRepository.clearAllCash()
+            coordinator?.start()
+            return
+        }
         let number = phoneCountry + phoneBody
         view?.startLoading()
         networkSevice.sendTelegramCode(token: token, phoneNumber: number) { [weak self] result in
@@ -56,6 +63,7 @@ extension TelegramNumberPresenter: TelegramNumberPresenterProtocol {
                     self?.router.pushTelegramCodeViewCotroller(phoneNumber: number)
                 case .unauthorized:
                     self?.keychainManager.clearToken()
+                    self?.cashingRepository.clearAllCash()
                     self?.coordinator?.start()
                 case .success400(let status):
                     self?.router.presentWarningAlert(message: status.localizedDescription)

@@ -15,13 +15,15 @@ final class TelegramCodeRouter: TelegramCodeRouterInput {
     weak var viewController: TelegramCodeViewController?
     
     private let telegramPasswordAssembly: TelegramPasswordAssembly
+    private let completion: (TelegramAccountModel) -> Void
     
-    init(telegramPasswordAssembly: TelegramPasswordAssembly) {
+    init(telegramPasswordAssembly: TelegramPasswordAssembly, completion: @escaping (TelegramAccountModel) -> Void) {
         self.telegramPasswordAssembly = telegramPasswordAssembly
+        self.completion = completion
     }
     
     func pushPasswordViewController(number: String, oneTimeCode: String) {
-        let view = telegramPasswordAssembly.assemble(phoneNumber: number, oneTimeCode: oneTimeCode)
+        let view = telegramPasswordAssembly.assemble(phoneNumber: number, oneTimeCode: oneTimeCode, completion: completion)
         viewController?.navigationController?.pushViewController(view, animated: true)
     }
 }

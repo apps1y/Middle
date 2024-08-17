@@ -10,7 +10,7 @@ import Foundation
 // MARK: - getUserTelegramSessions
 // response
 public struct UserSessionsResponseModel: Statusable, Decodable {
-    public var sessions: [UserTelegramSession]
+    public var Sessions: [UserTelegramSession]?
     public var status: String
     
     public struct UserTelegramSession: Decodable {

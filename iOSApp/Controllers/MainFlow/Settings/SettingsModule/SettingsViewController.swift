@@ -24,6 +24,10 @@ protocol SettingsViewProtocol: AnyObject {
     /// отображение информации о юзере
     /// - Parameter user: модель юзера
     func show(user: UserModel)
+    
+    func removeAcount(at indexPath: IndexPath)
+    
+    func append(account: TelegramAccountModel)
 }
 
 // MARK: - View Controller
@@ -198,6 +202,17 @@ extension SettingsViewController: SettingsViewProtocol {
     func show(user: UserModel) {
         emailLabel.text = user.email
     }
+    
+    func removeAcount(at indexPath: IndexPath) {
+        telegramAccounts.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    func append(account: TelegramAccountModel) {
+        telegramAccounts.append(account)
+        tableView.insertRows(at: [IndexPath(row: telegramAccounts.count - 1, section: 2)], with: .top)
+    }
+    
 }
 
 
@@ -273,7 +288,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 2 && indexPath.row != telegramAccounts.count {
             let deleteAction = UIContextualAction(style: .destructive, title: "Отвязать") { [weak self] (action, view, completionHandler) in
                 completionHandler(true)
-                self?.presenter?.removeTelegramAccount()
+                guard let self = self else { return }
+                
+                self.presenter?.removeTelegramAccount(account: self.telegramAccounts[indexPath.row], indexPath: indexPath)
             }
             
             let configuration = UISwipeActionsConfiguration(actions: [deleteAction])

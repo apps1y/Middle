@@ -15,8 +15,8 @@ final class TelegramCodeAssembly {
         self.telegramPasswordAssembly = telegramPasswordAssembly
     }
     
-    func assemble(phoneNumber: String) -> TelegramCodeViewController {
-        let router = TelegramCodeRouter(telegramPasswordAssembly: telegramPasswordAssembly)
+    func assemble(phoneNumber: String, completion: @escaping (TelegramAccountModel) -> Void) -> TelegramCodeViewController {
+        let router = TelegramCodeRouter(telegramPasswordAssembly: telegramPasswordAssembly, completion: completion)
         let viewController = TelegramCodeViewController()
         let presenter = TelegramCodePresenter(view: viewController, router: router, phoneNumber: phoneNumber)
         

@@ -18,16 +18,18 @@ final class TelegramNumberRouter: TelegramNumberRouterInput {
     weak var viewController: TelegramNumberViewController?
     
     private var telegramCodeAssembly: TelegramCodeAssembly
+    private let completion: (TelegramAccountModel) -> Void
     
     private let alertFabric: AlertFabric
     
-    init(telegramCodeAssembly: TelegramCodeAssembly, alertFabric: AlertFabric) {
+    init(telegramCodeAssembly: TelegramCodeAssembly, completion: @escaping (TelegramAccountModel) -> Void, alertFabric: AlertFabric) {
         self.telegramCodeAssembly = telegramCodeAssembly
+        self.completion = completion
         self.alertFabric = alertFabric
     }
     
     func pushTelegramCodeViewCotroller(phoneNumber: String) {
-        let view = telegramCodeAssembly.assemble(phoneNumber: phoneNumber)
+        let view = telegramCodeAssembly.assemble(phoneNumber: phoneNumber, completion: completion)
         viewController?.navigationController?.pushViewController(view, animated: true)
     }
     

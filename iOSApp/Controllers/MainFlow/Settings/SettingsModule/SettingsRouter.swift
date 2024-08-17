@@ -8,6 +8,7 @@
 import UIKit
 
 protocol SettingsRouterInput {
+    
     func presentTelegramAddFlow(completion: @escaping (TelegramAccountModel) -> Void)
     
     func pushRepasswordPreview(email: String)
@@ -15,6 +16,8 @@ protocol SettingsRouterInput {
     func presentLogoutAppAlert(completion: @escaping () -> Void)
     
     func presentLogoutTgSheet(completion: @escaping () -> Void)
+    
+    func presentAccountsLimitAlert()
     
     func presentWarningAlert(message: String)
 }
@@ -35,7 +38,7 @@ final class SettingsRouter: SettingsRouterInput {
     }
     
     func presentTelegramAddFlow(completion: @escaping (TelegramAccountModel) -> Void) {
-        let view = telegramNumberAssembly.assemble()
+        let view = telegramNumberAssembly.assemble(completion: completion)
         let navigationController = UINavigationController(rootViewController: view)
         navigationController.modalPresentationStyle = .fullScreen
         viewController?.present(navigationController, animated: true)
@@ -58,6 +61,10 @@ final class SettingsRouter: SettingsRouterInput {
         let message = "Сессия на выбранном аккаунте завершится. Активные сессии вы можете найти в telegram, в разделе устройства."
         let actionSheet = alertFabric.confirmActionSheet(message: message, actionTitle: "Отвязать", handler: completion)
         viewController?.present(actionSheet, animated: true)
+    }
+    
+    func presentAccountsLimitAlert() {
+        let alert = alertFabric.warningAlertWithoutAction(title: "Первышен лимит", message: "Вы можете добавить не больше трёх telegram аккаунтов.")
     }
     
     func presentWarningAlert(message: String) {

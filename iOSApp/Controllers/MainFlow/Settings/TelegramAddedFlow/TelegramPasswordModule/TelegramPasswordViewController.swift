@@ -162,7 +162,7 @@ extension TelegramPasswordViewController: TelegramPasswordViewProtocol {
 
 extension TelegramPasswordViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard var text = textField.text, let buttonLabel = continueButton.titleLabel?.text else { return false }
+        guard let text = textField.text, let buttonLabel = continueButton.titleLabel?.text else { return false }
         let newString = (text as NSString).replacingCharacters(in: range, with: string)
         if newString == "" {
             continueButton.setTitle("У меня нет пароля", for: .normal)

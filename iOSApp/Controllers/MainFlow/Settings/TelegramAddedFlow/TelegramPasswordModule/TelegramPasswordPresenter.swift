@@ -22,6 +22,7 @@ final class TelegramPasswordPresenter {
     /// DI
     private let networkSevice: NetworkTelegramProtocol
     private let keychainManager: KeychainManager
+    private let cashingRepository: CashingRepositoryProtocol
     
     /// appCoordinator для выхода из сессии при неправильном запросе
     weak var coordinator: FlowCoordinator?
@@ -29,11 +30,12 @@ final class TelegramPasswordPresenter {
     private let phoneNumber: String
     private let oneTimeCode: String
 
-    init(view: TelegramPasswordViewProtocol?, router: TelegramPasswordRouterInput, networkSevice: NetworkTelegramProtocol, keychainManager: KeychainManager, coordinator: FlowCoordinator?, phoneNumber: String, oneTimeCode: String) {
+    init(view: TelegramPasswordViewProtocol?, router: TelegramPasswordRouterInput, networkSevice: NetworkTelegramProtocol, keychainManager: KeychainManager, cashingRepository: CashingRepositoryProtocol, coordinator: FlowCoordinator?, phoneNumber: String, oneTimeCode: String) {
         self.view = view
         self.router = router
         self.networkSevice = networkSevice
         self.keychainManager = keychainManager
+        self.cashingRepository = cashingRepository
         self.coordinator = coordinator
         self.phoneNumber = phoneNumber
         self.oneTimeCode = oneTimeCode
@@ -42,6 +44,37 @@ final class TelegramPasswordPresenter {
 
 extension TelegramPasswordPresenter: TelegramPasswordPresenterProtocol {
     func enter(password: String) {
+        guard let token = keychainManager.getToken() else {
+            cashingRepository.clearAllCash()
+            coordinator?.start()
+            return
+        }
         
+        view?.startLoading()
+        
+        networkSevice.addTelegramAccount(token: token, code: oneTimeCode, password: password, phoneNumber: phoneNumber) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.view?.finishLoading()
+                switch result {
+                case .success200(let data):
+                    switch TelegramStatusValidation.validate(stringStatus: data.status) {
+                    case .sussess: 
+                        let account = TelegramAccountModel(name: "Загрузка...", phone: self?.phoneNumber ?? "")
+                        self?.router.dismissViewWithCompletion(account: account)
+                    case .invalidCode: self?.router.warningIncorrectOneTimeCode()
+                    case .invalidPassword: self?.router.warningIncorrectPassword()
+                    case .other: self?.router.warningAuknownError()
+                    }
+                case .unauthorized:
+                    self?.keychainManager.clearToken()
+                    self?.cashingRepository.clearAllCash()
+                    self?.coordinator?.start()
+                case .success400(let status):
+                    self?.router.presentWarningAlert(message: "Неизвестная ошибка.")
+                case .failure(let error):
+                    self?.router.presentWarningAlert(message: error)
+                }
+            }
+        }
     }
 }

@@ -39,5 +39,6 @@ extension TelegramCodePresenter: TelegramCodePresenterProtocol {
     
     func enter(code: String) {
         router.pushPasswordViewController(number: phoneNumber, oneTimeCode: code)
+        view?.finishLoading(startAgain: true)
     }
 }

@@ -15,10 +15,10 @@ final class AppAssembly {
         // MARK: - DI
         /// NetworkLayer
         /// Для тестирования есть `NetworkServiceStub`
-        // let networkService = NetworkService()
+        let networkService = NetworkService()
         /// uncomment next line to use network stubs
         // let networkStub = NetworkServiceStub()
-        let networkService = NetworkServiceStub()
+        // let networkService = NetworkServiceStub()
         
         
         /// StorageLayer
@@ -68,9 +68,9 @@ final class AppAssembly {
         // MARK: - Assembly сборки Main Flow
         let homeAssembly = HomeAssembly(networkService: networkService, coreDataService: coreDaraService)
         
-        let telegramPasswordAssembly = TelegramPasswordAssembly(networkSevice: networkService, alertFabric: alertFabric, keychainManager: keychainManager)
+        let telegramPasswordAssembly = TelegramPasswordAssembly(networkSevice: networkService, alertFabric: alertFabric, keychainManager: keychainManager, cashingRepository: cashingRepository)
         let telegramCodeAssembly = TelegramCodeAssembly(telegramPasswordAssembly: telegramPasswordAssembly)
-        let telegramNumberAssembly = TelegramNumberAssembly(networkSevice: networkService, alertFabric: alertFabric, keychainManager: keychainManager, telegramCodeAssembly: telegramCodeAssembly)
+        let telegramNumberAssembly = TelegramNumberAssembly(networkSevice: networkService, alertFabric: alertFabric, keychainManager: keychainManager, cashingRepository: cashingRepository, telegramCodeAssembly: telegramCodeAssembly)
 
         let repasswordPreviewAssembly = RepasswordPreviewAssembly(networkService: networkService, alertFabric: alertFabric, confirmRecAssembly: confirmRecAssembly)
         
