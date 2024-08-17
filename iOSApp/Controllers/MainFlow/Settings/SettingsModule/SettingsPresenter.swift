@@ -133,6 +133,9 @@ extension SettingsPresenter {
                     self?.coordinator?.start()
                 case .success400(_):
                     self?.view?.append(account: account)
+                    self?.prepareProfileConfiguration {
+                        self?.view?.finishLoadingView()
+                    }
                 case .failure(_):
                     self?.view?.append(account: account)
                 }
