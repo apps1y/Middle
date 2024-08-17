@@ -65,6 +65,7 @@ final class SettingsRouter: SettingsRouterInput {
     
     func presentAccountsLimitAlert() {
         let alert = alertFabric.warningAlertWithoutAction(title: "Первышен лимит", message: "Вы можете добавить не больше трёх telegram аккаунтов.")
+        viewController?.present(alert, animated: true)
     }
     
     func presentWarningAlert(message: String) {

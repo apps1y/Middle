@@ -69,7 +69,7 @@ extension TelegramPasswordPresenter: TelegramPasswordPresenterProtocol {
                     self?.keychainManager.clearToken()
                     self?.cashingRepository.clearAllCash()
                     self?.coordinator?.start()
-                case .success400(let status):
+                case .success400(_):
                     self?.router.presentWarningAlert(message: "Неизвестная ошибка.")
                 case .failure(let error):
                     self?.router.presentWarningAlert(message: error)

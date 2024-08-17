@@ -58,14 +58,6 @@
 		529BF9B72C47BAD7009954D5 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9B32C47BAD7009954D5 /* HomeRouter.swift */; };
 		529BF9B82C47BAD7009954D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9B42C47BAD7009954D5 /* HomeViewController.swift */; };
 		529BF9B92C47BAD7009954D5 /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9B52C47BAD7009954D5 /* HomeAssembly.swift */; };
-		529BF9C02C47BB07009954D5 /* NewMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9BC2C47BB07009954D5 /* NewMessagePresenter.swift */; };
-		529BF9C12C47BB07009954D5 /* NewMessageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9BD2C47BB07009954D5 /* NewMessageRouter.swift */; };
-		529BF9C22C47BB07009954D5 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9BE2C47BB07009954D5 /* NewMessageViewController.swift */; };
-		529BF9C32C47BB07009954D5 /* NewMessageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9BF2C47BB07009954D5 /* NewMessageAssembly.swift */; };
-		529BF9C92C47BB30009954D5 /* MessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9C52C47BB30009954D5 /* MessagePresenter.swift */; };
-		529BF9CA2C47BB30009954D5 /* MessageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9C62C47BB30009954D5 /* MessageRouter.swift */; };
-		529BF9CB2C47BB30009954D5 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9C72C47BB30009954D5 /* MessageViewController.swift */; };
-		529BF9CC2C47BB30009954D5 /* MessageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9C82C47BB30009954D5 /* MessageAssembly.swift */; };
 		529BF9D22C47BB5F009954D5 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9CE2C47BB5F009954D5 /* SettingsPresenter.swift */; };
 		529BF9D32C47BB5F009954D5 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */; };
 		529BF9D42C47BB5F009954D5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */; };
@@ -145,14 +137,6 @@
 		529BF9B32C47BAD7009954D5 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		529BF9B42C47BAD7009954D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		529BF9B52C47BAD7009954D5 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
-		529BF9BC2C47BB07009954D5 /* NewMessagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessagePresenter.swift; sourceTree = "<group>"; };
-		529BF9BD2C47BB07009954D5 /* NewMessageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageRouter.swift; sourceTree = "<group>"; };
-		529BF9BE2C47BB07009954D5 /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
-		529BF9BF2C47BB07009954D5 /* NewMessageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageAssembly.swift; sourceTree = "<group>"; };
-		529BF9C52C47BB30009954D5 /* MessagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenter.swift; sourceTree = "<group>"; };
-		529BF9C62C47BB30009954D5 /* MessageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRouter.swift; sourceTree = "<group>"; };
-		529BF9C72C47BB30009954D5 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
-		529BF9C82C47BB30009954D5 /* MessageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAssembly.swift; sourceTree = "<group>"; };
 		529BF9CE2C47BB5F009954D5 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -415,8 +399,6 @@
 			isa = PBXGroup;
 			children = (
 				529BF9BA2C47BAE0009954D5 /* HomeModule */,
-				529BF9C42C47BB0B009954D5 /* MessageModule */,
-				529BF9BB2C47BAE9009954D5 /* NewMessageModule */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -440,28 +422,6 @@
 				529BF9B52C47BAD7009954D5 /* HomeAssembly.swift */,
 			);
 			path = HomeModule;
-			sourceTree = "<group>";
-		};
-		529BF9BB2C47BAE9009954D5 /* NewMessageModule */ = {
-			isa = PBXGroup;
-			children = (
-				529BF9BE2C47BB07009954D5 /* NewMessageViewController.swift */,
-				529BF9BC2C47BB07009954D5 /* NewMessagePresenter.swift */,
-				529BF9BD2C47BB07009954D5 /* NewMessageRouter.swift */,
-				529BF9BF2C47BB07009954D5 /* NewMessageAssembly.swift */,
-			);
-			path = NewMessageModule;
-			sourceTree = "<group>";
-		};
-		529BF9C42C47BB0B009954D5 /* MessageModule */ = {
-			isa = PBXGroup;
-			children = (
-				529BF9C72C47BB30009954D5 /* MessageViewController.swift */,
-				529BF9C52C47BB30009954D5 /* MessagePresenter.swift */,
-				529BF9C62C47BB30009954D5 /* MessageRouter.swift */,
-				529BF9C82C47BB30009954D5 /* MessageAssembly.swift */,
-			);
-			path = MessageModule;
 			sourceTree = "<group>";
 		};
 		529BF9CD2C47BB4F009954D5 /* SettingsModule */ = {
@@ -699,14 +659,10 @@
 				52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */,
 				529564F92C62A8F6007E3352 /* CashingRepository.swift in Sources */,
 				52FED25B2C4D0E1700AAF16B /* ConfirmAssembly.swift in Sources */,
-				529BF9C92C47BB30009954D5 /* MessagePresenter.swift in Sources */,
-				529BF9CA2C47BB30009954D5 /* MessageRouter.swift in Sources */,
-				529BF9CB2C47BB30009954D5 /* MessageViewController.swift in Sources */,
 				520681FE2C6CA786007ED7E7 /* TelegramCodePresenter.swift in Sources */,
 				520681FF2C6CA786007ED7E7 /* TelegramCodeRouter.swift in Sources */,
 				520682002C6CA786007ED7E7 /* TelegramCodeViewController.swift in Sources */,
 				520682012C6CA786007ED7E7 /* TelegramCodeAssembly.swift in Sources */,
-				529BF9CC2C47BB30009954D5 /* MessageAssembly.swift in Sources */,
 				520681E32C68D568007ED7E7 /* MainTabBarAssembly.swift in Sources */,
 				529BF9B62C47BAD7009954D5 /* HomePresenter.swift in Sources */,
 				529BF9B72C47BAD7009954D5 /* HomeRouter.swift in Sources */,
@@ -750,20 +706,16 @@
 				520681F82C6CA30C007ED7E7 /* TelegramNumberAssembly.swift in Sources */,
 				529BF97B2C46F8C7009954D5 /* StringsValidationManager.swift in Sources */,
 				529BF9612C459D3C009954D5 /* LoginAssembly.swift in Sources */,
-				529BF9C02C47BB07009954D5 /* NewMessagePresenter.swift in Sources */,
 				5206821B2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift in Sources */,
 				52ABB7A92C502FD8004551B5 /* ConfirmRecPresenter.swift in Sources */,
 				52ABB7AA2C502FD8004551B5 /* ConfirmRecRouter.swift in Sources */,
 				52ABB7AB2C502FD8004551B5 /* ConfirmRecViewController.swift in Sources */,
 				52ABB7AC2C502FD8004551B5 /* ConfirmRecAssembly.swift in Sources */,
-				529BF9C12C47BB07009954D5 /* NewMessageRouter.swift in Sources */,
 				520682072C6CAA74007ED7E7 /* TelegramPasswordPresenter.swift in Sources */,
 				520682082C6CAA74007ED7E7 /* TelegramPasswordRouter.swift in Sources */,
 				520682092C6CAA74007ED7E7 /* TelegramPasswordViewController.swift in Sources */,
 				5206820A2C6CAA74007ED7E7 /* TelegramPasswordAssembly.swift in Sources */,
 				52ABB7F82C553878004551B5 /* AlertFabric.swift in Sources */,
-				529BF9C22C47BB07009954D5 /* NewMessageViewController.swift in Sources */,
-				529BF9C32C47BB07009954D5 /* NewMessageAssembly.swift in Sources */,
 				529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

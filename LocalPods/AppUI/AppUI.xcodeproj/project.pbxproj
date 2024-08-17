@@ -10,6 +10,11 @@
 		52039B4D2C4B918A00EA26DC /* AppUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 52039B4C2C4B918A00EA26DC /* AppUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52039B542C4B926400EA26DC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52039B532C4B926300EA26DC /* TextField.swift */; };
 		520681E12C689976007ED7E7 /* UXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681E02C689976007ED7E7 /* UXViewController.swift */; };
+		520682222C710140007ED7E7 /* UIWeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682212C710140007ED7E7 /* UIWeekCalendarView.swift */; };
+		520682242C71015C007ED7E7 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682232C71015C007ED7E7 /* CalendarCollectionViewCell.swift */; };
+		520682262C710164007ED7E7 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682252C710164007ED7E7 /* CalendarManager.swift */; };
+		520682282C71016D007ED7E7 /* Date+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682272C71016D007ED7E7 /* Date+Extentions.swift */; };
+		5206822A2C710176007ED7E7 /* WeekCalendarDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682292C710176007ED7E7 /* WeekCalendarDateModel.swift */; };
 		529564F22C6279C8007E3352 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564F12C6279C8007E3352 /* SettingsTableCell.swift */; };
 		529564FD2C62ACE8007E3352 /* CodeField1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564FC2C62ACE8007E3352 /* CodeField1.swift */; };
 		529565002C63A056007E3352 /* UserTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564FF2C63A056007E3352 /* UserTableCell.swift */; };
@@ -37,6 +42,11 @@
 		52039B4C2C4B918A00EA26DC /* AppUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUI.h; sourceTree = "<group>"; };
 		52039B532C4B926300EA26DC /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		520681E02C689976007ED7E7 /* UXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXViewController.swift; sourceTree = "<group>"; };
+		520682212C710140007ED7E7 /* UIWeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWeekCalendarView.swift; sourceTree = "<group>"; };
+		520682232C71015C007ED7E7 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		520682252C710164007ED7E7 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		520682272C71016D007ED7E7 /* Date+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extentions.swift"; sourceTree = "<group>"; };
+		520682292C710176007ED7E7 /* WeekCalendarDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarDateModel.swift; sourceTree = "<group>"; };
 		529564F12C6279C8007E3352 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
 		529564FC2C62ACE8007E3352 /* CodeField1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeField1.swift; sourceTree = "<group>"; };
 		529564FF2C63A056007E3352 /* UserTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableCell.swift; sourceTree = "<group>"; };
@@ -84,6 +94,18 @@
 			path = AppUI;
 			sourceTree = "<group>";
 		};
+		520682202C71011A007ED7E7 /* UIWeekCalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				520682212C710140007ED7E7 /* UIWeekCalendarView.swift */,
+				520682232C71015C007ED7E7 /* CalendarCollectionViewCell.swift */,
+				520682252C710164007ED7E7 /* CalendarManager.swift */,
+				520682272C71016D007ED7E7 /* Date+Extentions.swift */,
+				520682292C710176007ED7E7 /* WeekCalendarDateModel.swift */,
+			);
+			path = UIWeekCalendarView;
+			sourceTree = "<group>";
+		};
 		529564FE2C63A034007E3352 /* SettingsCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +130,7 @@
 		529565042C63F1B6007E3352 /* MainFlowUI */ = {
 			isa = PBXGroup;
 			children = (
+				520682202C71011A007ED7E7 /* UIWeekCalendarView */,
 				529564FE2C63A034007E3352 /* SettingsCells */,
 			);
 			path = MainFlowUI;
@@ -212,9 +235,14 @@
 				520681E12C689976007ED7E7 /* UXViewController.swift in Sources */,
 				52FED2522C4CF2DA00AAF16B /* UIVerifyTextField.swift in Sources */,
 				529564F22C6279C8007E3352 /* SettingsTableCell.swift in Sources */,
+				5206822A2C710176007ED7E7 /* WeekCalendarDateModel.swift in Sources */,
 				52ABB7F32C5505D2004551B5 /* ErrorLabel.swift in Sources */,
 				529564FD2C62ACE8007E3352 /* CodeField1.swift in Sources */,
+				520682282C71016D007ED7E7 /* Date+Extentions.swift in Sources */,
 				529565022C63A06A007E3352 /* AddUserTableCell.swift in Sources */,
+				520682242C71015C007ED7E7 /* CalendarCollectionViewCell.swift in Sources */,
+				520682262C710164007ED7E7 /* CalendarManager.swift in Sources */,
+				520682222C710140007ED7E7 /* UIWeekCalendarView.swift in Sources */,
 				52971D252C4BD3CD00F44C4F /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

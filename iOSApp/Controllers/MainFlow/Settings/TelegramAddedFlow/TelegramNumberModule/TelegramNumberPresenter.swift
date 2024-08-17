@@ -59,7 +59,7 @@ extension TelegramNumberPresenter: TelegramNumberPresenterProtocol {
             DispatchQueue.main.async {
                 self?.view?.finishLoading()
                 switch result {
-                case .success200(let data):
+                case .success200(_):
                     self?.router.pushTelegramCodeViewCotroller(phoneNumber: number)
                 case .unauthorized:
                     self?.keychainManager.clearToken()

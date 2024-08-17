@@ -123,7 +123,7 @@ extension SettingsPresenter {
         networkService.removeTelegramSession(token: bearerToken, phoneNumber: account.phone) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success200(let data):
+                case .success200(_):
                     self?.prepareTelegramConfiguration {
                         self?.view?.finishLoadingView()
                     }
