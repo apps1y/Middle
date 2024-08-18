@@ -26,7 +26,13 @@ final class HomeViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .secondarySystemBackground
         view.layer.cornerCurve = .continuous
-        view.layer.cornerRadius = 28
+        view.layer.cornerRadius = 30
+        return view
+    }()
+    
+    private lazy var messageScrollView: UILeafScrollView = {
+        let view = UILeafScrollView()
+        view.calendarDelegate = self
         return view
     }()
     
@@ -41,9 +47,17 @@ final class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         calendarView.scrollToItem(at: IndexPath(item: 10, section: 0), at: .centeredHorizontally, animated: false)
+        messageScrollView.scrollToItem(at: IndexPath(item: 1, section: 0), at: .centeredHorizontally, animated: false)
     }
     
     private func setupUI() {
+        let days: [DayModel] = [DayModel(messages: [], date: Date().getDate(with: 0)),
+                                DayModel(messages: [], date: Date().getDate(with: 1)),
+                                DayModel(messages: [], date: Date().getDate(with: 2)),
+                                DayModel(messages: [], date: Date().getDate(with: 4)),
+                                DayModel(messages: [], date: Date().getDate(with: 5))]
+        messageScrollView.configure(with: days)
+        
         view.backgroundColor = .systemBackground
         title = "Месяц"
         
@@ -57,8 +71,16 @@ final class HomeViewController: UIViewController {
         }
         
         backgroundCalendarView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(-30)
             make.bottom.equalTo(calendarView.snp.bottom).offset(7)
+        }
+        
+        view.addSubview(messageScrollView)
+        messageScrollView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(backgroundCalendarView.snp.bottom)
+            make.bottom.equalToSuperview()
         }
     }
 }
@@ -69,7 +91,13 @@ extension HomeViewController: HomeViewProtocol {
 }
 
 extension HomeViewController: UIWeekCalendarViewDelegate {
-    func didTapDate(of model: WeekCalendarDateModel) {
-        print(model)
+    func didTap(on date: Date) {
+        messageScrollView.newDate = date
+    }
+}
+
+extension HomeViewController: UILeafScrollViewDelegate {
+    func didScroll(to date: Date) {
+        calendarView.newDate = date
     }
 }

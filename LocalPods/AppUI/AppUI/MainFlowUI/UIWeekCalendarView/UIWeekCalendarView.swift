@@ -9,10 +9,9 @@ import UIKit
 import SnapKit
 
 public protocol UIWeekCalendarViewDelegate: AnyObject {
-    
     /// Нажатие на ячейку
     /// - Parameter model: модель дня на который  нажали
-    func didTapDate(of model: WeekCalendarDateModel)
+    func didTap(on date: Date)
 }
 
 public final class UIWeekCalendarView: UICollectionView {
@@ -23,7 +22,17 @@ public final class UIWeekCalendarView: UICollectionView {
     private var centerDate = Date()
     private var daysArray = [WeekCalendarDateModel]()
     
-    private var selectedDateModel = Date().convertDateToModel()
+    private var selectedDateModel: WeekCalendarDateModel = Date().convertDateToModel()
+    
+    public var newDate: Date {
+        get {
+            return selectedDateModel.date
+        } set {
+            selectedDateModel = newValue.convertDateToModel()
+            checkIfOutsideOfView()
+            reloadData()
+        }
+    }
     
     private let collectionLayout = UICollectionViewFlowLayout()
     
@@ -79,6 +88,18 @@ public final class UIWeekCalendarView: UICollectionView {
         reloadData()
         scrollToItem(at: IndexPath(item: 10, section: 0), at: .centeredHorizontally, animated: false)
     }
+    
+    private func checkIfOutsideOfView() {
+        let selectedDate = selectedDateModel.date
+        switch selectedDate.isInDiapazon(from: centerDate.getDate(with: -3), to: centerDate.getDate(with: 3)) {
+        case .right:
+            scrollToItem(at: IndexPath(item: 17, section: 0), at: .centeredHorizontally, animated: true)
+        case .left:
+            scrollToItem(at: IndexPath(item: 3, section: 0), at: .centeredHorizontally, animated: true)
+        case .normal: break
+        }
+        
+    }
 }
 
 extension UIWeekCalendarView: UICollectionViewDataSource {
@@ -96,16 +117,15 @@ extension UIWeekCalendarView: UICollectionViewDataSource {
 
 extension UIWeekCalendarView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let dateModel = daysArray[indexPath.row]
-        calendarDelegate?.didTapDate(of: dateModel)
-        selectedDateModel = dateModel
-        collectionView.reloadData()
+        selectedDateModel = daysArray[indexPath.row]
+        reloadData()
+        calendarDelegate?.didTap(on: selectedDateModel.date)
     }
 }
 
 extension UIWeekCalendarView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 7,
+        CGSize(width: collectionView.frame.width / 7,
                       height: collectionView.frame.height)
     }
 }

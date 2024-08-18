@@ -55,7 +55,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     public func configure(_ model: WeekCalendarDateModel, isTapped: Bool) {
         numberOfDayLabel.text = model.numberOfDay
         self.backgroundCell.backgroundColor = isTapped ? .systemBlue : .clear
-        self.numberOfDayLabel.textColor = isTapped ? .systemBackground : .label
+        self.numberOfDayLabel.textColor = isTapped ? .white : .label
     }
 }
 

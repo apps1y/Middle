@@ -7,18 +7,24 @@
 
 import UIKit
 
+public enum DateSide {
+    case left
+    case right
+    case normal
+}
+
 extension Date {
     
     /// Прибавляет дни к текущему
     /// - Parameters:
-    ///   - offset: кол-во дней до искомого дня
-    func getDate(with offset: Int) -> Date {
+    ///   - offset: кол-во дней для прибавления к текущему
+    public func getDate(with offset: Int) -> Date {
         let offsetDate = Calendar.current.date(byAdding: .day, value: offset, to: self) ?? Date()
         return offsetDate
     }
     
     /// Конвертирует Date -> WeekCalendarDateModel
-    func convertDateToModel() -> WeekCalendarDateModel {
+    public func convertDateToModel() -> WeekCalendarDateModel {
         let calendar = Calendar.current
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
@@ -40,7 +46,7 @@ extension Date {
     }
     
     /// возвращает формат ddMMyyyy из Date
-    private func dateFormatddMMyyyy() -> String {
+    public func dateFormatddMMyyyy() -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
         formatter.dateFormat = "dd/MM/yyyy"
@@ -51,9 +57,31 @@ extension Date {
     /// возвращает номер дня недели ddMMyyyy из Date
     func getNumberOfWeekDay() -> Int {
         let calendar = Calendar.current
-        let numberWeekOfDay = calendar.component(.weekday, from: self)
-        return numberWeekOfDay - 1
+        let numberWeekOfDay = calendar.component(.weekday, from: self) - 1
+        return numberWeekOfDay == 0 ? 7 : numberWeekOfDay
         
+    }
+    
+    public func isInDiapazon(from firstDate: Date, to secondDate: Date) -> DateSide {
+        let calendar = Calendar.current
+        
+        let isMoreThanFirst = (
+            calendar.compare(self, to: firstDate, toGranularity: .day) == .orderedDescending ||
+            calendar.compare(self, to: firstDate, toGranularity: .day) == .orderedSame
+        )
+        
+        let isLessThanSecond = (
+            calendar.compare(self, to: secondDate, toGranularity: .day) == .orderedAscending ||
+            calendar.compare(self, to: secondDate, toGranularity: .day) == .orderedSame
+        )
+        
+        if isLessThanSecond && !isMoreThanFirst {
+            return .left
+        } else if !isLessThanSecond && isMoreThanFirst {
+            return .right
+        } else {
+            return .normal
+        }
     }
 }
 
