@@ -10,7 +10,9 @@ import AppUI
 
 // MARK: - View Protocol
 protocol HomeViewProtocol: AnyObject {
+    func startLoading()
     
+    func finishLoading()
 }
 
 // MARK: - View Controller
@@ -34,6 +36,34 @@ final class HomeViewController: UIViewController {
         let view = UILeafScrollView()
         view.calendarDelegate = self
         return view
+    }()
+    
+    private lazy var titleView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Публикации"
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.textColor = .label
+        return label
+    }()
+    
+    private lazy var loader: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView()
+        loader.hidesWhenStopped = true
+        return loader
+    }()
+    
+    private lazy var monthLabel: UILabel = {
+        let label = UILabel()
+        label.text = "август 2024"
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = .secondaryLabel
+        return label
     }()
     
     var presenter: HomePresenterProtocol?
@@ -65,7 +95,6 @@ final class HomeViewController: UIViewController {
         messageScrollView.configure(with: days)
         
         view.backgroundColor = .systemBackground
-        title = "Месяц"
         
         view.addSubview(backgroundCalendarView)
         
@@ -88,17 +117,54 @@ final class HomeViewController: UIViewController {
             make.top.equalTo(backgroundCalendarView.snp.bottom)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+        
+        titleView.addSubview(loader)
+        loader.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.top.bottom.equalToSuperview().offset(6)
+            make.bottom.equalToSuperview()
+        }
+        
+        titleView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(loader.snp.trailing).offset(7)
+            make.trailing.equalToSuperview().inset(27)
+            make.height.equalTo(17)
+            make.top.equalToSuperview().offset(6)
+        }
+        
+        titleView.addSubview(monthLabel)
+        monthLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(titleLabel)
+            make.top.equalTo(titleLabel.snp.bottom).offset(4)
+            make.bottom.equalToSuperview()
+            make.height.equalTo(11)
+        }
+        
+        navigationItem.titleView = titleView
     }
 }
 
 // MARK: - View Protocol Realization
 extension HomeViewController: HomeViewProtocol {
+    func startLoading() {
+        
+    }
+    
+    func finishLoading() {
+        
+    }
+    
     
 }
 
 extension HomeViewController: UIWeekCalendarViewDelegate {
     func didTap(on date: Date) {
         messageScrollView.newDate = date
+    }
+    
+    func didScroll(centerDate: Date) {
+        monthLabel.text = centerDate.dateFormatLLLLyyyy()
     }
 }
 

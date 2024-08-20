@@ -9,14 +9,23 @@ import UIKit
 
 public class UserTableCell: UITableViewCell {
     
-    private lazy var userImageView: UIImageView = {
-        let view = UIImageView()
+    private lazy var userImageView: UIView = {
+        let view = UIView()
         view.layer.cornerRadius = 15
         view.layer.cornerCurve = .continuous
-        view.backgroundColor = .secondaryLabel.withAlphaComponent(0.5)
         view.clipsToBounds = true
-        view.image = userImage
+        view.layer.insertSublayer(userImageGradientLayer, at: 0)
         return view
+    }()
+    
+    private lazy var letterImageLabel: UILabel = {
+        let label = UILabel()
+        label.text = String(title.first ?? " ")
+        label.textColor = .white
+        if let fontDescriptor: UIFontDescriptor = UIFont.systemFont(ofSize: 16, weight: .bold).fontDescriptor.withDesign(.rounded) {
+            label.font = UIFont(descriptor: fontDescriptor, size: 16)
+        }
+        return label
     }()
     
     private lazy var titleLabel: UILabel = {
@@ -25,12 +34,22 @@ public class UserTableCell: UITableViewCell {
         return label
     }()
     
-    private let title: String
-    private let userImage: UIImage?
+    private lazy var userImageGradientLayer: CAGradientLayer = {
+        let layer = CAGradientLayer()
+        layer.colors = [
+            UIColor(red: 135/255, green: 206/255, blue: 247/255, alpha: 1).cgColor,
+            UIColor(red: 81/255, green: 156/255, blue: 233/255, alpha: 1).cgColor
+        ]
+        layer.startPoint = CGPoint(x: 0, y: 0)
+        layer.endPoint = CGPoint(x: 0, y: 1)
+        layer.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        return layer
+    }()
     
-    public init(title: String, userImage: UIImage?) {
+    private let title: String
+    
+    public init(title: String) {
         self.title = title
-        self.userImage = userImage
         super.init(style: .default, reuseIdentifier: nil)
         setupUI()
     }
@@ -47,6 +66,11 @@ public class UserTableCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(14)
             make.size.equalTo(30)
+        }
+        
+        userImageView.addSubview(letterImageLabel)
+        letterImageLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
         
         contentView.addSubview(titleLabel)

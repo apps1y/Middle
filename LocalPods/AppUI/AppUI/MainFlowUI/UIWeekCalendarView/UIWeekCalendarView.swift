@@ -12,6 +12,8 @@ public protocol UIWeekCalendarViewDelegate: AnyObject {
     /// Нажатие на ячейку
     /// - Parameter model: модель дня на который  нажали
     func didTap(on date: Date)
+    
+    func didScroll(centerDate: Date)
 }
 
 public final class UIWeekCalendarView: UICollectionView {
@@ -83,8 +85,9 @@ public final class UIWeekCalendarView: UICollectionView {
     
     private func updateData(offset: Int) {
         centerDate = centerDate.getDate(with: offset)
-        let days = calendarManager.getWeekForCalendar(date: centerDate)
+        let days = calendarManager.getWeeksForCalendar(date: centerDate)
         daysArray = days
+        calendarDelegate?.didScroll(centerDate: centerDate)
         reloadData()
         scrollToItem(at: IndexPath(item: 10, section: 0), at: .centeredHorizontally, animated: false)
     }

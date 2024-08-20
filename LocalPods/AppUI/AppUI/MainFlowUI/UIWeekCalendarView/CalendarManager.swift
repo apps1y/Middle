@@ -12,9 +12,21 @@ class CalendarManager {
     /// Возвращает 10 дней до дня и 10 дней после
     /// - Parameters:
     ///   - date: центральный день на неделе
-    func getWeekForCalendar(date: Date) -> [WeekCalendarDateModel] {
+    func getWeeksForCalendar(date: Date) -> [WeekCalendarDateModel] {
         var daysArray = [WeekCalendarDateModel]()
         for offset in -10...10 {
+            let day = date.getDate(with: offset)
+            daysArray.append(day.convertDateToModel())
+        }
+        return daysArray
+    }
+    
+    /// Возвращает полную текущую неделю
+    /// - Parameters:
+    ///   - date: центральный день на неделе
+    func getWeekForCalendar(date: Date) -> [WeekCalendarDateModel] {
+        var daysArray = [WeekCalendarDateModel]()
+        for offset in -3...3 {
             let day = date.getDate(with: offset)
             daysArray.append(day.convertDateToModel())
         }

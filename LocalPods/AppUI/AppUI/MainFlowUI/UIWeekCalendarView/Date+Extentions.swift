@@ -54,6 +54,15 @@ extension Date {
         return format
     }
     
+    /// возвращает месяц и год
+    public func dateFormatLLLLyyyy() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "LLLL yyyy"
+        let monthAndYear = dateFormatter.string(from: self)
+        return monthAndYear
+    }
+    
     /// возвращает номер дня недели ddMMyyyy из Date
     func getNumberOfWeekDay() -> Int {
         let calendar = Calendar.current

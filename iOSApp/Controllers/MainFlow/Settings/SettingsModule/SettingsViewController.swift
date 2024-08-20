@@ -62,11 +62,13 @@ final class SettingsViewController: UIViewController {
                                                     systemImage: "star.fill",
                                                     iconBackgroundColor: .systemYellow)
     private lazy var shareFrendsCell = SettingsTableCell(title: "Рассказать друзьям", 
-                                                         systemImage: "ellipsis.message.fill",
+                                                         systemImage: "square.and.arrow.up",
                                                          iconBackgroundColor: .systemOrange)
     private lazy var writeEmailCell = SettingsTableCell(title: "Написать нам", 
-                                                        systemImage: "envelope.fill",
-                                                        iconBackgroundColor: .systemGreen)
+                                                        systemImage: "ellipsis.message.fill",
+                                                        iconBackgroundColor: .systemGreen,
+                                                        symbolWeight: .medium)
+    
     
     private lazy var userInfoCell: UITableViewCell = {
         let cell = UITableViewCell()
@@ -227,7 +229,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case 1: return 1
         case 2: return telegramAccounts.count + 1
         case 3: return 1
-        case 4: return 3
+        case 4: return 4
         case 5: return 1
         default: return 0
         }
@@ -241,13 +243,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return changePasswordCell
         case 2:
             if indexPath.row == telegramAccounts.count { return addTelegramAccountCell }
-            else { return UserTableCell(title: telegramAccounts[indexPath.row].name, userImage: nil) }
+            else { return UserTableCell(title: telegramAccounts[indexPath.row].name) }
         case 3:
             return subscribtionCell
         case 4:
             if indexPath.row == 0 { return policityCell }
             else if indexPath.row == 1 { return reviewCell }
             else if indexPath.row == 2 { return shareFrendsCell }
+            else if indexPath.row == 3 { return writeEmailCell }
         case 5:
             return logoutCell
         default:
