@@ -103,8 +103,7 @@ extension SettingsPresenter {
             DispatchQueue.main.async {
                 switch result {
                 case .success200(let data):
-                    let sessions = data.Sessions ?? []
-                    let accounts: [TelegramAccountModel] = sessions.map { TelegramAccountModel(name: $0.name, phone: $0.phone) }
+                    let accounts: [TelegramAccountModel] = data.sessions.map { TelegramAccountModel(name: $0.name, phone: $0.phone) }
                     self?.view?.show(accounts: accounts)
                     self?.cashingRepository.updateTelegramAccountCash(accounts: accounts)
                 case .unauthorized:

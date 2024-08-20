@@ -26,12 +26,20 @@ struct DayModel {
     let date: Date
 }
 
+struct WarningModel {
+    let text: String
+    let completion: () -> Void
+}
+
 struct MessagePreviewModel {
     let type: MessagePreviewType
     let text: String
     let input: [MessageInputType]
-    let scheduleTime: Date
-    let chanelName: String
-    let accountPhone: String
-    let accountName: String
+    let scheduleTime: String
+    let ownerName: String
+    
+    let accountPhoneNumber: String
+    let linkOnChat: String
+    
+    let warning: WarningModel?
 }

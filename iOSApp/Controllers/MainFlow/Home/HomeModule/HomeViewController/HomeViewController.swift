@@ -51,11 +51,17 @@ final class HomeViewController: UIViewController {
     }
     
     private func setupUI() {
-        let days: [DayModel] = [DayModel(messages: [], date: Date().getDate(with: 0)),
-                                DayModel(messages: [], date: Date().getDate(with: 1)),
-                                DayModel(messages: [], date: Date().getDate(with: 2)),
-                                DayModel(messages: [], date: Date().getDate(with: 4)),
-                                DayModel(messages: [], date: Date().getDate(with: 5))]
+        let days: [DayModel] = [DayModel(messages: [
+            MessagePreviewModel(type: .contact, text: "Привет", input: [], scheduleTime: "15:05", ownerName: "I L • Книжный клуб.rar", accountPhoneNumber: "", linkOnChat: "", warning: nil),
+            
+            MessagePreviewModel(type: .contact, text: "Это первый большой пост в нашем телеграмм канале!!! Мы давно этого ждали", input: [], scheduleTime: "15:05", ownerName: "I L • Книжный клуб.rar", accountPhoneNumber: "", linkOnChat: "", warning: WarningModel(text: "Ошибка то у Вас!!", completion: { [weak self] in
+                self?.presenter?.warning(message: "{ttq")
+            })),
+            
+            MessagePreviewModel(type: .contact, text: "Все пока, люди!", input: [], scheduleTime: "15:05", ownerName: "I L • Книжный клуб.rar", accountPhoneNumber: "", linkOnChat: "", warning: nil),
+            
+        ], date: Date().getDate(with: 0))]
+        
         messageScrollView.configure(with: days)
         
         view.backgroundColor = .systemBackground
@@ -80,7 +86,7 @@ final class HomeViewController: UIViewController {
         messageScrollView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(backgroundCalendarView.snp.bottom)
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
 }

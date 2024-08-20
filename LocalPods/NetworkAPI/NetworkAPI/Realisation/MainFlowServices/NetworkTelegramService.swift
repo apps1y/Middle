@@ -18,11 +18,11 @@ extension NetworkService: NetworkTelegramProtocol {
         }
     }
     
-    public func addTelegramAccount(token: String, code: String, password: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void) {
+    public func addTelegramAccount(token: String, code: String, password: String, phoneNumber: String, completion: @escaping (CompleteResult<UserSessionResponseModel>) -> Void) {
         let request = NetworkRequest(stringURL: "/api/telegram", headers: [:], httpMethod: .post, bearer: token)
         let requestModel = TelegramRequestModel(code: code, password: password, phone_number: phoneNumber)
         
-        perform(request: request, requestModel: requestModel) { (result: Result<NetworkResponse<None>, NetworkRequestError>) in
+        perform(request: request, requestModel: requestModel) { (result: Result<NetworkResponse<UserSessionResponseModel>, NetworkRequestError>) in
             let nresult = StatusValidation.completeResultValidate(result: result)
             completion(nresult)
         }

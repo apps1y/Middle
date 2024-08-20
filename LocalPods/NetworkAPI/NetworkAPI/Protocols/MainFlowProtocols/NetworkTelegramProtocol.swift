@@ -10,13 +10,13 @@ import Foundation
 // MARK: - getUserTelegramSessions
 // response
 public struct UserSessionsResponseModel: Statusable, Decodable {
-    public var Sessions: [UserTelegramSession]?
+    public var sessions: [UserTelegramSession]
     public var status: String
-    
-    public struct UserTelegramSession: Decodable {
-        public var name: String
-        public var phone: String
-    }
+}
+
+public struct UserTelegramSession: Decodable {
+    public var name: String
+    public var phone: String
 }
 
 // MARK: - universal request model
@@ -27,10 +27,18 @@ public struct TelegramRequestModel: Encodable {
     public let phone_number: String
 }
 
+// MARK: - getUserTelegramSessions
+// response
+public struct UserSessionResponseModel: Statusable, Decodable {
+    public var session: UserTelegramSession
+    public var status: String
+}
+
+
 public protocol NetworkTelegramProtocol: AnyObject {
     func getUserTelegramSessions(token: String, completion: @escaping (CompleteResult<UserSessionsResponseModel>) -> Void)
     
-    func addTelegramAccount(token: String, code: String, password: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void)
+    func addTelegramAccount(token: String, code: String, password: String, phoneNumber: String, completion: @escaping (CompleteResult<UserSessionResponseModel>) -> Void)
     
     func removeTelegramSession(token: String, phoneNumber: String, completion: @escaping (CompleteResult<None>) -> Void)
     

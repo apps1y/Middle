@@ -10,6 +10,8 @@ import NetworkAPI
 
 protocol HomePresenterProtocol: AnyObject {
     func viewDidLoaded()
+    
+    func warning(message: String)
 }
 
 final class HomePresenter {
@@ -30,5 +32,9 @@ final class HomePresenter {
 extension HomePresenter: HomePresenterProtocol {
     func viewDidLoaded() {
         // first setup view
+    }
+    
+    func warning(message: String) {
+        router.presentWarningAlert(message: message)
     }
 }

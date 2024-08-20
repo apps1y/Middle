@@ -40,6 +40,6 @@ class UserDefaultsManager: UserDefaultsProtocol {
     }
     
     func delete(key: String) {
-        defaults.removeObject(forKey: "greeting")
+        defaults.removeObject(forKey: key)
     }
 }

@@ -59,7 +59,7 @@ extension TelegramPasswordPresenter: TelegramPasswordPresenterProtocol {
                 case .success200(let data):
                     switch TelegramStatusValidation.validate(stringStatus: data.status) {
                     case .sussess: 
-                        let account = TelegramAccountModel(name: "Загрузка...", phone: self?.phoneNumber ?? "")
+                        let account = TelegramAccountModel(name: data.session.name, phone: data.session.phone)
                         self?.router.dismissViewWithCompletion(account: account)
                     case .invalidCode: self?.router.warningIncorrectOneTimeCode()
                     case .invalidPassword: self?.router.warningIncorrectPassword()
