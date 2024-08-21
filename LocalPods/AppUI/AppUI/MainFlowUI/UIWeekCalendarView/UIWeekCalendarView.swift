@@ -96,8 +96,20 @@ public final class UIWeekCalendarView: UICollectionView {
         let selectedDate = selectedDateModel.date
         switch selectedDate.isInDiapazon(from: centerDate.getDate(with: -3), to: centerDate.getDate(with: 3)) {
         case .right:
+            if !daysArray.contains(where: { $0.dateString == selectedDateModel.dateString }) {
+                print(1)
+                centerDate = calendarManager.getCenteredDate(with: selectedDate).getDate(with: -7)
+                let center = calendarManager.getCenteredDate(with: selectedDate)
+                daysArray.replaceSubrange(14..<21, with: calendarManager.getWeekForCalendar(date: center))
+            }
             scrollToItem(at: IndexPath(item: 17, section: 0), at: .centeredHorizontally, animated: true)
         case .left:
+            if !daysArray.contains(where: { $0.dateString == selectedDateModel.dateString }) {
+                print(1)
+                centerDate = calendarManager.getCenteredDate(with: selectedDate).getDate(with: 7)
+                let center = calendarManager.getCenteredDate(with: selectedDate)
+                daysArray.replaceSubrange(0..<7, with: calendarManager.getWeekForCalendar(date: center))
+            }
             scrollToItem(at: IndexPath(item: 3, section: 0), at: .centeredHorizontally, animated: true)
         case .normal: break
         }

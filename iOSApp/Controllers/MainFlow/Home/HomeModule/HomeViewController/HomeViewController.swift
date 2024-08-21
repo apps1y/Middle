@@ -121,24 +121,23 @@ final class HomeViewController: UIViewController {
         titleView.addSubview(loader)
         loader.snp.makeConstraints { make in
             make.leading.equalToSuperview()
-            make.top.bottom.equalToSuperview().offset(6)
-            make.bottom.equalToSuperview()
+            make.top.equalToSuperview().offset(6)
         }
         
         titleView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(loader.snp.trailing).offset(7)
             make.trailing.equalToSuperview().inset(27)
-            make.height.equalTo(17)
+            make.height.equalTo(19)
             make.top.equalToSuperview().offset(6)
         }
         
         titleView.addSubview(monthLabel)
         monthLabel.snp.makeConstraints { make in
             make.centerX.equalTo(titleLabel)
-            make.top.equalTo(titleLabel.snp.bottom).offset(4)
+            make.top.equalTo(titleLabel.snp.bottom).offset(2)
             make.bottom.equalToSuperview()
-            make.height.equalTo(11)
+            make.height.equalTo(13)
         }
         
         navigationItem.titleView = titleView
