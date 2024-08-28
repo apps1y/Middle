@@ -9,13 +9,13 @@ import UIKit
 import SnapKit
 import AppUI
 
-protocol UILeafScrollViewDelegate: AnyObject {
+protocol DaysScrollViewDelegate: AnyObject {
     /// Нажатие на ячейку
     /// - Parameter model: модель дня на который  нажали
     func didScroll(to date: Date)
 }
 
-class UILeafScrollView: UICollectionView {
+class DaysCollectionView: UICollectionView {
     
     private let collectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -24,7 +24,7 @@ class UILeafScrollView: UICollectionView {
         return layout
     }()
     
-    weak var calendarDelegate: UILeafScrollViewDelegate?
+    weak var calendarDelegate: DaysScrollViewDelegate?
     
     private var allDays: [DayModel] = []
     private var actualDays: [DayModel] = []
@@ -49,7 +49,7 @@ class UILeafScrollView: UICollectionView {
     }
     
     private func setupUI() {
-        register(UILeafScrollViewCell.self, forCellWithReuseIdentifier: UILeafScrollViewCell.id)
+        register(DaysCollectionViewCell.self, forCellWithReuseIdentifier: DaysCollectionViewCell.id)
         backgroundColor = .clear
         bounces = false
         showsHorizontalScrollIndicator = false
@@ -57,6 +57,7 @@ class UILeafScrollView: UICollectionView {
         isPagingEnabled = true
         delegate = self
         dataSource = self
+        refreshAroundDays(offset: 0)
     }
     
     public func configure(with days: [DayModel]) {
@@ -121,19 +122,19 @@ class UILeafScrollView: UICollectionView {
     }
 }
 
-extension UILeafScrollView: UICollectionViewDataSource {
+extension DaysCollectionView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         actualDays.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UILeafScrollViewCell.id, for: indexPath) as? UILeafScrollViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysCollectionViewCell.id, for: indexPath) as? DaysCollectionViewCell else { return UICollectionViewCell() }
         cell.configure(model: actualDays[indexPath.item])
         return cell
     }
 }
 
-extension UILeafScrollView: UICollectionViewDelegateFlowLayout {
+extension DaysCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.frame.width,
                       height: collectionView.frame.height)

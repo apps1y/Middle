@@ -10,9 +10,14 @@ import AppUI
 
 // MARK: - View Protocol
 protocol HomeViewProtocol: AnyObject {
+    /// начало загрузки
     func startLoading()
     
+    /// конец загрузки
     func finishLoading()
+    
+    /// сборка view с моделью
+    func configureView(with models: [DayModel])
 }
 
 // MARK: - View Controller
@@ -32,8 +37,8 @@ final class HomeViewController: UIViewController {
         return view
     }()
     
-    private lazy var messageScrollView: UILeafScrollView = {
-        let view = UILeafScrollView()
+    private lazy var messageScrollView: DaysCollectionView = {
+        let view = DaysCollectionView()
         view.calendarDelegate = self
         return view
     }()
@@ -60,10 +65,18 @@ final class HomeViewController: UIViewController {
     
     private lazy var monthLabel: UILabel = {
         let label = UILabel()
-        label.text = "август 2024"
+        label.text = Date().dateFormatLLLLyyyy()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = .secondaryLabel
         return label
+    }()
+    
+    private lazy var warningBarButtonItem: UIBarButtonItem = {
+        let image = UIImage(systemName: "bell.badge")
+        let item = UIBarButtonItem(image: image, style: .plain,
+                                   target: self, 
+                                   action: #selector(warningBarButtonItemTapped))
+        return item
     }()
     
     var presenter: HomePresenterProtocol?
@@ -81,19 +94,6 @@ final class HomeViewController: UIViewController {
     }
     
     private func setupUI() {
-        let days: [DayModel] = [DayModel(messages: [
-            MessagePreviewModel(type: .contact, text: "Привет", input: [], scheduleTime: "15:05", ownerName: "I L • Книжный клуб.rar", accountPhoneNumber: "", linkOnChat: "", warning: nil),
-            
-            MessagePreviewModel(type: .contact, text: "Это первый большой пост в нашем телеграмм канале!!! Мы давно этого ждали", input: [], scheduleTime: "15:05", ownerName: "I L • Книжный клуб.rar", accountPhoneNumber: "", linkOnChat: "", warning: WarningModel(text: "Ошибка то у Вас!!", completion: { [weak self] in
-                self?.presenter?.warning(message: "{ttq")
-            })),
-            
-            MessagePreviewModel(type: .contact, text: "Все пока, люди!", input: [], scheduleTime: "15:05", ownerName: "I L • Книжный клуб.rar", accountPhoneNumber: "", linkOnChat: "", warning: nil),
-            
-        ], date: Date().getDate(with: 0))]
-        
-        messageScrollView.configure(with: days)
-        
         view.backgroundColor = .systemBackground
         
         view.addSubview(backgroundCalendarView)
@@ -141,20 +141,28 @@ final class HomeViewController: UIViewController {
         }
         
         navigationItem.titleView = titleView
+        
+        navigationItem.leftBarButtonItem = warningBarButtonItem
+    }
+    
+    @objc private func warningBarButtonItemTapped() {
+        presenter?.prepareUnravelViewShowing()
     }
 }
 
 // MARK: - View Protocol Realization
 extension HomeViewController: HomeViewProtocol {
     func startLoading() {
-        
+        loader.startAnimating()
     }
     
     func finishLoading() {
-        
+        loader.stopAnimating()
     }
     
-    
+    func configureView(with models: [DayModel]) {
+        messageScrollView.configure(with: models)
+    }
 }
 
 extension HomeViewController: UIWeekCalendarViewDelegate {
@@ -167,7 +175,7 @@ extension HomeViewController: UIWeekCalendarViewDelegate {
     }
 }
 
-extension HomeViewController: UILeafScrollViewDelegate {
+extension HomeViewController: DaysScrollViewDelegate {
     func didScroll(to date: Date) {
         calendarView.newDate = date
     }

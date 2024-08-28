@@ -8,16 +8,34 @@
 import UIKit
 
 protocol HomeRouterInput {
+    
+    func presentUnravelViewController()
+    
+    /// показ предупреждения об ошибке
+    /// - Parameter message: текст предупреждения
     func presentWarningAlert(message: String)
 }
 
 final class HomeRouter: HomeRouterInput {
     weak var viewController: HomeViewController?
     
+    private let alertFabric: AlertFabric
+    private let unravelAssembly: UnravelAssembly
+    
+    init(alertFabric: AlertFabric, unravelAssembly: UnravelAssembly) {
+        self.alertFabric = alertFabric
+        self.unravelAssembly = unravelAssembly
+    }
+    
+    func presentUnravelViewController() {
+        let view = unravelAssembly.assemble()
+        let navigationView = UINavigationController(rootViewController: view)
+        view.modalPresentationStyle = .formSheet
+        viewController?.present(navigationView, animated: true)
+    }
+    
     func presentWarningAlert(message: String) {
-        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
-        let submitAction = UIAlertAction(title: "Понятно", style: .default)
-        alert.addAction(submitAction)
+        let alert = alertFabric.errorAlert(message: message)
         viewController?.present(alert, animated: true)
     }
 }

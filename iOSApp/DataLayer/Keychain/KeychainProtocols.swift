@@ -21,6 +21,7 @@ protocol KeychainBearerProtocol: AnyObject {
     func save(token: String)
     
     /// Извлечение ключа
+    /// - Returns: ключ в виде строки
     func getToken() -> String?
     
     /// Удаление ключа

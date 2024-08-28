@@ -9,28 +9,21 @@
 /* Begin PBXBuildFile section */
 		520681E32C68D568007ED7E7 /* MainTabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681E22C68D568007ED7E7 /* MainTabBarAssembly.swift */; };
 		520681E52C6B942F007ED7E7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681E42C6B942F007ED7E7 /* UserModel.swift */; };
-		520681F52C6CA30C007ED7E7 /* TelegramNumberPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681F12C6CA30B007ED7E7 /* TelegramNumberPresenter.swift */; };
-		520681F62C6CA30C007ED7E7 /* TelegramNumberRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681F22C6CA30B007ED7E7 /* TelegramNumberRouter.swift */; };
-		520681F72C6CA30C007ED7E7 /* TelegramNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681F32C6CA30B007ED7E7 /* TelegramNumberViewController.swift */; };
-		520681F82C6CA30C007ED7E7 /* TelegramNumberAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681F42C6CA30B007ED7E7 /* TelegramNumberAssembly.swift */; };
-		520681FE2C6CA786007ED7E7 /* TelegramCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681FA2C6CA786007ED7E7 /* TelegramCodePresenter.swift */; };
-		520681FF2C6CA786007ED7E7 /* TelegramCodeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681FB2C6CA786007ED7E7 /* TelegramCodeRouter.swift */; };
-		520682002C6CA786007ED7E7 /* TelegramCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681FC2C6CA786007ED7E7 /* TelegramCodeViewController.swift */; };
-		520682012C6CA786007ED7E7 /* TelegramCodeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520681FD2C6CA786007ED7E7 /* TelegramCodeAssembly.swift */; };
-		520682072C6CAA74007ED7E7 /* TelegramPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682032C6CAA74007ED7E7 /* TelegramPasswordPresenter.swift */; };
-		520682082C6CAA74007ED7E7 /* TelegramPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682042C6CAA74007ED7E7 /* TelegramPasswordRouter.swift */; };
-		520682092C6CAA74007ED7E7 /* TelegramPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682052C6CAA74007ED7E7 /* TelegramPasswordViewController.swift */; };
-		5206820A2C6CAA74007ED7E7 /* TelegramPasswordAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682062C6CAA74007ED7E7 /* TelegramPasswordAssembly.swift */; };
-		5206820C2C6E241A007ED7E7 /* TelegramAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206820B2C6E2419007ED7E7 /* TelegramAccountModel.swift */; };
 		520682122C6F4FFC007ED7E7 /* RepasswordPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206820E2C6F4FFC007ED7E7 /* RepasswordPreviewPresenter.swift */; };
 		520682132C6F4FFC007ED7E7 /* RepasswordPreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206820F2C6F4FFC007ED7E7 /* RepasswordPreviewRouter.swift */; };
 		520682142C6F4FFC007ED7E7 /* RepasswordPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682102C6F4FFC007ED7E7 /* RepasswordPreviewViewController.swift */; };
 		520682152C6F4FFC007ED7E7 /* RepasswordPreviewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520682112C6F4FFC007ED7E7 /* RepasswordPreviewAssembly.swift */; };
-		5206821B2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206821A2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift */; };
-		5240C3272C71EC3E00DF9330 /* UILeafScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C3262C71EC3E00DF9330 /* UILeafScrollView.swift */; };
-		5240C3292C71EC4D00DF9330 /* UILeafScrollViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C3282C71EC4D00DF9330 /* UILeafScrollViewCell.swift */; };
+		5240C3272C71EC3E00DF9330 /* DaysCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C3262C71EC3E00DF9330 /* DaysCollectionView.swift */; };
+		5240C3292C71EC4D00DF9330 /* DaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C3282C71EC4D00DF9330 /* DaysCollectionViewCell.swift */; };
 		5240C32D2C71EF5300DF9330 /* MessagePreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C32C2C71EF5300DF9330 /* MessagePreviewModel.swift */; };
 		5240C32F2C73663E00DF9330 /* MessagePreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C32E2C73663E00DF9330 /* MessagePreviewTableViewCell.swift */; };
+		5240C3382C75DAEA00DF9330 /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C3372C75DAEA00DF9330 /* DayModel.swift */; };
+		5240C3462C764E6900DF9330 /* UnravelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C3422C764E6900DF9330 /* UnravelPresenter.swift */; };
+		5240C3472C764E6900DF9330 /* UnravelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C3432C764E6900DF9330 /* UnravelRouter.swift */; };
+		5240C3482C764E6900DF9330 /* UnravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C3442C764E6900DF9330 /* UnravelViewController.swift */; };
+		5240C3492C764E6900DF9330 /* UnravelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C3452C764E6900DF9330 /* UnravelAssembly.swift */; };
+		5240C34B2C76532F00DF9330 /* UnravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C34A2C76532F00DF9330 /* UnravelTableViewCell.swift */; };
+		5289CFB02C7CC23A00A2EF77 /* EntityNamed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5289CFAF2C7CC23A00A2EF77 /* EntityNamed.swift */; };
 		529564F92C62A8F6007E3352 /* CashingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564F82C62A8F6007E3352 /* CashingRepository.swift */; };
 		529BF93A2C4579C1009954D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9392C4579C1009954D5 /* AppDelegate.swift */; };
 		529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF93B2C4579C1009954D5 /* SceneDelegate.swift */; };
@@ -79,6 +72,12 @@
 		52B3E81B2C61EB5F00CCCF26 /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E81A2C61EB5F00CCCF26 /* CoreDataProtocol.swift */; };
 		52CF74812C5BB20B00E0AA7D /* KeychainStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF74802C5BB20B00E0AA7D /* KeychainStubs.swift */; };
 		52CF74832C5BB22F00E0AA7D /* KeychainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF74822C5BB22F00E0AA7D /* KeychainProtocols.swift */; };
+		52F90F9D2C7CE47400124CF3 /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F90F9C2C7CE47400124CF3 /* SettingsTableView.swift */; };
+		52F90FA02C7CEC8300124CF3 /* SettingsTableModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F90F9F2C7CEC8300124CF3 /* SettingsTableModels.swift */; };
+		52F90FA22C7CF8AD00124CF3 /* SettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F90FA12C7CF8AD00124CF3 /* SettingsDataSource.swift */; };
+		52F90FA42C7CF9CE00124CF3 /* UserInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F90FA32C7CF9CE00124CF3 /* UserInfoTableCell.swift */; };
+		52F90FA72C7F1E0B00124CF3 /* DefaultSettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F90FA62C7F1E0B00124CF3 /* DefaultSettingsTableCell.swift */; };
+		52F90FA92C7F224900124CF3 /* SubscribtionBannerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F90FA82C7F224900124CF3 /* SubscribtionBannerTableCell.swift */; };
 		52FAB8C92C620AB5001C6697 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FAB8C82C620AB5001C6697 /* CoreDataService.swift */; };
 		52FAB8CF2C621524001C6697 /* iOSAppCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52FAB8CD2C621524001C6697 /* iOSAppCoreData.xcdatamodeld */; };
 		52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */; };
@@ -90,28 +89,21 @@
 /* Begin PBXFileReference section */
 		520681E22C68D568007ED7E7 /* MainTabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarAssembly.swift; sourceTree = "<group>"; };
 		520681E42C6B942F007ED7E7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		520681F12C6CA30B007ED7E7 /* TelegramNumberPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramNumberPresenter.swift; sourceTree = "<group>"; };
-		520681F22C6CA30B007ED7E7 /* TelegramNumberRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramNumberRouter.swift; sourceTree = "<group>"; };
-		520681F32C6CA30B007ED7E7 /* TelegramNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramNumberViewController.swift; sourceTree = "<group>"; };
-		520681F42C6CA30B007ED7E7 /* TelegramNumberAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramNumberAssembly.swift; sourceTree = "<group>"; };
-		520681FA2C6CA786007ED7E7 /* TelegramCodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramCodePresenter.swift; sourceTree = "<group>"; };
-		520681FB2C6CA786007ED7E7 /* TelegramCodeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramCodeRouter.swift; sourceTree = "<group>"; };
-		520681FC2C6CA786007ED7E7 /* TelegramCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramCodeViewController.swift; sourceTree = "<group>"; };
-		520681FD2C6CA786007ED7E7 /* TelegramCodeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramCodeAssembly.swift; sourceTree = "<group>"; };
-		520682032C6CAA74007ED7E7 /* TelegramPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramPasswordPresenter.swift; sourceTree = "<group>"; };
-		520682042C6CAA74007ED7E7 /* TelegramPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramPasswordRouter.swift; sourceTree = "<group>"; };
-		520682052C6CAA74007ED7E7 /* TelegramPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramPasswordViewController.swift; sourceTree = "<group>"; };
-		520682062C6CAA74007ED7E7 /* TelegramPasswordAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramPasswordAssembly.swift; sourceTree = "<group>"; };
-		5206820B2C6E2419007ED7E7 /* TelegramAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramAccountModel.swift; sourceTree = "<group>"; };
 		5206820E2C6F4FFC007ED7E7 /* RepasswordPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepasswordPreviewPresenter.swift; sourceTree = "<group>"; };
 		5206820F2C6F4FFC007ED7E7 /* RepasswordPreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepasswordPreviewRouter.swift; sourceTree = "<group>"; };
 		520682102C6F4FFC007ED7E7 /* RepasswordPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepasswordPreviewViewController.swift; sourceTree = "<group>"; };
 		520682112C6F4FFC007ED7E7 /* RepasswordPreviewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepasswordPreviewAssembly.swift; sourceTree = "<group>"; };
-		5206821A2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TelegramAccount+CoreData.swift"; sourceTree = "<group>"; };
-		5240C3262C71EC3E00DF9330 /* UILeafScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILeafScrollView.swift; sourceTree = "<group>"; };
-		5240C3282C71EC4D00DF9330 /* UILeafScrollViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILeafScrollViewCell.swift; sourceTree = "<group>"; };
+		5240C3262C71EC3E00DF9330 /* DaysCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionView.swift; sourceTree = "<group>"; };
+		5240C3282C71EC4D00DF9330 /* DaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewCell.swift; sourceTree = "<group>"; };
 		5240C32C2C71EF5300DF9330 /* MessagePreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePreviewModel.swift; sourceTree = "<group>"; };
 		5240C32E2C73663E00DF9330 /* MessagePreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePreviewTableViewCell.swift; sourceTree = "<group>"; };
+		5240C3372C75DAEA00DF9330 /* DayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
+		5240C3422C764E6900DF9330 /* UnravelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnravelPresenter.swift; sourceTree = "<group>"; };
+		5240C3432C764E6900DF9330 /* UnravelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnravelRouter.swift; sourceTree = "<group>"; };
+		5240C3442C764E6900DF9330 /* UnravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnravelViewController.swift; sourceTree = "<group>"; };
+		5240C3452C764E6900DF9330 /* UnravelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnravelAssembly.swift; sourceTree = "<group>"; };
+		5240C34A2C76532F00DF9330 /* UnravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnravelTableViewCell.swift; sourceTree = "<group>"; };
+		5289CFAF2C7CC23A00A2EF77 /* EntityNamed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityNamed.swift; sourceTree = "<group>"; };
 		529564F82C62A8F6007E3352 /* CashingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashingRepository.swift; sourceTree = "<group>"; };
 		529BF9362C4579C1009954D5 /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529BF9392C4579C1009954D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +154,12 @@
 		52B3E81A2C61EB5F00CCCF26 /* CoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		52CF74802C5BB20B00E0AA7D /* KeychainStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStubs.swift; sourceTree = "<group>"; };
 		52CF74822C5BB22F00E0AA7D /* KeychainProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainProtocols.swift; sourceTree = "<group>"; };
+		52F90F9C2C7CE47400124CF3 /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
+		52F90F9F2C7CEC8300124CF3 /* SettingsTableModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableModels.swift; sourceTree = "<group>"; };
+		52F90FA12C7CF8AD00124CF3 /* SettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
+		52F90FA32C7CF9CE00124CF3 /* UserInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableCell.swift; sourceTree = "<group>"; };
+		52F90FA62C7F1E0B00124CF3 /* DefaultSettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingsTableCell.swift; sourceTree = "<group>"; };
+		52F90FA82C7F224900124CF3 /* SubscribtionBannerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribtionBannerTableCell.swift; sourceTree = "<group>"; };
 		52FAB8C82C620AB5001C6697 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		52FAB8CE2C621524001C6697 /* iOSAppCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSAppCoreData.xcdatamodel; sourceTree = "<group>"; };
 		52FED2542C4D0E1700AAF16B /* ConfirmPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPresenter.swift; sourceTree = "<group>"; };
@@ -193,49 +191,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		520681B62C665D85007ED7E7 /* TelegramAddedFlow */ = {
-			isa = PBXGroup;
-			children = (
-				520681F02C6CA2FF007ED7E7 /* TelegramNumberModule */,
-				520681F92C6CA769007ED7E7 /* TelegrmCodeModule */,
-				520682022C6CAA50007ED7E7 /* TelegramPasswordModule */,
-			);
-			path = TelegramAddedFlow;
-			sourceTree = "<group>";
-		};
-		520681F02C6CA2FF007ED7E7 /* TelegramNumberModule */ = {
-			isa = PBXGroup;
-			children = (
-				520681F32C6CA30B007ED7E7 /* TelegramNumberViewController.swift */,
-				520681F12C6CA30B007ED7E7 /* TelegramNumberPresenter.swift */,
-				520681F22C6CA30B007ED7E7 /* TelegramNumberRouter.swift */,
-				520681F42C6CA30B007ED7E7 /* TelegramNumberAssembly.swift */,
-			);
-			path = TelegramNumberModule;
-			sourceTree = "<group>";
-		};
-		520681F92C6CA769007ED7E7 /* TelegrmCodeModule */ = {
-			isa = PBXGroup;
-			children = (
-				520681FC2C6CA786007ED7E7 /* TelegramCodeViewController.swift */,
-				520681FA2C6CA786007ED7E7 /* TelegramCodePresenter.swift */,
-				520681FB2C6CA786007ED7E7 /* TelegramCodeRouter.swift */,
-				520681FD2C6CA786007ED7E7 /* TelegramCodeAssembly.swift */,
-			);
-			path = TelegrmCodeModule;
-			sourceTree = "<group>";
-		};
-		520682022C6CAA50007ED7E7 /* TelegramPasswordModule */ = {
-			isa = PBXGroup;
-			children = (
-				520682052C6CAA74007ED7E7 /* TelegramPasswordViewController.swift */,
-				520682032C6CAA74007ED7E7 /* TelegramPasswordPresenter.swift */,
-				520682042C6CAA74007ED7E7 /* TelegramPasswordRouter.swift */,
-				520682062C6CAA74007ED7E7 /* TelegramPasswordAssembly.swift */,
-			);
-			path = TelegramPasswordModule;
-			sourceTree = "<group>";
-		};
 		5206820D2C6F4F69007ED7E7 /* RepasswordPreviewModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,23 +202,35 @@
 			path = RepasswordPreviewModule;
 			sourceTree = "<group>";
 		};
-		5240C3252C71EC2D00DF9330 /* UILeafScrollView */ = {
+		5240C3252C71EC2D00DF9330 /* DaysCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				5240C3262C71EC3E00DF9330 /* UILeafScrollView.swift */,
-				5240C3282C71EC4D00DF9330 /* UILeafScrollViewCell.swift */,
+				5240C3262C71EC3E00DF9330 /* DaysCollectionView.swift */,
+				5240C3282C71EC4D00DF9330 /* DaysCollectionViewCell.swift */,
 				5240C32E2C73663E00DF9330 /* MessagePreviewTableViewCell.swift */,
 			);
-			path = UILeafScrollView;
+			path = DaysCollectionView;
 			sourceTree = "<group>";
 		};
-		5240C3312C73B1AA00DF9330 /* HomeViewController */ = {
+		5240C3362C75D89C00DF9330 /* LocalModels */ = {
 			isa = PBXGroup;
 			children = (
-				529BF9B42C47BAD7009954D5 /* HomeViewController.swift */,
-				5240C3252C71EC2D00DF9330 /* UILeafScrollView */,
+				5240C32C2C71EF5300DF9330 /* MessagePreviewModel.swift */,
+				5240C3372C75DAEA00DF9330 /* DayModel.swift */,
 			);
-			path = HomeViewController;
+			path = LocalModels;
+			sourceTree = "<group>";
+		};
+		5240C3392C761DB200DF9330 /* UnravelModule */ = {
+			isa = PBXGroup;
+			children = (
+				5240C3442C764E6900DF9330 /* UnravelViewController.swift */,
+				5240C34A2C76532F00DF9330 /* UnravelTableViewCell.swift */,
+				5240C3422C764E6900DF9330 /* UnravelPresenter.swift */,
+				5240C3432C764E6900DF9330 /* UnravelRouter.swift */,
+				5240C3452C764E6900DF9330 /* UnravelAssembly.swift */,
+			);
+			path = UnravelModule;
 			sourceTree = "<group>";
 		};
 		529BF92D2C4579C1009954D5 = {
@@ -291,6 +258,7 @@
 				529BF9622C463E80009954D5 /* DataLayer */,
 				52B3E8172C61EB0B00CCCF26 /* ManagersLayer */,
 				52ABB7F62C553202004551B5 /* Fabrics */,
+				5240C3362C75D89C00DF9330 /* LocalModels */,
 				529BF94F2C45874E009954D5 /* Controllers */,
 				529BF94D2C458739009954D5 /* SupportingFiles */,
 			);
@@ -426,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				529BF9BA2C47BAE0009954D5 /* HomeModule */,
+				5240C3392C761DB200DF9330 /* UnravelModule */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -435,7 +404,6 @@
 			children = (
 				529BF9CD2C47BB4F009954D5 /* SettingsModule */,
 				5206820D2C6F4F69007ED7E7 /* RepasswordPreviewModule */,
-				520681B62C665D85007ED7E7 /* TelegramAddedFlow */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -443,11 +411,11 @@
 		529BF9BA2C47BAE0009954D5 /* HomeModule */ = {
 			isa = PBXGroup;
 			children = (
-				5240C3312C73B1AA00DF9330 /* HomeViewController */,
+				529BF9B42C47BAD7009954D5 /* HomeViewController.swift */,
+				5240C3252C71EC2D00DF9330 /* DaysCollectionView */,
 				529BF9B22C47BAD7009954D5 /* HomePresenter.swift */,
 				529BF9B32C47BAD7009954D5 /* HomeRouter.swift */,
 				529BF9B52C47BAD7009954D5 /* HomeAssembly.swift */,
-				5240C32C2C71EF5300DF9330 /* MessagePreviewModel.swift */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";
@@ -455,12 +423,11 @@
 		529BF9CD2C47BB4F009954D5 /* SettingsModule */ = {
 			isa = PBXGroup;
 			children = (
-				529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */,
+				520681E42C6B942F007ED7E7 /* UserModel.swift */,
+				52F90F9E2C7CE47800124CF3 /* SettingsViewController */,
 				529BF9CE2C47BB5F009954D5 /* SettingsPresenter.swift */,
 				529BF9CF2C47BB5F009954D5 /* SettingsRouter.swift */,
 				529BF9D12C47BB5F009954D5 /* SettingsAssembly.swift */,
-				520681E42C6B942F007ED7E7 /* UserModel.swift */,
-				5206820B2C6E2419007ED7E7 /* TelegramAccountModel.swift */,
 			);
 			path = SettingsModule;
 			sourceTree = "<group>";
@@ -507,7 +474,7 @@
 		52B3E8192C61EB4900CCCF26 /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
-				5206821A2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift */,
+				5289CFAF2C7CC23A00A2EF77 /* EntityNamed.swift */,
 				52FAB8CD2C621524001C6697 /* iOSAppCoreData.xcdatamodeld */,
 			);
 			path = CoreDataModels;
@@ -539,6 +506,28 @@
 				529BF9782C46EAEF009954D5 /* UserDefaultsManager.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		52F90F9E2C7CE47800124CF3 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				529BF9D02C47BB5F009954D5 /* SettingsViewController.swift */,
+				52F90F9C2C7CE47400124CF3 /* SettingsTableView.swift */,
+				52F90F9F2C7CEC8300124CF3 /* SettingsTableModels.swift */,
+				52F90FA12C7CF8AD00124CF3 /* SettingsDataSource.swift */,
+				52F90FA52C7CF9D200124CF3 /* Cells */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		52F90FA52C7CF9D200124CF3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				52F90FA32C7CF9CE00124CF3 /* UserInfoTableCell.swift */,
+				52F90FA82C7F224900124CF3 /* SubscribtionBannerTableCell.swift */,
+				52F90FA62C7F1E0B00124CF3 /* DefaultSettingsTableCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		52FED2532C4D0DE200AAF16B /* ConfirmModule */ = {
@@ -675,24 +664,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				529BF9542C458A3B009954D5 /* AppAssembly.swift in Sources */,
+				52F90FA92C7F224900124CF3 /* SubscribtionBannerTableCell.swift in Sources */,
 				529BF9562C458A6B009954D5 /* AppCoordinator.swift in Sources */,
-				5206820C2C6E241A007ED7E7 /* TelegramAccountModel.swift in Sources */,
 				529BF9792C46EAEF009954D5 /* UserDefaultsManager.swift in Sources */,
 				529BF93A2C4579C1009954D5 /* AppDelegate.swift in Sources */,
 				529BF95E2C459D3C009954D5 /* LoginPresenter.swift in Sources */,
+				5240C34B2C76532F00DF9330 /* UnravelTableViewCell.swift in Sources */,
 				529BF98B2C46FA0B009954D5 /* PasswordPresenter.swift in Sources */,
 				529BF98C2C46FA0B009954D5 /* PasswordRouter.swift in Sources */,
 				529BF98D2C46FA0B009954D5 /* PasswordViewController.swift in Sources */,
 				52FED2582C4D0E1700AAF16B /* ConfirmPresenter.swift in Sources */,
+				5240C3462C764E6900DF9330 /* UnravelPresenter.swift in Sources */,
+				5240C3472C764E6900DF9330 /* UnravelRouter.swift in Sources */,
+				5240C3482C764E6900DF9330 /* UnravelViewController.swift in Sources */,
+				5240C3492C764E6900DF9330 /* UnravelAssembly.swift in Sources */,
 				52FED25A2C4D0E1700AAF16B /* ConfirmViewController.swift in Sources */,
 				529564F92C62A8F6007E3352 /* CashingRepository.swift in Sources */,
 				52FED25B2C4D0E1700AAF16B /* ConfirmAssembly.swift in Sources */,
 				5240C32D2C71EF5300DF9330 /* MessagePreviewModel.swift in Sources */,
-				520681FE2C6CA786007ED7E7 /* TelegramCodePresenter.swift in Sources */,
-				520681FF2C6CA786007ED7E7 /* TelegramCodeRouter.swift in Sources */,
-				520682002C6CA786007ED7E7 /* TelegramCodeViewController.swift in Sources */,
-				520682012C6CA786007ED7E7 /* TelegramCodeAssembly.swift in Sources */,
 				520681E32C68D568007ED7E7 /* MainTabBarAssembly.swift in Sources */,
+				52F90F9D2C7CE47400124CF3 /* SettingsTableView.swift in Sources */,
 				529BF9B62C47BAD7009954D5 /* HomePresenter.swift in Sources */,
 				529BF9B72C47BAD7009954D5 /* HomeRouter.swift in Sources */,
 				529BF9B82C47BAD7009954D5 /* HomeViewController.swift in Sources */,
@@ -700,15 +691,17 @@
 				52FAB8C92C620AB5001C6697 /* CoreDataService.swift in Sources */,
 				52ABB7B12C502FE9004551B5 /* NewPasswordRecPresenter.swift in Sources */,
 				52ABB7B22C502FE9004551B5 /* NewPasswordRecRouter.swift in Sources */,
+				52F90FA02C7CEC8300124CF3 /* SettingsTableModels.swift in Sources */,
 				52ABB7B32C502FE9004551B5 /* NewPasswordRecViewController.swift in Sources */,
 				52ABB7B42C502FE9004551B5 /* NewPasswordRecAssembly.swift in Sources */,
+				5240C3382C75DAEA00DF9330 /* DayModel.swift in Sources */,
 				529BF98E2C46FA0B009954D5 /* PasswordAssembly.swift in Sources */,
 				529BF9752C46DBE2009954D5 /* KeychainManager.swift in Sources */,
 				529BF9D22C47BB5F009954D5 /* SettingsPresenter.swift in Sources */,
 				529BF9D32C47BB5F009954D5 /* SettingsRouter.swift in Sources */,
 				52CF74832C5BB22F00E0AA7D /* KeychainProtocols.swift in Sources */,
 				52ABB7FA2C5642A3004551B5 /* ConfirmRouter.swift in Sources */,
-				5240C3272C71EC3E00DF9330 /* UILeafScrollView.swift in Sources */,
+				5240C3272C71EC3E00DF9330 /* DaysCollectionView.swift in Sources */,
 				529BF9D42C47BB5F009954D5 /* SettingsViewController.swift in Sources */,
 				52FAB8CF2C621524001C6697 /* iOSAppCoreData.xcdatamodeld in Sources */,
 				52B3E81B2C61EB5F00CCCF26 /* CoreDataProtocol.swift in Sources */,
@@ -718,35 +711,30 @@
 				529BF9992C478677009954D5 /* EmailRecRouter.swift in Sources */,
 				520681E52C6B942F007ED7E7 /* UserModel.swift in Sources */,
 				529BF99A2C478677009954D5 /* EmailRecViewController.swift in Sources */,
+				5289CFB02C7CC23A00A2EF77 /* EntityNamed.swift in Sources */,
 				529BF99B2C478677009954D5 /* EmailRecAssembly.swift in Sources */,
 				529BF9822C46F9E5009954D5 /* EmailPresenter.swift in Sources */,
 				529BF9A52C479725009954D5 /* MainTabBarController.swift in Sources */,
 				529BF9832C46F9E5009954D5 /* EmailRouter.swift in Sources */,
 				529BF9842C46F9E5009954D5 /* EmailViewController.swift in Sources */,
+				52F90FA22C7CF8AD00124CF3 /* SettingsDataSource.swift in Sources */,
 				520682122C6F4FFC007ED7E7 /* RepasswordPreviewPresenter.swift in Sources */,
 				520682132C6F4FFC007ED7E7 /* RepasswordPreviewRouter.swift in Sources */,
 				520682142C6F4FFC007ED7E7 /* RepasswordPreviewViewController.swift in Sources */,
 				520682152C6F4FFC007ED7E7 /* RepasswordPreviewAssembly.swift in Sources */,
+				52F90FA72C7F1E0B00124CF3 /* DefaultSettingsTableCell.swift in Sources */,
 				529BF9852C46F9E5009954D5 /* EmailAssembly.swift in Sources */,
 				529BF95F2C459D3C009954D5 /* LoginRouter.swift in Sources */,
 				529BF9602C459D3C009954D5 /* LoginViewController.swift in Sources */,
-				520681F52C6CA30C007ED7E7 /* TelegramNumberPresenter.swift in Sources */,
-				5240C3292C71EC4D00DF9330 /* UILeafScrollViewCell.swift in Sources */,
-				520681F62C6CA30C007ED7E7 /* TelegramNumberRouter.swift in Sources */,
-				520681F72C6CA30C007ED7E7 /* TelegramNumberViewController.swift in Sources */,
-				520681F82C6CA30C007ED7E7 /* TelegramNumberAssembly.swift in Sources */,
+				5240C3292C71EC4D00DF9330 /* DaysCollectionViewCell.swift in Sources */,
 				529BF97B2C46F8C7009954D5 /* StringsValidationManager.swift in Sources */,
 				529BF9612C459D3C009954D5 /* LoginAssembly.swift in Sources */,
-				5206821B2C6FFBB1007ED7E7 /* TelegramAccount+CoreData.swift in Sources */,
 				52ABB7A92C502FD8004551B5 /* ConfirmRecPresenter.swift in Sources */,
 				52ABB7AA2C502FD8004551B5 /* ConfirmRecRouter.swift in Sources */,
 				52ABB7AB2C502FD8004551B5 /* ConfirmRecViewController.swift in Sources */,
 				52ABB7AC2C502FD8004551B5 /* ConfirmRecAssembly.swift in Sources */,
 				5240C32F2C73663E00DF9330 /* MessagePreviewTableViewCell.swift in Sources */,
-				520682072C6CAA74007ED7E7 /* TelegramPasswordPresenter.swift in Sources */,
-				520682082C6CAA74007ED7E7 /* TelegramPasswordRouter.swift in Sources */,
-				520682092C6CAA74007ED7E7 /* TelegramPasswordViewController.swift in Sources */,
-				5206820A2C6CAA74007ED7E7 /* TelegramPasswordAssembly.swift in Sources */,
+				52F90FA42C7CF9CE00124CF3 /* UserInfoTableCell.swift in Sources */,
 				52ABB7F82C553878004551B5 /* AlertFabric.swift in Sources */,
 				529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */,
 			);
@@ -983,8 +971,7 @@
 				52FAB8CE2C621524001C6697 /* iOSAppCoreData.xcdatamodel */,
 			);
 			currentVersion = 52FAB8CE2C621524001C6697 /* iOSAppCoreData.xcdatamodel */;
-			name = iOSAppCoreData.xcdatamodeld;
-			path = /Users/test/Desktop/iOSApp/iOSApp/DataLayer/Storage/CoreDataModels/iOSAppCoreData.xcdatamodeld;
+			path = iOSAppCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

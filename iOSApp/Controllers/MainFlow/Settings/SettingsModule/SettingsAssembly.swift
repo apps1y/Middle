@@ -18,21 +18,19 @@ final class SettingsAssembly {
     /// app coordinator
     weak var coordinator: FlowCoordinator?
     
-    private let telegramNumberAssembly: TelegramNumberAssembly
     private let repasswordPreviewAssembly: RepasswordPreviewAssembly
     
-    init(networkService: NetworkTelegramProtocol & NetworkProfileProtocol, keychainBearerManager: KeychainBearerProtocol, alertFabric: AlertFabric, cashingRepository: CashingRepositoryProtocol, coordinator: FlowCoordinator? = nil, telegramNumberAssembly: TelegramNumberAssembly, repasswordPreviewAssembly: RepasswordPreviewAssembly) {
+    init(networkService: NetworkTelegramProtocol & NetworkProfileProtocol, keychainBearerManager: KeychainBearerProtocol, alertFabric: AlertFabric, cashingRepository: CashingRepositoryProtocol, coordinator: FlowCoordinator? = nil, repasswordPreviewAssembly: RepasswordPreviewAssembly) {
         self.networkService = networkService
         self.keychainBearerManager = keychainBearerManager
         self.alertFabric = alertFabric
         self.cashingRepository = cashingRepository
         self.coordinator = coordinator
-        self.telegramNumberAssembly = telegramNumberAssembly
         self.repasswordPreviewAssembly = repasswordPreviewAssembly
     }
     
     func assemble() -> SettingsViewController {
-        let router = SettingsRouter(telegramNumberAssembly: telegramNumberAssembly, repasswordPreviewAssembly: repasswordPreviewAssembly, alertFabric: alertFabric)
+        let router = SettingsRouter(repasswordPreviewAssembly: repasswordPreviewAssembly, alertFabric: alertFabric)
         let viewController = SettingsViewController()
         let presenter = SettingsPresenter(view: viewController, router: router, networkService: networkService, keychainBearerManager: keychainBearerManager, cashingRepository: cashingRepository, coordinator: coordinator)
         

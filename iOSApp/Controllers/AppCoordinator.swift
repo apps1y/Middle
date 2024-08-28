@@ -7,8 +7,10 @@
 
 import UIKit
 
-
+/// протокол координатора
+/// от него должны наследоваться все координаторы в этом прложении
 public protocol FlowCoordinator: AnyObject {
+    /// показ экрана
     func start()
 }
 

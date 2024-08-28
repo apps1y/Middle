@@ -8,8 +8,13 @@
 import UIKit
 
 protocol RepasswordPreviewRouterInput {
+    
+    /// показ предупреждения об ошибке
+    /// - Parameter message: текст предупреждения
     func presentWarningAlert(message: String)
     
+    /// открытие экрана подтверждения
+    /// - Parameter userEmail: почта юзера
     func pushConfirmCodeController(userEmail: String)
 }
 

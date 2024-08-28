@@ -8,17 +8,16 @@
 import UIKit
 
 protocol SettingsRouterInput {
-    
-    func presentTelegramAddFlow(completion: @escaping (TelegramAccountModel) -> Void)
-    
+    /// открытие начального экрана смены пароля
+    /// - Parameter email: почта юзера
     func pushRepasswordPreview(email: String)
     
+    /// показ предупреждения при выходе из приложения
+    /// - Parameter completion: действия при согласии
     func presentLogoutAppAlert(completion: @escaping () -> Void)
     
-    func presentLogoutTgSheet(completion: @escaping () -> Void)
-    
-    func presentAccountsLimitAlert()
-    
+    /// показ предупреждения об ошибке
+    /// - Parameter message: текст предупреждения
     func presentWarningAlert(message: String)
 }
 
@@ -26,22 +25,13 @@ final class SettingsRouter: SettingsRouterInput {
     
     weak var viewController: SettingsViewController?
     
-    private var telegramNumberAssembly: TelegramNumberAssembly
     private let repasswordPreviewAssembly: RepasswordPreviewAssembly
     
     private let alertFabric: AlertFabric
     
-    init(telegramNumberAssembly: TelegramNumberAssembly, repasswordPreviewAssembly: RepasswordPreviewAssembly, alertFabric: AlertFabric) {
-        self.telegramNumberAssembly = telegramNumberAssembly
+    init(repasswordPreviewAssembly: RepasswordPreviewAssembly, alertFabric: AlertFabric) {
         self.repasswordPreviewAssembly = repasswordPreviewAssembly
         self.alertFabric = alertFabric
-    }
-    
-    func presentTelegramAddFlow(completion: @escaping (TelegramAccountModel) -> Void) {
-        let view = telegramNumberAssembly.assemble(completion: completion)
-        let navigationController = UINavigationController(rootViewController: view)
-        navigationController.modalPresentationStyle = .fullScreen
-        viewController?.present(navigationController, animated: true)
     }
     
     func pushRepasswordPreview(email: String) {
@@ -54,17 +44,6 @@ final class SettingsRouter: SettingsRouterInput {
         let title = "Выйти"
         let message = "Все подключенные telegram аккаунты останутся. В любой момент вы можете зайти, используя почту и пароль."
         let alert = alertFabric.confirmAlert(title: title, message: message, actionTitle: "Выйти", handler: completion)
-        viewController?.present(alert, animated: true)
-    }
-    
-    func presentLogoutTgSheet(completion: @escaping () -> Void) {
-        let message = "Сессия на выбранном аккаунте завершится. Активные сессии вы можете найти в telegram, в разделе устройства."
-        let actionSheet = alertFabric.confirmActionSheet(message: message, actionTitle: "Отвязать", handler: completion)
-        viewController?.present(actionSheet, animated: true)
-    }
-    
-    func presentAccountsLimitAlert() {
-        let alert = alertFabric.warningAlertWithoutAction(title: "Первышен лимит", message: "Вы можете добавить не больше трёх telegram аккаунтов.")
         viewController?.present(alert, animated: true)
     }
     

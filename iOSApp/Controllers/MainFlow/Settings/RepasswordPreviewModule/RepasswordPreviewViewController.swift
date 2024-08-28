@@ -99,7 +99,7 @@ final class RepasswordPreviewViewController: UIViewController {
     
     // MARK: - objc funcs
     @objc private func continueButtonTapped() {
-        presenter?.startConfirmationUser()
+        presenter?.prepareAccountConfirmation()
     }
 }
 

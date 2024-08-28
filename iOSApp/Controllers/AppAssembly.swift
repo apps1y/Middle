@@ -8,6 +8,7 @@
 import UIKit
 import NetworkAPI
 
+/// сборщик приложения
 final class AppAssembly {
     
     static func assemble(window: UIWindow?) -> FlowCoordinator {
@@ -39,6 +40,7 @@ final class AppAssembly {
         
         
         
+        
         // MARK: - Assembly сборки Auth Flow
         /// регистрация
         let confirmAssembly = ConfirmAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric)
@@ -64,31 +66,31 @@ final class AppAssembly {
         
         
         
-        // MARK: - Assembly сборки Main Flow
-        let homeAssembly = HomeAssembly(networkService: networkService, coreDataService: coreDaraService)
+        // MARK: - Assembly сборки Main Flow | Home
+        let unravelAssembly = UnravelAssembly()
         
-        let telegramPasswordAssembly = TelegramPasswordAssembly(networkSevice: networkService, alertFabric: alertFabric, keychainManager: keychainManager, cashingRepository: cashingRepository)
-        let telegramCodeAssembly = TelegramCodeAssembly(telegramPasswordAssembly: telegramPasswordAssembly)
-        let telegramNumberAssembly = TelegramNumberAssembly(networkSevice: networkService, alertFabric: alertFabric, keychainManager: keychainManager, cashingRepository: cashingRepository, telegramCodeAssembly: telegramCodeAssembly)
-
+        let homeAssembly = HomeAssembly(networkService: networkService, cashingRepisitory: cashingRepository, keychainBearerManager: keychainManager, alertFabric: alertFabric, unravelAssembly: unravelAssembly)
+        
+        
+        // MARK: - Assembly сборки Main Flow | Settings
         let repasswordPreviewAssembly = RepasswordPreviewAssembly(networkService: networkService, alertFabric: alertFabric, confirmRecAssembly: confirmRecAssembly)
         
-        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric, cashingRepository: cashingRepository, telegramNumberAssembly: telegramNumberAssembly, repasswordPreviewAssembly: repasswordPreviewAssembly)
+        let settingsAssembly = SettingsAssembly(networkService: networkService, keychainBearerManager: keychainManager, alertFabric: alertFabric, cashingRepository: cashingRepository, repasswordPreviewAssembly: repasswordPreviewAssembly)
         
         let mainTabBarAssembly = MainTabBarAssembly(homeAssembly: homeAssembly, settingsAssembly: settingsAssembly)
         
         
+        
+        
         // MARK: - App Coordinator
         let appCoordinator = AppCoordinator(window: window, keychainBearerManager: keychainManager, loginAssembly: loginAssembly, mainTabBarAssembly: mainTabBarAssembly)
+        
         
         /// appCoordinator's DI
         loginAssembly.coordinator = appCoordinator
         confirmAssembly.coordinator = appCoordinator
         newPasswordRecAssembly.coordinator = appCoordinator
         settingsAssembly.coordinator = appCoordinator
-        
-        telegramPasswordAssembly.coordinator = appCoordinator
-        telegramNumberAssembly.coordinator = appCoordinator
         
         return appCoordinator
     }

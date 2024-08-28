@@ -13,28 +13,22 @@ protocol SettingsPresenterProtocol: AnyObject {
     func viewDidLoaded()
     
     /// запрос на смену пароля
-    func changeUserPasswordTapped()
-    
-    /// удаление телеграм аккаунта
-    func removeTelegramAccount(account: TelegramAccountModel, indexPath: IndexPath)
-    
-    /// добавление нового телеграмм аккаунта
-    func newTelegramAccountTapped()
+    func prepareChangeUserPassword()
     
     /// показ экрана с подпиской
-    func subscribtionTapped()
+    func prepareSubscribtionInfo()
     
     /// показ прав конфеденциальности
-    func rulesOfConfidentialTapped()
+    func prepareRulesOfConfidential()
     
     /// оценить в AppStrore
-    func writeReviewTapped()
+    func prepareWriteReview()
     
     /// поделиться с друзьями
-    func shareWithFriendsTapped()
+    func prepareShareWithFriends()
     
-    /// выйти из приложения
-    func logoutUserTapped()
+    /// выход из приложения
+    func prepareUserLogout()
 }
 
 final class SettingsPresenter {
@@ -70,12 +64,12 @@ final class SettingsPresenter {
     }
 }
 
-// MARK: - private funcs
+// MARK: - private funcs with requests
 extension SettingsPresenter {
     
     /// подгрузка и кешрование данных профиля
-    private func prepareProfileConfiguration(completion: @escaping () -> Void) {
-        view?.startLoadingView()
+    private func loadUserProfileInformation(completion: @escaping () -> Void) {
+        view?.startLoading()
         networkService.profile(token: bearerToken) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -83,7 +77,7 @@ extension SettingsPresenter {
                     let user = UserModel(email: data.data.email)
                     self?.user = user
                     self?.view?.show(user: user)
-                    self?.cashingRepository.updateUserCash(user: user)
+                    self?.cashingRepository.updateUser(user: user)
                 case .unauthorized:
                     self?.cashingRepository.clearAllCash()
                     self?.keychainBearerManager.clearToken()
@@ -96,59 +90,8 @@ extension SettingsPresenter {
         }
     }
     
-    /// подгрузка и кеширование добавленных телеграмм аккаунтов
-    private func prepareTelegramConfiguration(completion: @escaping () -> Void) {
-        view?.startLoadingView()
-        networkService.getUserTelegramSessions(token: bearerToken) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success200(let data):
-                    let accounts: [TelegramAccountModel] = data.sessions.map { TelegramAccountModel(name: $0.name, phone: $0.phone) }
-                    self?.view?.show(accounts: accounts)
-                    self?.cashingRepository.updateTelegramAccountCash(accounts: accounts)
-                case .unauthorized:
-                    self?.cashingRepository.clearAllCash()
-                    self?.keychainBearerManager.clearToken()
-                    self?.coordinator?.start()
-                case .success400(_): break
-                case .failure(_): break
-                }
-                completion()
-            }
-        }
-    }
-    
-    private func removeTelegramAccountRequest(account: TelegramAccountModel) {
-        networkService.removeTelegramSession(token: bearerToken, phoneNumber: account.phone) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success200(_):
-                    self?.prepareTelegramConfiguration {
-                        self?.view?.finishLoadingView()
-                    }
-                case .unauthorized:
-                    self?.cashingRepository.clearAllCash()
-                    self?.keychainBearerManager.clearToken()
-                    self?.coordinator?.start()
-                case .success400(_):
-                    self?.view?.append(account: account)
-                    self?.prepareProfileConfiguration {
-                        self?.view?.finishLoadingView()
-                    }
-                case .failure(_):
-                    self?.view?.append(account: account)
-                }
-            }
-        }
-    }
-    
-    private func fetchTelegramAccountsFromCash() {
-        let accountsCash = cashingRepository.fetchTelegramAccountCash()
-        view?.show(accounts: accountsCash)
-    }
-    
     private func fetchUserFromCash() {
-        if let user = cashingRepository.fetchUserCash() {
+        if let user = cashingRepository.fetchUser() {
             view?.show(user: user)
             self.user = user
         }
@@ -162,77 +105,43 @@ extension SettingsPresenter: SettingsPresenterProtocol {
         guard !isLoadingRequests else { return }
         isLoadingRequests = true
         
-        print("loaded info request")
-        
         fetchUserFromCash()
-        fetchTelegramAccountsFromCash()
         
         let group = DispatchGroup()
         
         group.enter()
-        prepareProfileConfiguration {
-            group.leave()
-        }
-        
-        group.enter()
-        prepareTelegramConfiguration {
+        loadUserProfileInformation {
             group.leave()
         }
         
         group.notify(queue: .main) {
-            self.view?.finishLoadingView()
+            self.view?.finishLoading()
             self.isLoadingRequests = false
         }
     }
     
-    func changeUserPasswordTapped() {
+    func prepareChangeUserPassword() {
         guard let user else { return }
         router.pushRepasswordPreview(email: user.email)
     }
     
-    func removeTelegramAccount(account: TelegramAccountModel, indexPath: IndexPath) {
-        guard !isLoadingRequests else { return }
-        
-        router.presentLogoutTgSheet { [weak self] in
-            self?.view?.startLoadingView()
-            self?.view?.removeAcount(at: indexPath)
-            self?.removeTelegramAccountRequest(account: account)
-        }
-    }
-    
-    func newTelegramAccountTapped() {
-        guard !isLoadingRequests else { return }
-        
-        if cashingRepository.fetchTelegramAccountCash().count < 3{
-            router.presentTelegramAddFlow { [weak self] account in
-                self?.view?.append(account: account)
-                
-                self?.prepareTelegramConfiguration {
-                    self?.view?.finishLoadingView()
-                }
-            }
-        } else {
-            router.presentAccountsLimitAlert()
-        }
-    }
-    
-    func subscribtionTapped() {
+    func prepareSubscribtionInfo() {
         
     }
     
-    func rulesOfConfidentialTapped() {
+    func prepareRulesOfConfidential() {
         
     }
     
-    func writeReviewTapped() {
+    func prepareWriteReview() {
         
     }
     
-    func shareWithFriendsTapped() {
+    func prepareShareWithFriends() {
         
     }
     
-    func logoutUserTapped() {
+    func prepareUserLogout() {
         router.presentLogoutAppAlert { [weak self] in
             self?.cashingRepository.clearAllCash()
             self?.keychainBearerManager.clearToken()

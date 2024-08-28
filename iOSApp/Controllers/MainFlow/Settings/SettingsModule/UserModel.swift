@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct UserModel {
+/// моделька используется:
+/// - для передачи данных в пределах модуля настроек
+/// - в репозитории кэширования
+/// - для показа данных на ячейке
+
+/// модель юзера в приложении
+/// - Parameters:
+///   - email: почта
+struct UserModel: Hashable {
     let email: String
 }
 

@@ -9,7 +9,9 @@ import UIKit
 import NetworkAPI
 
 protocol RepasswordPreviewPresenterProtocol: AnyObject {
-    func startConfirmationUser()
+    
+    /// подготовка к открытию экрана подтверждения
+    func prepareAccountConfirmation()
 }
 
 final class RepasswordPreviewPresenter {
@@ -29,7 +31,7 @@ final class RepasswordPreviewPresenter {
 }
 
 extension RepasswordPreviewPresenter: RepasswordPreviewPresenterProtocol {
-    func startConfirmationUser() {
+    func prepareAccountConfirmation() {
         view?.startLoading()
         
         networkService.sendCode(email: userEmail) { [weak self] result in

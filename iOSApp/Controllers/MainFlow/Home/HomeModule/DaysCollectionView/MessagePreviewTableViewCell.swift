@@ -9,11 +9,11 @@ import UIKit
 import SnapKit
 
 protocol IMessagePreviewView: UIView {
+    /// повторная сборка с моделью
     func configure(viewModel: MessagePreviewModel)
 }
 
 class MessagePreviewView: UIView, IMessagePreviewView {
-    
     private lazy var statusLineView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemBlue
@@ -121,7 +121,7 @@ class MessagePreviewView: UIView, IMessagePreviewView {
         
         addSubview(textLabel)
         textLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(9)
+            make.top.equalToSuperview().inset(15)
             make.leading.equalTo(statusLineView.snp.trailing).offset(28)
             make.trailing.equalToSuperview().inset(25)
         }
@@ -130,7 +130,7 @@ class MessagePreviewView: UIView, IMessagePreviewView {
         timeLabel.snp.makeConstraints { make in
             make.trailing.equalTo(textLabel.snp.trailing).inset(1)
             make.top.equalTo(textLabel.snp.bottom).offset(2)
-            make.bottom.equalToSuperview().inset(9 + 10)
+            make.bottom.equalToSuperview().inset(15)
         }
         
         addSubview(ownerLabel)
@@ -151,7 +151,7 @@ class MessagePreviewView: UIView, IMessagePreviewView {
     func configure(viewModel: MessagePreviewModel) {
         self.viewModel = viewModel
         
-        if self.viewModel?.warning != nil {
+        if viewModel.unravel != nil {
             statusWarningButton.isHidden = false
             statusCircleView.isHidden = true
         } else {
@@ -165,7 +165,7 @@ class MessagePreviewView: UIView, IMessagePreviewView {
     }
     
     @objc private func warningButtonTapped() {
-        viewModel?.warning?.completion()
+        print("Нажали на знак")
     }
 }
 

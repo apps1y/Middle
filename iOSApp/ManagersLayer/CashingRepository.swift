@@ -8,18 +8,19 @@
 import Foundation
 
 protocol CashingRepositoryProtocol {
-    func fetchUserCash() -> UserModel?
     
-    func updateUserCash(user: UserModel)
+    /// подгрузка информации о юзере из кэша
+    /// - Returns: модель юзера
+    func fetchUser() -> UserModel?
     
-    func clearUserCash()
+    /// обновления информации о юзере в кэш
+    /// - Parameter user: модель юзера
+    func updateUser(user: UserModel)
     
-    func fetchTelegramAccountCash() -> [TelegramAccountModel]
+    /// очищает кэш юзера
+    func clearUser()
     
-    func updateTelegramAccountCash(accounts: [TelegramAccountModel])
-    
-    func clearTelegramAccountCash()
-    
+    /// очистка всего кэша
     func clearAllCash()
 }
 
@@ -33,40 +34,21 @@ class CashingRepository: CashingRepositoryProtocol {
         self.coreDataService = coreDataService
     }
     
-    func fetchUserCash() -> UserModel? {
+    func fetchUser() -> UserModel? {
         guard let email = userDefaultsManager.fetch(key: "user_email") else { return nil }
         return UserModel(email: email)
     }
     
-    func updateUserCash(user: UserModel) {
+    func updateUser(user: UserModel) {
         userDefaultsManager.set(key: "user_email", object: user.email)
     }
     
-    func clearUserCash() {
+    func clearUser() {
         userDefaultsManager.delete(key: "user_email")
     }
     
-    func fetchTelegramAccountCash() -> [TelegramAccountModel] {
-        let accounts = coreDataService.fetch { (account: TelegramAccountStorage) in
-            return TelegramAccountModel(name: account.name, phone: account.phone)
-        }
-        return accounts
-    }
-    
-    func updateTelegramAccountCash(accounts: [TelegramAccountModel]) {
-        coreDataService.deleteAll(TelegramAccountStorage.self)
-        coreDataService.insert(models: accounts) { (model: TelegramAccountModel, entity: TelegramAccountStorage) in
-            entity.name = model.name
-            entity.phone = model.phone
-        }
-    }
-    
-    func clearTelegramAccountCash() {
-        coreDataService.deleteAll(TelegramAccountStorage.self)
-    }
     
     func clearAllCash() {
-        clearUserCash()
-        clearTelegramAccountCash()
+        clearUser()
     }
 }

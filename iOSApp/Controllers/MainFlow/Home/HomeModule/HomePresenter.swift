@@ -11,7 +11,8 @@ import NetworkAPI
 protocol HomePresenterProtocol: AnyObject {
     func viewDidLoaded()
     
-    func warning(message: String)
+    func prepareUnravelViewShowing()
+    
 }
 
 final class HomePresenter {
@@ -19,22 +20,29 @@ final class HomePresenter {
     var router: HomeRouterInput
     
     private let networkService: NetworkProfileProtocol
-    private let coreDataService: CoreDataProtocol
-
-    init(view: HomeViewProtocol?, router: HomeRouterInput, networkService: NetworkProfileProtocol, coreDataService: CoreDataProtocol) {
+    private let cashingRepisitory: CashingRepositoryProtocol
+    private let keychainBearerManager: KeychainBearerProtocol
+    
+    /// app coordinator
+    weak var coordinator: FlowCoordinator?
+    
+    init(view: HomeViewProtocol?, router: HomeRouterInput, networkService: NetworkProfileProtocol, cashingRepisitory: CashingRepositoryProtocol, keychainBearerManager: KeychainBearerProtocol, coordinator: FlowCoordinator?) {
         self.view = view
         self.router = router
         self.networkService = networkService
-        self.coreDataService = coreDataService
+        self.cashingRepisitory = cashingRepisitory
+        self.keychainBearerManager = keychainBearerManager
+        self.coordinator = coordinator
     }
+    
 }
 
 extension HomePresenter: HomePresenterProtocol {
-    func viewDidLoaded() {
-        // first setup view
+    func prepareUnravelViewShowing() {
+        router.presentUnravelViewController()
     }
     
-    func warning(message: String) {
-        router.presentWarningAlert(message: message)
+    func viewDidLoaded() {
+        // first setup view
     }
 }
