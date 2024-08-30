@@ -14,7 +14,7 @@ class SettingsTableView: UITableView {
     
     private var recoverRow: SettingsRow = {
         let model = DefaultSettingsCellModel(
-            image: UIImage(systemName: "square"),
+            image: UIImage(systemName: "square.and.pencil"),
             text: "Изменить пароль"
         )
         let row = SettingsRow.defaultSettingsCell(model)
@@ -27,11 +27,13 @@ class SettingsTableView: UITableView {
         return row
     }()
     
-    private var telegramRow: SettingsRow = .botDisconnectedCell
+    private var telegramRow: SettingsRow = .botConnectionCell(
+        BotConnectionCellModel(isConnectedBot: false)
+    )
     
     private var confidentiallyRow: SettingsRow = {
         let model = DefaultSettingsCellModel(
-            image: UIImage(systemName: "square"),
+            image: UIImage(systemName: "lock"),
             text: "Политика"
         )
         let row = SettingsRow.defaultSettingsCell(model)
@@ -40,7 +42,7 @@ class SettingsTableView: UITableView {
     
     private var ratingRow: SettingsRow = {
         let model = DefaultSettingsCellModel(
-            image: UIImage(systemName: "square"),
+            image: UIImage(systemName: "star"),
             text: "Оценить приложение"
         )
         let row = SettingsRow.defaultSettingsCell(model)
@@ -49,7 +51,7 @@ class SettingsTableView: UITableView {
     
     private var shareRow: SettingsRow = {
         let model = DefaultSettingsCellModel(
-            image: UIImage(systemName: "square"),
+            image: UIImage(systemName: "arrow.up.heart"),
             text: "Рассказать друзьям"
         )
         let row = SettingsRow.defaultSettingsCell(model)
@@ -58,7 +60,7 @@ class SettingsTableView: UITableView {
     
     private var supportRow: SettingsRow = {
         let model = DefaultSettingsCellModel(
-            image: UIImage(systemName: "square"),
+            image: UIImage(systemName: "envelope"),
             text: "Написать нам"
         )
         let row = SettingsRow.defaultSettingsCell(model)
@@ -92,6 +94,7 @@ class SettingsTableView: UITableView {
         register(UserInfoTableCell.self, forCellReuseIdentifier: UserInfoTableCell.id)
         register(DefaultSettingsTableCell.self, forCellReuseIdentifier: DefaultSettingsTableCell.id)
         register(SubscribtionBannerTableCell.self, forCellReuseIdentifier: SubscribtionBannerTableCell.id)
+        register(BotConnectionTableCell.self, forCellReuseIdentifier: BotConnectionTableCell.id)
         
         sectionHeaderHeight = 0
         rowHeight = UITableView.automaticDimension
@@ -140,13 +143,15 @@ class SettingsTableView: UITableView {
         }
     }
     
-    public var isBotConnecting: Bool = false {
+    public func showUserInfo(userModel: UserModel) {
+        userRow = .userInfoCell(userModel)
+    }
+    
+    public var isBotConnected: Bool = false {
         didSet {
-            if isBotConnecting {
-                telegramRow = .botConnectedCell
-            } else {
-                telegramRow = .botDisconnectedCell
-            }
+            telegramRow = .botConnectionCell(
+                BotConnectionCellModel(isConnectedBot: isBotConnected)
+            )
             snapshot()
         }
     }

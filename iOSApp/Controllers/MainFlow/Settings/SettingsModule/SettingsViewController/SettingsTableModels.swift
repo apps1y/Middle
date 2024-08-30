@@ -22,8 +22,7 @@ enum SettingsRow: Hashable {
     
     case subscriptionBannerCell(SubscribtionBannerCellModel)
     
-    case botDisconnectedCell
-    case botConnectedCell
+    case botConnectionCell(BotConnectionCellModel)
     
     case defaultSettingsCell(DefaultSettingsCellModel)
     

@@ -1,19 +1,18 @@
 //
-//  DefaultSettingsTableCell.swift
+//  BotConnectionTableCell.swift
 //  iOSApp
 //
-//  Created by Иван Лукъянычев on 28.08.2024.
+//  Created by Иван Лукъянычев on 29.08.2024.
 //
 
 import UIKit
 import SnapKit
 
-struct DefaultSettingsCellModel: Hashable {
-    let image: UIImage?
-    let text: String
+struct BotConnectionCellModel: Hashable {
+    var isConnectedBot: Bool
 }
 
-class DefaultSettingsTableCell: UITableViewCell {
+class BotConnectionTableCell: UITableViewCell {
     
     private lazy var iconImageView: UIImageView = {
         let view = UIImageView()
@@ -27,9 +26,9 @@ class DefaultSettingsTableCell: UITableViewCell {
         return label
     }()
     
-    static let id: String = "DefaultSettingsTableCellID"
+    static let id: String = "BotConnectionTableCellID"
     
-    private var cellModel: DefaultSettingsCellModel?
+    private var cellModel: BotConnectionCellModel = BotConnectionCellModel(isConnectedBot: false)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -42,7 +41,6 @@ class DefaultSettingsTableCell: UITableViewCell {
     }
     
     private func setupUI() {
-        accessoryType = .disclosureIndicator
         
         addSubview(iconImageView)
         iconImageView.snp.makeConstraints { make in
@@ -59,11 +57,15 @@ class DefaultSettingsTableCell: UITableViewCell {
         }
     }
     
-    func configure(_ model: DefaultSettingsCellModel) {
+    func configure(_ model: BotConnectionCellModel) {
         self.cellModel = model
         
-        guard let cellModel else { return }
-        iconImageView.image = cellModel.image
-        cellTextLabel.text = cellModel.text
+        if cellModel.isConnectedBot {
+            iconImageView.image = UIImage(systemName: "checkerboard.shield")
+            cellTextLabel.text = "Бот подкючен"
+        } else {
+            iconImageView.image = UIImage(systemName: "link.badge.plus")
+            cellTextLabel.text = "Подключить бота"
+        }
     }
 }

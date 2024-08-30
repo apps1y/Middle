@@ -42,16 +42,14 @@ class UserInfoTableCell: UITableViewCell {
         addSubview(emailLabel)
         emailLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
-            make.top.equalToSuperview().offset(6)
-            make.height.equalTo(22)
+            make.top.equalToSuperview().offset(10)
         }
         
         addSubview(subscriptionStatusLabel)
         subscriptionStatusLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
-            make.top.equalTo(emailLabel.snp.bottom)
-            make.height.equalTo(22)
-            make.bottom.equalToSuperview().offset(-6)
+            make.top.equalTo(emailLabel.snp.bottom).offset(5)
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
     

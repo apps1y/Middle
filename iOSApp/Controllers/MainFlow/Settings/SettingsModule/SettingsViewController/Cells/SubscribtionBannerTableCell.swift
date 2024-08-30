@@ -43,9 +43,23 @@ class SubscribtionBannerTableCell: UITableViewCell {
         return label
     }()
     
+    private lazy var backgroundGradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.colors = [
+            UIColor(red: 0/255.0, green: 122/255.0, blue: 255/255.0, alpha: 1.0).cgColor,
+            UIColor(red: 0/255.0, green: 3/255.0, blue: 70/255.0, alpha: 1.0).cgColor,
+            UIColor(red: 55/255.0, green: 75/255.0, blue: 196/255.0, alpha: 1.0).cgColor,
+            UIColor(red: 186/255.0, green: 162/255.0, blue: 239/255.0, alpha: 1.0).cgColor,
+            UIColor(red: 0/255.0, green: 73/255.0, blue: 153/255.0, alpha: 1.0).cgColor
+        ]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        return gradient
+    }()
+    
     static let id: String = "SubscribtionBannerTableCellID"
     
-    private var userModel: SubscribtionBannerCellModel?
+    private var subscriptionModel: SubscribtionBannerCellModel?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -57,8 +71,13 @@ class SubscribtionBannerTableCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        backgroundGradient.frame = bounds
+    }
+    
     private func setupUI() {
         selectionStyle = .none
+        layer.addSublayer(backgroundGradient)
         
         addSubview(buttonLabel)
         buttonLabel.snp.makeConstraints { make in
@@ -83,11 +102,10 @@ class SubscribtionBannerTableCell: UITableViewCell {
     }
     
     func configure(_ model: SubscribtionBannerCellModel) {
-        userModel = model
+        subscriptionModel = model
         
-        guard let userModel else { return }
-        titleLabel.text = userModel.title
-        descriptionLabel.text = userModel.description
-        backgroundColor = userModel.backgroundColor
+        guard let subscriptionModel else { return }
+        titleLabel.text = subscriptionModel.title
+        descriptionLabel.text = subscriptionModel.description
     }
 }

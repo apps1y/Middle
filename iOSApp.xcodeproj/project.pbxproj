@@ -25,6 +25,7 @@
 		5240C34B2C76532F00DF9330 /* UnravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240C34A2C76532F00DF9330 /* UnravelTableViewCell.swift */; };
 		5289CFB02C7CC23A00A2EF77 /* EntityNamed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5289CFAF2C7CC23A00A2EF77 /* EntityNamed.swift */; };
 		529564F92C62A8F6007E3352 /* CashingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529564F82C62A8F6007E3352 /* CashingRepository.swift */; };
+		5296040F2C80A86600391BBC /* BotConnectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296040E2C80A86600391BBC /* BotConnectionTableCell.swift */; };
 		529BF93A2C4579C1009954D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF9392C4579C1009954D5 /* AppDelegate.swift */; };
 		529BF93C2C4579C1009954D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529BF93B2C4579C1009954D5 /* SceneDelegate.swift */; };
 		529BF9432C4579C3009954D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 529BF9422C4579C3009954D5 /* Assets.xcassets */; };
@@ -105,6 +106,7 @@
 		5240C34A2C76532F00DF9330 /* UnravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnravelTableViewCell.swift; sourceTree = "<group>"; };
 		5289CFAF2C7CC23A00A2EF77 /* EntityNamed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityNamed.swift; sourceTree = "<group>"; };
 		529564F82C62A8F6007E3352 /* CashingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashingRepository.swift; sourceTree = "<group>"; };
+		5296040E2C80A86600391BBC /* BotConnectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotConnectionTableCell.swift; sourceTree = "<group>"; };
 		529BF9362C4579C1009954D5 /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529BF9392C4579C1009954D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		529BF93B2C4579C1009954D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				52F90FA32C7CF9CE00124CF3 /* UserInfoTableCell.swift */,
 				52F90FA82C7F224900124CF3 /* SubscribtionBannerTableCell.swift */,
 				52F90FA62C7F1E0B00124CF3 /* DefaultSettingsTableCell.swift */,
+				5296040E2C80A86600391BBC /* BotConnectionTableCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				529BF99A2C478677009954D5 /* EmailRecViewController.swift in Sources */,
 				5289CFB02C7CC23A00A2EF77 /* EntityNamed.swift in Sources */,
 				529BF99B2C478677009954D5 /* EmailRecAssembly.swift in Sources */,
+				5296040F2C80A86600391BBC /* BotConnectionTableCell.swift in Sources */,
 				529BF9822C46F9E5009954D5 /* EmailPresenter.swift in Sources */,
 				529BF9A52C479725009954D5 /* MainTabBarController.swift in Sources */,
 				529BF9832C46F9E5009954D5 /* EmailRouter.swift in Sources */,

@@ -31,6 +31,7 @@ final class SettingsViewController: UIViewController {
     private lazy var tableView: SettingsTableView = {
         let table = SettingsTableView()
         table.delegate = self
+        table.showSubscriptionBanner = true
         return table
     }()
     
@@ -80,8 +81,6 @@ final class SettingsViewController: UIViewController {
         }
         
         navigationItem.titleView = headerTitleView
-        
-        tableView.showSubscriptionBanner = false
     }
 }
 
@@ -97,13 +96,14 @@ extension SettingsViewController: SettingsViewProtocol {
     }
     
     func show(user: UserModel) {
-        // emailLabel.text = user.email
+        tableView.showUserInfo(userModel: user)
     }
 }
 
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.tableView.isBotConnected.toggle()
     }
 }
 
